@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface InsightCardItem {
@@ -21,7 +21,7 @@ export const insightsData: InsightCardItem[] = [
     id: "gcc-performance",
     date: "APR 22, 2025",
     category: "CASE STUDY",
-    title: "GCC Performance Across Engineering",
+    title: "GCC Performance \nAcross Engineering",
     href: "/insights/gcc-performance-across-engineering",
     imageSrc: "/insight-1.jpg",
     ctaText: "READ THE FULL CASE STUDY",
@@ -30,7 +30,7 @@ export const insightsData: InsightCardItem[] = [
     id: "employee-disengagement",
     date: "APR 22, 2025",
     category: "BLOG POST",
-    title: "The Hidden Cost of Employee Disengagement",
+    title: "The Hidden Cost of \nEmployee Disengagement",
     href: "/insights/hidden-cost-of-employee-disengagement",
     imageSrc: "/insigth-2.jpg",
     ctaText: "READ THE FULL ARTICLE",
@@ -61,7 +61,7 @@ export default function Insights() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="px-[5%] max-w-[1360px] mx-auto">
+      <div className="px-[5%] ">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           {/* Eyebrow */}
@@ -71,7 +71,7 @@ export default function Insights() {
           </div>
 
           {/* Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-medium tracking-tight text-[#142938] leading-[1.14] mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#142938] leading-[1.14]  mb-6">
             Insights That Move Work
             <span className="block">Forward</span>
           </h2>
@@ -80,7 +80,7 @@ export default function Insights() {
           <div>
             <Link
               href="/insights"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#142938] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-base font-mono font-semibold tracking-tight uppercase transition-colors duration-200"
             >
               <span>EXPLORE BLOGS & GUIDES</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -91,7 +91,7 @@ export default function Insights() {
         {/* 2-Card Horizontal Slider */}
         <div className="relative w-full overflow-hidden">
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 transition-all duration-500 ease-out"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-4 transition-all duration-500 ease-out"
           >
             {insightsData.map((item, idx) => {
               const isActive = activeIndex === idx;
@@ -102,7 +102,7 @@ export default function Insights() {
                   href={item.href}
                   onClick={() => setActiveIndex(idx)}
                   className={cn(
-                    "group relative rounded-[28px] sm:rounded-[32px] overflow-hidden min-h-[420px] sm:min-h-[460px] lg:min-h-[480px] p-6 sm:p-8 flex flex-col justify-between border transition-all duration-300 select-none shadow-md",
+                    "group relative rounded-[28px] sm:rounded-[22px] overflow-hidden min-h-[420px] sm:min-h-[460px] lg:min-h-[400px] p-6 sm:p-8 flex flex-col justify-between border transition-all duration-300 select-none shadow-md",
                     isActive
                       ? "border-slate-400/60 shadow-xl ring-2 ring-orange-400/20"
                       : "border-slate-200/80 hover:border-slate-300 hover:shadow-lg"
@@ -125,26 +125,27 @@ export default function Insights() {
                   {/* Top Bar: Date Pill & Category Badge */}
                   <div className="relative z-10 flex items-center justify-between">
                     {/* Date Tag */}
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[11px] font-mono font-medium text-white tracking-wider">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 text-[16px] font-mono font-medium text-white tracking-wider">
                       <span className="w-1.5 h-1.5 rounded-full bg-white" />
                       <span>{item.date}</span>
                     </div>
 
                     {/* Category Tag */}
-                    <div className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/15 text-[10px] font-mono font-semibold text-white/90 uppercase tracking-widest">
+                    <div className="px-3 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/15 text-[11px] font-mono font-semibold text-white/90 uppercase tracking-widest">
                       {item.category}
                     </div>
                   </div>
 
                   {/* Bottom Content: Title & Action Link */}
                   <div className="relative z-10">
-                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug mb-4 group-hover:text-orange-200 transition-colors">
+                    <h3 className="font-heading text-2xl sm:text-[32px] font-medium whitespace-pre-line text-white tracking-tight leading-[1.3] mb-4 group-hover:text-orange-200 transition-colors">
                       {item.title}
                     </h3>
 
-                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider text-white/90 group-hover:text-white uppercase transition-colors">
+                    <div className="inline-flex items-center gap-1.5 text-base font-mono font-semibold tracking-wider text-white/90 group-hover:text-white uppercase transition-colors">
                       <span>{item.ctaText}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#E26D35]" />
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#E26D35]" />
+                      
                     </div>
                   </div>
                 </Link>

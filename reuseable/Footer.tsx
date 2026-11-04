@@ -10,7 +10,7 @@ export { MakeYourNextMove };
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative w-full bg-white overflow-hidden text-slate-100 mt-auto select-auto">
+    <footer className="relative w-full bg-white overflow-hidden text-slate-100 mt-auto ">
       {/* 1. "Make Your Next Move" CTA Section */}
       <div className="relative z-30">
         <MakeYourNextMove />
@@ -307,7 +307,7 @@ const Footer: React.FC = () => {
                 <ul className="space-y-2 text-xs sm:text-sm">
                   <li>
                     <Link
-                      href="/About-us"
+                      href="/about-us"
                       className="text-slate-200/90 hover:text-white transition-colors"
                     >
                       About Us

@@ -11,14 +11,14 @@ export interface SolutionCard {
   description: string;
   href: string;
   patternType:
-    | "diagonal-ramp"
-    | "pyramid-peak"
-    | "growth-steps"
-    | "enterprise-matrix"
-    | "radial-pulse"
-    | "beacon-orbit"
-    | "network-grid"
-    | "shield-balance";
+  | "diagonal-ramp"
+  | "pyramid-peak"
+  | "growth-steps"
+  | "enterprise-matrix"
+  | "radial-pulse"
+  | "beacon-orbit"
+  | "network-grid"
+  | "shield-balance";
 }
 
 // 8 total solution cards (2 pages of 4 cards each)
@@ -212,15 +212,15 @@ function DotMatrix({ patternType, isActive }: DotMatrixProps) {
 
   const colors = isActive
     ? {
-        base: "#FDE6D2",
-        accent: "#E26D35",
-        dark: "#142938",
-      }
+      base: "#FDE6D2",
+      accent: "#E26D35",
+      dark: "#142938",
+    }
     : {
-        base: "#CBD5E1",
-        accent: "#1E293B",
-        dark: "#0F172A",
-      };
+      base: "#CBD5E1",
+      accent: "#1E293B",
+      dark: "#0F172A",
+    };
 
   return (
     <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] shrink-0 select-none">
@@ -309,24 +309,22 @@ export default function BuildFor() {
     >
       <div className="px-[5%] max-w-[1360px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div className="flex flex-col items-center text-center  mb-14 sm:mb-16">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#E26D35] uppercase mb-4">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-base font-semibold tracking-tight font-geist-mono text-[#E26D35] uppercase mb-4">
             <span className="w-2 h-2 rounded-full bg-[#E26D35]" />
             <span>SOLUTIONS</span>
           </div>
 
           {/* Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-[#142938] leading-[1.14] mb-5">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1] mb-5">
             Built for how your
             <span className="block">organisation works</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="font-sans text-base sm:text-lg text-slate-500 leading-relaxed max-w-2xl">
-            From hiring and onboarding to performance, engagement and growth,
-            Claripa helps organisations make better decisions across the employee
-            lifecycle.
+          <p className="font-sans text-base sm:text-lg text-slate-500 leading-[1.3] max-w-4xl">
+            Claripa connects people management, performance, and task workflows to help organisations align goals, track progress, understand performance, and make informed people decisions
           </p>
         </div>
 

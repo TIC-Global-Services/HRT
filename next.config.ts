@@ -9,8 +9,24 @@ const nextConfig: NextConfig = {
       },
     },
   },
-  experimental: {
-    cpus: 1,
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/insights",
+        destination: "/insight",
+        permanent: true,
+      },
+      {
+        source: "/solutions",
+        destination: "/solution-hub",
+        permanent: true,
+      },
+    ];
   },
 };
 

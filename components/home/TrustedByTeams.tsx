@@ -142,7 +142,7 @@ function MarqueeColumn({ items, direction, speedSeconds = 42 }: ColumnProps) {
   const trackItems = [...items, ...items, ...items];
 
   return (
-    <div className="relative flex-1 h-[680px] overflow-hidden select-none">
+    <div className="relative flex-1 overflow-hidden h-[889px] select-none">
       <div
         className={cn(
           "flex flex-col gap-5 will-change-transform hover:[animation-play-state:paused]",
@@ -155,7 +155,7 @@ function MarqueeColumn({ items, direction, speedSeconds = 42 }: ColumnProps) {
         {trackItems.map((item, idx) => (
           <div
             key={`${item.id}-${idx}`}
-            className="rounded-[24px] bg-[#F9F9F7] border border-neutral-200/70 p-6 sm:p-7 shadow-xs hover:border-orange-200/80 hover:shadow-md transition-all duration-300"
+            className="rounded-[24px] bg-[#F9F9F7] flex flex-col justify-between border border-neutral-200/70 p-6 sm:p-8 shadow-xs hover:border-orange-200/80 hover:shadow-md transition-all h-[279px] duration-300"
           >
             {/* Orange Quote Mark */}
             <div className="text-[#E26D35] text-2xl font-serif font-bold leading-none mb-3 select-none">
@@ -163,23 +163,28 @@ function MarqueeColumn({ items, direction, speedSeconds = 42 }: ColumnProps) {
             </div>
 
             {/* Quote Body */}
-            <p className="text-[#142938] text-[14px] sm:text-[15px] font-sans leading-relaxed mb-6 font-normal">
-              {item.quote}
-            </p>
+
 
             {/* Author Row */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-slate-200 border border-slate-300/80 flex items-center justify-center text-xs font-semibold text-slate-700 shrink-0">
-                {item.avatarInitials}
+            <div className="flex items-start flex-col justify-start">
+              <p className="text-[#142938] text-[14px] sm:text-base font-sans leading-[1.2] mb-6 font-normal">
+                {item.quote}
+              </p>
+
+              <div className="flex gap-2">
+                <div className="w-9 h-9 rounded-[12px] bg-slate-200 border border-slate-300/80 flex items-center justify-center text-xs font-semibold text-slate-700 shrink-0">
+                  {item.avatarInitials}
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs sm:text-[14px] font-bold text-[#142938] leading-tight">
+                    {item.author}
+                  </span>
+                  <span className="text-[12px] text-slate-500 font-sans leading-tight mt-0.5">
+                    {item.role}, {item.company}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs sm:text-[13px] font-bold text-[#142938] leading-tight">
-                  {item.author}
-                </span>
-                <span className="text-[11px] text-slate-500 font-sans leading-tight mt-0.5">
-                  {item.role}, {item.company}
-                </span>
-              </div>
+
             </div>
           </div>
         ))}
@@ -221,17 +226,17 @@ export default function TrustedByTeams() {
         }
       `}</style>
 
-      <div className="px-[5%] max-w-[1360px] mx-auto">
+      <div className="px-[5%]">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#E26D35] uppercase mb-4 font-mono">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-base font-semibold tracking-tight text-[#F8780C] uppercase mb-4 font-mono">
             <span className="w-2 h-2 rounded-full bg-[#E26D35]" />
             <span>TESTIMONIALS</span>
           </div>
 
           {/* Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-medium tracking-tight text-[#142938] leading-[1.14]">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1]">
             Trusted by Teams.
             <span className="block">Proven Through Impact</span>
           </h2>

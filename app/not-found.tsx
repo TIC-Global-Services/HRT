@@ -78,7 +78,7 @@ export default function NotFound() {
             </Link>
             <span className="text-slate-300">•</span>
             <Link
-              href="/About-us"
+              href="/about-us"
               className="hover:text-slate-950 underline underline-offset-4"
             >
               About Claripa

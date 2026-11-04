@@ -89,7 +89,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "About Us",
-    href: "/About-us",
+    href: "/about-us",
   },
   {
     label: "Contact Us",
@@ -103,6 +103,7 @@ const Navabar: React.FC = () => {
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const prevPathnameRef = useRef(pathname);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -115,8 +116,11 @@ const Navabar: React.FC = () => {
 
   // Close menus on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setActiveDropdown(null);
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname;
+      setMobileMenuOpen(false);
+      setActiveDropdown(null);
+    }
   }, [pathname]);
 
   const handleMouseEnter = (label: string) => {
@@ -145,7 +149,9 @@ const Navabar: React.FC = () => {
 
       {/* 2. Main Navigation Bar matching Image 1 */}
       <nav
-        className={`w-full transition-all duration-200 bg-white/98 backdrop-blur-md border-b border-slate-200/40 py-3.5`}
+        className={`w-full transition-all duration-200 bg-white/98 backdrop-blur-md border-b border-slate-200/40 py-3.5 ${
+          scrolled ? "shadow-sm" : ""
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}

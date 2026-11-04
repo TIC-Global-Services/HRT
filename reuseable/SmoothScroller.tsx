@@ -50,7 +50,7 @@ const SmoothScroller = ({ children }: LenisProviderProps) => {
 
       lenisRef.current = lenis;
       if (typeof window !== "undefined") {
-        (window as any).__lenis = lenis;
+        (window as unknown as { __lenis?: unknown }).__lenis = lenis;
       }
 
       lenis.on("scroll", ScrollTrigger.update);
@@ -69,7 +69,7 @@ const SmoothScroller = ({ children }: LenisProviderProps) => {
 
     return () => {
       if (typeof window !== "undefined") {
-        (window as any).__lenis = null;
+        (window as unknown as { __lenis?: unknown }).__lenis = null;
       }
       lenisRef.current?.destroy();
       ScrollTrigger.killAll();
