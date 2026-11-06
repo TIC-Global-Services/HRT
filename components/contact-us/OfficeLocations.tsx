@@ -64,7 +64,7 @@ export default function OfficeLocations({
     offices.find((o) => o.id === activeOfficeId) || offices[0];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#F7F6F3]">
       <div className="px-4 sm:px-6 lg:px-[5%]">
         {/* Outer White Card: exact geometry matching Figma design (w=1340px, h=485px, rx=30px, p=8px) */}
         <div className="rounded-[30px] border border-[#ECE9E3] bg-white p-2 lg:p-2 overflow-hidden flex flex-col lg:flex-row items-stretch lg:h-[485px] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">

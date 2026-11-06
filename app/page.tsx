@@ -6,6 +6,7 @@ import BetterPeople from "@/components/home/BetterPeople";
 import TrustedByTeams from "@/components/home/TrustedByTeams";
 import IntegrationsTrust from "@/components/home/IntegrationsTrust";
 import Insights from "@/components/home/Insights";
+import OneConnect from "@/components/home/OneConnect";
 
 export const metadata = {
   title: "Claripa AI | The Future of People Decisions",
@@ -15,9 +16,10 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="flex-1 w-full flex flex-col">
+    <main className="flex-1 w-full flex flex-col bg-white">
       <HeroSection />
       <Workforce />
+      <OneConnect />
       <BuildFor />
       <Tools />
       <BetterPeople />

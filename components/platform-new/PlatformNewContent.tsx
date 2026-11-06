@@ -1,19 +1,21 @@
+import PlatformHero from "./PlatformHero";
 import ConnectedModules from "./ConnectedModules";
 import EmployeeExperience from "./EmployeeExperience";
-import GettingStartedAndSecurity from "./GettingStartedAndSecurity";
-import IntegrationsNetwork from "./IntegrationsNetwork";
-import ModuleShowcase from "./ModuleShowcase";
 import PerformanceInsights from "./PerformanceInsights";
+import IntegrationsNetwork from "./IntegrationsNetwork";
+import GettingStartedAndSecurity from "./GettingStartedAndSecurity";
+import PlatformFaq from "./PlatformFaq";
 
 export default function PlatformNewContent() {
   return (
-    <div className="min-h-screen bg-[#f7f6f3] font-sora text-[#002e40]">
-      <PerformanceInsights />
+    <div className="min-h-screen bg-[#F7F6F3] font-sora text-[#002e40]">
+      <PlatformHero />
       <ConnectedModules />
-      <ModuleShowcase />
       <EmployeeExperience />
-      <GettingStartedAndSecurity />
+      <PerformanceInsights />
       <IntegrationsNetwork />
+      <GettingStartedAndSecurity />
+      <PlatformFaq />
     </div>
   );
 }

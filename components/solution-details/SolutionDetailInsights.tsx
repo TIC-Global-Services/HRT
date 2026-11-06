@@ -62,7 +62,7 @@ export default function SolutionDetailInsights({
   const totalSlides = Math.ceil(insights.length / 2);
 
   return (
-    <section className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">

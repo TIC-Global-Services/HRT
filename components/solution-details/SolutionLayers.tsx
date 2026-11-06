@@ -22,7 +22,7 @@ export default function SolutionLayers({
   layers = defaultLayers,
 }: SolutionLayersProps) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Outer Banner Card: 1340px wide, rounded-[30px] */}
         <div className="relative rounded-[30px] overflow-hidden min-h-[500px] lg:h-[540px] flex items-center p-2.5 sm:p-3 bg-[#002E40]">

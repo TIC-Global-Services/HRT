@@ -85,7 +85,7 @@ export default function ModuleShowcase({
   return (
     <section
       aria-label="Platform modules"
-      className="overflow-hidden bg-[#f7f6f3] px-5 py-16 sm:px-8 md:py-24"
+      className="overflow-hidden px-5 py-16 sm:px-8 md:py-24"
       id="platform-modules"
     >
       <div className="mx-auto max-w-7xl">

@@ -14,6 +14,13 @@ const SmoothScroller = ({ children }: LenisProviderProps) => {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (typeof document !== "undefined") {
+      const isHome = pathname === "/";
+      const targetBg = isHome ? "#ffffff" : "#F7F6F3";
+      document.body.style.backgroundColor = targetBg;
+      document.documentElement.style.backgroundColor = targetBg;
+    }
+
     if (lenisRef.current) {
       // Lenis owns the scroll position — reset it to the top on every
       // route change so pages (e.g. a blog article) don't open mid-scroll.

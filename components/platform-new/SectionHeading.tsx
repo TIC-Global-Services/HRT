@@ -14,9 +14,9 @@ export default function SectionHeading({
   centered = false,
 }: SectionHeadingProps) {
   return (
-    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
+    <div className={centered ? "text-center" : "max-w-2xl"}>
       <p
-        className={`mb-4 flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-wide text-[#f8780c] ${
+        className={`mb-4 flex items-center gap-2 font-mono text-base font-medium uppercase tracking-tight text-[#f8780c] ${
           centered ? "justify-center" : ""
         }`}
       >
@@ -24,7 +24,7 @@ export default function SectionHeading({
         {eyebrow}
       </p>
       <h2
-        className="m-0 text-3xl font-normal leading-[1.08] tracking-[-0.045em] text-[#254f5f] sm:text-4xl lg:text-[48px]"
+        className="m-0 text-3xl font-normal leading-[1.08] tracking-tight text-[#254f5f] sm:text-4xl lg:text-[46px]"
         id={id}
       >
         {title}

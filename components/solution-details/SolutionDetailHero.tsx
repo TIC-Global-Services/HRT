@@ -24,8 +24,8 @@ export default function SolutionDetailHero({
   bannerSrc = "/solution_detail_banner.png",
 }: SolutionDetailHeroProps) {
   return (
-    <section className="pt-6 pb-14 sm:pt-10 sm:pb-20 bg-[#FAF8F5]">
-      <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-6 pb-14 sm:pt-10 sm:pb-20 bg-[#F7F6F3]">
+      <div className="px-[5%]">
         {/* Top Breadcrumb */}
         <div className="mb-8 sm:mb-12">
           <p className="font-mono text-xs uppercase tracking-wider text-[#62737A] m-0">
@@ -54,7 +54,7 @@ export default function SolutionDetailHero({
 
             <a
               href={overviewHref}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-[#ECE9E3] text-[#002E40] font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#FAF8F5] transition-all hover:-translate-y-0.5 shadow-sm group"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-[#ECE9E3] text-[#002E40] font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#F7F6F3] transition-all hover:-translate-y-0.5 shadow-sm group"
             >
               <span className="w-5 h-5 rounded-full border border-[#002E40] flex items-center justify-center text-[#002E40] group-hover:border-[#F8780C] group-hover:text-[#F8780C] transition-colors">
                 <Play size={9} className="fill-current ml-0.5" />

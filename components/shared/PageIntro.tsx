@@ -25,7 +25,7 @@ export default function PageIntro({
       }`}
     >
       <SectionEyebrow>{eyebrow}</SectionEyebrow>
-      <h1 className="m-0 text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px]">
+      <h1 className="m-0 text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px] whitespace-pre-line">
         {title}
       </h1>
       {description && (

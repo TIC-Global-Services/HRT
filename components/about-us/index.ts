@@ -16,6 +16,8 @@ export * from "./MeetTheTeam";
 export { default as WhereWeAre } from "./WhereWeAre";
 export * from "./WhereWeAre";
 
+export { default as DottedWorldMap } from "./DottedWorldMap";
+export * from "./DottedWorldMap";
 
 export { default as AboutUsContent } from "./AboutUsContent";
 export { default } from "./AboutUsContent";

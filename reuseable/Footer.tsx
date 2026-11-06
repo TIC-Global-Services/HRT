@@ -3,14 +3,22 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import MakeYourNextMove from "@/components/MakeYourNextMove";
 
 export { MakeYourNextMove };
 
 const Footer: React.FC = () => {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
-    <footer className="relative w-full bg-white overflow-hidden text-slate-100 mt-auto ">
+    <footer
+      className={`relative w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
+        isHome ? "bg-white" : "bg-[#F7F6F3]"
+      }`}
+    >
       {/* 1. "Make Your Next Move" CTA Section */}
       <div className="relative z-30">
         <MakeYourNextMove />

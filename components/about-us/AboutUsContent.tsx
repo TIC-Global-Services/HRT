@@ -8,7 +8,7 @@ import DottedWorldMap from "./DottedWorldMap";
 
 export default function AboutUsContent() {
   return (
-    <div className="w-full bg-[#FAF9F5] text-[#142938] font-sora min-h-screen">
+    <div className="w-full bg-[#F7F6F3] text-[#142938] font-sora min-h-screen">
       {/* 1. Hero with Photography & Meet the Team action (Image 1) */}
       <AboutHero />
 

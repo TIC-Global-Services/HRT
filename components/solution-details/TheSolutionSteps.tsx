@@ -67,7 +67,7 @@ export default function TheSolutionSteps({
   steps = defaultSteps,
 }: TheSolutionStepsProps) {
   return (
-    <section id="the-solution" className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section id="the-solution" className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">

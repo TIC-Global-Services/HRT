@@ -307,7 +307,7 @@ export default function BuildFor() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="px-[5%] max-w-[1360px] mx-auto">
+      <div className="px-[5%]">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center  mb-14 sm:mb-16">
           {/* Eyebrow */}

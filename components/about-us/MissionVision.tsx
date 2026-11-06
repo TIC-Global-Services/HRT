@@ -71,7 +71,7 @@ export default function MissionVision({
   title = "The Next Evolution of HR is\nintelligence",
   overviewLabel = "Overview",
   overviewText = "Claripa is an AI-powered workforce intelligence platform that transforms people data into meaningful insights, helping organisations understand performance, strengthen alignment, and make informed people decisions.",
-  imageSrc = "/about/hands-joined.jpg",
+  imageSrc = "/about_hero.jpg",
   missionKicker = "OUR MISSION",
   missionText = "To connect workforce data, performance signals, and AI-driven insights into a unified intelligence platform that enables organisations to improve performance, align individual contributions with business goals, and make smarter, evidence-based people decisions.",
   visionKicker = "OUR VISION",
@@ -82,90 +82,104 @@ export default function MissionVision({
     <section
       id="mission-vision"
       aria-label="What Drives Us"
-      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1330px] mx-auto"
+      className="py-14 sm:py-18 lg:py-24 px-4 sm:px-6 lg:px-[5%]"
     >
-      {/* Section Header */}
-      <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-wider uppercase mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
+      {/* Section Header matching Image 2 */}
+      <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-12 sm:mb-16">
+        <p className="inline-flex items-center gap-2 text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-[0.16em] uppercase mb-3">
+          <span
+            aria-hidden="true"
+            className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
+          />
           {eyebrow}
         </p>
-        <h2 className="text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1] whitespace-pre-line">
+        <h2 className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] whitespace-pre-line">
           {title}
         </h2>
       </div>
 
-      {/* Top Block: Overview + Wide Photography */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8 sm:mb-10">
-        <div>
-          <span className="text-[#E26D35] font-mono text-xs font-semibold tracking-wider uppercase mb-2 block">
+      {/* Asymmetric 2-Column Layout matching Image 2 */}
+      <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] xl:grid-cols-[350px_1fr] gap-8 lg:gap-12 items-start">
+        {/* Left Column: Overview Callout */}
+        <div className="lg:sticky lg:top-28">
+          <span className="text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase mb-2.5 block">
             {overviewLabel}
           </span>
-          <p className="text-[#5A6A72] font-sora text-base sm:text-[17px] leading-relaxed max-w-lg">
+          <p className="text-[#001F1F] font-sora text-sm sm:text-xl leading-[1.3] max-w-xs m-0">
             {overviewText}
           </p>
         </div>
 
-        <div className="relative w-full aspect-[16/9] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-100 shadow-xs">
-          <Image
-            src={imageSrc}
-            alt="The Next Evolution of HR is intelligence"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 650px"
-          />
-        </div>
-      </div>
-
-      {/* Middle Block: Mission (Dark Teal) & Vision (White) Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 sm:mb-10">
-        {/* Mission Card */}
-        <article className="rounded-[28px] bg-[#1C4E5B] p-8 sm:p-10 lg:p-11 text-white shadow-xs flex flex-col justify-between">
-          <div>
-            <span className="font-mono text-xs text-white/70 tracking-wider uppercase mb-4 block">
-              {missionKicker}
-            </span>
-            <p className="font-sora text-sm sm:text-[15.5px] text-white/95 leading-relaxed">
-              {missionText}
-            </p>
+        {/* Right Column: Stacked Visuals (Wide Photography -> Mission/Vision -> 4 Values) */}
+        <div className="space-y-6 sm:space-y-7 w-full">
+          {/* Top Wide Hands Image */}
+          <div className="relative w-full aspect-[16/8] sm:aspect-[16/7] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-100 shadow-2xs">
+            <Image
+              src={imageSrc}
+              alt="The Next Evolution of HR is intelligence"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 950px"
+            />
           </div>
-        </article>
 
-        {/* Vision Card */}
-        <article className="rounded-[28px] bg-white border border-[#E9ECEF] p-8 sm:p-10 lg:p-11 relative overflow-hidden shadow-xs flex flex-col justify-start">
-          <span className="font-mono text-xs text-[#526972] tracking-wider uppercase mb-4 block">
-            {visionKicker}
-          </span>
-          <p className="font-sora text-base sm:text-lg text-[#142938] font-medium leading-relaxed max-w-sm">
-            {visionText}
-          </p>
-          {/* Subtle orange accent shape in bottom-right corner */}
-          <div className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full bg-gradient-to-tl from-[#FF6B0A]/20 via-[#FF6B0A]/5 to-transparent blur-xl pointer-events-none" />
-        </article>
-      </div>
+          {/* Mission (Dark Petrol) & Vision (White with orange accent) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Mission Card */}
+            <article className="rounded-[24px] sm:rounded-[28px] bg-[#1E4D5B] p-7 sm:p-10 text-white shadow-xs flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xl text-[#96AAB2] tracking-tight uppercase mb-4 block">
+                  {missionKicker}
+                </span>
+                <p className="font-sora text-xs sm:text-xl text-white tracking-tight leading-[1.3] font-normal">
+                  {missionText}
+                </p>
+              </div>
+            </article>
 
-      {/* Bottom Block: 4 Values Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {values.map((v) => (
-          <article
-            key={v.id}
-            className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-7 sm:p-8 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
-          >
-            <h3 className="font-sora text-base sm:text-[17px] font-semibold text-[#142938] mb-4 flex items-center">
-              <span className="text-[#E26D35] font-mono text-xs font-semibold mr-2.5">
-                {v.id}
+            {/* Vision Card */}
+            <article className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-7 sm:p-9 relative overflow-hidden shadow-xs flex flex-col justify-center">
+              <span className="font-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
+                {visionKicker}
               </span>
-              <span>{v.title}</span>
-            </h3>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#5A6A72] font-sora leading-relaxed list-disc list-inside">
-              {v.bullets.map((b, bi) => (
-                <li key={bi} className="leading-relaxed">
-                  <span className="-ml-1">{b}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+              <p className="font-sora text-base sm:text-xl text-[#001F1F] font-normal leading-[1.2] tracking-tight m-0">
+                {visionText}
+              </p>
+              {/* Subtle orange radiant gradient matching screenshot */}
+              <div
+                className="absolute -bottom-6 -right-6 w-36 h-36 rounded-full bg-[radial-gradient(circle,rgba(255,107,10,0.65)_0%,rgba(255,107,10,0.2)_45%,transparent_70%)] pointer-events-none"
+                aria-hidden="true"
+              />
+            </article>
+          </div>
+
+          {/* 4 Values Cards Grid (2x2) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {values.map((v) => (
+              <article
+                key={v.id}
+                className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-6 sm:p-8 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+              >
+                <div className="flex items-center gap-2 mb-3.5">
+                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md border border-[#E5DFD7] text-[#5A6D75] font-mono text-[13px] font-semibold">
+                    {v.id}
+                  </span>
+                  <h3 className="font-sora text-sm sm:text-xl font-semibold text-[#002E40] m-0">
+                    {v.title}
+                  </h3>
+                </div>
+                <ul className="text-xs sm:text-base text-[#5A6D75] font-sora leading-relaxed list-disc list-inside">
+                  {v.bullets.map((b, bi) => (
+                    <li key={bi} className="leading-relaxed">
+                      <span className="-ml-1">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

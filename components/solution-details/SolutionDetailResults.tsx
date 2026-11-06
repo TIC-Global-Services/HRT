@@ -141,7 +141,7 @@ export default function SolutionDetailResults({
   title = "What changed for a 350-person software services firm",
 }: SolutionDetailResultsProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">

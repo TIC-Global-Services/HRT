@@ -54,4 +54,18 @@ body {
   animation: marquee 20s linear infinite;
 }
 
+/* Vertical Marquee (Bottom to Top) */
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--marquee-duration, 25s) linear infinite;
+}
+
 

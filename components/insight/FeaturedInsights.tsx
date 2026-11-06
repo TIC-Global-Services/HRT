@@ -1,7 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import SectionHeading from "@/components/shared/SectionHeading";
 
 export interface ArticleItem {
   title: string;
@@ -10,103 +11,177 @@ export interface ArticleItem {
   date: string;
   image: string;
   href: string;
+  cta?: string;
 }
 
 export const defaultArticles: ArticleItem[] = [
   {
     title: "GCC Performance Across Engineering",
-    category: "Case Studies",
+    category: "CASE STUDY",
     topic: "Attrition",
-    date: "Apr 22, 2025",
+    date: "APR 22, 2025",
     image: "/insight-1.jpg",
     href: "/solution-details",
+    cta: "READ THE FULL CASE STUDY",
   },
   {
     title: "The Hidden Cost of Employee Disengagement",
-    category: "Case Studies",
+    category: "BLOG",
     topic: "Engagement",
-    date: "Apr 22, 2025",
-    image: "/insigth-2.jpg",
-    href: "/solution-details",
+    date: "MAY 14, 2025",
+    image: "/blogs/blog-1.png",
+    href: "/insight/hidden-cost-employee-disengagement",
+    cta: "READ FULL ARTICLE",
   },
   {
     title: "Why Exit Interviews Come Too Late",
-    category: "Blogs",
+    category: "CASE STUDY",
     topic: "Attrition",
-    date: "May 08, 2025",
+    date: "MAY 08, 2025",
     image: "/real-world-impact-1.jpg",
     href: "/solution-hub",
+    cta: "READ THE FULL CASE STUDY",
   },
   {
     title: "Claripa Introduces Ask Claripa, AI for People Decisions",
-    category: "News",
+    category: "CASE STUDY",
     topic: "AI",
-    date: "May 20, 2025",
+    date: "MAY 20, 2025",
     image: "/real-world-impact-2.jpg",
     href: "/platform",
+    cta: "READ THE FULL CASE STUDY",
   },
   {
     title: "From Dashboards to Decisions: Making HR Data Actionable",
-    category: "Blogs",
+    category: "CASE STUDY",
     topic: "Analytics",
-    date: "Jun 11, 2025",
+    date: "JUN 11, 2025",
     image: "/insight-1.jpg",
     href: "/platform",
+    cta: "READ THE FULL CASE STUDY",
   },
   {
     title: "Onboarding Engineers at Scale: A 90-Day Signal Checklist",
-    category: "Reports & Guides",
+    category: "CASE STUDY",
     topic: "Onboarding",
-    date: "Jun 25, 2025",
+    date: "JUN 25, 2025",
     image: "/insigth-2.jpg",
     href: "/solution-hub",
+    cta: "READ THE FULL CASE STUDY",
   },
 ];
 
 export interface FeaturedInsightsProps {
   eyebrow?: string;
-  title?: string;
-  featuredArticles?: ArticleItem[];
+  articles?: ArticleItem[];
+  className?: string;
 }
 
 export default function FeaturedInsights({
   eyebrow = "FEATURED",
-  title = "Ideas worth a closer look.",
-  featuredArticles = defaultArticles.slice(0, 2),
+  articles = defaultArticles,
+  className = "",
 }: FeaturedInsightsProps) {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Group into pairs (2 articles per slide)
+  const slides: ArticleItem[][] = [];
+  for (let i = 0; i < articles.length; i += 2) {
+    slides.push(articles.slice(i, i + 2));
+  }
+
+  const totalSlides = Math.max(slides.length, 1);
+  const currentPair = slides[activeSlide] || slides[0] || [];
+
   return (
-    <section className="w-[min(1200px,calc(100%-48px))] mx-auto pb-20">
-      <SectionHeading eyebrow={eyebrow} title={title} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-        {featuredArticles.map((article, index) => (
+    <div className={`w-full max-w-[1200px] mx-auto mt-12 md:mt-16 ${className}`.trim()}>
+      {/* Header bar: • FEATURED and 01 / 03 */}
+      <div className="flex items-center justify-between mb-4 md:mb-5 px-1">
+        <span className="inline-flex items-center gap-2 text-[#E56A1E] font-mono text-[11px] sm:text-xs tracking-[0.14em] uppercase font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E56A1E]" aria-hidden="true" />
+          {eyebrow}
+        </span>
+        <span className="text-[#8B9DA6] font-mono text-xs tracking-widest font-medium">
+          {String(activeSlide + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Grid of 2 Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+        {currentPair.map((article, index) => (
           <Link
-            className="relative flex flex-col justify-end min-h-[350px] p-8 md:p-10 rounded-[24px] overflow-hidden bg-[#002e40] text-white no-underline group"
+            key={`${article.title}-${index}`}
             href={article.href}
-            key={article.title}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[26px] md:rounded-[30px] min-h-[380px] sm:min-h-[410px] md:min-h-[430px] p-7 sm:p-8 md:p-9 text-white no-underline shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300"
           >
+            {/* Background Image */}
             <Image
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              fill
-              priority={index === 0}
-              sizes="(max-width: 760px) 100vw, 50vw"
               src={article.image}
+              alt={article.title}
+              fill
+              priority={activeSlide === 0 && index === 0}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <span className="absolute inset-0 bg-gradient-to-t from-[#002e40] via-[#002e40]/70 to-transparent pointer-events-none" />
-            <span className="relative z-10 flex items-center gap-3 text-xs text-white/70 font-mono uppercase mb-2">
-              <span>{article.date}</span>
-              <span>·</span>
-              <span>{article.category}</span>
-            </span>
-            <span className="relative z-10 text-white font-sora text-xl md:text-2xl font-normal leading-snug mb-4">
-              {article.title}
-            </span>
-            <span className="relative z-10 inline-flex items-center gap-1.5 text-[#f8780c] font-mono text-xs uppercase group-hover:underline">
-              Read the full story <ArrowUpRight size={16} />
-            </span>
+
+            {/* Dark gradient overlay for optimal legibility */}
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Top row: Date with white dot + Category glass pill */}
+            <div className="relative z-10 flex items-center justify-between w-full">
+              <span className="inline-flex items-center gap-2 text-white/90 font-mono text-[11px] sm:text-xs tracking-wider uppercase font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
+                {article.date}
+              </span>
+
+              <span className="px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-mono text-[10px] sm:text-[11px] tracking-wider uppercase font-medium shadow-xs">
+                {article.category}
+              </span>
+            </div>
+
+            {/* Bottom Content: Title + CTA */}
+            <div className="relative z-10 flex flex-col items-start gap-3 md:gap-4 mt-auto pt-16">
+              <h3 className="text-white font-sora text-2xl sm:text-3xl md:text-[28px] font-semibold leading-[1.22] tracking-tight group-hover:text-white/95 transition-colors">
+                {article.title}
+              </h3>
+
+              <span className="inline-flex items-center gap-2 text-white font-mono text-[11px] sm:text-xs tracking-wider uppercase font-medium group-hover:text-[#F8750C] transition-colors">
+                {article.cta || "READ THE FULL CASE STUDY"}
+                <span className="text-sm font-sans transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                  →
+                </span>
+              </span>
+            </div>
           </Link>
         ))}
       </div>
-    </section>
+
+      {/* Pagination Bars Indicator */}
+      {totalSlides > 1 && (
+        <div className="flex items-center justify-center gap-2.5 mt-7 md:mt-8" role="tablist" aria-label="Featured slides">
+          {slides.map((_, idx) => {
+            const isActive = activeSlide === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setActiveSlide(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "w-16 bg-[#E56A1E]"
+                    : "w-14 bg-[#DAD9D7] hover:bg-[#BFC8CB]"
+                }`}
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }

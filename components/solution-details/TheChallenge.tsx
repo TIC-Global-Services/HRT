@@ -40,7 +40,7 @@ export default function TheChallenge({
   challenges = defaultChallenges,
 }: TheChallengeProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Header Grid: Eyebrow + Title on left, Quote on right */}
         <div className="flex gap-6 lg:gap-16 items-end justify-between mb-12 lg:mb-6">

@@ -103,6 +103,7 @@ const Navabar: React.FC = () => {
   const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const prevPathnameRef = useRef(pathname);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -135,9 +136,21 @@ const Navabar: React.FC = () => {
   };
 
   return (
-    <header className="top-0 z-50 w-full transition-all duration-300">
-      {/* 1. Top Announcement Bar matching Image 1 */}
-      <div className="w-full bg-[#FBF9F5] backdrop-blur-md border-b border-slate-200/50">
+    <header
+      className={`top-0 z-50 w-full transition-all duration-300 ${
+        isHome
+          ? "sticky bg-white/80 backdrop-blur-md border-b border-slate-200/50"
+          : "bg-transparent border-b-transparent"
+      }`}
+    >
+      {/* 1. Top Announcement Bar */}
+      <div
+        className={`w-full transition-colors duration-200 ${
+          isHome
+            ? "border-b border-slate-200/50 bg-white/40"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           <AnnouncementBar
             badgeText="New"
@@ -147,10 +160,12 @@ const Navabar: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar matching Image 1 */}
+      {/* 2. Main Navigation Bar */}
       <nav
-        className={`w-full transition-all duration-200 bg-white/98 backdrop-blur-md border-b border-slate-200/40 py-3.5 ${
-          scrolled ? "shadow-sm" : ""
+        className={`w-full transition-all duration-200 py-3.5 ${
+          isHome
+            ? `bg-white/60 backdrop-blur-md ${scrolled ? "shadow-xs border-b border-slate-200/40" : ""}`
+            : "bg-transparent border-none shadow-none"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -293,7 +308,11 @@ const Navabar: React.FC = () => {
 
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl">
+          <div
+            className={`lg:hidden border-t border-slate-200 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl ${
+              isHome ? "bg-white/95 backdrop-blur-xl" : "bg-[#F7F6F3]"
+            }`}
+          >
             <div className="space-y-2">
               {navItems.map((item) => {
                 const hasChildren = item.children && item.children.length > 0;

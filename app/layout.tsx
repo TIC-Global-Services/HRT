@@ -68,7 +68,7 @@ export default function RootLayout({
         
       )}
     >
-      <body className={`min-h-full ${geist.variable} ${geistMono.variable} ${sora.variable} flex flex-col font-sans bg-background text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]`}>
+      <body className={`min-h-full ${geist.variable} ${geistMono.variable} ${sora.variable} flex flex-col font-sans text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]`}>
         <SmoothScroller>
           <Navabar />
           <main className="flex-1">{children}</main>

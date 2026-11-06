@@ -9,7 +9,7 @@ import MakeYourNextMove from "@/components/MakeYourNextMove";
 
 export default function SolutionDetailContent() {
   return (
-    <div className="bg-[#FAF8F5] text-[#002E40] font-sora min-h-screen">
+    <div className="bg-[#F7F6F3] text-[#002E40] font-sora min-h-screen">
       {/* 1. Hero Section with Dashboard Card */}
       <SolutionDetailHero />
 
@@ -31,15 +31,7 @@ export default function SolutionDetailContent() {
       {/* 7. FAQ Section (Using Reusable FaqAccordion) */}
       <SolutionDetailFAQ />
 
-      {/* Bottom CTA Banner */}
-      <MakeYourNextMove
-        eyebrow="SEE CLARIPA IN ACTION"
-        title="Make Your Next Move."
-        subtitle="See how Claripa helps your organisation align goals, track performance, and turn workforce information into actionable insights."
-        buttonText="Book a Demo"
-        buttonHref="/contact-us"
-        showStandaloneBackground={true}
-      />
+    
     </div>
   );
 }

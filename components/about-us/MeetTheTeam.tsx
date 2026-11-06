@@ -18,49 +18,49 @@ const defaultTeamMembers: TeamMember[] = [
   {
     name: "Anil Kumar",
     role: "CPTO, Founder",
-    imageSrc: "/about/team/anil-kumar.jpg",
+    imageSrc: "/founding_members/Anil_Kumar.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Poonam Dhanvani",
     role: "CEO, Founder",
-    imageSrc: "/about/team/poonam-dhanvani.jpg",
+    imageSrc: "/founding_members/Poonam_Dhanavati.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Kalyanee Khole",
     role: "Senior Human Resource Consultant",
-    imageSrc: "/about/team/kalyanee-khole.jpg",
+    imageSrc: "/founding_members/Kalyanee_Khele.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Namrata Singh",
     role: "Product Analyst",
-    imageSrc: "/about/team/namrata-singh.jpg",
+    imageSrc: "/founding_members/Namrata_Singh.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Pranav Nalawade",
     role: "Artificial Intelligence Engineer",
-    imageSrc: "/about/team/pranav-nalawade.jpg",
+    imageSrc: "/founding_members/Pranav_Nalawade.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Tanvi Ingale",
     role: "Senior Talent Acquisition Specialist",
-    imageSrc: "/about/team/tanvi-ingale.jpg",
+    imageSrc: "/founding_members/Tanvi_Ingale.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Hardik Parikh",
     role: "Full Stack Engineer",
-    imageSrc: "/about/team/hardik-parikh.jpg",
+    imageSrc: "/founding_members/Hardik_Parikh.png",
     linkedinUrl: "https://linkedin.com",
   },
   {
     name: "Aakash Saxena",
     role: "Test Engineer",
-    imageSrc: "/about/team/aakash-saxena.jpg",
+    imageSrc: "/founding_members/Aakash_Saxena.png",
     linkedinUrl: "https://linkedin.com",
   },
 ];
@@ -74,7 +74,7 @@ export default function MeetTheTeam({
     <section
       id="team"
       aria-label="Meet The Team"
-      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1330px] mx-auto"
+      className="py-12 sm:py-16 lg:py-20 px-[5%]"
     >
       {/* Header */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-12">
@@ -88,7 +88,7 @@ export default function MeetTheTeam({
       </div>
 
       {/* Team Cards Grid (3 cards per row, bottom row centered) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 max-w-6xl mx-auto">
         {members.map((member, index) => {
           // Centering the last row of 2 items on 3-column layout
           const isSecondLast = index === 6;
@@ -112,7 +112,8 @@ export default function MeetTheTeam({
                   alt={member.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                  style={{objectPosition:"50% 5%"}}
+                  // sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                 />
               </div>
 

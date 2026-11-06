@@ -26,22 +26,22 @@ const defaultSteps: GettingStartedStep[] = [
   {
     title: "Discover",
     description:
-      "Understand the organization's performance management process, strategic priorities, reporting structure, and current workflows.",
+      "Discover \nDescription: Understand the organization's performance management process, strategic priorities, reporting structure, and current workflows",
   },
   {
     title: "Configure",
     description:
-      "Configure relevant performance assessment cycles, OKR workflows, weightages, and settings based on agreed business requirements.",
+      "Configure relevant performance assessment cycles, OKR \nworkflows, weightages, and \nsettings based on agreed \nbusiness requirements.",
   },
   {
     title: "Prepare and Validate Data",
     description:
-      "Prepare employee and organizational data in the required format, validate the information, and support the agreed data-loading process.",
+      "Prepare employee and \norganizational data in the \nrequired format, validate the \ninformation, and support the \nagreed data-loading process.",
   },
   {
     title: "Go Live and Support",
     description:
-      "Validate the configured workflows, support user onboarding, and help the organization begin using Claripa.",
+      "Validate the configured \nworkflows, support user \nonboarding, and help the \norganization begin using Claripa.",
   },
 ];
 
@@ -81,8 +81,8 @@ export default function GettingStartedAndSecurity({
 }: GettingStartedAndSecurityProps) {
   return (
     <>
-      <section className="bg-[#f7f6f3] px-5 py-16 sm:px-8 md:py-24" id="getting-started">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#F7F6F3] px-[5%] py-16 sm:px-8 md:py-24" id="getting-started">
+        <div className="">
           <SectionHeading
             centered
             eyebrow="GETTING STARTED"
@@ -102,19 +102,19 @@ export default function GettingStartedAndSecurity({
                   className={`inline-flex size-8 items-center justify-center rounded-lg font-mono text-xs ${
                     index === steps.length - 1
                       ? "bg-white text-[#f8780c]"
-                      : "bg-[#f7f6f3] text-[#f8780c]"
+                      : "bg-[#F7F6F3] text-[#f8780c]"
                   }`}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3
                   className={`mb-0 mt-5 text-base font-semibold ${
-                    index === steps.length - 1 ? "text-[#d95e0b]" : "text-[#173c49]"
+                    index === steps.length - 1 ? "text-[#d95e0b]" : "text-[#002E40]"
                   }`}
                 >
                   {step.title}
                 </h3>
-                <p className="mb-0 mt-2 text-sm leading-relaxed text-[#718087]">
+                <p className="mb-0 mt-2 text-base leading-[1.2]  tracking-tight whitespace-pre-line text-[#62737A]">
                   {step.description}
                 </p>
               </li>
@@ -123,8 +123,8 @@ export default function GettingStartedAndSecurity({
         </div>
       </section>
 
-      <section className="bg-[#f7f6f3] px-5 pb-16 sm:px-8 md:pb-24" id="security-and-trust">
-        <div className="mx-auto max-w-7xl rounded-[28px] border border-[#ebe8e3] bg-white p-6 sm:p-9 lg:p-10">
+      <section className="bg-[#F7F6F3] px-[5%] pb-16 sm:px-8 md:pb-24" id="security-and-trust">
+        <div className="rounded-[28px] border border-[#ebe8e3] bg-white p-6 sm:p-9 lg:p-10">
           <SectionHeading
             eyebrow="SECURITY & TRUST"
             title="People data deserves responsible protection."
@@ -134,16 +134,16 @@ export default function GettingStartedAndSecurity({
               const Icon = pillarIcons[pillar.icon];
               return (
                 <article
-                  className="min-h-[165px] rounded-[20px] border border-[#eeeae5] bg-[#f7f6f3] p-5"
+                  className="min-h-[165px] rounded-[20px] border border-[#eeeae5] bg-[#F7F6F3] p-5"
                   key={pillar.title}
                 >
                   <span className="mb-3 grid size-10 place-items-center rounded-xl border border-[#f8d8c3] bg-[#fff7f1] text-[#f8780c]">
                     <Icon aria-hidden="true" size={19} />
                   </span>
-                  <h3 className="m-0 text-sm font-semibold text-[#173c49]">
+                  <h3 className="m-0 text-base font-semibold text-[#173c49]">
                     {pillar.title}
                   </h3>
-                  <p className="mb-0 mt-1.5 text-xs leading-relaxed text-[#718087]">
+                  <p className="mb-0 mt-1.5 text-base leading-[1.2] text-[#718087]">
                     {pillar.description}
                   </p>
                 </article>

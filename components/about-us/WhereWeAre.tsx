@@ -1,60 +1,42 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 export interface WhereWeAreProps {
-  eyebrow?: string;
-  title?: string;
-  kicker?: string;
-  officeTitle?: string;
-  officeDescription?: string;
-  contactText?: string;
-  contactHref?: string;
+  badgeText?: string;
+  badgeHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 export default function WhereWeAre({
-  eyebrow = "WHERE WE ARE",
-  title = "Offices and teams",
-  kicker = "HQ · INDIA (CHENNAI & MUMBAI)",
-  officeTitle = "Working together, wherever work happens.",
-  officeDescription = "Operating across Chennai and Mumbai to support forward-thinking people teams globally.",
-  contactText = "Get in touch",
-  contactHref = "/contact-us",
+  badgeText = "CAREER",
+  badgeHref = "/careers",
+  imageSrc = "/team.jpg",
+  imageAlt = "Claripa team together in the office",
 }: WhereWeAreProps) {
   return (
     <section
-      id="locations"
-      aria-label="Office locations"
-      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1330px] mx-auto"
+      id="careers-banner"
+      aria-label="Claripa team and careers"
+      className="pt-8 sm:pt-10 lg:pt-12 pb-3 sm:pb-4 lg:pb-5 px-4 sm:px-6 lg:px-[5%]"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-        <div>
-          <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-wider uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
-            {eyebrow}
-          </p>
-          <h2 className="text-[#142938] font-sora text-3xl sm:text-4xl font-normal tracking-tight leading-tight">
-            {title}
-          </h2>
-        </div>
+      <div className="relative w-full aspect-[16/7.5] sm:aspect-[16/6.5] lg:aspect-[16/5.8] min-h-[240px] sm:min-h-[320px] md:min-h-[380px] lg:min-h-[440px] rounded-[28px] sm:rounded-[30px] md:rounded-[30px] overflow-hidden border border-[#E5EAEB] shadow-xs bg-[#EAE8E3]">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="(max-width: 1330px) 100vw, 1330px"
+          className="object-cover object-center"
+        />
 
-        <div className="lg:col-span-2 rounded-[28px] sm:rounded-[32px] bg-white border border-[#E9ECEF] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
-          <div>
-            <span className="font-mono text-xs text-[#E26D35] font-semibold tracking-wider uppercase mb-2 block">
-              {kicker}
-            </span>
-            <h3 className="text-xl sm:text-2xl font-semibold text-[#142938] font-sora mb-2">
-              {officeTitle}
-            </h3>
-            <p className="text-sm sm:text-[15px] text-[#5A6A72] font-sora max-w-lg leading-relaxed">
-              {officeDescription}
-            </p>
-          </div>
+        {/* Frosted Glass "CAREER" Badge */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-7 md:left-7 z-10">
           <Link
-            href={contactHref}
-            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-[#1C4E5B] hover:bg-[#143B45] text-white font-mono text-xs font-semibold tracking-wider uppercase transition-colors shrink-0 shadow-xs"
+            href={badgeHref}
+            className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white font-mono text-[10px] sm:text-xs font-semibold tracking-[0.14em] uppercase transition-all shadow-xs"
           >
-            <span>{contactText}</span>
-            <ArrowUpRight aria-hidden="true" size={14} />
+            {badgeText}
           </Link>
         </div>
       </div>

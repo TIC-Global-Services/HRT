@@ -7,8 +7,8 @@ import ImpactCTA from "@/components/shared/ImpactCTA";
 
 export default function ContactUsContent() {
   return (
-    <div className="bg-white text-[#002e40] font-sora min-h-screen">
-      <section className="bg-[#f8f7f4]">
+    <div className="bg-[#F7F6F3] text-[#002e40] font-sora min-h-screen">
+      <section className="bg-[#F7F6F3]">
         <div className="container mx-auto py-12 lg:py-[66px] pb-16 lg:pb-20 grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start gap-10 lg:gap-[60px] px-[5%]">
           <ContactHero />
           <ContactForm />

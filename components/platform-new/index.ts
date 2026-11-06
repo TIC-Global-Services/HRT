@@ -1,5 +1,7 @@
 export { default } from "./PlatformNewContent";
 export { default as PlatformNewContent } from "./PlatformNewContent";
+export { default as PlatformHero } from "./PlatformHero";
+export * from "./PlatformHero";
 export { default as PerformanceInsights } from "./PerformanceInsights";
 export type {
   PerformanceInsightRow,
@@ -25,3 +27,5 @@ export type {
   IntegrationPartner,
   IntegrationsNetworkProps,
 } from "./IntegrationsNetwork";
+export { default as PlatformFaq } from "./PlatformFaq";
+export type { PlatformFaqProps } from "./PlatformFaq";

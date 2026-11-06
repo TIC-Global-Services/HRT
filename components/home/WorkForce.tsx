@@ -12,8 +12,8 @@ import {
   BellOff,
   CheckSquare,
   Square,
-  Flame,
 } from "lucide-react";
+import GradientBlinds from "@/components/GradientBlinds";
 
 export interface FeatureCardItem {
   id: string;
@@ -55,7 +55,7 @@ export const workforceContent = {
       id: "proactive-action",
       title: "Proactive Action",
       description:
-        "Claripa delivers actionable intelligence so teams can focus on what matters.",
+        "Claripa aims to bring relevant workforce intelligence to decision-makers, helping them recognise emerging patterns, understand potential concerns, and take timely action.",
       href: "/solution-hub#action",
       highlighted: true,
     },
@@ -202,39 +202,81 @@ function ManagersWithoutContextMiniUI() {
 }
 
 /* =========================================================================
-   CARD 4 MINI UI: PROACTIVE ACTION (Vertical Orange Gradient Blinds)
+   CARD 4 MINI UI: PROACTIVE ACTION (Signal to Proactive Action Preview)
    ========================================================================= */
 function ProactiveActionMiniUI() {
   return (
-    <div className="w-full h-[240px] relative rounded-2xl overflow-hidden flex items-end justify-center select-none">
-      {/* Ambient background glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFA366]/40 via-[#FF8A3D]/25 to-transparent" />
+    <div className="w-full h-[260px] flex flex-col items-center justify-center relative select-none">
+      {/* Resting AI Signal & Action Preview Card */}
+      <div className="w-full max-w-[260px] bg-white rounded-2xl border border-zinc-200/90 p-4 shadow-xs flex flex-col gap-3 group-hover:border-orange-200/80 group-hover:bg-white/95 group-hover:shadow-sm transition-all duration-300">
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[10px] font-semibold text-[#F06A25] uppercase tracking-wider flex items-center gap-1.5">
+            <Zap className="w-3.5 h-3.5 text-[#F06A25] fill-[#F06A25] shrink-0" />
+            PROACTIVE SIGNAL
+          </span>
+          <span className="text-[10px] font-mono text-zinc-400 bg-zinc-100 group-hover:bg-orange-100/60 group-hover:text-orange-600 px-2 py-0.5 rounded-full transition-colors duration-300">
+            LIVE
+          </span>
+        </div>
 
-      {/* Stylized Architectural Gradient Blinds matching hero visual */}
-      <div className="absolute inset-0 flex justify-between px-3 pt-2 gap-1.5">
-        {[
-          { h: "92%", op: "0.85" },
-          { h: "100%", op: "0.95" },
-          { h: "94%", op: "0.9" },
-          { h: "88%", op: "0.8" },
-          { h: "82%", op: "0.75" },
-          { h: "75%", op: "0.65" },
-          { h: "68%", op: "0.55" },
-        ].map((blind, idx) => (
-          <div
-            key={idx}
-            className="flex-1 rounded-t-lg bg-gradient-to-b from-[#F06A25] via-[#FF7A29]/90 to-transparent"
-            style={{
-              height: blind.h,
-              opacity: blind.op,
-              boxShadow: "0 4px 20px rgba(240, 106, 37, 0.25)",
-            }}
-          />
-        ))}
+        <div className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#ECE8DF] group-hover:bg-[#FFF8F3] group-hover:border-orange-200/60 transition-colors duration-300">
+          <p className="text-xs font-medium text-[#142938] leading-tight">
+            Workload variance detected
+          </p>
+          <p className="text-[11px] text-zinc-500 group-hover:text-zinc-600 mt-0.5">
+            Engineering · 3 signals flagged
+          </p>
+        </div>
+
+        <div className="bg-[#FFF5ED] border border-orange-200/80 rounded-xl px-3 py-2 flex items-center justify-between shadow-2xs">
+          <span className="text-[11px] font-semibold text-[#F06A25]">
+            Nudge: Schedule 1-on-1
+          </span>
+          <span className="w-5 h-5 rounded-full bg-[#F06A25] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+            ✓
+          </span>
+        </div>
       </div>
+    </div>
+  );
+}
 
-      {/* Bottom fade into peach card */}
-      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#FFF5ED] via-[#FFF5ED]/80 to-transparent pointer-events-none" />
+/* =========================================================================
+   REUSABLE CARD HOVER GRADIENT BLINDS SHADER
+   ========================================================================= */
+function CardHoverGradientBlinds() {
+  return (
+    <div className="absolute -left-0 inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
+      <GradientBlinds
+        gradientColors={[
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFA85C",
+          "#FF6B00",
+          "#F06A25",
+          "#FF7315",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+        ]}
+        blindCount={8}
+        angle={-15}
+        noise={0}
+        lightColor="#FFFFFF"
+        lightMode={true}
+        shine={0.5}
+        relief={0.06}
+        glow={0.6}
+        sway={0.2}
+        speed={0.6}
+        hoverTilt={0.4}
+        spotlightRadius={1.0}
+        spotlightOpacity={0.5}
+        className="w-full h-full"
+      />
+      {/* Soft bottom fade to ensure typography legibility */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FFF5ED] via-[#FFF5ED]/80 to-transparent pointer-events-none" />
     </div>
   );
 }
@@ -245,7 +287,7 @@ function ProactiveActionMiniUI() {
 export default function Workforce() {
   const { eyebrow, headline, description, ctaButton, cards } = workforceContent;
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [, setActiveSlide] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -340,62 +382,80 @@ export default function Workforce() {
           {/* Card 1: Disconnected Signals */}
           <Link
             href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 bg-[#F8F9FA] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-h-[460px]"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
           >
-            <DisconnectedSignalsMiniUI />
-            <div className="pt-4 border-t border-zinc-200/50 flex items-center justify-between mt-auto">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938]">
-                {cards[0].title}
-              </h3>
-              <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#142938] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <CardHoverGradientBlinds />
+            <div className="relative z-10">
+              <DisconnectedSignalsMiniUI />
+            </div>
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[0].title}
+                </h3>
+                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
             </div>
           </Link>
 
           {/* Card 2: Reactive Decisions */}
           <Link
             href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 bg-[#F8F9FA] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-h-[460px]"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
           >
-            <ReactiveDecisionsMiniUI />
-            <div className="pt-4 border-t border-zinc-200/50 flex items-center justify-between mt-auto">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938]">
-                {cards[1].title}
-              </h3>
-              <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#142938] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <CardHoverGradientBlinds />
+            <div className="relative z-10">
+              <ReactiveDecisionsMiniUI />
+            </div>
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[1].title}
+                </h3>
+                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
             </div>
           </Link>
 
           {/* Card 3: Managers Without Context */}
           <Link
             href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 bg-[#F8F9FA] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-h-[460px]"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
           >
-            <ManagersWithoutContextMiniUI />
-            <div className="pt-4 border-t border-zinc-200/50 flex items-center justify-between mt-auto">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938]">
-                {cards[2].title}
-              </h3>
-              <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#142938] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <CardHoverGradientBlinds />
+            <div className="relative z-10">
+              <ManagersWithoutContextMiniUI />
+            </div>
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[2].title}
+                </h3>
+                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
             </div>
           </Link>
 
-          {/* Card 4: Proactive Action (Signature Warm Peach Card) */}
+          {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
           <Link
             href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-orange-200/70 bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
           >
-            <ProactiveActionMiniUI />
-            <div className="pt-4 border-t border-orange-200/50 mt-auto">
+            <CardHoverGradientBlinds />
+            <div className="relative z-10">
+              <ProactiveActionMiniUI />
+            </div>
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
               {cards[3].description && (
-                <p className="font-sans text-xs sm:text-sm text-[#142938] leading-relaxed mb-3">
+                <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.4] mb-3 transition-colors duration-300">
                   {cards[3].description}
                 </p>
               )}
               <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#F06A25]">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[3].title}
                 </h3>
-                <ArrowUpRight className="h-5 w-5 text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </div>
             </div>
           </Link>

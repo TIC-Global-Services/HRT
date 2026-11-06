@@ -65,7 +65,7 @@ export default function DirectLines({
   lines = defaultDirectLines,
 }: DirectLinesProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="mb-8 md:mb-10">

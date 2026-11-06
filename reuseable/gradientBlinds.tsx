@@ -236,22 +236,51 @@ void main() {
 
   vec3 col;
   if (uLightMode > 0.5) {
-    vec3 luma = vec3(0.2126, 0.7152, 0.0722);
-    float peak = max(base.r, max(base.g, base.b));
-    float low = min(base.r, min(base.g, base.b));
-    float chroma = (peak - low) / max(peak, 0.0001);
-    vec3 hue = base / max(peak, 0.0001);
-    hue = clamp(mix(vec3(dot(hue, luma)), hue, 1.3), 0.0, 1.0);
-    hue *= mix(1.0, 0.82, smoothstep(0.55, 0.9, dot(hue, luma)));
-    vec3 tint = mix(base, hue, smoothstep(0.06, 0.28, chroma));
-    vec3 revealed = clamp(revealSignal, 0.0, 1.0);
-    float coverage = clamp(max(revealed.r, max(revealed.g, revealed.b)) + 0.38, 0.0, 1.0);
-    float stroke = 1.0 - smoothstep(pixel, pixel * 2.2, edge);
-    col = mix(vec3(1.0), tint, 0.88 * smoothstep(0.0, 1.0, coverage));
-    col = mix(col, tint * 0.85, stroke * clamp(coverage * 1.5, 0.0, 1.0) * 0.7);
-    col = mix(col, vec3(1.0), clamp(sheen, 0.0, 1.0) * 0.35);
-    float grain = max(0.5 * (hash(frag + uGrainTime) + hash(frag.yx + uGrainTime * 1.7)) - 0.5, 0.0);
-    col = clamp(col - vec3(grain * uNoise * 0.12 * coverage), 0.0, 1.0);
+    // 1. Maintain full, rich color purity:
+    // Base color from gradient palette - never desaturate or darken towards gray.
+    vec3 tint = base;
+    float maxC = max(tint.r, max(tint.g, tint.b));
+    float minC = min(tint.r, min(tint.g, tint.b));
+    float chroma = maxC - minC;
+    float isWhite = smoothstep(0.12, 0.01, chroma);
+
+    // 2. Spotlight: strictly positive, warm additive light (never negative subtraction)
+    float spotLgt = max(spot, 0.0);
+    vec3 spotIllum = uLightColor * spotLgt * 0.35 * calm;
+
+    // 3. 3D Slat Shading:
+    // Highlight side lifts cleanly towards pure white
+    float slatLit = pow(1.0 - ramp, 1.8) * 0.25 * (1.0 + nearLight * 0.5);
+    vec3 slatCol = mix(tint, vec3(1.0), slatLit);
+
+    // Shadow side deepens purely in warm amber/terracotta tones - NEVER neutral gray
+    // For orange: preserve high red, slightly lower green, lowest blue
+    vec3 warmShadow = tint * vec3(0.92, 0.82, 0.70);
+    // For white/cream: stay bright soft ivory, never dull gray
+    warmShadow = mix(warmShadow, vec3(0.99, 0.98, 0.96), isWhite);
+
+    float slatCrease = uRelief * 0.28 * pow(ramp, 2.2);
+    slatCol = mix(slatCol, warmShadow, slatCrease);
+
+    // 4. Slat edge seam (clean hairline divider)
+    float stroke = 1.0 - smoothstep(pixel * 0.5, pixel * 2.2, min(edge, 1.0 - edge));
+    vec3 seamCol = mix(warmShadow, vec3(1.0), 0.35);
+    slatCol = mix(slatCol, seamCol, stroke * 0.35);
+
+    // 5. Specular sheen reflection along slat edge
+    slatCol = mix(slatCol, vec3(1.0), clamp(sheen, 0.0, 1.0) * 0.6);
+
+    // 6. Add mouse spotlight glow
+    slatCol += spotIllum * (1.0 - slatCol * 0.25);
+
+    // 7. Grain noise (strictly warm/tinted, never cold subtractive gray)
+    if (uNoise > 0.001) {
+      float grain = 0.5 * (hash(frag + uGrainTime) + hash(frag.yx + uGrainTime * 1.7)) - 0.5;
+      vec3 warmGrain = grain * uNoise * 0.03 * mix(vec3(1.0, 0.96, 0.92), tint, 0.6);
+      slatCol = clamp(slatCol + warmGrain, 0.0, 1.0);
+    }
+
+    col = clamp(slatCol, 0.0, 1.0);
   } else {
     vec3 haze = base * uGlow * 0.4 * smoothstep(0.0, 1.0, spot) * (0.4 + 0.6 * ramp);
     col = revealSignal + haze + mix(base, uLightColor, 0.45) * sheen * 0.7;

@@ -39,7 +39,7 @@ export default function ContactFAQ({
   faqs = defaultContactFaqs,
 }: ContactFAQProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#FAF8F5]">
+    <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[440px_1fr] gap-10 lg:gap-16 items-start">
         {/* Left header column */}
         <div>
