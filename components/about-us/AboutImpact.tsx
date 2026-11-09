@@ -40,7 +40,7 @@ export default function AboutImpact({ stats = defaultStats }: AboutImpactProps) 
               <strong className="block text-[#FF6B0A] font-sora font-light text-5xl sm:text-6xl lg:text-[64px] tracking-tight leading-none mb-3.5">
                 {stat.number}
               </strong>
-              <span className="font-sora text-xs sm:text-base font-medium text-[#142938] tracking-tight">
+              <span className="font-sora text-xs sm:text-base font-medium text-[#62737A] tracking-tight">
                 {stat.label}
               </span>
             </article>

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import GradientBlinds from "@/components/GradientBlinds";
 
 export interface ValueCardItem {
   id: string;
@@ -86,14 +89,14 @@ export default function MissionVision({
     >
       {/* Section Header matching Image 2 */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-12 sm:mb-16">
-        <p className="inline-flex items-center gap-2 text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-[0.16em] uppercase mb-3">
+        <p className="inline-flex items-center gap-2 text-[#F8780C] font-sora text-xs sm:text-sm font-normal tracking-[0.78px] uppercase mb-3">
           <span
             aria-hidden="true"
-            className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
+            className="w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
           />
           {eyebrow}
         </p>
-        <h2 className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] whitespace-pre-line">
+        <h2 className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12] whitespace-pre-line">
           {title}
         </h2>
       </div>
@@ -139,16 +142,57 @@ export default function MissionVision({
             </article>
 
             {/* Vision Card */}
-            <article className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-7 sm:p-9 relative overflow-hidden shadow-xs flex flex-col justify-center">
-              <span className="font-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
-                {visionKicker}
-              </span>
-              <p className="font-sora text-base sm:text-xl text-[#001F1F] font-normal leading-[1.2] tracking-tight m-0">
-                {visionText}
-              </p>
-              {/* Subtle orange radiant gradient matching screenshot */}
+            <article className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-7 sm:p-9 relative overflow-hidden shadow-xs flex flex-col justify-center min-h-[220px]">
+              <div className="relative z-10 max-w-[85%]">
+                <span className="font-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
+                  {visionKicker}
+                </span>
+                <p className="font-sora text-base sm:text-xl text-[#001F1F] font-normal leading-[1.2] tracking-tight m-0">
+                  {visionText}
+                </p>
+              </div>
+
+              {/* GradientBlinds WebGL accent in bottom-right corner matching reference 100% */}
               <div
-                className="absolute -bottom-6 -right-6 w-36 h-36 rounded-full bg-[radial-gradient(circle,rgba(255,107,10,0.65)_0%,rgba(255,107,10,0.2)_45%,transparent_70%)] pointer-events-none"
+                className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0"
+                style={{
+                  maskImage:
+                    "radial-gradient(ellipse 55% 68% at 100% 100%, black 18%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.25) 72%, transparent 100%)",
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 55% 68% at 100% 100%, black 18%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.25) 72%, transparent 100%)",
+                }}
+              >
+                <GradientBlinds
+                  gradientColors={[
+                    "#FFFFFF",
+                    "#FFFFFF",
+                    "#FFFFFF",
+                    "#FFE6D5",
+                    "#FFAD66",
+                    "#FF7A1A",
+                    "#F06A25",
+                    "#E85507",
+                  ]}
+                  blindCount={18}
+                  blindMinWidth={28}
+                  angle={0}
+                  noise={0}
+                  lightMode={true}
+                  relief={0.08}
+                  shine={0.38}
+                  glow={0.5}
+                  sway={0.06}
+                  speed={0.4}
+                  hoverTilt={0.35}
+                  spotlightRadius={1.1}
+                  spotlightOpacity={0.65}
+                  lightColor="#FFF5EB"
+                />
+              </div>
+
+              {/* Radiant warm glow backdrop */}
+              <div
+                className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full bg-[radial-gradient(circle,rgba(240,106,37,0.35)_0%,rgba(240,106,37,0.1)_50%,transparent_75%)] pointer-events-none -z-10"
                 aria-hidden="true"
               />
             </article>
@@ -169,9 +213,9 @@ export default function MissionVision({
                     {v.title}
                   </h3>
                 </div>
-                <ul className="text-xs sm:text-base text-[#5A6D75] font-sora leading-relaxed list-disc list-inside">
+                <ul className="text-xs sm:text-base text-[#62737A] font-sora leading-[1.2] list-disc list-inside">
                   {v.bullets.map((b, bi) => (
-                    <li key={bi} className="leading-relaxed">
+                    <li key={bi} className="leading-[1.2] tracking-tight">
                       <span className="-ml-1">{b}</span>
                     </li>
                   ))}

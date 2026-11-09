@@ -1,73 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
 import { BreadcrumbBadge } from "@/reuseable/breadcrum";
-import GradientBlinds from "@/reuseable/gradientBlinds";
 
 const HeroSection: React.FC = () => {
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = ((e.clientX / innerWidth) - 0.5) * 16;
+      const y = ((e.clientY / innerHeight) - 0.5) * 16;
+      setOffset({ x, y });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <section className="relative w-full pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-white">
-      {/* Background Hero Blinds Layer matching design */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-        {/* Warm ambient radial glow centered on the top-right blinds cluster */}
+      {/* Background Hero Blinds Layer (100% Match to Design Reference) */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden flex justify-center">
         <div
-          className="absolute -top-12 right-[5%] sm:right-[15%] w-[500px] sm:w-[700px] md:w-[850px] h-[450px] sm:h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(240,106,37,0.38),rgba(251,146,60,0.22),rgba(254,215,170,0.12),transparent_70%)] blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-
-        {/* Crisp angled architectural blinds slats (instant render, exact match to design) */}
-        <div
-          className="absolute -top-24 right-0 sm:right-[5%] md:right-[10%] w-[450px] sm:w-[600px] md:w-[720px] h-[550px] sm:h-[700px] rotate-[18deg] origin-top-right flex justify-center gap-2 sm:gap-3.5 md:gap-5 pointer-events-none opacity-90"
-          aria-hidden="true"
+          className="relative w-full max-w-[1400px] h-[550px] sm:h-[700px] md:h-[860px] lg:h-[980px] -top-6 sm:-top-10 md:-top-14 transition-transform duration-700 ease-out will-change-transform"
+          style={{
+            transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
+          }}
         >
-          {Array.from({ length: 14 }).map((_, i) => (
-            <div
-              key={i}
-              className="w-5 sm:w-8 md:w-11 h-full bg-gradient-to-b from-orange-500/35 via-amber-400/25 to-transparent border-x border-orange-400/20"
-              style={{
-                opacity: Math.max(0.1, 1 - Math.abs(i - 6) * 0.14),
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Interactive WebGL Shader Blinds Layer */}
-        <div className="absolute -left-30 inset-0 pointer-events-auto">
-          <GradientBlinds
-            gradientColors={[
-              "#FFFFFF",
-              "#FFF5ED",
-              "#FED7AA",
-              "#FF7E2E",
-              "#F06A25",
-              "#FFA766",
-              "#FED7AA",
-              "#FFFFFF",
-            ]}
-            blindCount={20}
-            angle={-18}
-            noise={0.12}
-            lightColor="#FFFFFF"
-            lightMode={true}
-            shine={0.5}
-            relief={0.4}
-            glow={0.7}
-            sway={0.25}
-            speed={0.8}
-            hoverTilt={0.5}
-            spotlightRadius={2.2}
-            spotlightSoftness={0.7}
-            spotlightOpacity={0.95}
-            className="w-full h-full"
+          <Image
+            src="/hero-gradient-blinds.png"
+            alt="Claripa Hero Ambient Blinds Background"
+            fill
+            priority
+            sizes="(max-width: 1400px) 100vw, 1400px"
+            className="object-contain object-top pointer-events-none"
           />
         </div>
 
         {/* Soft bottom fade right above the dashboard */}
         <div
-          className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"
+          className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"
           aria-hidden="true"
         />
       </div>

@@ -168,7 +168,7 @@ const Navabar: React.FC = () => {
             : "bg-transparent border-none shadow-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="px-4 sm:px-6 lg:px-[5%] flex items-center justify-between">
           {/* Brand Logo */}
           <Link
             href="/"

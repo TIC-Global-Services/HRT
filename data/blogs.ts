@@ -58,7 +58,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-1.png",
+    "image": "/domino_effect.png",
     "coverImageAlt": "The Hidden Cost of Employee Disengagement - AI Workforce Signals",
     "keyTakeaways": [
       "Employee disengagement is a multi-trillion-dollar problem impacting productivity, culture and retention",

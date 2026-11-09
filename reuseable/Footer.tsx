@@ -12,9 +12,18 @@ export { MakeYourNextMove };
 const Footer: React.FC = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePos({ x, y });
+  };
 
   return (
     <footer
+      onMouseMove={handleMouseMove}
       className={`relative w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
         isHome ? "bg-white" : "bg-[#F7F6F3]"
       }`}
@@ -25,14 +34,40 @@ const Footer: React.FC = () => {
       </div>
 
       {/* 2. Floating Frosted Glass Footer Section Container */}
-      <div className="relative z-20  px-4 sm:px-6 lg:px-[5%] mt-2 sm:mt-30 mb-8 sm:mb-12">
+      <div className="relative z-20 px-4 sm:px-6 lg:px-[5%] mt-2 sm:mt-30 mb-8 sm:mb-12">
         {/* Vertical Golden Blinds (Layer z-0, behind the card) */}
+        <div
+          className="absolute -top-36 sm:-top-44 md:-top-48 lg:-top-62 left-1/2 -translate-x-1/2 w-[900px] sm:w-[1250px] md:w-[1450px] lg:w-[1680px] aspect-[2031/1131] pointer-events-none select-none z-0"
+          aria-hidden="true"
+        >
+          <div
+            className="relative w-full h-full transition-transform duration-500 ease-out"
+            style={{
+              transform: `translate3d(${mousePos.x * 14}px, ${mousePos.y * 10}px, 0)`,
+            }}
+          >
+            <Image
+              src="/footer-gradient-blinds-hd.png"
+              alt="Claripa Blinds Ambient Background"
+              fill
+              priority
+              className="object-contain object-top pointer-events-none"
+              sizes="(max-width: 1400px) 100vw, 1680px"
+            />
+          </div>
+        </div>
+
+        {/* Ambient warm glow behind blinds crest */}
+        <div
+          className="absolute -top-28 sm:-top-36 left-1/2 -translate-x-1/2 w-[600px] sm:w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(240,106,37,0.18)_0%,rgba(255,160,80,0.08)_50%,transparent_75%)] pointer-events-none -z-10 blur-2xl"
+          aria-hidden="true"
+        />
        
 
         {/* 3D Carved Wooden Chess Queen Piece (Layer z-10, behind the card) */}
         {/* Crown sticks out above the card, body blurs behind the frosted glass, and base peeks out below */}
         <div
-          className="absolute -top-28 sm:-top-32 md:-top-36 lg:-top-40 -bottom-6 sm:-bottom-8 left-[6%] sm:left-[10%] md:left-[12%] lg:left-[14%] w-[240px] sm:w-[320px] md:w-[380px] lg:w-[540px] h-[700px] pointer-events-none select-none z-10"
+          className="absolute -top-28 sm:-top-32 md:-top-36 lg:-top-50 -bottom-6 sm:-bottom-8 left-[6%] sm:left-[10%] md:left-[12%] lg:left-[14%] w-[240px] sm:w-[320px] md:w-[380px] lg:w-[540px] h-[800px] pointer-events-none select-none z-10"
           aria-hidden="true"
         >
           <div className="relative w-full h-full ">

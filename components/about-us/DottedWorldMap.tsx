@@ -14,7 +14,7 @@ export default function DottedWorldMap({
   eyebrow = "OFFICES AND TEAMS",
   title = "Let’s Transform\nPerformance Together",
   locationLabel = "MAP",
-  address = "6th Floor, WeWork Lightbridge, Saki Vihar Rd, Tunga Village, Chandivali, Powai, Mumbai, Maharashtra 400072",
+  address = "6th Floor, WeWork Lightbridge, Saki Vihar Rd, Tunga Village, Chandivali, Powai, Mumbai, \nMaharashtra 400072",
   mapHref = "https://maps.google.com/?q=WeWork+Lightbridge+Saki+Vihar+Road+Mumbai",
 }: OfficesAndTeamsProps) {
   return (
@@ -29,16 +29,16 @@ export default function DottedWorldMap({
           <div className="flex flex-col justify-between h-full min-h-[280px] sm:min-h-[320px] lg:min-h-full py-1 sm:py-2 pl-1 sm:pl-2">
             <div>
               {/* Eyebrow */}
-              <p className="flex items-center gap-2 font-mono text-xs sm:text-[13px] font-semibold tracking-[0.12em] uppercase text-[#E56A1E] mb-3 sm:mb-4">
+              <p className="flex items-center gap-2 font-mono text-xs sm:text-base font-medium tracking-[0.78px] uppercase text-[#F8780D] mb-3 sm:mb-4">
                 <span
                   aria-hidden="true"
-                  className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-[#F8780D] shrink-0"
                 />
                 {eyebrow}
               </p>
 
               {/* Title */}
-              <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight leading-[1.12] whitespace-pre-line ">
+              <h2 className="font-sora text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight leading-[1.12] whitespace-pre-line ">
                 {title}
               </h2>
             </div>
@@ -52,7 +52,7 @@ export default function DottedWorldMap({
                 >
                   <MapPin size={18} className="stroke-white stroke-[2.2]" />
                 </div>
-                <p className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium leading-[1.2] max-w-[340px]">
+                <p className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium tracking-tight leading-[1.2] max-w-[330px] whitespace-pre-line">
                   {address}
                 </p>
               </div>

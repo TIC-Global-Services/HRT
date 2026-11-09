@@ -1,24 +1,33 @@
+export { default } from "./PlatformNewContent";
+export { default as PlatformNewContent } from "./PlatformNewContent";
 export { default as PlatformHero } from "./PlatformHero";
 export * from "./PlatformHero";
-
-export { default as WorkforceDashboardPreview } from "./WorkforceDashboardPreview";
-export * from "./WorkforceDashboardPreview";
-
-export { default as AskClaripaAI } from "./AskClaripaAI";
-export * from "./AskClaripaAI";
-
-export { default as PlatformIntegrations } from "./PlatformIntegrations";
-export * from "./PlatformIntegrations";
-
-export { default as SecurityAndTrust } from "./SecurityAndTrust";
-export * from "./SecurityAndTrust";
-
-export { default as PerformanceFlow } from "./PerformanceFlow";
-export * from "./PerformanceFlow";
-
-export { default as PlatformFAQ } from "./PlatformFAQ";
-export * from "./PlatformFAQ";
-
-export { default as PlatformContent } from "./PlatformContent";
-export { default } from "./PlatformContent";
-
+export { default as PerformanceInsights } from "./PerformanceInsights";
+export type {
+  PerformanceInsightRow,
+  PerformanceInsightsProps,
+} from "./PerformanceInsights";
+export { default as ConnectedModules } from "./ConnectedModules";
+export type { ConnectedModulesProps } from "./ConnectedModules";
+export { default as ModuleShowcase } from "./ModuleShowcase";
+export type {
+  ModuleShowcaseProps,
+  PlatformShowcaseModule,
+} from "./ModuleShowcase";
+export { default as EmployeeExperience } from "./EmployeeExperience";
+export type { EmployeeExperienceProps } from "./EmployeeExperience";
+export { default as GettingStartedAndSecurity } from "./GettingStartedAndSecurity";
+export type {
+  GettingStartedAndSecurityProps,
+  GettingStartedStep,
+  PlatformSecurityPillar,
+} from "./GettingStartedAndSecurity";
+export { default as IntegrationsNetwork } from "./IntegrationsNetwork";
+export type {
+  IntegrationPartner,
+  IntegrationsNetworkProps,
+} from "./IntegrationsNetwork";
+export { default as PlatformFaq } from "./PlatformFaq";
+export type { PlatformFaqProps } from "./PlatformFaq";
+export { default as AskClaripa } from "./AskClaripa";
+export * from "./AskClaripa";

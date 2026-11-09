@@ -152,14 +152,14 @@ export default function OurStoryTimeline({
 
               {/* Text Content at the Bottom */}
               <div className="relative z-10 px-[22px] pb-[26px] pointer-events-none">
-                <span className="block text-[13px] leading-tight font-sora font-medium text-[#254F5F]/80 mb-1">
+                <span className="block text-lg leading-tight font-sora font-medium text-[#254F5F]/80 mb-1">
                   {milestone.kicker}
                 </span>
-                <strong className="block text-[28px] sm:text-[30px] font-bold font-sora tracking-tight leading-none text-[#002E40] my-2">
+                <strong className="block text-[28px] sm:text-[32px] font-bold font-sora tracking-tight leading-none text-[#002E40] my-2">
                   {milestone.year}
                 </strong>
                 {milestone.description && (
-                  <p className="text-[11.5px] leading-[1.5] text-[#254F5F]/85 font-sora">
+                  <p className="text-sm leading-[1.5] text-[#254F5F]/85 font-sora">
                     {milestone.description}
                   </p>
                 )}
