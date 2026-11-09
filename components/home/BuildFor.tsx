@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -277,16 +277,18 @@ export default function BuildFor() {
   );
 
   // Switch page with smooth transition
-  const switchPage = (nextPage: number) => {
-    if (nextPage === currentPage) return;
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentPage(nextPage);
-      // Highlight the first card of the new page by default
-      setActiveCardId(solutionsData[nextPage * CARDS_PER_PAGE].id);
-      setIsAnimating(false);
-    }, 220);
-  };
+  const switchPage = useCallback((nextPage: number) => {
+    setCurrentPage((curr) => {
+      if (nextPage === curr) return curr;
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentPage(nextPage);
+        setActiveCardId(solutionsData[nextPage * CARDS_PER_PAGE].id);
+        setIsAnimating(false);
+      }, 220);
+      return curr;
+    });
+  }, [CARDS_PER_PAGE]);
 
   // Auto-change timer: changes page every 5 seconds (pauses on user hover)
   useEffect(() => {
@@ -297,7 +299,7 @@ export default function BuildFor() {
     }, 5500);
 
     return () => clearInterval(interval);
-  }, [currentPage, isPaused, totalPages]);
+  }, [currentPage, isPaused, totalPages, switchPage]);
 
   return (
     <section

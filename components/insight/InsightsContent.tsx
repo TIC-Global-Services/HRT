@@ -4,7 +4,6 @@ import { useState } from "react";
 import InsightsHero from "./InsightsHero";
 import InsightsLibrary from "./InsightsLibrary";
 import NewsletterSubscribe from "./NewsletterSubscribe";
-import ImpactCTA from "@/components/shared/ImpactCTA";
 
 export default function InsightsContent() {
   const [query, setQuery] = useState("");

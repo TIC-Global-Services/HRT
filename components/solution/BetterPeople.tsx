@@ -1,10 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React from "react";
 import CaseStudyCarousel from "@/reuseable/Casestudycarosal";
 
 export interface CaseStudyItem {

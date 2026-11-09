@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import SectionEyebrow from "@/components/shared/SectionEyebrow";
 
 export interface NewsletterSubscribeProps {
   eyebrow?: string;

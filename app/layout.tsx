@@ -64,11 +64,20 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "h-full antialiased",    
-        
+        "h-full antialiased",
+        geist.variable,
+        geistMono.variable,
+        sora.variable
       )}
     >
-      <body className={`min-h-full ${geist.variable} ${geistMono.variable} ${sora.variable} flex flex-col font-sans text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]`}>
+      <body
+        className={cn(
+          "min-h-full flex flex-col font-sans text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]",
+          geist.variable,
+          geistMono.variable,
+          sora.variable
+        )}
+      >
         <SmoothScroller>
           <Navabar />
           <main className="flex-1">{children}</main>

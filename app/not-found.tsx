@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Home, Search, Compass, Sparkles } from "lucide-react";
+import { Home, Compass } from "lucide-react";
 import { BreadcrumbBadge } from "@/reuseable/breadcrum";
 
 export const metadata = {

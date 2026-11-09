@@ -1,9 +1,7 @@
 import HeroSection from "@/components/home/hero";
-import Tools from "@/components/home/Tools";
 import Workforce from "@/components/home/WorkForce";
 import BuildFor from "@/components/home/BuildFor";
 import BetterPeople from "@/components/home/BetterPeople";
-import TrustedByTeams from "@/components/home/TrustedByTeams";
 import IntegrationsTrust from "@/components/home/IntegrationsTrust";
 import Insights from "@/components/home/Insights";
 import OneConnect from "@/components/home/OneConnect";
@@ -21,9 +19,9 @@ export default function Home() {
       <Workforce />
       <OneConnect />
       <BuildFor />
-      <Tools />
+      {/* <Tools /> */}
       <BetterPeople />
-      <TrustedByTeams />
+      {/* <TrustedByTeams /> */}
       <IntegrationsTrust />
       <Insights />
     </main>

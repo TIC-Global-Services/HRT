@@ -5,7 +5,6 @@ import SolutionLayers from "./SolutionLayers";
 import SolutionDetailResults from "./SolutionDetailResults";
 import SolutionDetailInsights from "./SolutionDetailInsights";
 import SolutionDetailFAQ from "./SolutionDetailFAQ";
-import MakeYourNextMove from "@/components/MakeYourNextMove";
 
 export default function SolutionDetailContent() {
   return (

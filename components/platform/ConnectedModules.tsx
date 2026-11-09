@@ -378,7 +378,7 @@ export default function ConnectedModules({
               transform: `translateX(calc(-${activeCardIndex * 100}% - ${activeCardIndex * 24}px))`,
             }}
           >
-            {cards.map((card, idx) => (
+            {cards.map((card) => (
               <div
                 key={card.title}
                 className="w-full shrink-0 bg-white rounded-[26px] sm:rounded-[32px] border border-[#ECE6DE] p-6 sm:p-9 md:p-12 shadow-[0_12px_45px_rgba(0,46,64,0.06)] grid grid-cols-1 lg:grid-cols-[1.12fr_0.98fr] gap-8 md:gap-12 items-center transition-all duration-300"

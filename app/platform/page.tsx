@@ -1,4 +1,4 @@
-import PlatformContent, {
+import {
   AskClaripa,
   ConnectedModules,
   EmployeeExperience,

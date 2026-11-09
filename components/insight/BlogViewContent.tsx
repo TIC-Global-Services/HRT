@@ -14,7 +14,6 @@ import {
   Share2,
   Sparkles,
   ChevronRight,
-  TrendingUp,
   Bookmark,
   CheckCircle2,
 } from "lucide-react";
@@ -307,7 +306,7 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                           key={bIdx}
                           className="my-4 border-l-4 border-[#F06A25] bg-[#FFF8F3] rounded-r-2xl p-5 sm:p-6 italic text-[#142938] font-medium"
                         >
-                          "{block.quote.text}"
+                          &ldquo;{block.quote.text}&rdquo;
                           {block.quote.author && (
                             <cite className="block not-italic text-xs font-mono font-normal text-zinc-500 mt-2">
                               — {block.quote.author}

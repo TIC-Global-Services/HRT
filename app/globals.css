@@ -9,7 +9,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sora), var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-geist-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-sora: var(--font-sora), sans-serif;
   --font-geist: var(--font-sans), sans-serif;
 }
@@ -52,6 +53,46 @@ body {
 
 .animate-marquee {
   animation: marquee 20s linear infinite;
+}
+
+/* Floating Card Idle Bobbing */
+@keyframes float-bob-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-bob-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes float-bob-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.animate-float-1 {
+  animation: float-bob-1 5.5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-bob-2 6.5s ease-in-out infinite 0.8s;
+}
+
+.animate-float-3 {
+  animation: float-bob-3 5s ease-in-out infinite 0.4s;
 }
 
 /* Vertical Marquee (Bottom to Top) */

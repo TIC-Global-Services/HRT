@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, ArrowUpRight, Sparkles, Shield, Cpu, BarChart3, Users, LineChart, FileText } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight, Cpu, BarChart3, Users, FileText } from "lucide-react";
 import { AnnouncementBar } from "./breadcrum";
 
 interface NavDropdownItem {
@@ -37,12 +37,12 @@ const navItems: NavItem[] = [
         href: "/solution-details",
         icon: <BarChart3 className="w-4 h-4 text-[#1C4E5B]" />,
       },
-      {
-        title: "Talent Retention & Risk",
-        description: "Spot disengagement signals early and prevent unwanted turnover",
-        href: "/solution-hub",
-        icon: <LineChart className="w-4 h-4 text-[#F06A25]" />,
-      },
+      // {
+      //   title: "Talent Retention & Risk",
+      //   description: "Spot disengagement signals early and prevent unwanted turnover",
+      //   href: "/solution-hub",
+      //   icon: <LineChart className="w-4 h-4 text-[#F06A25]" />,
+      // },
     ],
   },
   {
@@ -55,18 +55,18 @@ const navItems: NavItem[] = [
         href: "/platform",
         icon: <Cpu className="w-4 h-4 text-[#1C4E5B]" />,
       },
-      {
-        title: "AI Signal Engine",
-        description: "Machine learning models designed specifically for HR analytics",
-        href: "/platform",
-        icon: <Sparkles className="w-4 h-4 text-[#F06A25]" />,
-      },
-      {
-        title: "Enterprise Security",
-        description: "SOC 2 Type II certified, GDPR compliant, enterprise grade",
-        href: "/platform",
-        icon: <Shield className="w-4 h-4 text-[#1C4E5B]" />,
-      },
+      // {
+      //   title: "AI Signal Engine",
+      //   description: "Machine learning models designed specifically for HR analytics",
+      //   href: "/platform",
+      //   icon: <Sparkles className="w-4 h-4 text-[#F06A25]" />,
+      // },
+      // {
+      //   title: "Enterprise Security",
+      //   description: "SOC 2 Type II certified, GDPR compliant, enterprise grade",
+      //   href: "/platform",
+      //   icon: <Shield className="w-4 h-4 text-[#1C4E5B]" />,
+      // },
     ],
   },
   {
@@ -79,12 +79,12 @@ const navItems: NavItem[] = [
         href: "/insight",
         icon: <FileText className="w-4 h-4 text-[#1C4E5B]" />,
       },
-      {
-        title: "Workforce Trends 2026",
-        description: "Key findings from over 500,000 workforce performance points",
-        href: "/insight",
-        icon: <BarChart3 className="w-4 h-4 text-[#F06A25]" />,
-      },
+      // {
+      //   title: "Workforce Trends 2026",
+      //   description: "Key findings from over 500,000 workforce performance points",
+      //   href: "/insight",
+      //   icon: <BarChart3 className="w-4 h-4 text-[#F06A25]" />,
+      // },
     ],
   },
   {
@@ -137,7 +137,7 @@ const Navabar: React.FC = () => {
 
   return (
     <header
-      className={`top-0 z-50 w-full transition-all duration-300 ${
+      className={`top-0 z-50 w-full  transition-all duration-300 ${
         isHome
           ? "sticky bg-white/80 backdrop-blur-md border-b border-slate-200/50"
           : "bg-transparent border-b-transparent"
@@ -145,7 +145,7 @@ const Navabar: React.FC = () => {
     >
       {/* 1. Top Announcement Bar */}
       <div
-        className={`w-full transition-colors duration-200 ${
+        className={`w-full transition-colors font-sora duration-200 ${
           isHome
             ? "border-b border-slate-200/50 bg-white/40"
             : "border-b border-transparent bg-transparent"
@@ -162,7 +162,7 @@ const Navabar: React.FC = () => {
 
       {/* 2. Main Navigation Bar */}
       <nav
-        className={`w-full transition-all duration-200 py-3.5 ${
+        className={`w-full transition-all font-mono duration-200 py-3.5 ${
           isHome
             ? `bg-white/60 backdrop-blur-md ${scrolled ? "shadow-xs border-b border-slate-200/40" : ""}`
             : "bg-transparent border-none shadow-none"
@@ -199,7 +199,7 @@ const Navabar: React.FC = () => {
                   <Link
                     key={item.label}
                     href={item.href || "/"}
-                    className={`text-[14px] font-medium tracking-tight transition-colors duration-150 ${
+                    className={`text-[14px]  font-medium tracking-tight transition-colors duration-150 ${
                       isActive
                         ? "text-slate-950 font-semibold"
                         : "text-slate-700 hover:text-slate-950"
@@ -272,16 +272,16 @@ const Navabar: React.FC = () => {
           </div>
 
           {/* Right Action Items matching Image 1 */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden  font-sans lg:flex items-center gap-5">
             <Link
               href="/contact-us"
-              className="text-xs md:text-sm font-semibold tracking-wider text-slate-700 hover:text-slate-950 uppercase transition-colors px-2 py-1"
+              className="text-xs md:text-sm font-mono font-medium tracking-tight text-slate-700 hover:text-slate-950 uppercase transition-colors px-2 py-1"
             >
               LOGIN
             </Link>
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center bg-[#1C4E5B] hover:bg-[#143B45] text-white text-xs md:text-sm font-semibold tracking-wider uppercase px-6 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+              className="items-center font-mono bg-[#1C4E5B] hover:bg-[#143B45] text-white text-xs md:text-sm font-medium uppercase px-6 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow active:scale-95 tracking-tight"
             >
               BOOK A DEMO
             </Link>
@@ -291,7 +291,7 @@ const Navabar: React.FC = () => {
           <div className="flex items-center gap-3 lg:hidden">
             <Link
               href="/contact-us"
-              className="bg-[#1C4E5B] text-white text-[11px] font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
+              className="bg-[#1C4E5B] text-white text-[11px] font-mono font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
             >
               BOOK A DEMO
             </Link>

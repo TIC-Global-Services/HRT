@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Sparkles, ChevronDown } from "lucide-react";
+import { Play, Sparkles } from "lucide-react";
 import { allBlogs } from "@/data/blogs";
 
 export interface LibraryArticleItem {
