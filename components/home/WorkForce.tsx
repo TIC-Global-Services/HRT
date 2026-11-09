@@ -281,9 +281,7 @@ function CardHoverGradientBlinds() {
   );
 }
 
-/* =========================================================================
-   MAIN WORKFORCE COMPONENT
-   ========================================================================= */
+
 export default function Workforce() {
   const { eyebrow, headline, description, ctaButton, cards } = workforceContent;
   const sliderRef = useRef<HTMLDivElement>(null);
