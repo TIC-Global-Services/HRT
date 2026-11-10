@@ -226,7 +226,7 @@ export default function ConnectedModules({
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] mx-auto flex flex-col items-center">
+      <div className="flex flex-col items-center px-[5%]">
         {/* Top Header matching reference screenshot 100% */}
         <div className="text-center  mb-10 sm:mb-14">
           {/* Eyebrow Pill Tag */}

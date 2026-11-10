@@ -23,37 +23,37 @@ export interface SolutionCard {
 
 // 8 total solution cards (2 pages of 4 cards each)
 export const solutionsData: SolutionCard[] = [
-  // Page 1 (Cards 1-4)
+  // Page 1 (Cards 1-4 matching uploaded design)
   {
-    id: "hire-onboard",
-    title: "Hire & Onboard",
+    id: "manage-people",
+    title: "Manage Your People",
     description:
-      "Start every employee journey with deeper insights, smarter decisions, and a clearer understanding of the people who drive your organisation forward.",
-    href: "/solution-hub#hire-onboard",
+      "Maintain employee information and organisational details to support performance management, goal alignment, and connected workflows.",
+    href: "/solution-hub#manage-people",
     patternType: "diagonal-ramp",
   },
   {
-    id: "engage-retain",
-    title: "Engage & Retain",
+    id: "strengthen-performance",
+    title: "Strengthen Performance and Engagement",
     description:
-      "Spot early signs of disengagement, understand employee needs, and take proactive steps to improve satisfaction and retain valuable talent.",
-    href: "/solution-hub#engage-retain",
+      "Use performance reviews, regular check-ins, and performance summaries to understand progress, support meaningful conversations, and identify development needs.",
+    href: "/solution-hub#strengthen-performance",
     patternType: "pyramid-peak",
   },
   {
-    id: "perform-grow",
-    title: "Perform & Grow",
+    id: "align-goals",
+    title: "Align Goals. Track Performance",
     description:
-      "Turn performance data into actionable insights, uncover opportunities, and help employees strengthen their skills and achieve their goals.",
-    href: "/solution-hub#perform-grow",
+      "Create and align OKRs, monitor progress through check-ins, manage performance reviews, and connect tasks with individual objectives to support organisational goals.",
+    href: "/solution-hub#align-goals",
     patternType: "growth-steps",
   },
   {
-    id: "enterprises",
-    title: "For Enterprises",
+    id: "performance-intelligence",
+    title: "Performance Intelligence for Organisations",
     description:
-      "Scale workforce intelligence across your organisation with connected data, actionable insights, and smarter people decisions.",
-    href: "/solution-hub#enterprises",
+      "Bring people, performance, and task management together in one platform to support goal alignment, performance visibility, and informed organisational decisions",
+    href: "/solution-hub#performance-intelligence",
     patternType: "enterprise-matrix",
   },
 
@@ -93,6 +93,127 @@ export const solutionsData: SolutionCard[] = [
 ];
 
 /* =========================================================================
+   AUTHENTIC 10x10 DOT PATTERNS (Pixel-perfect to visual specification)
+   0: Base Background Dot
+   1: Soft Accent Dot (turns soft orange on hover)
+   2: Vibrant Accent Dot (turns bright Claripa orange on hover)
+   3: Core Contrast Dot (deep espresso-charcoal on hover, solid dark charcoal normally)
+   ========================================================================= */
+const PATTERN_MATRICES: Record<SolutionCard["patternType"], number[][]> = {
+  // Card 1: "Manage Your People" - Ascending diagonal staircase
+  "diagonal-ramp": [
+    [0, 0, 0, 0, 0, 0, 1, 2, 3, 3],
+    [0, 0, 0, 0, 0, 0, 1, 2, 3, 2],
+    [0, 0, 0, 0, 0, 1, 2, 3, 3, 2],
+    [0, 0, 0, 0, 0, 1, 2, 3, 2, 1],
+    [0, 0, 0, 0, 1, 2, 3, 2, 1, 0],
+    [0, 0, 0, 1, 2, 3, 2, 1, 0, 0],
+    [0, 0, 1, 2, 3, 2, 1, 0, 0, 0],
+    [0, 1, 2, 3, 2, 1, 0, 0, 0, 0],
+    [1, 2, 3, 2, 1, 0, 0, 0, 0, 0],
+    [3, 3, 2, 1, 0, 0, 0, 0, 0, 0],
+  ],
+
+  // Card 2: "Strengthen Performance and Engagement" - Centered pyramid peak
+  "pyramid-peak": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 1, 3, 3, 1, 0, 0, 0],
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 1, 2, 3, 3, 3, 3, 2, 1, 0],
+    [1, 2, 3, 3, 3, 3, 3, 3, 2, 1],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+  ],
+
+  // Card 3: "Align Goals. Track Performance" - Dynamic task momentum & activity matrix
+  "growth-steps": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [3, 1, 3, 1, 2, 3, 1, 1, 0, 1],
+    [1, 3, 3, 1, 3, 2, 1, 3, 1, 2],
+    [3, 0, 1, 3, 1, 0, 3, 2, 1, 1],
+    [3, 3, 1, 3, 3, 1, 3, 3, 2, 1],
+    [2, 3, 3, 1, 3, 3, 1, 3, 3, 2],
+    [1, 2, 1, 3, 2, 0, 1, 3, 2, 1],
+    [1, 1, 0, 1, 2, 3, 1, 1, 1, 0],
+  ],
+
+  // Card 4: "Performance Intelligence for Organisations" - Scaled organizational intelligence arch
+  "enterprise-matrix": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 1, 3, 3, 1, 0, 0, 0],
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 1, 2, 3, 3, 3, 3, 2, 1, 0],
+    [1, 2, 3, 3, 3, 3, 3, 3, 2, 1],
+    [2, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+  ],
+
+  // Page 2 - Card 5: Culture & Alignment (Radial pulse)
+  "radial-pulse": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 2, 3, 0, 0, 3, 2, 0, 0],
+    [0, 1, 3, 0, 2, 2, 0, 3, 1, 0],
+    [0, 2, 0, 2, 3, 3, 2, 0, 2, 0],
+    [0, 2, 0, 2, 3, 3, 2, 0, 2, 0],
+    [0, 1, 3, 0, 2, 2, 0, 3, 1, 0],
+    [0, 0, 2, 3, 0, 0, 3, 2, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  // Page 2 - Card 6: Leadership & Succession (Beacon orbit)
+  "beacon-orbit": [
+    [0, 0, 0, 0, 3, 3, 0, 0, 0, 0],
+    [0, 0, 0, 2, 3, 3, 2, 0, 0, 0],
+    [0, 0, 1, 3, 3, 3, 3, 1, 0, 0],
+    [0, 1, 2, 3, 3, 3, 3, 2, 1, 0],
+    [1, 2, 3, 3, 1, 1, 3, 3, 2, 1],
+    [2, 3, 3, 1, 0, 0, 1, 3, 3, 2],
+    [3, 3, 2, 0, 0, 0, 0, 2, 3, 3],
+    [3, 2, 1, 0, 0, 0, 0, 1, 2, 3],
+    [3, 3, 2, 1, 0, 0, 1, 2, 3, 3],
+    [3, 3, 3, 2, 1, 1, 2, 3, 3, 3],
+  ],
+
+  // Page 2 - Card 7: Skills & Capabilities (Interconnected network matrix)
+  "network-grid": [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 3, 2, 1, 0, 0, 1, 2, 3, 0],
+    [0, 2, 3, 2, 1, 1, 2, 3, 2, 0],
+    [0, 1, 2, 3, 2, 2, 3, 2, 1, 0],
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 1, 2, 3, 2, 2, 3, 2, 1, 0],
+    [0, 2, 3, 2, 1, 1, 2, 3, 2, 0],
+    [0, 3, 2, 1, 0, 0, 1, 2, 3, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  // Page 2 - Card 8: Compliance & Wellbeing (Shield / balance)
+  "shield-balance": [
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 1, 2, 3, 3, 3, 3, 2, 1, 0],
+    [1, 2, 3, 3, 3, 3, 3, 3, 2, 1],
+    [2, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+    [2, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+    [1, 2, 3, 3, 3, 3, 3, 3, 2, 1],
+    [0, 1, 2, 3, 3, 3, 3, 2, 1, 0],
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+  ],
+};
+
+/* =========================================================================
    DOT MATRIX COMPONENT (10x10 SVG Grid with Authentic Visual Patterns)
    ========================================================================= */
 interface DotMatrixProps {
@@ -101,126 +222,23 @@ interface DotMatrixProps {
 }
 
 function DotMatrix({ patternType, isActive }: DotMatrixProps) {
-  const rows = 10;
-  const cols = 10;
+  const matrix = PATTERN_MATRICES[patternType] || PATTERN_MATRICES["diagonal-ramp"];
 
-  const getDotState = (r: number, c: number): "base" | "accent" | "dark" => {
-    switch (patternType) {
-      case "diagonal-ramp": {
-        // Upward diagonal staircase progression from bottom-left to top-right
-        const targetCol = 9 - r;
-        const diff = c - targetCol;
-        if (diff === 0 || diff === 1) return "dark";
-        if (diff === -1 || diff === -2) return "accent";
-        return "base";
-      }
-
-      case "pyramid-peak": {
-        // Centered pyramid / peak
-        if (r < 3) return "base";
-        const halfWidth = (r - 2) * 0.75;
-        const center = 4.5;
-        const dist = Math.abs(c - center);
-        if (dist <= halfWidth) {
-          return "dark";
-        }
-        return "base";
-      }
-
-      case "growth-steps": {
-        // Ascending step / bar growth distribution
-        const minRowForCol: Record<number, number> = {
-          0: 9,
-          1: 9,
-          2: 8,
-          3: 7,
-          4: 7,
-          5: 6,
-          6: 5,
-          7: 4,
-          8: 4,
-          9: 2,
-        };
-        const minRow = minRowForCol[c] ?? 10;
-        if (r >= minRow) {
-          return "dark";
-        }
-        return "base";
-      }
-
-      case "enterprise-matrix": {
-        // Centered enterprise network / organizational diamond
-        if (r < 3) return "base";
-        if (r >= 7) return "dark";
-        const diff = Math.abs(c - 4.5);
-        if (diff <= r - 2.5) {
-          return "dark";
-        }
-        return "base";
-      }
-
-      case "radial-pulse": {
-        // Concentric pulse / culture radar
-        const dist = Math.sqrt(Math.pow(r - 4.5, 2) + Math.pow(c - 4.5, 2));
-        if (dist <= 1.2) return "dark";
-        if (dist >= 2.2 && dist <= 3.8) return "dark";
-        if (dist >= 4.2 && dist <= 4.8) return "accent";
-        return "base";
-      }
-
-      case "beacon-orbit": {
-        // Leadership beacon / radiating pinnacle
-        if (r === 1 && (c === 4 || c === 5)) return "accent";
-        if (r >= 2 && r <= 8) {
-          const spread = (r - 1) * 0.55;
-          if (Math.abs(c - 4.5) <= spread) {
-            return (r + c) % 2 === 0 ? "dark" : "accent";
-          }
-        }
-        if (r >= 8) return "dark";
-        return "base";
-      }
-
-      case "network-grid": {
-        // Interconnected competency node matrix
-        const isHub =
-          (r === 2 && c === 2) ||
-          (r === 2 && c === 7) ||
-          (r === 7 && c === 2) ||
-          (r === 7 && c === 7) ||
-          (r === 4 && c === 4) ||
-          (r === 5 && c === 5);
-        if (isHub) return "dark";
-        if (r === c || r + c === 9 || r === 4 || c === 5) return "accent";
-        return "base";
-      }
-
-      case "shield-balance": {
-        // Protective wellbeing shield
-        if (r < 2) return "base";
-        if (r >= 2 && r <= 6) {
-          if (c >= 2 && c <= 7) return "dark";
-        }
-        if (r > 6 && r <= 9) {
-          const inset = r - 6;
-          if (c >= 2 + inset && c <= 7 - inset) return "dark";
-        }
-        return "base";
-      }
-    }
-  };
-
-  const colors = isActive
+  // Colors: On hover, pattern lights up with vibrant Claripa orange dots & rich contrast
+  // When idle, shows clean crisp slate & dark charcoal dots
+  const colorMap = isActive
     ? {
-      base: "#FDE6D2",
-      accent: "#E26D35",
-      dark: "#142938",
-    }
+        0: "#FDE6D2", // Level 0: soft warm peach base dots
+        1: "#FDBA74", // Level 1: warm glowing light orange
+        2: "#F06A25", // Level 2: vibrant Claripa orange dots
+        3: "#3D1C0A", // Level 3: deep espresso-charcoal contrast dots
+      }
     : {
-      base: "#CBD5E1",
-      accent: "#1E293B",
-      dark: "#0F172A",
-    };
+        0: "#A2B1C2", // Level 0: crisp light slate-gray base dots
+        1: "#6B7C90", // Level 1: soft slate
+        2: "#475569", // Level 2: medium slate
+        3: "#0F172A", // Level 3: deep dark charcoal pattern dots
+      };
 
   return (
     <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] shrink-0 select-none">
@@ -230,24 +248,23 @@ function DotMatrix({ patternType, isActive }: DotMatrixProps) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {Array.from({ length: rows }).map((_, r) =>
-          Array.from({ length: cols }).map((_, c) => {
-            const state = getDotState(r, c);
+        {matrix.map((row, r) =>
+          row.map((val, c) => {
             const cx = 9 + c * 14;
             const cy = 9 + r * 14;
-            const isHighlighted = state !== "base";
-            const fill = colors[state];
+            const isBase = val === 0;
+            const fill = colorMap[val as 0 | 1 | 2 | 3] || colorMap[0];
 
             return (
               <circle
                 key={`${r}-${c}`}
                 cx={cx}
                 cy={cy}
-                r={isHighlighted ? 3.6 : 3}
+                r={isBase ? 3.1 : 3.5}
                 fill={fill}
-                className="transition-all duration-300 ease-out"
+                className="transition-colors duration-300 ease-out"
                 style={{
-                  opacity: state === "base" ? (isActive ? 0.9 : 0.65) : 1,
+                  opacity: isBase ? (isActive ? 0.9 : 0.72) : 1,
                 }}
               />
             );
@@ -263,7 +280,7 @@ function DotMatrix({ patternType, isActive }: DotMatrixProps) {
    ========================================================================= */
 export default function BuildFor() {
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [activeCardId, setActiveCardId] = useState<string>("hire-onboard");
+  const [activeCardId, setActiveCardId] = useState<string>("manage-people");
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
@@ -360,7 +377,7 @@ export default function BuildFor() {
                   <div className="flex-1">
                     <h3
                       className={cn(
-                        "text-2xl sm:text-[26px] font-bold tracking-tight mb-3 transition-colors duration-200",
+                        "font-heading text-2xl sm:text-[26px] font-medium tracking-tight leading-[1.2] mb-3 transition-colors duration-200",
                         isActive ? "text-[#E26D35]" : "text-[#142938]"
                       )}
                     >

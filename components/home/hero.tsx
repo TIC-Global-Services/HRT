@@ -5,19 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
 import { BreadcrumbBadge } from "@/reuseable/breadcrum";
+import FlutedGlassBackground from "@/reuseable/HeroBg";
 
 const HeroSection: React.FC = () => {
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const x = ((e.clientX / innerWidth) - 0.5) * 16;
-      const y = ((e.clientY / innerHeight) - 0.5) * 16;
-      setOffset({ x, y });
-    };
-
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset || 0;
       if (scrollY > 35) {
@@ -30,24 +23,18 @@ const HeroSection: React.FC = () => {
     // Check initial scroll on mount
     handleScroll();
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <section className="relative w-full pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-white">
-      {/* Background Hero Blinds Layer (100% Match to Design Reference) */}
+      {/* Background Hero Blinds Layer (Interactive WebGL2 Shader preserving exact design shape) */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden flex justify-center">
-        <div
-          className="relative w-full max-w-[1400px] h-[550px] sm:h-[700px] md:h-[860px] lg:h-[980px] -top-6 sm:-top-10 md:-top-14 transition-transform duration-700 ease-out will-change-transform"
-          style={{
-            transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
-          }}
-        >
+        <div className="relative w-full max-w-[1400px] h-[550px] sm:h-[700px] md:h-[860px] lg:h-[980px] -top-6 sm:-top-10 md:-top-14">
+          {/* Instant SSR/first-paint fallback */}
           <Image
             src="/hero-gradient-blinds.png"
             alt="Claripa Hero Ambient Blinds Background"
@@ -56,6 +43,10 @@ const HeroSection: React.FC = () => {
             sizes="(max-width: 1400px) 100vw, 1400px"
             className="object-contain object-top pointer-events-none"
           />
+          {/* Live interactive WebGL2 Shader Layer */}
+          <div className="absolute inset-0">
+            <FlutedGlassBackground/>
+          </div>
         </div>
 
         {/* Soft bottom fade right above the dashboard */}
@@ -92,7 +83,7 @@ const HeroSection: React.FC = () => {
           <div className="mt-6 sm:mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center bg-[#254F5F] hover:bg-[#143B45] text-[#FBF7F3] text-xs sm:text-sm font-medium font-mono tracking-tight uppercase px-7 sm:px-8 py-3.5 rounded-full shadow-md shadow-teal-950/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center bg-[#254F5F]  hover:bg-[#143B45] text-[#FBF7F3] text-xs sm:text-sm font-medium font-mono tracking-tight uppercase px-7 sm:px-8 py-3.5 rounded-full shadow-md shadow-teal-950/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               BOOK A DEMO
             </Link>

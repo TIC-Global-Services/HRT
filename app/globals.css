@@ -109,4 +109,69 @@ body {
   animation: marquee-vertical var(--marquee-duration, 25s) linear infinite;
 }
 
+/* Card 1 Automation Flow Animations */
+@keyframes flow-dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes flow-dotted-line {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+.animate-flow-dash {
+  animation: flow-dash 1s linear infinite;
+}
+
+.animate-dotted-flow {
+  animation: flow-dotted-line 0.8s linear infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(3px, -3px);
+  }
+}
+
+@keyframes flow-down-pulse {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+
+.animate-flow-dash {
+  animation: flow-dash 1.2s linear infinite;
+}
+
+.animate-arrow-nudge {
+  animation: arrow-nudge 1.6s ease-in-out infinite;
+}
+
+.animate-flow-down {
+  animation: flow-down-pulse 1.8s ease-in-out infinite;
+}
+
 

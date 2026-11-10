@@ -373,7 +373,7 @@ const Navabar: React.FC = () => {
               </Link>
               <Link
                 href="/contact-us"
-                className="w-full text-center py-3 bg-[#1C4E5B] text-white text-sm font-semibold uppercase tracking-wider rounded-full shadow-sm"
+                className="w-full text-center py-3 bg-[#254F5F] text-white text-sm font-semibold uppercase tracking-wider rounded-full shadow-sm"
               >
                 BOOK A DEMO
               </Link>

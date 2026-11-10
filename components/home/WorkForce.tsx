@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -10,8 +10,6 @@ import {
   ChevronLeft,
   ChevronRight,
   BellOff,
-  CheckSquare,
-  Square,
 } from "lucide-react";
 import GradientBlinds from "@/components/GradientBlinds";
 
@@ -39,16 +37,22 @@ export const workforceContent = {
     {
       id: "disconnected-signals",
       title: "Disconnected Signals",
+      description:
+        "Identify unlinked workflows, missed check-ins, and communication gaps across tools before misalignments derail team delivery.",
       href: "/solution-hub#signals",
     },
     {
       id: "reactive-decisions",
       title: "Reactive Decisions",
+      description:
+        "Move beyond lagging reviews and burnout blindspots by surfacing real-time focus metrics, workload strain, and early turnover indicators.",
       href: "/solution-hub#decisions",
     },
     {
       id: "managers-without-context",
       title: "Managers Without Context",
+      description:
+        "Equip managers with clear visibility into cross-functional contributions, delivery blockers, and team sentiment to lead with confidence.",
       href: "/solution-hub#context",
     },
     {
@@ -63,45 +67,160 @@ export const workforceContent = {
 };
 
 /* =========================================================================
-   CARD 1 MINI UI: DISCONNECTED SIGNALS (Automation Flow Diagram)
+   CARD 1 MINI UI: DISCONNECTED SIGNALS (Automation Flow Diagram with Moving Dotted Lines)
    ========================================================================= */
 function DisconnectedSignalsMiniUI() {
   return (
     <div className="w-full h-[260px] flex flex-col items-center justify-center relative select-none">
       {/* Trigger: When a task is due */}
-      <div className="bg-white rounded-xl border border-zinc-200/90 px-3.5 py-2 shadow-xs flex items-center gap-2 text-xs font-medium text-zinc-700">
+      <div className="bg-white rounded-xl border border-zinc-200/90 px-3.5 py-2 shadow-xs flex items-center gap-2 text-xs font-medium text-zinc-700 transition-transform group-hover:scale-[1.02]">
         <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
         <span>When a task is due</span>
       </div>
 
-      {/* Vertical connection line */}
-      <div className="w-[1.5px] h-4 bg-zinc-300 my-0.5" />
+      {/* Vertical connection line with continuous looping animated dotted flow & arrow */}
+      <div className="relative w-6 h-6 flex items-center justify-center my-0.5">
+        <svg
+          className="w-full h-full overflow-visible"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          {/* Base light track */}
+          <line
+            x1="12"
+            y1="0"
+            x2="12"
+            y2="19"
+            stroke="#FDE0C8"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          {/* Animated flowing dotted line */}
+          <line
+            x1="12"
+            y1="0"
+            x2="12"
+            y2="19"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeDasharray="3 5"
+            strokeLinecap="round"
+            className="animate-dotted-flow"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="-16"
+              dur="0.8s"
+              repeatCount="indefinite"
+            />
+          </line>
+          {/* Arrowhead pointing down into Run automation */}
+          <path
+            d="M8.5 14.5L12 19L15.5 14.5"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
 
       {/* Action button: Run automation */}
-      <div className="bg-[#F06A25] text-white rounded-xl px-4 py-2 text-xs font-semibold flex items-center gap-2 shadow-sm shadow-orange-500/20">
-        <Zap className="w-3.5 h-3.5 fill-white text-white shrink-0" />
+      <div className="bg-[#F06A25] text-white rounded-xl px-4 py-2 text-xs font-semibold flex items-center gap-2 shadow-sm shadow-orange-500/25 transition-transform group-hover:scale-[1.02]">
+        <Zap className="w-3.5 h-3.5 fill-white text-white shrink-0 animate-pulse" />
         <span>Run automation</span>
       </div>
 
-      {/* Branching stem & dashed splitter */}
-      <div className="w-[1.5px] h-3 bg-orange-300 my-0.5" />
-      <div className="relative w-44 sm:w-48 h-4">
-        {/* Horizontal dashed line */}
-        <div className="absolute top-0 left-6 right-6 border-t-2 border-dashed border-orange-300" />
-        {/* Left vertical drop */}
-        <div className="absolute top-0 left-6 w-[1.5px] h-3 border-l-2 border-dashed border-orange-300" />
-        {/* Right vertical drop */}
-        <div className="absolute top-0 right-6 w-[1.5px] h-3 border-r-2 border-dashed border-orange-300" />
+      {/* Branching stem & SVG with continuous looping animated dotted flow and arrow heads */}
+      <div className="relative w-52 sm:w-56 h-8 my-0.5 flex justify-center">
+        <svg
+          className="w-full h-full overflow-visible"
+          viewBox="0 0 220 32"
+          fill="none"
+          aria-hidden="true"
+        >
+          {/* Left Branch Base Track */}
+          <path
+            d="M 110 0 L 110 10 L 32 10 L 32 24"
+            stroke="#FDE0C8"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* Left Branch Animated Dotted Line */}
+          <path
+            d="M 110 0 L 110 10 L 32 10 L 32 24"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeDasharray="3 5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="animate-dotted-flow"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="-16"
+              dur="0.8s"
+              repeatCount="indefinite"
+            />
+          </path>
+          {/* Left Arrowhead */}
+          <path
+            d="M 28 19 L 32 25 L 36 19"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Right Branch Base Track */}
+          <path
+            d="M 110 0 L 110 10 L 188 10 L 188 24"
+            stroke="#FDE0C8"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* Right Branch Animated Dotted Line */}
+          <path
+            d="M 110 0 L 110 10 L 188 10 L 188 24"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeDasharray="3 5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="animate-dotted-flow"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="-16"
+              dur="0.8s"
+              repeatCount="indefinite"
+            />
+          </path>
+          {/* Right Arrowhead */}
+          <path
+            d="M 184 19 L 188 25 L 192 19"
+            stroke="#F06A25"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
 
       {/* Two outcomes */}
       <div className="flex items-center justify-between w-full max-w-[240px] px-1 gap-2 mt-0.5">
-        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs">
+        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
           <Check className="w-3 h-3 text-[#F06A25] stroke-[2.5] shrink-0" />
           <span>Update status</span>
         </div>
-        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs">
-          <ArrowUpRight className="w-3 h-3 text-[#F06A25] stroke-[2.5] shrink-0" />
+        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
+          <ArrowUpRight className="w-3.5 h-3.5 text-[#F06A25] stroke-[2.5] shrink-0 animate-arrow-nudge" />
           <span>Notify team</span>
         </div>
       </div>
@@ -110,91 +229,182 @@ function DisconnectedSignalsMiniUI() {
 }
 
 /* =========================================================================
-   CARD 2 MINI UI: REACTIVE DECISIONS (Focus Session Timer)
+   CARD 2 MINI UI: REACTIVE DECISIONS (Focus Session with Count & Progress Animation)
    ========================================================================= */
 function ReactiveDecisionsMiniUI() {
+  const [seconds, setSeconds] = useState(14);
+  const [progress, setProgress] = useState(48);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prev) => (prev + 1) % 60);
+      setProgress((prev) => (prev >= 85 ? 42 : prev + 1));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formattedSeconds = String(seconds).padStart(2, "0");
+
   return (
-    <div className="w-full h-[260px] flex items-center justify-center select-none">
-      <div className="bg-white rounded-2xl border border-zinc-200/90 p-5 shadow-xs w-full max-w-[260px]">
+    <div className="w-full h-[260px] flex flex-col items-center justify-center select-none">
+      {/* Main Focus Session Card */}
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/90 p-5 sm:p-6 shadow-xs w-full max-w-[270px] relative overflow-hidden flex flex-col justify-between">
         {/* Header */}
         <div className="text-[10px] font-mono tracking-wider font-semibold text-zinc-400 uppercase">
           FOCUS SESSION
         </div>
 
-        {/* Large bold timer */}
-        <div className="text-3xl sm:text-[34px] font-mono font-bold text-zinc-900 tracking-tight my-2 tabular-nums">
-          01:16:14
+        {/* Large bold timer with live counting */}
+        <div className="text-3xl sm:text-[38px] font-mono font-medium text-[#18181B] tracking-tight my-2.5 tabular-nums leading-none">
+          01:16:{formattedSeconds}
         </div>
 
-        {/* Subtitle tag */}
-        <div className="flex items-center gap-1.5 text-xs text-zinc-600 font-medium">
-          <span className="w-3.5 h-3.5 rounded-full border border-orange-400 flex items-center justify-center shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-          </span>
-          <span>Website design</span>
-          <span className="text-zinc-300">•</span>
-          <span className="text-emerald-600 flex items-center gap-1 font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Focus on
-          </span>
+        {/* Subtitle tag row */}
+        <div className="flex items-center justify-between gap-1.5 mt-1">
+          <div className="flex items-center gap-1.5 text-xs text-[#F06A25] font-medium">
+            <Clock className="w-4 h-4 text-[#F06A25] shrink-0" />
+            <span>Website design</span>
+          </div>
+
+          <div className="bg-[#FAF5ED] px-2.5 py-1 rounded-full flex items-center gap-1.5 text-[11px] font-medium text-[#F06A25] shrink-0">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Focus on</span>
+          </div>
         </div>
 
-        {/* Footer alert */}
-        <div className="pt-3 mt-3 border-t border-zinc-100 flex items-center gap-2 text-[11px] text-zinc-400">
-          <BellOff className="w-3 h-3 text-zinc-400 shrink-0" />
-          <span className="truncate">Notifications paused until 12:00</span>
+        {/* Bottom progress bar on the card matching the reference image */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-zinc-100">
+          <div
+            className="h-full bg-[#F06A25] rounded-r-full transition-all duration-1000 ease-linear"
+            style={{ width: `${progress}%` }}
+          />
         </div>
+      </div>
+
+      {/* Floating notification bar below the card matching reference image */}
+      <div className="mt-2.5 bg-white rounded-xl border border-zinc-200/90 px-3.5 py-2.5 shadow-2xs flex items-center gap-2 text-xs text-zinc-800 font-medium w-full max-w-[270px]">
+        <BellOff className="w-4 h-4 text-zinc-800 shrink-0" />
+        <span className="truncate">Notifications paused until 12:00</span>
       </div>
     </div>
   );
 }
 
 /* =========================================================================
-   CARD 3 MINI UI: MANAGERS WITHOUT CONTEXT (Checklist + Progress)
+   CARD 3 MINI UI: MANAGERS WITHOUT CONTEXT (No Cards Visible Initially -> Pop One by One -> Continue)
    ========================================================================= */
 function ManagersWithoutContextMiniUI() {
+  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
+
+  useEffect(() => {
+    let t1: NodeJS.Timeout;
+    let t2: NodeJS.Timeout;
+    let t3: NodeJS.Timeout;
+
+    const runCycle = () => {
+      // 0.0s: Initially NO cards visible, 0% progress
+      setStep(0);
+
+      // 0.8s: Card 1 pops in -> 35% progress
+      t1 = setTimeout(() => {
+        setStep(1);
+      }, 800);
+
+      // 1.9s: Card 2 pops in -> 68% progress
+      t2 = setTimeout(() => {
+        setStep(2);
+      }, 1900);
+
+      // 3.0s: Card 3 pops in -> all 3 cards visible
+      t3 = setTimeout(() => {
+        setStep(3);
+      }, 3000);
+    };
+
+    runCycle();
+    const cycleInterval = setInterval(runCycle, 7600);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearInterval(cycleInterval);
+    };
+  }, []);
+
   return (
     <div className="w-full h-[260px] flex flex-col justify-center gap-2 select-none px-1">
-      {/* Task 1 */}
-      <div className="bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs">
+      {/* Task 1: Website refresh (Pops in at step 1) */}
+      <div
+        className={`bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          step >= 1
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
+        }`}
+      >
         <div className="flex items-center gap-2">
-          <CheckSquare className="w-3.5 h-3.5 text-[#F06A25] shrink-0" />
-          <span>Website refresh</span>
+          <div className="w-4 h-4 rounded-[4px] bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
+            <Check className="w-3 h-3 stroke-[3]" />
+          </div>
+          <span className="line-through text-slate-500 font-medium">Website refresh</span>
         </div>
-        <span className="bg-emerald-50 text-emerald-600 border border-emerald-200/70 text-[10px] font-semibold px-2 py-0.5 rounded-md">
+        <span className="bg-[#E6F5EC] text-[#1A824E] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
           Done
         </span>
       </div>
 
-      {/* Task 2: Active card with subtle highlight */}
-      <div className="bg-white rounded-xl border-2 border-indigo-200 px-3.5 py-2.5 flex items-center justify-between text-xs font-semibold text-zinc-900 shadow-xs">
+      {/* Task 2: Product launch (Pops in at step 2 with active purple border) */}
+      <div
+        className={`bg-white rounded-xl border-2 border-[#A8A4F8] shadow-sm px-3.5 py-2.5 flex items-center justify-between text-xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          step >= 2
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
+        }`}
+      >
         <div className="flex items-center gap-2">
-          <CheckSquare className="w-3.5 h-3.5 text-[#F06A25] shrink-0" />
-          <span>Product launch</span>
+          <div className="w-4 h-4 rounded-[4px] bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
+            <Check className="w-3 h-3 stroke-[3]" />
+          </div>
+          <span className="line-through text-slate-500 font-medium">Product launch</span>
         </div>
-        <span className="bg-emerald-50 text-emerald-600 border border-emerald-200/70 text-[10px] font-semibold px-2 py-0.5 rounded-md">
+        <span className="bg-[#E6F5EC] text-[#1A824E] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
           Done
         </span>
       </div>
 
-      {/* Task 3 */}
-      <div className="bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-600 shadow-2xs">
+      {/* Task 3: Q4 roadmap (Pops in at step 3) */}
+      <div
+        className={`bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          step >= 3
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
+        }`}
+      >
         <div className="flex items-center gap-2">
-          <Square className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-          <span>Q4 roadmap</span>
+          <div className="w-4 h-4 rounded-[4px] border-2 border-indigo-200 bg-white shrink-0" />
+          <span className="text-zinc-800 font-medium">Q4 roadmap</span>
         </div>
-        <span className="bg-orange-50 text-orange-600 border border-orange-200/70 text-[10px] font-semibold px-2 py-0.5 rounded-md">
+        <span className="bg-[#FDF2E9] text-[#D96B27] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
           Planning
         </span>
       </div>
 
       {/* Progress footer */}
-      <div className="mt-2 pt-2 px-1">
-        <div className="flex items-center justify-between text-[11px] text-zinc-500 mb-1.5">
-          <span>This week:</span>
-        </div>
-        <div className="w-full bg-zinc-200/80 rounded-full h-1.5 overflow-hidden">
-          <div className="bg-[#F06A25] h-full rounded-full w-[45%]" />
+      <div className="mt-2 pt-2 px-1 flex items-center gap-3">
+        <span className="text-xs text-slate-500 font-normal shrink-0">
+          This week
+        </span>
+        <div className="flex-1 bg-[#F0EDF6] rounded-full h-2 overflow-hidden">
+          <div
+            className="bg-[#F06A25] h-full rounded-full transition-all duration-1000 ease-out"
+            style={{
+              width: step === 0 ? "0%" : step === 1 ? "35%" : "68%",
+            }}
+          />
         </div>
       </div>
     </div>
@@ -380,15 +590,22 @@ export default function Workforce() {
           {/* Card 1: Disconnected Signals */}
           <Link
             href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <DisconnectedSignalsMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+              {cards[0].description && (
+                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                    {cards[0].description}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[0].title}
                 </h3>
                 <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
@@ -399,15 +616,22 @@ export default function Workforce() {
           {/* Card 2: Reactive Decisions */}
           <Link
             href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ReactiveDecisionsMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+              {cards[1].description && (
+                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                    {cards[1].description}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[1].title}
                 </h3>
                 <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
@@ -418,15 +642,22 @@ export default function Workforce() {
           {/* Card 3: Managers Without Context */}
           <Link
             href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ManagersWithoutContextMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+              {cards[2].description && (
+                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                    {cards[2].description}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[2].title}
                 </h3>
                 <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
@@ -437,20 +668,22 @@ export default function Workforce() {
           {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
           <Link
             href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 min-h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ProactiveActionMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto transition-colors duration-300">
+            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[3].description && (
-                <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.4] mb-3 transition-colors duration-300">
-                  {cards[3].description}
-                </p>
+                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                    {cards[3].description}
+                  </p>
+                </div>
               )}
               <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium group-hover:font-bold text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[3].title}
                 </h3>
                 <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
