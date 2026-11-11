@@ -73,9 +73,9 @@ export default function DirectLines({
           <div className="flex items-center gap-2 mb-3">
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780D] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-base font-semibold text-[#F8780C] tracking-wider uppercase">
+            <span className="font-mono text-base font-medium text-[#F8780D] tracking-wider uppercase">
               {eyebrow}
             </span>
           </div>
@@ -83,7 +83,7 @@ export default function DirectLines({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
           />
         </div>
 
@@ -94,7 +94,7 @@ export default function DirectLines({
             return (
               <div
                 key={line.title}
-                className="rounded-[22px] bg-white border border-[#ECE9E3] p-6 sm:p-7 flex flex-col min-h-[230px] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(248,120,12,0.06)] group"
+                className="rounded-[22px] bg-white border border-[#ECE9E3] px-6 sm:px-7 pt-4 flex flex-col min-h-[230px] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(248,120,12,0.06)] group"
               >
                 {/* Top content */}
                 <div>
@@ -116,7 +116,7 @@ export default function DirectLines({
                 </div>
 
                 {/* Bottom details & arrow */}
-                <div className="flex items-end justify-between mt-2">
+                <div className="flex items-end justify-between mt-6">
                   <div className="flex flex-col gap-1 min-w-0">
                     {line.contacts.map((contact) => (
                       <Link

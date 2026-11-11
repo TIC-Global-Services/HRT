@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
 
 export interface EmployeeExperienceProps {
@@ -57,7 +57,7 @@ export default function EmployeeExperience({
         {[0, 1].map((imageIndex) => (
           <div
             aria-hidden="true"
-            className={`relative min-h-[360px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[620px] ${
+            className={`relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[680px] ${
               imageIndex === 1 ? "hidden md:block" : ""
             }`}
             key={imageIndex}
@@ -74,7 +74,7 @@ export default function EmployeeExperience({
         ))}
 
         <div className="flex flex-col justify-center rounded-[24px] bg-[#FFF4EC] p-7 sm:p-10 lg:p-9 xl:p-10">
-          <p className="mb-3.5 sm:mb-4 flex items-center gap-2 font-mono text-xs sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-[#E56A1E]">
+          <p className="mb-3.5 sm:mb-4 flex items-center gap-2 font-mono text-xs sm:text-base font-medium uppercase tracking-tight text-[#E56A1E]">
             <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.7)]" />
             {eyebrow}
           </p>
@@ -83,13 +83,13 @@ export default function EmployeeExperience({
             as="h2"
             delay={20}
             text={title}
-            className="m-0 text-[32px] sm:text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#002e40]"
+            className="m-0 text-2xl sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
           />
 
           <ul className="mb-0 mt-7 grid gap-3.5 p-0 list-none">
             {benefits.map((benefit) => (
-              <li className="flex items-center gap-3 text-sm sm:text-base text-[#002e40] font-sora font-medium" key={benefit}>
-                <span className="grid size-5 shrink-0 place-items-center rounded-full border border-[#f3d9c8] bg-white text-[#f8780c]">
+              <li className="flex items-center gap-3 text-sm sm:text-base text-[#254F5F] font-sora font-normal tracking-tight" key={benefit}>
+                <span className="grid size-5 shrink-0 place-items-center border border-[#ECE9E3] rounded-full  text-[#f8780c]">
                   <Check aria-hidden="true" size={12} strokeWidth={2.5} />
                 </span>
                 <BlurText delay={20} text={benefit} />
@@ -98,40 +98,13 @@ export default function EmployeeExperience({
           </ul>
 
           {/* Download on App Store & Google Play Badges */}
-          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3">
-            {/* Apple App Store */}
-            <a
-              href={appStoreHref}
-              aria-label="Download on the App Store"
-              className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-[#E2E6E8] text-[#002e40] shadow-xs hover:border-[#002e40]/40 hover:-translate-y-0.5 transition-all text-left no-underline cursor-pointer"
-            >
-              <AppleIcon className="w-5 h-5 sm:w-6 sm:h-6 fill-[#002e40] shrink-0" />
-              <div className="flex flex-col">
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wider text-[#62737A] leading-tight font-medium">
-                  Download on the
-                </span>
-                <span className="font-sora text-xs sm:text-[13px] font-semibold text-[#002e40] leading-tight">
-                  App Store
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-start gap-3">
+              <div className="flex gap-3 bg-[#254F5F] font-geist-mono uppercase text-base rounded-full px-6 py-3 text-white tracking-tight">
+                <span>Explore Claripa</span>
+                <span>
+                  <ArrowUpRight strokeWidth={1}/>
                 </span>
               </div>
-            </a>
-
-            {/* Google Play */}
-            <a
-              href={googlePlayHref}
-              aria-label="Get it on Google Play"
-              className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-[#E2E6E8] text-[#002e40] shadow-xs hover:border-[#002e40]/40 hover:-translate-y-0.5 transition-all text-left no-underline cursor-pointer"
-            >
-              <GooglePlayIcon className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-              <div className="flex flex-col">
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wider text-[#62737A] leading-tight font-medium">
-                  GET IT ON
-                </span>
-                <span className="font-sora text-xs sm:text-[13px] font-semibold text-[#002e40] leading-tight">
-                  Google Play
-                </span>
-              </div>
-            </a>
           </div>
         </div>
       </div>

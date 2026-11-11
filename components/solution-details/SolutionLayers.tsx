@@ -48,7 +48,7 @@ export default function SolutionLayers({
                   aria-hidden="true"
                   className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
                 />
-                <span className="font-mono text-xs font-semibold text-[#F8780C] tracking-wider uppercase">
+                <span className="font-mono text-base font-medium text-[#F8780C] tracking-wider uppercase">
                   {eyebrow}
                 </span>
               </div>
@@ -57,7 +57,7 @@ export default function SolutionLayers({
                 as="h2"
                 text={title}
                 delay={20}
-                className="font-sora text-white text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.14] mt-4"
+                className="font-sora text-white text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.14] mt-4"
               />
             </div>
 
@@ -66,7 +66,7 @@ export default function SolutionLayers({
               {layers.map((layer) => (
                 <span
                   key={layer.label}
-                  className={`inline-flex items-center px-4 py-2 rounded-full font-mono text-sm font-medium tracking-wide shadow-sm transition-transform hover:scale-105 ${
+                  className={`inline-flex items-center px-4 py-2 rounded-full font-mono text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${
                     layer.isPrimary
                       ? "bg-[#FFF4EC] text-[#B84D09] border border-[#FBD9C2]"
                       : "bg-white text-[#254F5F] border border-white/80"

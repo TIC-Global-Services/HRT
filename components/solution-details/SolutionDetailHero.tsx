@@ -18,8 +18,8 @@ export interface SolutionDetailHeroProps {
 
 export default function SolutionDetailHero({
   breadcrumb = "HOME / SOLUTIONS / SOLUTION DETAIL",
-  title = "Align every goal with the bigger picture.",
-  description = "Connect organizational objectives with team priorities and individual contributions. Claripa helps you create aligned goals, track performance and identify gaps before they impact business outcomes.",
+  title = "Align every goal with the \nbigger picture.",
+  description = "Connect organizational objectives with team priorities and individual contributions. Claripa helps you create aligned goals, track performance and identify gaps before they impact \nbusiness outcomes.",
   talkText = "BOOK A DEMO",
   talkHref = "/contact-us",
   overviewText = "WATCH OVERVIEW",
@@ -61,13 +61,13 @@ export default function SolutionDetailHero({
         </div>
 
         {/* Centered Heading & Lead Text */}
-        <div className="max-w-4xl mx-auto text-center mb-9 sm:mb-12">
+        <div className="text-center mb-9 sm:mb-12">
           <BlurText
             as="h1"
             text={title}
             trigger="load"
             delay={20}
-            className="font-sora text-[#002E40] text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-[-0.04em] leading-[1.08] mb-5"
+            className="font-sora text-[#002E40] text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] mb-5 whitespace-pre-line"
           />
 
           <BlurText
@@ -75,7 +75,7 @@ export default function SolutionDetailHero({
             text={description}
             trigger="load"
             delay={20}
-            className="font-sora text-[#62737A] text-sm sm:text-base lg:text-[17px] leading-relaxed max-w-2xl mx-auto mb-8"
+            className="font-sora text-[#62737A] text-sm sm:text-base lg:text-lg leading-[1.3] max-w-4xl whitespace-pre-line mx-auto mb-8"
           />
 
           {/* Centered Action Buttons */}
@@ -126,7 +126,7 @@ export default function SolutionDetailHero({
           <div className="relative z-10 w-full max-w-[560px] sm:max-w-[600px] mx-auto shrink-0">
             {/* Single Floating Pop-Up Card: Flagged 6 weeks early (overlapping top-left of title and row 1) */}
             <div
-              className={`absolute -left-4 sm:-left-8 lg:-left-10 top-11 sm:top-13 z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+              className={`absolute -left-4 sm:-left-8 lg:-left-10 top-11 sm:top-22 z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                 isTriggered
                   ? "opacity-100 scale-100 translate-y-0"
                   : "opacity-0 scale-75 -translate-y-4 pointer-events-none"
@@ -151,7 +151,7 @@ export default function SolutionDetailHero({
             </div>
 
             {/* Inner Dashboard Card */}
-            <div className="w-full rounded-t-[24px] sm:rounded-t-[28px] rounded-b-[18px] border border-[#ECE7E0] bg-white shadow-[0_12px_44px_rgba(0,46,64,0.06)] p-4 sm:p-6 lg:p-7">
+            <div className="w-full rounded-t-[24px] sm:rounded-t-[28px]  border border-[#ECE7E0] bg-white shadow-[0_12px_44px_rgba(0,46,64,0.06)] p-4 sm:p-6 lg:p-7">
               {/* Header: Eyebrow + Badge */}
               <div className="flex items-center justify-between gap-3 mb-1.5">
                 <p className="font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-[#71828A] m-0 font-medium">
@@ -280,10 +280,10 @@ export default function SolutionDetailHero({
                   <Sparkles size={18} className="text-[#0088A3]" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] sm:text-[10px] font-semibold text-[#52636A] uppercase tracking-wider mb-0.5">
+                  <p className="font-mono text-[9px] sm:text-[11px] font-semibold text-[#52636A] uppercase tracking-wider mb-0.5">
                     SUGGESTED NEXT STEP
                   </p>
-                  <p className="font-sora text-xs sm:text-[13px] text-[#002E40] leading-relaxed m-0">
+                  <p className="font-sora text-xs sm:text-sm text-[#002E40] leading-relaxed m-0">
                     Book a growth conversation with your Senior Engineer this week, and share the Team Lead path.
                   </p>
                 </div>

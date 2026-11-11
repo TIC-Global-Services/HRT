@@ -13,7 +13,7 @@ const defaultSteps: SolutionStepItem[] = [
   {
     id: "01",
     tag: "01 · DETECT · GOAL INTELLIGENCE",
-    title: "Identify where alignment breaks",
+    title: "Identify where alignment \nbreaks",
     description:
       "Claripa connects organizational objectives, team OKRs and individual goals to identify gaps in alignment and performance.",
     bullets: [
@@ -24,7 +24,7 @@ const defaultSteps: SolutionStepItem[] = [
   {
     id: "02",
     tag: "02 · PREDICT · PERFORMANCE INTELLIGENCE",
-    title: "Understand what could fall behind",
+    title: "Understand what could fall \nbehind",
     description:
       "Claripa helps decision makers identify performance patterns and potential goal delays before they affect business outcomes.",
     bullets: [
@@ -35,7 +35,7 @@ const defaultSteps: SolutionStepItem[] = [
   {
     id: "03",
     tag: "03 · ACT · MANAGER INTELLIGENCE",
-    title: "Turn goals into meaningful action",
+    title: "Turn goals into \nmeaningful action",
     description:
       "Claripa brings relevant insights to managers and leaders so they can realign priorities and support better execution.",
     bullets: [
@@ -46,7 +46,7 @@ const defaultSteps: SolutionStepItem[] = [
   {
     id: "04",
     tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
-    title: "Works with your existing HR ecosystem",
+    title: "Works with your existing \nHR ecosystem",
     description:
       "Claripa connects existing HR systems to unify goal and performance insights.",
     bullets: [
@@ -77,7 +77,7 @@ export default function TheSolutionSteps({
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-base font-semibold text-[#F8780C] tracking-tight uppercase">
+            <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -85,7 +85,7 @@ export default function TheSolutionSteps({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+            className="font-sora text-[#254F5F] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
           />
         </div>
 
@@ -97,7 +97,7 @@ export default function TheSolutionSteps({
               className="rounded-[28px] border border-[#ECE9E3] bg-white p-8 sm:p-10 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_30px_rgba(0,46,64,0.05)]"
             >
               <div>
-                <span className="block font-mono text-base font-semibold text-[#F8780C] uppercase tracking-wider mb-3">
+                <span className="block font-mono text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">
                   {step.tag}
                 </span>
 
@@ -105,29 +105,29 @@ export default function TheSolutionSteps({
                   as="h3"
                   text={step.title}
                   delay={20}
-                  className="font-sora text-[#002E40] text-[32px] font-semibold tracking-tight mb-3"
+                  className="font-sora text-[#002E40] leading-[1.2] text-[32px] font-normal whitespace-pre-line tracking-tight mb-3"
                 />
 
                 <BlurText
                   as="p"
                   text={step.description}
                   delay={20}
-                  className="font-sora text-lg text-[#62737A] leading-relaxed mb-6"
+                  className="font-sora text-lg text-[#5F7373] leading-[1.2] mb-6"
                 />
               </div>
 
               {/* Bullets */}
-              <div className="pt-4 border-t border-[#ECE9E3]/70 flex flex-col gap-2.5">
+              <div className="pt-4 flex flex-col gap-2.5">
                 {step.bullets.map((bullet) => (
                   <div key={bullet} className="flex items-start gap-2.5">
-                    <span className="w-4 h-4 rounded-full bg-[#FFF0E4] text-[#F8780C] flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-4 h-4 rounded-full bg-[#FFF0E4] text-[#F8780C] flex items-center justify-center shrink-0 mt-0.5 border border-[#254F5F1A]">
                       <Check size={11} strokeWidth={3} />
                     </span>
                     <BlurText
                       as="span"
                       text={bullet}
                       delay={20}
-                      className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed"
+                      className="font-sora text-sm sm:text-base text-[#254F5F] leading-relaxed"
                     />
                   </div>
                 ))}

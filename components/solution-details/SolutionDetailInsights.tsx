@@ -66,13 +66,13 @@ export default function SolutionDetailInsights({
     <section className="py-16 md:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-12 lg:mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
             <span
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-xs font-semibold text-[#F8780C] tracking-wider uppercase">
+            <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function SolutionDetailInsights({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight whitespace-pre-line leading-[1.12] mb-4"
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[50px] font-normal tracking-tight whitespace-pre-line leading-[1.12] mb-4"
           />
 
           <BlurText

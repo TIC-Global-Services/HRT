@@ -219,7 +219,7 @@ export default function CaseStudyCarousel({
                   "relative shrink-0 rounded-[28px] sm:rounded-[30px] overflow-hidden border select-none cursor-pointer",
                   // Card width spans 76-85vw so adjacent card peeks nicely
                   "w-[85vw] sm:w-[80vw] lg:w-[76vw]",
-                  "h-[500px] sm:h-[540px] lg:h-[580px] flex items-stretch justify-end p-3 sm:p-4 lg:p-2",
+                  "h-[500px] sm:h-[540px] lg:h-[65dvh] flex items-stretch justify-end p-3 sm:p-4 lg:p-2",
                   "transition-all duration-300 ease-out",
                   isCardActive
                     ? "border-slate-300/80 shadow-2xl shadow-slate-900/10 opacity-100"
@@ -298,7 +298,7 @@ export default function CaseStudyCarousel({
       </div>
 
       {/* Bottom Pagination Indicators */}
-      <div className="flex items-center justify-center gap-3 mt-10 sm:mt-12 px-[5%]">
+      <div className="flex items-center justify-center gap-3 mt-10 sm:mt-8 px-[5%]">
         {items.map((_, dotIdx) => {
           const isCurrent = currentIndex === dotIdx;
           return (

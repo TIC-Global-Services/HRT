@@ -167,7 +167,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
                   SOLUTIONS
                 </h3>
-                <ul className="space-y-2 text-xs sm:text-sm">
+                <ul className="space-y-2 text-xs sm:text-sm font-geist">
                   <li>
                     <Link
                       href="/solution-hub"
@@ -225,7 +225,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
                   PLATFORM
                 </h3>
-                <ul className="space-y-2 text-xs sm:text-sm">
+                <ul className="space-y-2 text-xs sm:text-sm font-geist">
                   <li>
                     <Link
                       href="/platform"

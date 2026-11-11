@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
         {/* 5. Dashboard Preview Container with 3 Floating Indicator Cards matching Image 2 */}
         <div className="relative max-w-5xl lg:max-w-[1100px] mx-auto mt-12 sm:mt-16 md:mt-10">
           {/* Main Mockup Frame */}
-          <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-3 bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-[0_25px_60px_-15px_rgba(240,106,37,0.12),0_15px_35px_-10px_rgba(15,23,42,0.08)]">
+          <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-0 bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-[0_25px_60px_-15px_rgba(240,106,37,0.12),0_15px_35px_-10px_rgba(15,23,42,0.08)]">
             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-inner">
               <Image
                 src="/claripa-dashboard.png"
@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
                 height={1664}
                 priority
                 className="w-full h-auto object-cover block"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
               />
             </div>
           </div>

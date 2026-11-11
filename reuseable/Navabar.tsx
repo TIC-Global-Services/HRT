@@ -175,7 +175,7 @@ const Navabar: React.FC = () => {
             className="flex items-center gap-2 group transition-opacity hover:opacity-95 shrink-0"
             aria-label="Claripa - Home"
           >
-            <div className="relative h-7 sm:h-8 w-auto aspect-[3.57/1]">
+            <div className="relative h-7 sm:h-11 w-auto aspect-[3.57/1]">
               <Image
                 src="/claripa_logo.png"
                 alt="Claripa Logo"

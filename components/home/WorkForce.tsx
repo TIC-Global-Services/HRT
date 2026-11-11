@@ -23,13 +23,13 @@ export interface FeatureCardItem {
 }
 
 export const workforceContent = {
-  eyebrow: "PEOPLE, CONNECTED",
+  eyebrow: "The Future of People Decisions",
   headline: {
-    line1: "See Workforce Signals",
-    line2: "Before It’s Too Late",
+    line1: "Spot the Signals.",
+    line2: "Act with Confidence",
   },
   description:
-    "Claripa connects performance, engagement, capability and behaviour signals to help organisations make informed people decisions and act with confidence.",
+    "Claripa connects performance, engagement, capability, and behaviour signals to help organisations identify meaningful patterns, make informed people decisions, and take timely action.",
   ctaButton: {
     label: "EXPLORE OUR SOLUTIONS",
     href: "/solution-hub",
@@ -513,7 +513,7 @@ export default function Workforce() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-10 sm:pb-12">
           {/* Left: Eyebrow + Headline */}
           <div className="max-w-2xl">
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-wider text-[#F06A25] uppercase mb-3">
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-tight text-[#F06A25] uppercase mb-3">
               <span className="text-base leading-none font-bold">*</span>
               <span>{eyebrow}</span>
             </div>
@@ -579,7 +579,7 @@ export default function Workforce() {
           {/* Card 1: Disconnected Signals */}
           <Link
             href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -605,7 +605,7 @@ export default function Workforce() {
           {/* Card 2: Reactive Decisions */}
           <Link
             href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -631,7 +631,7 @@ export default function Workforce() {
           {/* Card 3: Managers Without Context */}
           <Link
             href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -657,7 +657,7 @@ export default function Workforce() {
           {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
           <Link
             href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F8F9FA] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">

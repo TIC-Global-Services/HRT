@@ -171,7 +171,7 @@ function SuccessionPreview() {
 export default function SolutionsHero({
   eyebrow = "Solutions",
   title = "Intelligence for the people decisions that matter most.",
-  description = "Losing key people, slow ramp-up, performance you can’t see in time. Claripa reads the signals your HR systems already capture and puts them in front of the people who can act.",
+  description = "Claripa helps organizations connect strategic goals, employee performance, daily tasks, and workforce insights in one platform. With AI-assisted OKR creation, performance tracking, check-ins, and skill gap analysis, Claripa helps leaders and HR teams identify areas that need attention, improve alignment, and make more informed people decisions.",
   ctaText = "Book a demo",
   ctaHref = "/contact-us",
 }: SolutionsHeroProps) {
@@ -203,7 +203,7 @@ export default function SolutionsHero({
   return (
     <section className="pt-10 sm:pt-12 pb-0">
       <div className="flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-lg font-semibold tracking-wide">
+        <p className="inline-flex items-center gap-2 text-[#F8750C] font-mono text-lg font-medium tracking-tight">
           {eyebrow}
         </p>
         <BlurText
@@ -211,17 +211,17 @@ export default function SolutionsHero({
           text={title}
           trigger="load"
           delay={20}
-          className="max-w-[860px] my-2.5 text-[#003247] text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
+          className="my-2.5 text-[#002E40] text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
         />
         <BlurText
           as="p"
           text={description}
           trigger="load"
           delay={20}
-          className="max-w-[820px] text-[#71838a] text-sm sm:text-base font-normal font-sora leading-[1.2]"
+          className="max-w-4xl text-[#71838a] text-sm sm:text-base font-normal font-sora leading-[1.2]"
         />
         <Link
-          className="inline-flex min-h-[50px] items-center justify-center gap-2 mt-6 px-7 rounded-full bg-[#285768] hover:bg-[#1d4655] text-white font-mono text-xs tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] focus-visible:ring-offset-2"
+          className="inline-flex font-geist-mono text-base  items-center justify-center gap-2 mt-6 py-3 px-7 rounded-full bg-[#254F5F] hover:bg-[#1d4655] text-white tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] focus-visible:ring-offset-2"
           href={ctaHref}
         >
           {ctaText}

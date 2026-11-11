@@ -36,7 +36,7 @@ export default function SectionHeading({
           as="p"
           delay={20}
           text={description}
-          className="mb-0 mt-5 text-base leading-relaxed text-[#62737a] sm:text-lg"
+          className="mb-0 mt-5 text-base leading-[1.2] text-[#62737a] sm:text-lg"
         />
       ) : null}
     </div>

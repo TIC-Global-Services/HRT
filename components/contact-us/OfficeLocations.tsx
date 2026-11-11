@@ -78,7 +78,7 @@ export default function OfficeLocations({
                   aria-hidden="true"
                   className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
                 />
-                <span className="font-mono text-xs font-semibold text-[#F8780C] tracking-wider uppercase">
+                <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
                   {eyebrow}
                 </span>
               </div>
@@ -87,7 +87,7 @@ export default function OfficeLocations({
                 as="h2"
                 text={title}
                 delay={20}
-                className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.12]"
+                className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
               />
             </div>
 

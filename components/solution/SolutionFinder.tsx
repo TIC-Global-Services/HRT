@@ -100,7 +100,7 @@ export default function SolutionFinder({
       id="solution-finder"
     >
       <div className="flex flex-col items-center text-center px-4 max-w-2xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-xs font-semibold tracking-wide uppercase">
+        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-base font-medium tracking-wide uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b0a] shadow-[0_0_8px_rgba(255,107,10,0.45)]" />
           {eyebrow}
         </p>
@@ -108,7 +108,7 @@ export default function SolutionFinder({
           as="h2"
           text={title}
           delay={20}
-          className="mt-3 text-[#003247] text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]"
+          className="mt-3 text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]"
         />
         {description && (
           <BlurText

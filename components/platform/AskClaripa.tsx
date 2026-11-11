@@ -215,7 +215,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                   as="h3"
                   delay={20}
                   text={featureOneTitle}
-                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5"
+                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-2.5"
                 />
                 <BlurText
                   as="p"
@@ -230,7 +230,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                   as="h3"
                   delay={20}
                   text={featureTwoTitle}
-                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5"
+                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-2.5"
                 />
                 <BlurText
                   as="p"
@@ -286,11 +286,11 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                       key={idx}
                       className="bg-white rounded-[10px] sm:rounded-[12px] px-3.5 py-2.5 flex items-center justify-between border border-[#EAE7E0] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-transform duration-150 hover:-translate-y-0.5"
                     >
-                      <span className="font-sora text-[11px] text-[#2B3E45] font-medium truncate pr-2">
+                      <span className="font-sora text-[10px] text-[#2B3E45] tracking-tight font-medium truncate pr-2">
                         {item.role}
                       </span>
                       <span
-                        className={`font-sora text-[11px] sm:text-xs font-semibold shrink-0 ${
+                        className={`font-sora text-[10px] sm:text-xs font-semibold shrink-0 ${
                           item.statusColor === "red"
                             ? "text-[#B93826]"
                             : item.statusColor === "amber"

@@ -22,7 +22,7 @@ export default function SolutionDetailContent() {
       <SolutionLayers />
 
       {/* 5. Results (350-person Software Services Firm 3x2 Grid) */}
-      <SolutionDetailResults />
+      {/* <SolutionDetailResults /> */}
 
       {/* 6. Explore Insights (2 Large Cards) */}
       <SolutionDetailInsights />

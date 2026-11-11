@@ -52,7 +52,7 @@ export default function TheChallenge({
                 aria-hidden="true"
                 className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
               />
-              <span className="font-mono text-base font-semibold text-[#F8780C] tracking-wider uppercase">
+              <span className="font-mono text-base font-medium text-[#F8780C] tracking-wider uppercase">
                 {eyebrow}
               </span>
             </div>
@@ -82,14 +82,14 @@ export default function TheChallenge({
               className="rounded-[24px] border border-[#ECE9E3] bg-white p-7 sm:p-8 flex flex-col justify-between min-h-[312px] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(0,46,64,0.04)]"
             >
               <div>
-                <span className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-[#F7F6F3] border border-[#ECE9E3] font-sora text-xl font-semibold text-[#62737A] mb-6">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-[#FFF4EC] border border-[#FBD9C2] font-sora text-xl font-semibold text-[#62737A] mb-6">
                   {c.number}
                 </span>
 
               </div>
               <div>
 
-                <span className="block font-mono text-sm font-semibold text-[#F8780C] tracking-wider uppercase mb-2">
+                <span className="block font-sora text-sm font-normal text-[#62737A] tracking-tight uppercase mb-2">
                   {c.tag}
                 </span>
 

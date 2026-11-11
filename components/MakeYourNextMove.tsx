@@ -17,7 +17,7 @@ export interface MakeYourNextMoveProps {
 export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
   eyebrow = "SEE CLARIPA IN ACTION",
   title = "Make Your Next Move.",
-  subtitle = "Book a personalised walkthrough and see what Claripa sees in your organisation.",
+  subtitle = "See how Claripa helps your organisation align goals, track performance, and turn workforce information into actionable insights.",
   buttonText = "BOOK A DEMO",
   buttonHref = "/contact-us",
   className = "",
@@ -39,11 +39,15 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
 
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Eyebrow Pill Tag */}
-        <div className="inline-flex items-center gap-1.5 mb-4 sm:mb-3">
-          <span className="text-[#F06A25] text-sm sm:text-base font-bold leading-none select-none">
-            ✱
+        <div className="inline-flex items-center gap-2.5 mb-4 sm:mb-3">
+          <span
+            aria-hidden="true"
+            className="relative inline-flex items-center justify-center w-2 h-2 shrink-0"
+          >
+            <span className="absolute -inset-2 rounded-full bg-[#F8750C]/5 blur-[6px] pointer-events-none" />
+            <span className="relative w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F8750C] shadow-[0_0_10px_2px_rgba(248,117,12,0.55)]" />
           </span>
-          <span className="text-[#F06A25] text-xs sm:text-base font-medium tracking-tighter uppercase font-mono">
+          <span className="text-[#F8750C] text-xs sm:text-base font-medium tracking-wider uppercase font-mono">
             {eyebrow}
           </span>
         </div>
@@ -61,7 +65,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="p"
           delay={20}
           text={subtitle}
-          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-[1.3] mb-8 sm:mb-8 font-normal"
+          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.3] mb-8 sm:mb-8 font-normal"
         />
 
         {/* Action Button */}
