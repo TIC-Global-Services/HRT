@@ -11,7 +11,8 @@ import {
   ChevronRight,
   BellOff,
 } from "lucide-react";
-import GradientBlinds from "@/components/GradientBlinds";
+import FlutedGlassBackground from "@/reuseable/HeroBg";
+import BlurText from "@/reuseable/BlurText";
 
 export interface FeatureCardItem {
   id: string;
@@ -38,21 +39,21 @@ export const workforceContent = {
       id: "disconnected-signals",
       title: "Disconnected Signals",
       description:
-        "Identify unlinked workflows, missed check-ins, and communication gaps across tools before misalignments derail team delivery.",
+        "Workforce information is often spread across different systems and activities, making it difficult to connect performance, engagement, and capability signals into a meaningful picture.",
       href: "/solution-hub#signals",
     },
     {
       id: "reactive-decisions",
       title: "Reactive Decisions",
       description:
-        "Move beyond lagging reviews and burnout blindspots by surfacing real-time focus metrics, workload strain, and early turnover indicators.",
+        "When meaningful workforce signals go unnoticed, organisations may recognise emerging issues only after they begin affecting employee performance, engagement, or team outcomes.",
       href: "/solution-hub#decisions",
     },
     {
       id: "managers-without-context",
       title: "Managers Without Context",
       description:
-        "Equip managers with clear visibility into cross-functional contributions, delivery blockers, and team sentiment to lead with confidence.",
+        "Managers need a clearer understanding of employee goals, task progress, performance patterns, and development needs to identify where support or attention may be required.",
       href: "/solution-hub#context",
     },
     {
@@ -456,37 +457,19 @@ function ProactiveActionMiniUI() {
    ========================================================================= */
 function CardHoverGradientBlinds() {
   return (
-    <div className="absolute -left-0 inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
-      <GradientBlinds
-        gradientColors={[
-          "#FFFFFF",
-          "#FFFFFF",
-          "#FFA85C",
-          "#FF6B00",
-          "#F06A25",
-          "#FF7315",
-          "#FFFFFF",
-          "#FFFFFF",
-          "#FFFFFF",
-          "#FFFFFF",
-        ]}
-        blindCount={8}
-        angle={-15}
-        noise={0}
-        lightColor="#FFFFFF"
-        lightMode={true}
-        shine={0.5}
-        relief={0.06}
-        glow={0.6}
-        sway={0.2}
-        speed={0.6}
-        hoverTilt={0.4}
-        spotlightRadius={1.0}
-        spotlightOpacity={0.5}
-        className="w-full h-full"
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
+      <FlutedGlassBackground
+        colorA="#FFA812"
+        colorB="#FF4D0A"
+        background="#FFF5ED"
+        mobileSlitWidth={60}
+        squeeze={1.9}
+        lip={0.045}
+        speed={0.9}
+        mouseStrength={1}
       />
       {/* Soft bottom fade to ensure typography legibility */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FFF5ED] via-[#FFF5ED]/80 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#FFF5ED] via-[#FFF5ED]/85 to-transparent pointer-events-none" />
     </div>
   );
 }
@@ -536,16 +519,22 @@ export default function Workforce() {
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.14]">
-              <span className="block">{headline.line1}</span>
-              <span className="block">{headline.line2}</span>
+              <BlurText
+                as="span"
+                delay={20}
+                text={`${headline.line1}\n${headline.line2}`}
+              />
             </h2>
           </div>
 
           {/* Right: Description & CTA Button */}
           <div className="flex flex-col items-start lg:items-end gap-5 max-w-lg">
-            <p className="font-sans text-base sm:text-[17px] text-zinc-600 leading-relaxed lg:text-left">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="font-sans text-base sm:text-[17px] text-zinc-600 leading-[1.3] lg:text-left"
+            />
 
             <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end">
               <Link
@@ -599,7 +588,7 @@ export default function Workforce() {
             <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[0].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[0].description}
                   </p>
                 </div>
@@ -625,7 +614,7 @@ export default function Workforce() {
             <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[1].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3 mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[1].description}
                   </p>
                 </div>
@@ -651,7 +640,7 @@ export default function Workforce() {
             <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[2].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[2].description}
                   </p>
                 </div>
@@ -677,7 +666,7 @@ export default function Workforce() {
             <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[3].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-relaxed mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[3].description}
                   </p>
                 </div>

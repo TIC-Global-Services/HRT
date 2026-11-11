@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionLayersProps {
   eyebrow?: string;
@@ -52,9 +53,12 @@ export default function SolutionLayers({
                 </span>
               </div>
 
-              <h2 className="font-sora text-white text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.14] mt-4">
-                {title}
-              </h2>
+              <BlurText
+                as="h2"
+                text={title}
+                delay={20}
+                className="font-sora text-white text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.14] mt-4"
+              />
             </div>
 
             {/* Bottom Layer Pills */}

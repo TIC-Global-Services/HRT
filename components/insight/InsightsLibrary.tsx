@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Play, Sparkles } from "lucide-react";
 import { allBlogs } from "@/data/blogs";
+import BlurText from "@/reuseable/BlurText";
 
 export interface LibraryArticleItem {
   id: string;
@@ -319,9 +320,12 @@ export default function InsightsLibrary({
 
                 {/* Bottom Content: Title + CTA */}
                 <div className="relative z-10 flex flex-col items-start gap-3 mt-auto pt-6">
-                  <h3 className="text-white font-sora text-xl sm:text-[28px] font-medium leading-[1.2] tracking-tight group-hover:text-white/95 transition-colors">
-                    {article.title}
-                  </h3>
+                  <BlurText
+                    as="h3"
+                    text={article.title}
+                    delay={20}
+                    className="text-white font-sora text-xl sm:text-[28px] font-medium leading-[1.2] tracking-tight group-hover:text-white/95 transition-colors"
+                  />
 
                   <span className="inline-flex items-center gap-2 text-white font-mono text-base tracking-tight uppercase font-medium group-hover:text-[#F8750C] transition-colors">
                     {article.cta}

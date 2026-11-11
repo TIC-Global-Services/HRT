@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface ExtensionCardData {
   category: string;
@@ -238,14 +239,20 @@ export default function ConnectedModules({
           </p>
 
           {/* Main Title */}
-          <h2 className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] whitespace-pre-line m-0 mb-4">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            delay={20}
+            text={title}
+            className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4"
+          />
 
           {/* Subtitle / Description */}
-          <p className="text-[#62737A] font-sora text-sm sm:text-lg leading-[1.3] max-w-5xl mx-auto m-0">
-            {description}
-          </p>
+          <BlurText
+            as="p"
+            delay={20}
+            text={description}
+            className="text-[#62737A] font-sora text-sm sm:text-lg leading-[1.3] max-w-5xl mx-auto m-0"
+          />
         </div>
 
         {/* ----------------- 3-Module Orbit System (2 Concentric Dashed Rings) ----------------- */}

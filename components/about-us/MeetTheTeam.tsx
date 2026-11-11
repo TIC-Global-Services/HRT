@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlurText from "@/reuseable/BlurText";
 
 export interface TeamMember {
   name: string;
@@ -82,9 +83,12 @@ export default function MeetTheTeam({
           <span className="w-1.5 h-1.5 rounded-full bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
           {eyebrow}
         </p>
-        <h2 className="text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1] whitespace-pre-line">
-          {title}
-        </h2>
+        <BlurText
+          as="h2"
+          delay={20}
+          text={title}
+          className="text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]"
+        />
       </div>
 
       {/* Team Cards Grid (3 cards per row, bottom row centered) */}

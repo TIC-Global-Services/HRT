@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionCard {
   id: string;
@@ -336,15 +337,20 @@ export default function BuildFor() {
           </div>
 
           {/* Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1] mb-5">
-            Built for how your
-            <span className="block">organisation works</span>
-          </h2>
+          <BlurText
+            as="h2"
+            delay={20}
+            text={"Built for how your\norganisation works"}
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1] mb-5"
+          />
 
           {/* Subtitle */}
-          <p className="font-sans text-base sm:text-lg text-slate-500 leading-[1.3] max-w-4xl">
-            Claripa connects people management, performance, and task workflows to help organisations align goals, track progress, understand performance, and make informed people decisions
-          </p>
+          <BlurText
+            as="p"
+            delay={20}
+            text="Claripa connects people management, performance, and task workflows to help organisations align goals, track progress, understand performance, and make informed people decisions"
+            className="font-sans text-base sm:text-lg text-slate-500 leading-[1.3] max-w-4xl"
+          />
         </div>
 
         {/* 2x2 Grid of Solution Cards (with Smooth Crossfade on Page Change) */}
@@ -381,11 +387,14 @@ export default function BuildFor() {
                         isActive ? "text-[#E26D35]" : "text-[#142938]"
                       )}
                     >
-                      {card.title}
+                      <BlurText delay={20} text={card.title} />
                     </h3>
-                    <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans max-w-md">
-                      {card.description}
-                    </p>
+                    <BlurText
+                      as="p"
+                      delay={20}
+                      text={card.description}
+                      className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans max-w-md"
+                    />
                   </div>
 
                   {/* Right Column: Dot Matrix Graphic */}

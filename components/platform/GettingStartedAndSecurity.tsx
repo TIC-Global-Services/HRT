@@ -5,6 +5,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import BlurText from "@/reuseable/BlurText";
 
 export interface GettingStartedStep {
   title: string;
@@ -112,11 +113,14 @@ export default function GettingStartedAndSecurity({
                     index === steps.length - 1 ? "text-[#d95e0b]" : "text-[#002E40]"
                   }`}
                 >
-                  {step.title}
+                  <BlurText delay={20} text={step.title} />
                 </h3>
-                <p className="mb-0 mt-2 text-base leading-[1.2]  tracking-tight whitespace-pre-line text-[#62737A]">
-                  {step.description}
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={step.description}
+                  className="mb-0 mt-2 text-base leading-[1.2] tracking-tight text-[#62737A]"
+                />
               </li>
             ))}
           </ol>
@@ -141,11 +145,14 @@ export default function GettingStartedAndSecurity({
                     <Icon aria-hidden="true" size={19} />
                   </span>
                   <h3 className="m-0 text-base font-semibold text-[#173c49]">
-                    {pillar.title}
+                    <BlurText delay={20} text={pillar.title} />
                   </h3>
-                  <p className="mb-0 mt-1.5 text-base leading-[1.2] text-[#718087]">
-                    {pillar.description}
-                  </p>
+                  <BlurText
+                    as="p"
+                    delay={20}
+                    text={pillar.description}
+                    className="mb-0 mt-1.5 text-base leading-[1.2] text-[#718087]"
+                  />
                 </article>
               );
             })}

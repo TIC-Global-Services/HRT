@@ -1,3 +1,5 @@
+import BlurText from "@/reuseable/BlurText";
+
 export interface SectionHeadingProps {
   id?: string;
   eyebrow: string;
@@ -27,12 +29,15 @@ export default function SectionHeading({
         className="m-0 text-3xl font-normal leading-[1.08] tracking-tight text-[#254f5f] sm:text-4xl lg:text-[46px]"
         id={id}
       >
-        {title}
+        <BlurText delay={20} text={title} />
       </h2>
       {description ? (
-        <p className="mb-0 mt-5 text-base leading-relaxed text-[#62737a] sm:text-lg">
-          {description}
-        </p>
+        <BlurText
+          as="p"
+          delay={20}
+          text={description}
+          className="mb-0 mt-5 text-base leading-relaxed text-[#62737a] sm:text-lg"
+        />
       ) : null}
     </div>
   );

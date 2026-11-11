@@ -6,24 +6,17 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import MakeYourNextMove from "@/components/MakeYourNextMove";
+import FlutedGlassBackground from "@/reuseable/HeroBg";
+import BlurText from "@/reuseable/BlurText";
 
 export { MakeYourNextMove };
 
 const Footer: React.FC = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePos({ x, y });
-  };
 
   return (
     <footer
-      onMouseMove={handleMouseMove}
       className={`relative w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
         isHome ? "bg-white" : "bg-[#F7F6F3]"
       }`}
@@ -35,26 +28,23 @@ const Footer: React.FC = () => {
 
       {/* 2. Floating Frosted Glass Footer Section Container */}
       <div className="relative z-20 px-4 sm:px-6 lg:px-[5%] mt-2 sm:mt-30 mb-8 sm:mb-12">
-        {/* Vertical Golden Blinds (Layer z-0, behind the card) */}
+        {/* Interactive Fluted Glass Background (HeroBg) (Layer z-0, behind the card) */}
         <div
           className="absolute -top-36 sm:-top-44 md:-top-48 lg:-top-62 left-1/2 -translate-x-1/2 w-[900px] sm:w-[1250px] md:w-[1450px] lg:w-[1680px] aspect-[2031/1131] pointer-events-none select-none z-0"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 16%, black 88%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 16%, black 88%, transparent 100%)",
+          }}
           aria-hidden="true"
         >
-          <div
-            className="relative w-full h-full transition-transform duration-500 ease-out"
-            style={{
-              transform: `translate3d(${mousePos.x * 14}px, ${mousePos.y * 10}px, 0)`,
-            }}
-          >
-            <Image
-              src="/footer-gradient-blinds-hd.png"
-              alt="Claripa Blinds Ambient Background"
-              fill
-              priority
-              className="object-contain object-top pointer-events-none"
-              sizes="(max-width: 1400px) 100vw, 1680px"
-            />
-          </div>
+          <FlutedGlassBackground
+            colorA="#FFA812"
+            colorB="#FF4D0A"
+            background={isHome ? "#FFFFFF" : "#F7F6F3"}
+            mouseStrength={1}
+          />
         </div>
 
         {/* Ambient warm glow behind blinds crest */}
@@ -116,10 +106,12 @@ const Footer: React.FC = () => {
                 </Link>
 
                 {/* Tagline */}
-                <p className="text-xs sm:text-lg text-slate-200/95 leading-relaxed max-w-[240px] font-normal">
-                  Claripa turns workforce data into actionable intelligence for
-                  better people decisions.
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text="Claripa turns workforce data into actionable intelligence for better people decisions."
+                  className="text-xs sm:text-lg text-slate-200/95 leading-relaxed max-w-[240px] font-normal"
+                />
               </div>
 
               {/* Contact Info Meta */}

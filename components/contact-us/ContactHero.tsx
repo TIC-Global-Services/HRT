@@ -1,6 +1,7 @@
 import PageIntro from "@/components/shared/PageIntro";
 import Image from "next/image";
 import { MessageSquare, Tag, ThumbsUp } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 const companyLogos = [
   { src: "/company_logo/mitsubishi.png", name: "Mitsubishi" },
@@ -59,11 +60,15 @@ export default function ContactHero({
               </span>
               <span className="flex flex-col gap-0.5">
                 <strong className="text-[#002e40] font-sora text-base font-semibold leading-tight">
-                  {benefitTitle}
+                  <BlurText as="span" text={benefitTitle} trigger="load" delay={20} />
                 </strong>
-                <span className="text-[#62737a] font-sora text-sm leading-relaxed">
-                  {benefitDescription}
-                </span>
+                <BlurText
+                  as="span"
+                  text={benefitDescription}
+                  trigger="load"
+                  delay={20}
+                  className="text-[#62737a] font-sora text-sm leading-relaxed"
+                />
               </span>
             </li>
           )

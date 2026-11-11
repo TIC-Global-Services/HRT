@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlurText from "@/reuseable/BlurText";
 
 export interface AboutHeroProps {
   eyebrow?: string;
@@ -25,9 +26,13 @@ export default function AboutHero({
         <p className="font-mono text-xs sm:text-lg font-semibold tracking-tight uppercase text-[#E56A1E] mb-3 sm:mb-4">
           {eyebrow}
         </p>
-        <h1 className="font-sora text-[#002E40] text-3xl sm:text-5xl md:text-[54px] lg:text-[60px] font-normal tracking-[-0.035em] leading-[1.08] whitespace-pre-line">
-          {title}
-        </h1>
+        <BlurText
+          as="h1"
+          delay={20}
+          trigger="load"
+          text={title}
+          className="font-sora text-[#002E40] text-3xl sm:text-5xl md:text-[54px] lg:text-[60px] font-normal tracking-[-0.035em] leading-[1.08]"
+        />
       </div>
 
       {/* Large White Rounded Card Container matching Image exactly */}
@@ -35,9 +40,13 @@ export default function AboutHero({
         <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_1fr] items-stretch">
           {/* Left Column: Description + Button */}
           <div className="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 md:px-14 md:py-16 lg:pl-16 lg:pr-10">
-            <p className="text-[#62737A] font-sora text-base sm:text-lg md:text-2xl leading-[1.38] font-normal mb-8 max-w-[450px]">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              trigger="load"
+              text={description}
+              className="text-[#62737A] font-sora text-base sm:text-lg md:text-2xl leading-[1.38] font-normal mb-8 max-w-[450px]"
+            />
             <div>
               <Link
                 href={ctaHref}

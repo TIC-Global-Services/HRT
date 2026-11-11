@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import GradientBlinds from "@/components/GradientBlinds";
+import BlurText from "@/reuseable/BlurText";
 
 export interface ValueCardItem {
   id: string;
@@ -92,13 +93,16 @@ export default function MissionVision({
         <p className="inline-flex items-center gap-2 text-[#F8780C] font-sora text-xs sm:text-sm font-normal tracking-[0.78px] uppercase mb-3">
           <span
             aria-hidden="true"
-            className="w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
+            className="w-1.5 h-1.5 rounded-full tracking-tight bg-[#F8780C] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
           />
           {eyebrow}
         </p>
-        <h2 className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12] whitespace-pre-line">
-          {title}
-        </h2>
+        <BlurText
+          as="h2"
+          delay={20}
+          text={title}
+          className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12]"
+        />
       </div>
 
       {/* Asymmetric 2-Column Layout matching Image 2 */}
@@ -108,9 +112,12 @@ export default function MissionVision({
           <span className="text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase mb-2.5 block">
             {overviewLabel}
           </span>
-          <p className="text-[#001F1F] font-sora text-sm sm:text-xl leading-[1.3] max-w-xs m-0">
-            {overviewText}
-          </p>
+          <BlurText
+            as="p"
+            delay={20}
+            text={overviewText}
+            className="text-[#001F1F] font-sora text-sm sm:text-xl leading-[1.3] max-w-xs m-0"
+          />
         </div>
 
         {/* Right Column: Stacked Visuals (Wide Photography -> Mission/Vision -> 4 Values) */}
@@ -135,9 +142,12 @@ export default function MissionVision({
                 <span className="font-mono text-xl text-[#96AAB2] tracking-tight uppercase mb-4 block">
                   {missionKicker}
                 </span>
-                <p className="font-sora text-xs sm:text-xl text-white tracking-tight leading-[1.3] font-normal">
-                  {missionText}
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={missionText}
+                  className="font-sora text-xs sm:text-xl text-white tracking-tight leading-[1.3] font-normal"
+                />
               </div>
             </article>
 
@@ -147,9 +157,12 @@ export default function MissionVision({
                 <span className="font-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
                   {visionKicker}
                 </span>
-                <p className="font-sora text-base sm:text-xl text-[#001F1F] font-normal leading-[1.2] tracking-tight m-0">
-                  {visionText}
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={visionText}
+                  className="font-sora text-base sm:text-xl text-[#001F1F] font-normal leading-[1.2] tracking-tight m-0"
+                />
               </div>
 
               {/* GradientBlinds WebGL accent in bottom-right corner matching reference 100% */}
@@ -210,13 +223,13 @@ export default function MissionVision({
                     {v.id}
                   </span>
                   <h3 className="font-sora text-sm sm:text-xl font-semibold text-[#002E40] m-0">
-                    {v.title}
+                    <BlurText delay={20} text={v.title} />
                   </h3>
                 </div>
                 <ul className="text-xs sm:text-base text-[#62737A] font-sora leading-[1.2] list-disc list-inside">
                   {v.bullets.map((b, bi) => (
                     <li key={bi} className="leading-[1.2] tracking-tight">
-                      <span className="-ml-1">{b}</span>
+                      <BlurText delay={20} text={b} className="-ml-1" />
                     </li>
                   ))}
                 </ul>

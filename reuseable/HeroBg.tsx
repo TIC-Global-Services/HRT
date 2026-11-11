@@ -35,6 +35,12 @@ type Props = {
     mouseStrength?: number
     /** Optional background image texture driven through the fluted glass shader */
     textureSrc?: string
+    /** Optional stitched multi-card texture sources composited into one continuous WebGL canvas */
+    compositeSources?: { src: string; x: number; y: number; w: number; h: number }[]
+    /** Coordinate space dimensions when using compositeSources */
+    compositeSize?: { w: number; h: number }
+    /** Visual composition preset ("hero" default or "timeline" 4-card continuous sweep) */
+    preset?: "hero" | "timeline"
     className?: string
     style?: React.CSSProperties
 }
@@ -59,6 +65,7 @@ uniform vec3  u_bg;
 uniform sampler2D u_tex;
 uniform float u_hasTex;
 uniform float u_texAspect;
+uniform float u_preset;
 
 vec3 mod289(vec3 x){ return x - floor(x*(1./289.))*289.; }
 vec2 mod289(vec2 x){ return x - floor(x*(1./289.))*289.; }
@@ -145,7 +152,67 @@ vec3 sampleTexField(float sx, float uvY, float aspect) {
   return mix(exactCol, col, clamp(u_influence * 0.92 + 0.08 * satMask, 0.0, 1.0));
 }
 
+vec3 fieldTimeline(vec2 p, float aspect){
+  float t = u_time * .12;
+  vec2 m = vec2(u_mouse.x*aspect, u_mouse.y);
+  vec2 w = vec2(snoise(p*1.15 + vec2(t, -t*.7)), snoise(p*1.15 + vec2(-t*.8, t) + 7.3));
+  p += w * .055;
+
+  vec2 d1 = vec2(snoise(vec2(t*.8, 1.)),  snoise(vec2(t*.8, 4.)))  * .06;
+  vec2 d2 = vec2(snoise(vec2(t*.65, 9.)), snoise(vec2(t*.65, 13.))) * .07;
+  vec2 d3 = vec2(snoise(vec2(t*.75, 21.)), snoise(vec2(t*.75, 27.))) * .06;
+  vec2 d4 = vec2(snoise(vec2(t*.55, 33.)), snoise(vec2(t*.55, 39.))) * .06;
+
+  // 4-Card continuous diagonal wave matching image 100%:
+  // Card 1 (0..0.24): faint top-right peach tail
+  // Card 2 (0.25..0.49): warm orange-coral top half, clean white bottom
+  // Card 3 (0.51..0.75): intense fiery red-orange upper 65%, white bottom
+  // Card 4 (0.76..1.00): rich red-orange top-left filling seamlessly into full golden amber bottom
+  vec2 cR1 = vec2(.24*aspect, .87) + d1 * .6;
+  vec2 cR2 = vec2(.42*aspect, .81) + d2 * .7;
+  vec2 cR3 = vec2(.62*aspect, .80) + d3 * .6;
+  vec2 cR3b = vec2(.68*aspect, .56) + d4 * .5;
+  vec2 cR4 = vec2(.81*aspect, .81) + d4 * .5;
+  vec2 cR5 = vec2(.98*aspect, .80) + d1 * .4;
+
+  vec2 cA1 = vec2(.82*aspect, .42) + d1 * .4;
+  vec2 cA2 = vec2(.90*aspect, .28) + d2 * .4;
+  vec2 cA3 = vec2(1.01*aspect, .45) + d3 * .4;
+
+  float k = u_influence;
+  vec2 safeM = vec2(m.x, mix(m.y, max(m.y, 0.46), smoothstep(0.75*aspect, 0.25*aspect, m.x)));
+  cR1 = mix(cR1, safeM, .18*k);
+  cR2 = mix(cR2, safeM, .22*k);
+  cR3 = mix(cR3, safeM, .20*k);
+  cR3b = mix(cR3b, safeM, .20*k);
+  cR4 = mix(cR4, safeM, .18*k);
+  cR5 = mix(cR5, safeM, .12*k);
+  cA1 = mix(cA1, m, .16*k);
+  cA2 = mix(cA2, m, .16*k);
+  cA3 = mix(cA3, m, .12*k);
+
+  float b = .26*blob(p, cR1, vec2(.11*aspect, .19))
+          + .95*blob(p, cR2, vec2(.16*aspect, .21))
+          + 1.35*blob(p, cR3, vec2(.18*aspect, .25))
+          + 1.05*blob(p, cR3b, vec2(.15*aspect, .22))
+          + 1.25*blob(p, cR4, vec2(.16*aspect, .28))
+          + 1.05*blob(p, cR5, vec2(.16*aspect, .28));
+
+  float a = 1.05*blob(p, cA1, vec2(.11*aspect, .28))
+          + 1.60*blob(p, cA2, vec2(.20*aspect, .32))
+          + 1.30*blob(p, cA3, vec2(.18*aspect, .34));
+
+  // Mouse highlight glow (subtle so Card 1-3 bottom copy stays clean)
+  float hot = .30*k*blob(p, m, vec2(.12*aspect, .14));
+  b += hot*.55; a += hot*.45;
+
+  vec3 col = (a*u_colA + b*u_colB) / max(a + b, 1e-4);
+  float alpha = pow(smoothstep(0., 1., a + b), 1.05);
+  return mix(u_bg, col, alpha);
+}
+
 vec3 field(vec2 p, float aspect){
+  if (u_preset > 0.5) return fieldTimeline(p, aspect);
   float t = u_time * .12;
   vec2 m = vec2(u_mouse.x*aspect, u_mouse.y);
   vec2 w = vec2(snoise(p*1.3 + vec2(t, -t*.7)), snoise(p*1.3 + vec2(-t*.8, t) + 7.3));
@@ -241,6 +308,9 @@ export default function FlutedGlassBackground({
     speed = 1,
     mouseStrength = 1,
     textureSrc,
+    compositeSources,
+    compositeSize,
+    preset = "hero",
     className,
     style,
 }: Props) {
@@ -249,23 +319,29 @@ export default function FlutedGlassBackground({
     const propsRef = useRef({
         colorA, colorB, background, desktopSlits, mobileSlitWidth,
         desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
+        compositeSources, compositeSize, preset,
     })
     useEffect(() => {
         propsRef.current = {
             colorA, colorB, background, desktopSlits, mobileSlitWidth,
             desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
+            compositeSources, compositeSize, preset,
         }
     }, [
         colorA, colorB, background, desktopSlits, mobileSlitWidth,
         desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
+        compositeSources, compositeSize, preset,
     ])
+
+    const compositeKey = compositeSources ? compositeSources.map((s) => `${s.src}:${s.x}:${s.y}:${s.w}:${s.h}`).join("|") : ""
 
     useEffect(() => {
         const canvas = canvasRef.current
         if (!canvas) return
+        const isTexMode = Boolean(textureSrc || (compositeSources && compositeSources.length > 0))
         const gl = canvas.getContext("webgl", { antialias: false, alpha: true })
         if (!gl) {
-            canvas.style.background = textureSrc
+            canvas.style.background = isTexMode
                 ? "transparent"
                 : `linear-gradient(135deg, ${background} 30%, ${colorA} 55%, ${colorB} 75%, ${background})`
             return
@@ -297,7 +373,7 @@ export default function FlutedGlassBackground({
             res: U("u_res"), time: U("u_time"), mouse: U("u_mouse"),
             strips: U("u_strips"), inf: U("u_influence"), squeeze: U("u_squeeze"),
             lip: U("u_lip"), colA: U("u_colA"), colB: U("u_colB"), bg: U("u_bg"),
-            tex: U("u_tex"), hasTex: U("u_hasTex"), texAspect: U("u_texAspect"),
+            tex: U("u_tex"), hasTex: U("u_hasTex"), texAspect: U("u_texAspect"), preset: U("u_preset"),
         }
 
         let tex: WebGLTexture | null = null
@@ -305,7 +381,96 @@ export default function FlutedGlassBackground({
         let texAspect = 1
         let disposed = false
 
-        if (textureSrc) {
+        if (compositeSources && compositeSources.length > 0 && compositeSize) {
+            tex = gl.createTexture()
+            Promise.all(
+                compositeSources.map(
+                    (item) =>
+                        new Promise<{ item: typeof item; img: HTMLImageElement }>((resolve, reject) => {
+                            const img = new window.Image()
+                            img.crossOrigin = "anonymous"
+                            img.onload = () => resolve({ item, img })
+                            img.onerror = reject
+                            img.src = item.src
+                        })
+                )
+            )
+                .then((loaded) => {
+                    if (disposed || !tex) return
+                    const off = document.createElement("canvas")
+                    off.width = compositeSize.w
+                    off.height = compositeSize.h
+                    const ctx = off.getContext("2d")
+                    if (!ctx) return
+
+                    ctx.fillStyle = background || "#FFFFFF"
+                    ctx.fillRect(0, 0, off.width, off.height)
+
+                    // First pass: inpaint rounded corners and bridge gaps softly between cards
+                    const offsets = [
+                        [-24, 0], [24, 0], [0, -24], [0, 24],
+                        [-18, -18], [18, -18], [-18, 18], [18, 18],
+                    ]
+                    for (const { item, img } of loaded) {
+                        for (const [ox, oy] of offsets) {
+                            ctx.drawImage(img, item.x + ox, item.y + oy, item.w, item.h)
+                        }
+                    }
+
+                    // Smoothly bridge the horizontal gap between consecutive cards
+                    for (let i = 0; i < loaded.length - 1; i++) {
+                        const left = loaded[i]
+                        const right = loaded[i + 1]
+                        const gapX = left.item.x + left.item.w
+                        const gapW = Math.max(0, right.item.x - gapX)
+                        const bridgeH = Math.max(left.item.h, right.item.h)
+                        if (gapW > 0) {
+                            ctx.save()
+                            ctx.drawImage(
+                                left.img,
+                                Math.max(0, left.img.naturalWidth - 4),
+                                0,
+                                4,
+                                left.img.naturalHeight,
+                                gapX,
+                                left.item.y,
+                                gapW,
+                                left.item.h
+                            )
+                            ctx.globalAlpha = 0.5
+                            ctx.drawImage(
+                                right.img,
+                                0,
+                                0,
+                                4,
+                                right.img.naturalHeight,
+                                gapX,
+                                right.item.y,
+                                gapW,
+                                Math.min(bridgeH, right.item.h)
+                            )
+                            ctx.restore()
+                        }
+                    }
+
+                    // Final pass: draw each card artwork crisply 1:1 in its exact position
+                    for (const { item, img } of loaded) {
+                        ctx.drawImage(img, item.x, item.y, item.w, item.h)
+                    }
+
+                    texAspect = compositeSize.w / Math.max(compositeSize.h, 1)
+                    gl.bindTexture(gl.TEXTURE_2D, tex)
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
+                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, off)
+                    hasTex = 1
+                })
+                .catch(() => {
+                    // Fallback to transparent overlay over SSR images
+                })
+        } else if (textureSrc) {
             tex = gl.createTexture()
             const img = new window.Image()
             img.crossOrigin = "anonymous"
@@ -346,11 +511,12 @@ export default function FlutedGlassBackground({
             if (r.width <= 0 || r.height <= 0) return
             const nx = (cx - r.left) / r.width
             const ny = 1 - (cy - r.top) / r.height
-            if (textureSrc) {
-                const nearCard = nx >= -0.08 && nx <= 1.08 && ny >= -0.08 && ny <= 1.08
+            const pr = propsRef.current
+            if (pr.textureSrc || (pr.compositeSources && pr.compositeSources.length > 0) || pr.preset === "timeline") {
+                const nearEl = nx >= -0.08 && nx <= 1.08 && ny >= -0.08 && ny <= 1.08
                 target.x = nx
                 target.y = ny
-                infTarget = nearCard ? 1 : 0
+                infTarget = nearEl ? 1 : 0
             } else {
                 target.x = nx
                 target.y = ny
@@ -379,7 +545,8 @@ export default function FlutedGlassBackground({
             cur.y += (target.y - cur.y) * ease
             inf += (infTarget - inf) * (1 - Math.exp(-dt * 2.4))
 
-            if (p.textureSrc && hasTex < 0.5) {
+            const awaitingTex = Boolean(p.textureSrc || (p.compositeSources && p.compositeSources.length > 0))
+            if (awaitingTex && hasTex < 0.5) {
                 gl.clearColor(0, 0, 0, 0)
                 gl.clear(gl.COLOR_BUFFER_BIT)
                 raf = requestAnimationFrame(frame)
@@ -397,6 +564,7 @@ export default function FlutedGlassBackground({
             }
             gl.uniform1f(u.hasTex, hasTex)
             gl.uniform1f(u.texAspect, texAspect)
+            gl.uniform1f(u.preset, p.preset === "timeline" ? 1 : 0)
             gl.uniform2f(u.res, W, H)
             gl.uniform1f(u.time, time)
             gl.uniform2f(u.mouse, cur.x, cur.y)
@@ -425,7 +593,7 @@ export default function FlutedGlassBackground({
             gl.deleteBuffer(buf)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [textureSrc])
+    }, [textureSrc, compositeKey])
 
     return (
         <canvas

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SuccessorItem {
   role: string;
@@ -192,33 +193,51 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
             </div>
 
             {/* Main Headline matching 100% typography */}
-            <h2 className="font-sora text-3xl sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 whitespace-pre-line">
-              {title}
-            </h2>
+            <BlurText
+              as="h2"
+              delay={20}
+              text={title}
+              className="font-sora text-3xl sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4"
+            />
 
             {/* Detailed Body Paragraph */}
-            <p className="font-sora text-sm sm:text-lg text-[#5F7373] font-normal leading-[1.3] max-w-3xl mb-6">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="font-sora text-sm sm:text-lg text-[#5F7373] font-normal leading-[1.3] max-w-3xl mb-6"
+            />
 
             {/* Two Sub-Features Grid at Bottom of Left Column */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-3">
               <div>
-                <h3 className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5">
-                  {featureOneTitle}
-                </h3>
-                <p className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0">
-                  {featureOneText}
-                </p>
+                <BlurText
+                  as="h3"
+                  delay={20}
+                  text={featureOneTitle}
+                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5"
+                />
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={featureOneText}
+                  className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0"
+                />
               </div>
 
               <div>
-                <h3 className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5">
-                  {featureTwoTitle}
-                </h3>
-                <p className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0">
-                  {featureTwoText}
-                </p>
+                <BlurText
+                  as="h3"
+                  delay={20}
+                  text={featureTwoTitle}
+                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-1.5"
+                />
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={featureTwoText}
+                  className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0"
+                />
               </div>
             </div>
           </div>

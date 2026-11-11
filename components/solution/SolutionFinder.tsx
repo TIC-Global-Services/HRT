@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export const solutionFilters = [
   "By need",
@@ -103,13 +104,19 @@ export default function SolutionFinder({
           <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b0a] shadow-[0_0_8px_rgba(255,107,10,0.45)]" />
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-[#003247] text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]">
-          {title}
-        </h2>
+        <BlurText
+          as="h2"
+          text={title}
+          delay={20}
+          className="mt-3 text-[#003247] text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]"
+        />
         {description && (
-          <p className="mt-3 text-[#71838a] text-sm leading-relaxed">
-            {description}
-          </p>
+          <BlurText
+            as="p"
+            text={description}
+            delay={20}
+            className="mt-3 text-[#71838a] text-sm leading-relaxed"
+          />
         )}
       </div>
 
@@ -165,18 +172,22 @@ export default function SolutionFinder({
             >
               {/* Top: Title & Description */}
               <div>
-                <h3
+                <BlurText
+                  as="h3"
+                  text={solution.title}
+                  delay={20}
                   className={`font-sora text-xl sm:text-2xl font-semibold leading-[1.2] whitespace-pre-line mb-2 transition-colors ${
                     isFeatured
                       ? "text-[#E26D35]"
                       : "text-[#142938] group-hover:text-[#E26D35]"
                   }`}
-                >
-                  {solution.title}
-                </h3>
-                <p className="font-sora text-sm sm:text-base leading-[1.2] text-[#5A6A72]">
-                  {solution.description}
-                </p>
+                />
+                <BlurText
+                  as="p"
+                  text={solution.description}
+                  delay={20}
+                  className="font-sora text-sm sm:text-base leading-[1.2] text-[#5A6A72]"
+                />
               </div>
 
               {/* Bottom: Tags & Explore Link */}

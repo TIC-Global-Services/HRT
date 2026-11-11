@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface ContactFormProps {
   inquiries?: string[];
@@ -29,9 +30,13 @@ export default function ContactForm({
           <span className="flex items-center gap-2 m-0 text-[#f8780c] font-mono text-[11px] font-medium tracking-[0.02em] uppercase">
             BOOK A DEMO
           </span>
-          <h2 className="mt-2 text-[#254f5f] font-sora text-xl sm:text-2xl lg:text-[25px] font-medium tracking-[-0.04em]">
-            Tell us a little about your team.
-          </h2>
+          <BlurText
+            as="h2"
+            text="Tell us a little about your team."
+            trigger="load"
+            delay={20}
+            className="mt-2 text-[#254f5f] font-sora text-xl sm:text-2xl lg:text-[25px] font-medium tracking-[-0.04em]"
+          />
         </div>
         <span className="text-[#62737a] font-mono text-[11px]">01 / 01</span>
       </div>

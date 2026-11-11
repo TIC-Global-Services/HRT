@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BlurText from "@/reuseable/BlurText";
 
 export interface MetricCardData {
   type: "metric";
@@ -85,12 +86,18 @@ function ResultCard({ card }: { card: ResultCardItem }) {
           <span className="block font-mono text-5xl sm:text-[56px] font-medium text-[#F8780C] tracking-tight leading-none mb-4">
             {card.value}
           </span>
-          <h3 className="font-sora text-base sm:text-lg font-semibold text-[#002E40] tracking-tight">
-            {card.title}
-          </h3>
-          <p className="font-sora text-xs sm:text-[13px] text-[#62737A] mt-1 leading-relaxed">
-            {card.subtitle}
-          </p>
+          <BlurText
+            as="h3"
+            text={card.title}
+            delay={20}
+            className="font-sora text-base sm:text-lg font-semibold text-[#002E40] tracking-tight"
+          />
+          <BlurText
+            as="p"
+            text={card.subtitle}
+            delay={20}
+            className="font-sora text-xs sm:text-[13px] text-[#62737A] mt-1 leading-relaxed"
+          />
         </div>
 
         <span className="block font-mono text-[10px] font-medium text-[#62737A] tracking-wider uppercase mt-6 pt-4 border-t border-[#ECE9E3]/70">
@@ -109,9 +116,12 @@ function ResultCard({ card }: { card: ResultCardItem }) {
         >
           “
         </span>
-        <p className="font-sora text-sm sm:text-[14.5px] text-[#002E40] leading-relaxed italic m-0">
-          {card.quote}
-        </p>
+        <BlurText
+          as="p"
+          text={card.quote}
+          delay={20}
+          className="font-sora text-sm sm:text-[14.5px] text-[#002E40] leading-relaxed italic m-0"
+        />
       </div>
 
       <div className="flex items-center gap-3.5 mt-6 pt-4 border-t border-[#ECE9E3]/70">
@@ -154,9 +164,12 @@ export default function SolutionDetailResults({
               {eyebrow}
             </span>
           </div>
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12]">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12]"
+          />
         </div>
 
         {/* 3 Columns x 2 Rows Grid */}

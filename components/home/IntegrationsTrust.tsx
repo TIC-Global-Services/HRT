@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FolderLock } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 // Orbit nodes with their fixed radial positions (in degrees) matching the design
 const orbitNodes = [
@@ -77,13 +78,18 @@ export default function IntegrationsTrust() {
               <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E26D35] uppercase mb-3">
                 INTEGRATIONS
               </div>
-              <h3 className="font-heading font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#142938] leading-[1.2] mb-3">
-                Connect Claripa with Your
-                Existing Systems
-              </h3>
-              <p className="font-sora text-sm sm:text-[16px] text-slate-500 leading-[1.2]">
-                Claripa brings people, performance, and task management together to help organisations connect workforce information and make more informed decisions.
-              </p>
+              <BlurText
+                as="h3"
+                delay={20}
+                text="Connect Claripa with Your Existing Systems"
+                className="font-heading font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#142938] leading-[1.2] mb-3"
+              />
+              <BlurText
+                as="p"
+                delay={20}
+                text="Claripa brings people, performance, and task management together to help organisations connect workforce information and make more informed decisions."
+                className="font-sora text-sm sm:text-[16px] text-slate-500 leading-[1.2]"
+              />
             </div>
 
             {/* Rotating Orbit Graphic matching the exact design */}
@@ -158,13 +164,18 @@ export default function IntegrationsTrust() {
               <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E26D35] uppercase mb-3">
                 SECURITY & TRUST
               </div>
-              <h3 className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-white leading-[1.2] mb-3">
-                Your Workforce Data
-                Deserves Careful Protection
-              </h3>
-              <p className="font-sora text-sm sm:text-[16px] text-[#ECE9E3] leading-[1.2]">
-                Claripa is designed to support organisations in managing workforce information responsibly. Details about its security controls, data handling practices, and infrastructure should be communicated based on verified product and security information.
-              </p>
+              <BlurText
+                as="h3"
+                delay={20}
+                text="Your Workforce Data Deserves Careful Protection"
+                className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-white leading-[1.2] mb-3"
+              />
+              <BlurText
+                as="p"
+                delay={20}
+                text="Claripa is designed to support organisations in managing workforce information responsibly. Details about its security controls, data handling practices, and infrastructure should be communicated based on verified product and security information."
+                className="font-sora text-sm sm:text-[16px] text-[#ECE9E3] leading-[1.2]"
+              />
             </div>
 
             {/* 2x2 Grid of Security Capability Boxes */}
@@ -175,9 +186,12 @@ export default function IntegrationsTrust() {
                   <FolderLock className="w-4 h-4" />
                   <span className="text-base font-semibold text-white">Security claims</span>
                 </div>
-                <p className="text-sm text-[#ADB5BD] leading-relaxed font-sans">
-                  Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified.
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text="Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified."
+                  className="text-sm text-[#ADB5BD] leading-relaxed font-sans"
+                />
               </div>
 
               {/* Tile 2: Role-based access */}

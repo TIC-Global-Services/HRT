@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, AlertCircle, Sparkles } from "lucide-react";
 import { AnimatedCounter } from "@/lib/useCountUp";
+import BlurText from "@/reuseable/BlurText";
 
 export interface PlatformHeroProps {
   eyebrow?: string;
@@ -59,14 +60,22 @@ export default function PlatformHero({
         </span>
 
         {/* Title */}
-        <h1 className="text-[#002e40] font-sora text-3xl sm:text-5xl md:text-[56px] lg:text-[60px] font-normal tracking-tight leading-[1.1] text-center whitespace-pre-line mb-3.5 sm:mb-4">
-          {title}
-        </h1>
+        <BlurText
+          as="h1"
+          delay={20}
+          trigger="load"
+          text={title}
+          className="text-[#002e40] font-sora text-3xl sm:text-5xl md:text-[56px] lg:text-[60px] font-normal tracking-tight leading-[1.1] text-center mb-3.5 sm:mb-4"
+        />
 
         {/* Description */}
-        <p className="text-[#62737a] font-sora text-sm sm:text-base md:text-lg leading-[1.2] text-center max-w-4xl mx-auto mb-6 sm:mb-8">
-          {description}
-        </p>
+        <BlurText
+          as="p"
+          delay={20}
+          trigger="load"
+          text={description}
+          className="text-[#62737a] font-sora text-sm sm:text-base md:text-lg leading-[1.2] text-center max-w-4xl mx-auto mb-6 sm:mb-8"
+        />
 
         {/* CTA Button */}
         <Link

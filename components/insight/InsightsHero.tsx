@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import FeaturedInsights, { ArticleItem } from "./FeaturedInsights";
+import BlurText from "@/reuseable/BlurText";
 
 export interface InsightsHeroProps {
   eyebrow?: string;
@@ -49,14 +50,22 @@ export default function InsightsHero({
         </span>
 
         {/* Title */}
-        <h1 className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-[-0.035em] leading-[1.12] text-center max-w-[760px] mx-auto whitespace-pre-line mb-3.5">
-          {title}
-        </h1>
+        <BlurText
+          as="h1"
+          text={title}
+          trigger="load"
+          delay={20}
+          className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-[-0.035em] leading-[1.12] text-center max-w-[760px] mx-auto whitespace-pre-line mb-3.5"
+        />
 
         {/* Description */}
-        <p className="text-[#62737a] font-sora text-sm sm:text-base md:text-[17px] leading-relaxed text-center max-w-[620px] mx-auto mb-7 md:mb-8">
-          {description}
-        </p>
+        <BlurText
+          as="p"
+          text={description}
+          trigger="load"
+          delay={20}
+          className="text-[#62737a] font-sora text-sm sm:text-base md:text-[17px] leading-relaxed text-center max-w-[620px] mx-auto mb-7 md:mb-8"
+        />
 
         {/* Search Bar */}
         <form

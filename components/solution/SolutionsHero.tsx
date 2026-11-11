@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { AlertCircle, Crown } from "lucide-react";
 import { AnimatedCounter } from "@/lib/useCountUp";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionsHeroProps {
   eyebrow?: string;
@@ -205,12 +206,20 @@ export default function SolutionsHero({
         <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-lg font-semibold tracking-wide">
           {eyebrow}
         </p>
-        <h1 className="max-w-[860px] my-2.5 text-[#003247] text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]">
-          {title}
-        </h1>
-        <p className="max-w-[820px] text-[#71838a] text-sm sm:text-base font-normal font-sora leading-[1.2]">
-          {description}
-        </p>
+        <BlurText
+          as="h1"
+          text={title}
+          trigger="load"
+          delay={20}
+          className="max-w-[860px] my-2.5 text-[#003247] text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
+        />
+        <BlurText
+          as="p"
+          text={description}
+          trigger="load"
+          delay={20}
+          className="max-w-[820px] text-[#71838a] text-sm sm:text-base font-normal font-sora leading-[1.2]"
+        />
         <Link
           className="inline-flex min-h-[50px] items-center justify-center gap-2 mt-6 px-7 rounded-full bg-[#285768] hover:bg-[#1d4655] text-white font-mono text-xs tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] focus-visible:ring-offset-2"
           href={ctaHref}

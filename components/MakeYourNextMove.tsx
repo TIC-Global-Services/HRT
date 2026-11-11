@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import BlurText from "@/reuseable/BlurText";
 
 export interface MakeYourNextMoveProps {
   eyebrow?: string;
@@ -48,14 +49,20 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
         </div>
 
         {/* Main Heading */}
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans">
-          {title}
-        </h2>
+        <BlurText
+          as="h2"
+          delay={20}
+          text={title}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
+        />
 
         {/* Subtitle */}
-        <p className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-[1.3] mb-8 sm:mb-8 font-normal">
-          {subtitle}
-        </p>
+        <BlurText
+          as="p"
+          delay={20}
+          text={subtitle}
+          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-[1.3] mb-8 sm:mb-8 font-normal"
+        />
 
         {/* Action Button */}
         <div>

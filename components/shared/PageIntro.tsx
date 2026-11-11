@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import SectionEyebrow from "./SectionEyebrow";
+import BlurText from "@/reuseable/BlurText";
 
 export interface PageIntroProps {
   eyebrow: string;
@@ -25,17 +26,23 @@ export default function PageIntro({
       }`}
     >
       <SectionEyebrow>{eyebrow}</SectionEyebrow>
-      <h1 className="m-0 text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px] whitespace-pre-line">
-        {title}
-      </h1>
+      <BlurText
+        as="h1"
+        delay={20}
+        trigger="load"
+        text={title}
+        className="m-0 text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px]"
+      />
       {description && (
-        <p
+        <BlurText
+          as="p"
+          delay={20}
+          trigger="load"
+          text={description}
           className={`m-0 text-[#3E4A4F] font-sora text-lg leading-[1.3] ${
             align === "center" ? "max-w-[700px]" : "max-w-[640px]"
           }`}
-        >
-          {description}
-        </p>
+        />
       )}
       {children}
     </div>

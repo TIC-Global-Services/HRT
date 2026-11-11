@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BlurText from "@/reuseable/BlurText";
 
 export interface ArticleItem {
   title: string;
@@ -144,9 +145,12 @@ export default function FeaturedInsights({
 
             {/* Bottom Content: Title + CTA */}
             <div className="relative z-10 flex flex-col items-start gap-3 md:gap-4 mt-auto pt-16">
-              <h3 className="text-white font-sora text-2xl sm:text-3xl md:text-[28px] font-semibold leading-[1.22] tracking-tight group-hover:text-white/95 transition-colors">
-                {article.title}
-              </h3>
+              <BlurText
+                as="h3"
+                text={article.title}
+                delay={20}
+                className="text-white font-sora text-2xl sm:text-3xl md:text-[28px] font-semibold leading-[1.22] tracking-tight group-hover:text-white/95 transition-colors"
+              />
 
               <span className="inline-flex items-center gap-2 text-white font-mono text-[11px] sm:text-xs tracking-wider uppercase font-medium group-hover:text-[#F8750C] transition-colors">
                 {article.cta || "READ THE FULL CASE STUDY"}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BlurText from "@/reuseable/BlurText";
 
 export interface InsightCardItem {
   id: string;
@@ -71,10 +72,12 @@ export default function Insights() {
           </div>
 
           {/* Headline */}
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#142938] leading-[1.14]  mb-6">
-            Insights That Move Work
-            <span className="block">Forward</span>
-          </h2>
+          <BlurText
+            as="h2"
+            delay={20}
+            text={"Insights That Move Work\nForward"}
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#142938] leading-[1.14] mb-6"
+          />
 
           {/* Explore Blogs & Guides Pill Button */}
           <div>
@@ -138,9 +141,12 @@ export default function Insights() {
 
                   {/* Bottom Content: Title & Action Link */}
                   <div className="relative z-10">
-                    <h3 className="font-heading text-2xl sm:text-[32px] font-medium whitespace-pre-line text-white tracking-tight leading-[1.3] mb-4 group-hover:text-orange-200 transition-colors">
-                      {item.title}
-                    </h3>
+                    <BlurText
+                      as="h3"
+                      delay={20}
+                      text={item.title}
+                      className="font-heading text-2xl sm:text-[32px] font-medium text-white tracking-tight leading-[1.3] mb-4 group-hover:text-orange-200 transition-colors"
+                    />
 
                     <div className="inline-flex items-center gap-1.5 text-base font-mono font-semibold tracking-wider text-white/90 group-hover:text-white uppercase transition-colors">
                       <span>{item.ctaText}</span>

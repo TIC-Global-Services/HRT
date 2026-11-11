@@ -13,6 +13,7 @@ import {
   PieChart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BlurText from "@/reuseable/BlurText";
 
 export interface OneConnectCard {
   id: string | number;
@@ -178,14 +179,20 @@ export default function OneConnect({
             </p>
 
             {/* Title */}
-            <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6 whitespace-pre-line">
-              {title}
-            </h2>
+            <BlurText
+              as="h2"
+              delay={20}
+              text={title}
+              className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6"
+            />
 
             {/* Description */}
-            <p className="font-sora text-[#5A6E78] text-sm sm:text-lg leading-[1.3] font-normal max-w-xl">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="font-sora text-[#5A6E78] text-sm sm:text-lg leading-[1.3] font-normal max-w-xl"
+            />
           </div>
 
           {/* Right Column: Upward Vertical Marquee of Cards */}

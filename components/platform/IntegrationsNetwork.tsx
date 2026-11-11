@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import BlurText from "@/reuseable/BlurText";
 
 export interface IntegrationPartner {
   id: string;
@@ -239,16 +240,22 @@ export default function IntegrationsNetwork({
 
           {/* Main Title */}
           <div className="absolute top-[11.5%] sm:top-[13.5%] left-1/2 -translate-x-1/2 z-20 w-full max-w-[680px] px-4 text-center">
-            <h2 className="text-[#1D4452] font-sora text-[18px] sm:text-[26px] md:text-[34px] lg:text-[38px] font-normal tracking-[-0.035em] leading-[1.16] whitespace-pre-line m-0">
-              {title}
-            </h2>
+            <BlurText
+              as="h2"
+              delay={20}
+              text={title}
+              className="text-[#1D4452] font-sora text-[18px] sm:text-[26px] md:text-[34px] lg:text-[38px] font-normal tracking-[-0.035em] leading-[1.16] m-0"
+            />
           </div>
 
           {/* Subtitle */}
           <div className="absolute top-[28%] sm:top-[29.5%] left-1/2 -translate-x-1/2 z-20 w-full max-w-[650px] px-4 text-center">
-            <p className="text-[#5E7373] font-sora text-[10px] sm:text-[12.5px] md:text-[13.5px] leading-relaxed m-0">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="text-[#5E7373] font-sora text-[10px] sm:text-[12.5px] md:text-[13.5px] leading-relaxed m-0"
+            />
           </div>
 
           {/* Search Pill */}

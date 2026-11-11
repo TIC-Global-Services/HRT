@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface NewsletterSubscribeProps {
   eyebrow?: string;
@@ -26,10 +27,18 @@ export default function NewsletterSubscribe({
             <span className="h-2 w-2 bg-[#F8780C] rounded-full"></span>
             <span className="text-sm text-[#F8780C] font-geist tracking-tight">{eyebrow}</span>
           </p>
-          <h2 className="my-2.5 text-[#001F1F] font-sora text-3xl sm:text-4xl lg:text-[32px] font-normal tracking-[-0.05em]">
-            {title}
-          </h2>
-          <p className="m-0 text-[#3E4A4F] font-sora text-base">{description}</p>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="my-2.5 text-[#001F1F] font-sora text-3xl sm:text-4xl lg:text-[32px] font-normal tracking-[-0.05em]"
+          />
+          <BlurText
+            as="p"
+            text={description}
+            delay={20}
+            className="m-0 text-[#3E4A4F] font-sora text-base"
+          />
         </div>
         <form
           action={action}

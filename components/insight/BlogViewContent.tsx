@@ -18,6 +18,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { BlogPost, getRelatedBlogs } from "@/data/blogs";
+import BlurText from "@/reuseable/BlurText";
 
 interface BlogViewContentProps {
   blog: BlogPost;
@@ -126,15 +127,23 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
           </div>
 
           {/* Title */}
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-[#142938] leading-[1.16] mb-6">
-            {blog.title}
-          </h1>
+          <BlurText
+            as="h1"
+            text={blog.title}
+            trigger="load"
+            delay={20}
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-[#142938] leading-[1.16] mb-6"
+          />
 
           {/* Subtitle / Excerpt */}
           {blog.subtitle && (
-            <p className="font-sans text-base sm:text-lg md:text-xl text-zinc-600 leading-relaxed max-w-3xl mx-auto mb-8">
-              {blog.subtitle}
-            </p>
+            <BlurText
+              as="p"
+              text={blog.subtitle}
+              trigger="load"
+              delay={20}
+              className="font-sans text-base sm:text-lg md:text-xl text-zinc-600 leading-relaxed max-w-3xl mx-auto mb-8"
+            />
           )}
 
           {/* Author & Metadata Row */}
@@ -222,9 +231,12 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                   {blog.statsHighlight.value}
                 </div>
                 <div className="border-t sm:border-t-0 sm:border-l border-zinc-200 pt-3 sm:pt-0 sm:pl-6">
-                  <p className="font-sans text-sm sm:text-base text-zinc-700 leading-snug font-medium">
-                    {blog.statsHighlight.label}
-                  </p>
+                  <BlurText
+                    as="p"
+                    text={blog.statsHighlight.label}
+                    delay={20}
+                    className="font-sans text-sm sm:text-base text-zinc-700 leading-snug font-medium"
+                  />
                 </div>
               </div>
             )}
@@ -238,9 +250,12 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
               >
                 {/* Section Title */}
                 {section.title && section.title !== "Overview" && (
-                  <h2 className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-[#142938] leading-snug mt-3">
-                    {section.title}
-                  </h2>
+                  <BlurText
+                    as="h2"
+                    text={section.title}
+                    delay={20}
+                    className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-[#142938] leading-snug mt-3"
+                  />
                 )}
 
                 {/* Section Blocks */}
@@ -248,9 +263,13 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                   {section.blocks.map((block, bIdx) => {
                     if (block.type === "paragraph" && block.text) {
                       return (
-                        <p key={bIdx} className="m-0">
-                          {block.text}
-                        </p>
+                        <BlurText
+                          key={bIdx}
+                          as="p"
+                          text={block.text}
+                          delay={20}
+                          className="m-0"
+                        />
                       );
                     }
 
@@ -328,12 +347,18 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 <span className="text-[#F06A25] font-mono text-xs font-semibold uppercase tracking-wider block mb-2">
                   CONTINUOUS WORKFORCE INTELLIGENCE
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-white mb-2">
-                  Turn Early Signals Into Decisive Action
-                </h3>
-                <p className="font-sans text-sm text-zinc-300 leading-relaxed">
-                  Claripa connects performance, engagement, capability and behaviour signals to help leaders make confident people decisions.
-                </p>
+                <BlurText
+                  as="h3"
+                  text="Turn Early Signals Into Decisive Action"
+                  delay={20}
+                  className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-white mb-2"
+                />
+                <BlurText
+                  as="p"
+                  text="Claripa connects performance, engagement, capability and behaviour signals to help leaders make confident people decisions."
+                  delay={20}
+                  className="font-sans text-sm text-zinc-300 leading-relaxed"
+                />
               </div>
 
               <div className="relative z-10 flex items-center gap-3 shrink-0 w-full sm:w-auto">
@@ -366,12 +391,18 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 />
               </div>
               <div>
-                <h4 className="font-heading text-base font-semibold text-[#142938]">
-                  Written by the {blog.author.name}
-                </h4>
-                <p className="font-sans text-xs sm:text-sm text-zinc-500">
-                  Published on {blog.date} • Categorized under {blog.category} ({blog.topic})
-                </p>
+                <BlurText
+                  as="h4"
+                  text={`Written by the ${blog.author.name}`}
+                  delay={20}
+                  className="font-heading text-base font-semibold text-[#142938]"
+                />
+                <BlurText
+                  as="p"
+                  text={`Published on ${blog.date} • Categorized under ${blog.category} (${blog.topic})`}
+                  delay={20}
+                  className="font-sans text-xs sm:text-sm text-zinc-500"
+                />
               </div>
             </div>
           </div>
@@ -480,12 +511,18 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 <span className="font-mono text-[10px] font-bold tracking-widest uppercase bg-white/20 px-2.5 py-1 rounded-full inline-block mb-3">
                   WORKFORCE INTELLIGENCE
                 </span>
-                <h4 className="font-heading text-xl font-medium mb-2 leading-snug">
-                  See where your workforce stands today
-                </h4>
-                <p className="font-sans text-xs text-white/90 leading-relaxed mb-5">
-                  Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.
-                </p>
+                <BlurText
+                  as="h4"
+                  text="See where your workforce stands today"
+                  delay={20}
+                  className="font-heading text-xl font-medium mb-2 leading-snug"
+                />
+                <BlurText
+                  as="p"
+                  text="Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line."
+                  delay={20}
+                  className="font-sans text-xs text-white/90 leading-relaxed mb-5"
+                />
                 <Link
                   href="/contact-us"
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-[#F06A25] font-mono text-xs font-semibold uppercase tracking-wider shadow-xs hover:bg-orange-50 transition-colors"
@@ -506,9 +543,12 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 <span className="text-[#F06A25] font-mono text-xs font-semibold uppercase tracking-wider block mb-1">
                   MORE RESEARCH & ARTICLES
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-[#142938]">
-                  Related Insights
-                </h3>
+                <BlurText
+                  as="h3"
+                  text="Related Insights"
+                  delay={20}
+                  className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-[#142938]"
+                />
               </div>
 
               <Link
@@ -550,9 +590,12 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
 
                   {/* Bottom: Title & CTA */}
                   <div className="relative z-10 flex flex-col items-start gap-3 mt-auto pt-6">
-                    <h4 className="text-white font-sora text-xl font-medium leading-[1.25] tracking-tight group-hover:text-orange-200 transition-colors">
-                      {rel.title}
-                    </h4>
+                    <BlurText
+                      as="h4"
+                      text={rel.title}
+                      delay={20}
+                      className="text-white font-sora text-xl font-medium leading-[1.25] tracking-tight group-hover:text-orange-200 transition-colors"
+                    />
                     <span className="inline-flex items-center gap-2 text-white font-mono text-xs tracking-wider uppercase font-medium group-hover:text-[#F06A25] transition-colors">
                       <span>READ ARTICLE</span>
                       <span>→</span>

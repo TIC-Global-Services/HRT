@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Play, Sparkles } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionDetailHeroProps {
   breadcrumb?: string;
@@ -61,13 +62,21 @@ export default function SolutionDetailHero({
 
         {/* Centered Heading & Lead Text */}
         <div className="max-w-4xl mx-auto text-center mb-9 sm:mb-12">
-          <h1 className="font-sora text-[#002E40] text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-[-0.04em] leading-[1.08] mb-5">
-            {title}
-          </h1>
+          <BlurText
+            as="h1"
+            text={title}
+            trigger="load"
+            delay={20}
+            className="font-sora text-[#002E40] text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-[-0.04em] leading-[1.08] mb-5"
+          />
 
-          <p className="font-sora text-[#62737A] text-sm sm:text-base lg:text-[17px] leading-relaxed max-w-2xl mx-auto mb-8">
-            {description}
-          </p>
+          <BlurText
+            as="p"
+            text={description}
+            trigger="load"
+            delay={20}
+            className="font-sora text-[#62737A] text-sm sm:text-base lg:text-[17px] leading-relaxed max-w-2xl mx-auto mb-8"
+          />
 
           {/* Centered Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3.5">

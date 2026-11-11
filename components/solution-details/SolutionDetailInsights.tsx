@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionInsightItem {
   id: string;
@@ -76,13 +77,19 @@ export default function SolutionDetailInsights({
             </span>
           </div>
 
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight whitespace-pre-line leading-[1.12] mb-4">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight whitespace-pre-line leading-[1.12] mb-4"
+          />
 
-          <p className="font-sora text-[#62737A] text-sm sm:text-lg leading-[1.3] max-w-4xl mx-auto">
-            {description}
-          </p>
+          <BlurText
+            as="p"
+            text={description}
+            delay={20}
+            className="font-sora text-[#62737A] text-sm sm:text-lg leading-[1.3] max-w-4xl mx-auto"
+          />
         </div>
 
         {/* Slider Carousel Container */}
@@ -128,9 +135,12 @@ export default function SolutionDetailInsights({
 
                       {/* Bottom Title & Action Link */}
                       <div className="relative z-10">
-                        <h3 className="font-sora text-white text-2xl sm:text-[28px] font-normal leading-snug tracking-tight mb-4 group-hover:text-[#F8780C] transition-colors">
-                          {item.title}
-                        </h3>
+                        <BlurText
+                          as="h3"
+                          text={item.title}
+                          delay={20}
+                          className="font-sora text-white text-2xl sm:text-[28px] font-normal leading-snug tracking-tight mb-4 group-hover:text-[#F8780C] transition-colors"
+                        />
                         <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-white/95 group-hover:text-white transition-colors font-medium">
                           READ THE FULL CASE STUDY <ArrowUpRight size={15} />
                         </span>

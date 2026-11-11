@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface EmployeeExperienceProps {
   eyebrow?: string;
@@ -78,9 +79,12 @@ export default function EmployeeExperience({
             {eyebrow}
           </p>
 
-          <h2 className="m-0 text-[32px] sm:text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#002e40]">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            delay={20}
+            text={title}
+            className="m-0 text-[32px] sm:text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#002e40]"
+          />
 
           <ul className="mb-0 mt-7 grid gap-3.5 p-0 list-none">
             {benefits.map((benefit) => (
@@ -88,7 +92,7 @@ export default function EmployeeExperience({
                 <span className="grid size-5 shrink-0 place-items-center rounded-full border border-[#f3d9c8] bg-white text-[#f8780c]">
                   <Check aria-hidden="true" size={12} strokeWidth={2.5} />
                 </span>
-                {benefit}
+                <BlurText delay={20} text={benefit} />
               </li>
             ))}
           </ul>

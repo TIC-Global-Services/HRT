@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface OfficeLocationItem {
   id: string;
@@ -82,9 +83,12 @@ export default function OfficeLocations({
                 </span>
               </div>
 
-              <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.12]">
-                {title}
-              </h2>
+              <BlurText
+                as="h2"
+                text={title}
+                delay={20}
+                className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-[-0.04em] leading-[1.12]"
+              />
             </div>
 
             {/* Bottom section: The 2 Location cards (width=514px, height=81px, rx=20px) */}
@@ -114,12 +118,18 @@ export default function OfficeLocations({
                       </div>
 
                       <div className="min-w-0">
-                        <h3 className="font-sora text-[#002E40] font-semibold text-[15px] sm:text-base leading-snug tracking-tight truncate">
-                          {office.name} {office.tag}
-                        </h3>
-                        <p className="font-sora text-[#62737A] text-xs sm:text-[13px] mt-0.5 leading-tight truncate">
-                          {office.address}
-                        </p>
+                        <BlurText
+                          as="h3"
+                          text={`${office.name} ${office.tag}`}
+                          delay={20}
+                          className="font-sora text-[#002E40] font-semibold text-[15px] sm:text-base leading-snug tracking-tight truncate"
+                        />
+                        <BlurText
+                          as="p"
+                          text={office.address}
+                          delay={20}
+                          className="font-sora text-[#62737A] text-xs sm:text-[13px] mt-0.5 leading-tight truncate"
+                        />
                       </div>
                     </div>
 

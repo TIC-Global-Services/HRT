@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import FaqAccordion, { FaqItem } from "@/reuseable/FaqAccordion";
+import BlurText from "@/reuseable/BlurText";
 
 export type { FaqItem as FAQItem };
 
@@ -64,13 +65,19 @@ export default function SolutionDetailFAQ({
             </span>
           </div>
 
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12] mb-4">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12] mb-4"
+          />
 
-          <p className="font-sora text-[#62737A] text-base leading-relaxed max-w-sm mb-8">
-            {lead}
-          </p>
+          <BlurText
+            as="p"
+            text={lead}
+            delay={20}
+            className="font-sora text-[#62737A] text-base leading-relaxed max-w-sm mb-8"
+          />
 
           <Link
             href={contactHref}

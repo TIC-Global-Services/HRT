@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BlurText from "@/reuseable/BlurText";
 
 /* ----------------------------- Types ----------------------------- */
 
@@ -158,17 +159,12 @@ export default function CaseStudyCarousel({
             </div>
 
             {/* Headline */}
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#142938] leading-[1.14] mb-6">
-              {headingLines.map((line, i) =>
-                i === 0 ? (
-                  <React.Fragment key={i}>{line}</React.Fragment>
-                ) : (
-                  <span key={i} className="block">
-                    {line}
-                  </span>
-                )
-              )}
-            </h2>
+            <BlurText
+              as="h2"
+              delay={20}
+              text={headingLines.join("\n")}
+              className="font-heading text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#142938] leading-[1.14] mb-6"
+            />
 
             {/* Header CTA Pill */}
             <div>
@@ -184,9 +180,12 @@ export default function CaseStudyCarousel({
 
           {/* Right Column: Subtitle Description */}
           <div className="lg:max-w-md lg:pt-8">
-            <p className="font-sans text-base sm:text-lg text-slate-500 leading-relaxed">
-              {description}
-            </p>
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="font-sans text-base sm:text-lg text-slate-500 leading-relaxed"
+            />
           </div>
         </div>
       </div>
@@ -251,9 +250,12 @@ export default function CaseStudyCarousel({
                   </div>
                   <div>
                     {/* Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#142938] font-sora leading-snug mb-4 whitespace-pre-line">
-                      {study.title}
-                    </h3>
+                    <BlurText
+                      as="h3"
+                      delay={20}
+                      text={study.title}
+                      className="text-xl sm:text-2xl font-bold tracking-tight text-[#142938] font-sora leading-snug mb-4"
+                    />
 
                     {/* CTA Link */}
                     <div className="mb-6">

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUp, ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
 import { BreadcrumbBadge } from "@/reuseable/breadcrum";
 import FlutedGlassBackground from "@/reuseable/HeroBg";
+import BlurText from "@/reuseable/BlurText";
 
 const HeroSection: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,16 +69,22 @@ const HeroSection: React.FC = () => {
 
         {/* 2. Headline matching Image 2 */}
         <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08]">
-            From Performance Data to People
-            <br />
-            Intelligence
-          </h1>
+          <BlurText
+            as="h1"
+            delay={20}
+            trigger="load"
+            text={"From Performance Data to People\nIntelligence"}
+            className="text-4xl sm:text-5xl md:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08]"
+          />
 
           {/* 3. Subtitle matching Image 2 */}
-          <p className="mt-5 sm:mt-6 text-sm sm:text-base font-sora md:text-lg text-[#62737A] max-w-4xl mx-auto leading-[1.2] tracking-tight font-normal">
-            Claripa is an AI-powered workforce intelligence platform that transforms people data into actionable insights, helping organisations improve performance and make better people <br className="hidden lg:block"/> decisions.
-          </p>
+          <BlurText
+            as="p"
+            delay={20}
+            trigger="load"
+            text="Claripa is an AI-powered workforce intelligence platform that transforms people data into actionable insights, helping organisations improve performance and make better people decisions."
+            className="mt-5 sm:mt-6 text-sm sm:text-base font-sora md:text-lg text-[#62737A] max-w-4xl mx-auto leading-[1.2] tracking-tight font-normal"
+          />
 
           {/* 4. Action Buttons matching Image 2 */}
           <div className="mt-6 sm:mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">

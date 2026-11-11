@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   LucideIcon,
 } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface DirectLineItem {
   icon: LucideIcon;
@@ -78,9 +79,12 @@ export default function DirectLines({
               {eyebrow}
             </span>
           </div>
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+          />
         </div>
 
         {/* 4 Cards Grid */}
@@ -97,12 +101,18 @@ export default function DirectLines({
                   <div className="w-11 h-11 rounded-xl bg-[#FFF5EE] border border-[#FFE7D6] flex items-center justify-center text-[#F8780C] mb-5 shadow-sm transition-transform duration-200 group-hover:scale-105">
                     <Icon size={20} strokeWidth={2} />
                   </div>
-                  <h3 className="font-sora text-[#002E40] text-base font-semibold tracking-tight">
-                    {line.title}
-                  </h3>
-                  <p className="font-sora text-[#62737A] text- leading-relaxed mt-1">
-                    {line.description}
-                  </p>
+                  <BlurText
+                    as="h3"
+                    text={line.title}
+                    delay={20}
+                    className="font-sora text-[#002E40] text-base font-semibold tracking-tight"
+                  />
+                  <BlurText
+                    as="p"
+                    text={line.description}
+                    delay={20}
+                    className="font-sora text-[#62737A] text- leading-relaxed mt-1"
+                  />
                 </div>
 
                 {/* Bottom details & arrow */}

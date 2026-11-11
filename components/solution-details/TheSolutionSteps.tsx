@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionStepItem {
   id: string;
@@ -80,9 +81,12 @@ export default function TheSolutionSteps({
               {eyebrow}
             </span>
           </div>
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+          />
         </div>
 
         {/* 2x2 Grid */}
@@ -97,13 +101,19 @@ export default function TheSolutionSteps({
                   {step.tag}
                 </span>
 
-                <h3 className="font-sora text-[#002E40] text-[32px] font-semibold tracking-tight mb-3">
-                  {step.title}
-                </h3>
+                <BlurText
+                  as="h3"
+                  text={step.title}
+                  delay={20}
+                  className="font-sora text-[#002E40] text-[32px] font-semibold tracking-tight mb-3"
+                />
 
-                <p className="font-sora text-lg text-[#62737A] leading-relaxed mb-6">
-                  {step.description}
-                </p>
+                <BlurText
+                  as="p"
+                  text={step.description}
+                  delay={20}
+                  className="font-sora text-lg text-[#62737A] leading-relaxed mb-6"
+                />
               </div>
 
               {/* Bullets */}
@@ -113,9 +123,12 @@ export default function TheSolutionSteps({
                     <span className="w-4 h-4 rounded-full bg-[#FFF0E4] text-[#F8780C] flex items-center justify-center shrink-0 mt-0.5">
                       <Check size={11} strokeWidth={3} />
                     </span>
-                    <span className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed">
-                      {bullet}
-                    </span>
+                    <BlurText
+                      as="span"
+                      text={bullet}
+                      delay={20}
+                      className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed"
+                    />
                   </div>
                 ))}
               </div>

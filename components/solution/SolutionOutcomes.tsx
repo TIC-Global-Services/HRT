@@ -1,3 +1,5 @@
+import BlurText from "@/reuseable/BlurText";
+
 export interface SolutionOutcome {
   metricNumber: string;
   metricLabel: string;
@@ -54,9 +56,12 @@ export default function SolutionOutcomes({
           <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b0a] shadow-[0_0_8px_rgba(255,107,10,0.55)]" />
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal tracking-tight leading-[1.1]">
-          {title}
-        </h2>
+        <BlurText
+          as="h2"
+          text={title}
+          delay={20}
+          className="mt-3 text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal tracking-tight leading-[1.1]"
+        />
       </div>
 
       {/* Outer White Container */}
@@ -72,12 +77,18 @@ export default function SolutionOutcomes({
                 <strong className="block text-[#FF6B0A] font-sora font-light text-6xl sm:text-[68px] lg:text-[74px] tracking-tight leading-none mb-6">
                   {outcome.metricNumber}
                 </strong>
-                <h3 className="text-[#142938] font-sora font-semibold text-lg sm:text-[19px] leading-snug mb-3">
-                  {outcome.metricLabel}
-                </h3>
-                <p className="text-[#5A6A72] font-sora text-sm sm:text-[14.5px] leading-relaxed">
-                  {outcome.description}
-                </p>
+                <BlurText
+                  as="h3"
+                  text={outcome.metricLabel}
+                  delay={20}
+                  className="text-[#142938] font-sora font-semibold text-lg sm:text-[19px] leading-snug mb-3"
+                />
+                <BlurText
+                  as="p"
+                  text={outcome.description}
+                  delay={20}
+                  className="text-[#5A6A72] font-sora text-sm sm:text-[14.5px] leading-relaxed"
+                />
               </div>
 
               {/* Bottom: Monospace Tag */}

@@ -1,3 +1,5 @@
+import BlurText from "@/reuseable/BlurText";
+
 export interface ChallengeItem {
   number: string;
   tag: string;
@@ -54,15 +56,21 @@ export default function TheChallenge({
                 {eyebrow}
               </span>
             </div>
-            <h2 className="font-sora text-[#254F5F] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]">
-              {title}
-            </h2>
+            <BlurText
+              as="h2"
+              text={title}
+              delay={20}
+              className="font-sora text-[#254F5F] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+            />
           </div>
 
           <div className="">
-            <p className="font-sora text-[#62737A] max-w-md text-lg sm:text-lg font-normal leading-[1.1]">
-              {quote}
-            </p>
+            <BlurText
+              as="p"
+              text={quote}
+              delay={20}
+              className="font-sora text-[#62737A] max-w-md text-lg sm:text-lg font-normal leading-[1.1]"
+            />
           </div>
         </div>
 
@@ -85,12 +93,18 @@ export default function TheChallenge({
                   {c.tag}
                 </span>
 
-                <h3 className="font-sora text-[#254F5F] text-2xl font-semibold tracking-tight">
-                  {c.title}
-                </h3>
-                <p className="font-sora text-base text-[#62737A] leading-[1.2] m-0 mt-3">
-                  {c.description}
-                </p>
+                <BlurText
+                  as="h3"
+                  text={c.title}
+                  delay={20}
+                  className="font-sora text-[#254F5F] text-2xl font-semibold tracking-tight"
+                />
+                <BlurText
+                  as="p"
+                  text={c.description}
+                  delay={20}
+                  className="font-sora text-base text-[#62737A] leading-[1.2] m-0 mt-3"
+                />
               </div>
 
             </div>

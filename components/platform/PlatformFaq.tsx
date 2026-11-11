@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import FaqAccordion, { FaqItem } from "@/reuseable/FaqAccordion";
+import BlurText from "@/reuseable/BlurText";
 
 export type { FaqItem };
 
@@ -71,14 +72,20 @@ export default function PlatformFaq({
           </p>
 
           {/* Title */}
-          <h2 className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-[44px] font-semibold tracking-[-0.035em] leading-[1.12] whitespace-pre-line mb-4">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            delay={20}
+            text={title}
+            className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-[44px] font-semibold tracking-[-0.035em] leading-[1.12] mb-4"
+          />
 
           {/* Description */}
-          <p className="text-[#5A6D75] font-sora text-sm sm:text-base leading-[1.3] max-w-[360px] mb-8">
-            {lead}
-          </p>
+          <BlurText
+            as="p"
+            delay={20}
+            text={lead}
+            className="text-[#5A6D75] font-sora text-sm sm:text-base leading-[1.3] max-w-[360px] mb-8"
+          />
 
           {/* Contact Button */}
           <Link

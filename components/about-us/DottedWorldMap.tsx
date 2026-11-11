@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import BlurText from "@/reuseable/BlurText";
 
 export interface OfficesAndTeamsProps {
   eyebrow?: string;
@@ -38,9 +39,12 @@ export default function DottedWorldMap({
               </p>
 
               {/* Title */}
-              <h2 className="font-sora text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight leading-[1.12] whitespace-pre-line ">
-                {title}
-              </h2>
+              <BlurText
+                as="h2"
+                delay={20}
+                text={title}
+                className="font-sora text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+              />
             </div>
 
             {/* Address Pill Box */}
@@ -52,9 +56,12 @@ export default function DottedWorldMap({
                 >
                   <MapPin size={18} className="stroke-white stroke-[2.2]" />
                 </div>
-                <p className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium tracking-tight leading-[1.2] max-w-[330px] whitespace-pre-line">
-                  {address}
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={address}
+                  className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium tracking-tight leading-[1.2] max-w-[330px]"
+                />
               </div>
 
               <Link

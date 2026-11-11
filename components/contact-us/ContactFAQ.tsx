@@ -1,4 +1,5 @@
 import FaqAccordion, { FaqItem } from "@/reuseable/FaqAccordion";
+import BlurText from "@/reuseable/BlurText";
 
 export type { FaqItem as FAQItem };
 
@@ -53,13 +54,19 @@ export default function ContactFAQ({
             </span>
           </div>
 
-          <h2 className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12] mb-4 whitespace-pre-line">
-            {title}
-          </h2>
+          <BlurText
+            as="h2"
+            text={title}
+            delay={20}
+            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12] mb-4 whitespace-pre-line"
+          />
 
-          <p className="font-sora text-[#62737A] text-lg leading-[1.2] max-w-xs">
-            {lead}
-          </p>
+          <BlurText
+            as="p"
+            text={lead}
+            delay={20}
+            className="font-sora text-[#62737A] text-lg leading-[1.2] max-w-xs"
+          />
         </div>
 
         {/* Right accordion column */}
