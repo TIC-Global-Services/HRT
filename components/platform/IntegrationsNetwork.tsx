@@ -57,17 +57,12 @@ export default function IntegrationsNetwork({
   className = "",
 }: IntegrationsNetworkProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isPaused, setIsPaused] = useState(false);
 
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isPausedRef = useRef(false);
   const angleOffsetRef = useRef(0);
   const lastTimeRef = useRef(0);
   const rafIdRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    isPausedRef.current = isPaused;
-  }, [isPaused]);
 
   const filterMap = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -164,8 +159,6 @@ export default function IntegrationsNetwork({
       <div className="px-[5%]">
         {/* White Card Container */}
         <div
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
           className="w-full bg-white rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#EFECE7] shadow-xs relative overflow-hidden aspect-[1024/504] min-h-[440px] sm:min-h-[480px] md:min-h-[504px] select-none flex flex-col justify-between"
         >
           {/*
@@ -343,6 +336,12 @@ export default function IntegrationsNetwork({
                 className="absolute z-20 will-change-transform"
               >
                 <div
+                  onMouseEnter={() => {
+                    isPausedRef.current = true;
+                  }}
+                  onMouseLeave={() => {
+                    isPausedRef.current = false;
+                  }}
                   className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] hover:scale-115 transition-all duration-300 cursor-pointer ${
                     isMatch
                       ? "scale-100 ring-2 ring-transparent hover:ring-[#E56A1E]/50"

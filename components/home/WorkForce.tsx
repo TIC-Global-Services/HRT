@@ -74,7 +74,7 @@ function DisconnectedSignalsMiniUI() {
   return (
     <div className="w-full h-[260px] flex flex-col items-center justify-center relative select-none">
       {/* Trigger: When a task is due */}
-      <div className="bg-white rounded-xl border border-zinc-200/90 px-3.5 py-2 shadow-xs flex items-center gap-2 text-xs font-medium text-zinc-700 transition-transform group-hover:scale-[1.02]">
+      <div className="bg-white rounded-md border border-zinc-200/90 px-3.5 py-3 shadow-xs flex items-center gap-2 text-[1.5dvh] font-medium text-zinc-700 transition-transform group-hover:scale-[1.02]">
         <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
         <span>When a task is due</span>
       </div>
@@ -129,8 +129,8 @@ function DisconnectedSignalsMiniUI() {
       </div>
 
       {/* Action button: Run automation */}
-      <div className="bg-[#F06A25] text-white rounded-xl px-4 py-2 text-xs font-semibold flex items-center gap-2 shadow-sm shadow-orange-500/25 transition-transform group-hover:scale-[1.02]">
-        <Zap className="w-3.5 h-3.5 fill-white text-white shrink-0 animate-pulse" />
+      <div className="bg-[#F06A25] text-white rounded-md px-4 py-3 text-xs font-semibold flex items-center gap-2 shadow-sm shadow-orange-500/25 transition-transform group-hover:scale-[1.02]">
+        <Zap className="w-3.5 h-3.5 text-white shrink-0 animate-pulse" />
         <span>Run automation</span>
       </div>
 
@@ -216,12 +216,12 @@ function DisconnectedSignalsMiniUI() {
 
       {/* Two outcomes */}
       <div className="flex items-center justify-between w-full max-w-[240px] px-1 gap-2 mt-0.5">
-        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
-          <Check className="w-3 h-3 text-[#F06A25] stroke-[2.5] shrink-0" />
+        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
+          <Check className="w-3 h-3 text-[#F8780C] stroke-[2.5] shrink-0" />
           <span>Update status</span>
         </div>
-        <div className="bg-[#FFF8F3] border border-orange-200/80 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
-          <ArrowUpRight className="w-3.5 h-3.5 text-[#F06A25] stroke-[2.5] shrink-0 animate-arrow-nudge" />
+        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
+          <ArrowUpRight className="w-3.5 h-3.5 text-[#F8780C] stroke-[2.5] shrink-0 animate-arrow-nudge" />
           <span>Notify team</span>
         </div>
       </div>
@@ -248,16 +248,16 @@ function ReactiveDecisionsMiniUI() {
   const formattedSeconds = String(seconds).padStart(2, "0");
 
   return (
-    <div className="w-full h-[260px] flex flex-col items-center justify-center select-none">
+    <div className="w-full h-[280px] flex flex-col items-center justify-center select-none">
       {/* Main Focus Session Card */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl border border-zinc-200/90 p-5 sm:p-6 shadow-xs w-full max-w-[270px] relative overflow-hidden flex flex-col justify-between">
+      <div className="bg-white rounded-lg border border-zinc-200/90 p-5 sm:p-6 shadow-xs w-full max-w-[270px] h-[45dvh] relative overflow-hidden flex flex-col justify-center">
         {/* Header */}
         <div className="text-[10px] font-mono tracking-wider font-semibold text-zinc-400 uppercase">
           FOCUS SESSION
         </div>
 
         {/* Large bold timer with live counting */}
-        <div className="text-3xl sm:text-[38px] font-mono font-medium text-[#18181B] tracking-tight my-2.5 tabular-nums leading-none">
+        <div className="text-3xl sm:text-[40px] font-sora font-normal text-[#687083] tracking-tight my-2.5 tabular-nums leading-none">
           01:16:{formattedSeconds}
         </div>
 
@@ -341,14 +341,14 @@ function ManagersWithoutContextMiniUI() {
     <div className="w-full h-[260px] flex flex-col justify-center gap-2 select-none px-1">
       {/* Task 1: Website refresh (Pops in at step 1) */}
       <div
-        className={`bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+        className={`bg-white  border border-zinc-200/80 px-3.5 py-3.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           step >= 1
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-6 scale-90 pointer-events-none"
         }`}
       >
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-[4px] bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
+          <div className="w-4 h-4  bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
             <Check className="w-3 h-3 stroke-[3]" />
           </div>
           <span className="line-through text-slate-500 font-medium">Website refresh</span>
@@ -360,7 +360,7 @@ function ManagersWithoutContextMiniUI() {
 
       {/* Task 2: Product launch (Pops in at step 2 with active purple border) */}
       <div
-        className={`bg-white rounded-xl border-2 border-[#A8A4F8] shadow-sm px-3.5 py-2.5 flex items-center justify-between text-xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+        className={`bg-white  border-2 border-[#A8A4F8] shadow-sm px-3.5 py-3.5 flex items-center justify-between text-xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           step >= 2
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-6 scale-90 pointer-events-none"
@@ -379,7 +379,7 @@ function ManagersWithoutContextMiniUI() {
 
       {/* Task 3: Q4 roadmap (Pops in at step 3) */}
       <div
-        className={`bg-white rounded-xl border border-zinc-200/80 px-3.5 py-2.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+        className={`bg-white border border-zinc-200/80 px-3.5 py-3.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           step >= 3
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-6 scale-90 pointer-events-none"
@@ -579,7 +579,7 @@ export default function Workforce() {
           {/* Card 1: Disconnected Signals */}
           <Link
             href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -605,7 +605,7 @@ export default function Workforce() {
           {/* Card 2: Reactive Decisions */}
           <Link
             href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -631,7 +631,7 @@ export default function Workforce() {
           {/* Card 3: Managers Without Context */}
           <Link
             href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
@@ -657,7 +657,7 @@ export default function Workforce() {
           {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
           <Link
             href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[460px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
           >
             <CardHoverGradientBlinds />
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">

@@ -95,7 +95,7 @@ export default function IntegrationsTrust() {
             {/* Rotating Orbit Graphic matching the exact design */}
             <div
               ref={containerRef}
-              className="orbit-container relative w-full h-[320px] sm:h-[360px] md:h-[380px] my-4 flex items-center justify-center select-none overflow-hidden"
+              className="orbit-container relative w-full h-[320px] sm:h-[360px] md:h-[360px] my-0 flex items-center justify-center select-none overflow-hidden"
             >
               {/* Outer Dashed Orbit Circle (Rotates smoothly) */}
               <div
@@ -131,13 +131,13 @@ export default function IntegrationsTrust() {
               </div>
 
               {/* Center Core: Dark Navy Claripa Queen Badge (Stays anchored in center) */}
-              <div className="absolute z-10 w-22 h-22 sm:w-24 sm:h-24 md:w-26 md:h-26 rounded-[24px] sm:rounded-[28px] md:rounded-[32px] bg-[#002E40] flex items-center justify-center shadow-xl shadow-[#002E40]/25 transition-transform duration-300 hover:scale-105">
+              <div className="absolute z-10 w-22 h-22 sm:w-24 sm:h-24 md:w-20 md:h-20 rounded-[24px] sm:rounded-[28px] md:rounded-[32px] bg-[#002E40] flex items-center justify-center shadow-xl shadow-[#002E40]/25 transition-transform duration-300 hover:scale-105">
                 <Image
                   src="/claripa-queen-transparent.png"
                   alt="Claripa Queen"
                   width={42}
                   height={86}
-                  className="w-auto h-11 sm:h-12 md:h-13 object-contain"
+                  className="w-auto h-11 sm:h-10 md:h-10 object-contain"
                   priority
                 />
               </div>
