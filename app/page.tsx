@@ -9,7 +9,7 @@ import OneConnect from "@/components/home/OneConnect";
 export const metadata = {
   title: "Claripa AI | The Future of People Decisions",
   description:
-    "Claripa connects workforce data, performance signals and AI-powered intelligence to help HR leaders see what matters, understand what's next and act with confidence.",
+    "Claripa is an AI-powered workforce intelligence platform that transforms people data into actionable insights, helping organisations improve performance and make better people decisions.",
 };
 
 export default function Home() {

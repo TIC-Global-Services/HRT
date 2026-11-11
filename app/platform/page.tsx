@@ -9,8 +9,9 @@ import PlatformHero from "@/components/platform/PlatformHero";
 
 
 export const metadata = {
-  title: "Platform",
-  description: "Connect workforce data with real-time AI decision intelligence.",
+  title: "Claripa Platform | Connected Performance & Workforce Intelligence",
+  description:
+    "Claripa sits above your existing HR systems, connects people, performance, and task workflows, and turns workforce signals into clearer decisions.",
 };
 
 export default function PlatformPage() {

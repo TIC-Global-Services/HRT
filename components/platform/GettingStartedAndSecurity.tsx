@@ -27,44 +27,48 @@ const defaultSteps: GettingStartedStep[] = [
   {
     title: "Discover",
     description:
-      "Discover \nDescription: Understand the organization's performance management process, strategic priorities, reporting structure, and current workflows",
+      "Understand the organization's performance management process, strategic priorities, reporting structure, and current workflows.",
   },
   {
     title: "Configure",
     description:
-      "Configure relevant performance assessment cycles, OKR \nworkflows, weightages, and \nsettings based on agreed \nbusiness requirements.",
+      "Configure relevant performance assessment cycles, OKR workflows, weightages, and settings based on agreed business requirements.",
   },
   {
     title: "Prepare and Validate Data",
     description:
-      "Prepare employee and \norganizational data in the \nrequired format, validate the \ninformation, and support the \nagreed data-loading process.",
+      "Prepare employee and organizational data in the required format, validate the information, and support the agreed data-loading process.",
   },
   {
     title: "Go Live and Support",
     description:
-      "Validate the configured \nworkflows, support user \nonboarding, and help the \norganization begin using Claripa.",
+      "Validate the configured workflows, support user onboarding, and help the organization begin using Claripa.",
   },
 ];
 
 const defaultPillars: PlatformSecurityPillar[] = [
   {
     title: "Data Protection",
-    description: "Protect information through security measures implemented within Claripa.",
+    description:
+      "Information is protected through structured security measures implemented in the Claripa environment.",
     icon: "protection",
   },
   {
     title: "Service Availability",
-    description: "Understand the service availability commitments for your Claripa deployment.",
+    description:
+      "Understand the service availability commitments applicable to your Claripa deployment.",
     icon: "availability",
   },
   {
     title: "Data Hosting and Residency",
-    description: "Understand where your data is hosted and how its storage is managed securely.",
+    description:
+      "Understand where Claripa data is hosted and which data residency arrangements apply to your deployment.",
     icon: "hosting",
   },
   {
     title: "Role-Based Access",
-    description: "Manage user permissions through role-based access across teams and workflows.",
+    description:
+      "Claripa supports different user roles across CEO, HR, manager, and employee workflows.",
     icon: "access",
   },
 ];
@@ -87,7 +91,8 @@ export default function GettingStartedAndSecurity({
           <SectionHeading
             centered
             eyebrow="GETTING STARTED"
-            title="A structured path from setup to adoption."
+            title="A Structured Path from Setup to Adoption."
+            description="Claripa implementation follows a structured approach to understanding organizational requirements, configuring the platform, preparing employee data, and supporting users through deployment."
           />
           <ol className="mb-0 mt-10 grid list-none gap-4 p-0 sm:grid-cols-2 xl:grid-cols-4">
             {steps.map((step, index) => (
@@ -131,7 +136,8 @@ export default function GettingStartedAndSecurity({
         <div className="rounded-[28px] border border-[#ebe8e3] bg-white p-6 sm:p-9 lg:p-10">
           <SectionHeading
             eyebrow="SECURITY & TRUST"
-            title="People data deserves responsible protection."
+            title="People Data Deserves Responsible Protection."
+            description="Claripa supports performance management processes that involve employee and organizational information. Security, privacy, access permissions, and responsible data handling are central to how the platform is implemented and used."
           />
           <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {pillars.map((pillar) => {

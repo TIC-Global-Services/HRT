@@ -25,71 +25,77 @@ export interface AskClaripaProps {
   featureOneText?: string;
   featureTwoTitle?: string;
   featureTwoText?: string;
+  featureThreeTitle?: string;
+  featureThreeText?: string;
   className?: string;
 }
 
 const defaultQueries: AskClaripaQuery[] = [
   {
-    question: "Which roles have no ready successor?",
-    responseTitle: "4 critical roles have no ready successor.",
-    chipLabel: "Which roles have no ready successor?",
+    question:
+      "Help me review the alignment between our company OKRs and individual goals.",
+    responseTitle:
+      "Let's review organizational objectives and individual goals, identify alignment gaps, and suggest areas for further review.",
+    chipLabel: "Review OKR & individual goal alignment",
     items: [
       {
-        role: "Engineering Manager · Platform",
-        status: "No successor",
-        statusColor: "red",
-      },
-      {
-        role: "Head of Sales · South",
-        status: "1 in 12 mo",
+        role: "Company Objective · Product Velocity",
+        status: "2 gaps to review",
         statusColor: "amber",
       },
       {
-        role: "Analyst → Team Lead",
-        status: "Ready now",
+        role: "Engineering Team OKRs · Linked Tasks",
+        status: "On track",
         statusColor: "green",
+      },
+      {
+        role: "Quarterly Check-ins · Individual Priorities",
+        status: "Needs follow-up",
+        statusColor: "red",
       },
     ],
   },
   {
-    question: "Who needs a conversation this week?",
-    responseTitle: "3 critical team members flagged for check-ins.",
-    chipLabel: "Who needs a conversation this week?",
+    question: "Summarize team performance and check-in readiness.",
+    responseTitle:
+      "Illustrative performance summary prepared for upcoming manager check-ins.",
+    chipLabel: "Summarize performance for check-ins",
     items: [
       {
-        role: "Product Lead · Core Platform",
-        status: "Check-in overdue",
-        statusColor: "red",
-      },
-      {
-        role: "Senior Data Scientist · AI",
-        status: "OKR blocked",
+        role: "Customer Success · Goal Progress",
+        status: "Check-in due",
         statusColor: "amber",
       },
       {
-        role: "UX Researcher · Enterprise",
-        status: "Sprint aligned",
+        role: "Core Platform · Task Completion",
+        status: "Aligned",
         statusColor: "green",
+      },
+      {
+        role: "Operations · Goal Clarity",
+        status: "Review needed",
+        statusColor: "red",
       },
     ],
   },
   {
-    question: "Where are goals slipping?",
-    responseTitle: "2 strategic objectives require immediate realignment.",
-    chipLabel: "Where are goals slipping?",
+    question: "Which skill gaps need development interventions?",
+    responseTitle:
+      "Competency and performance signals highlight key areas for development support.",
+    chipLabel: "Identify skill gaps & interventions",
     items: [
       {
-        role: "Q3 Enterprise Expansion · EMEA",
-        status: "Behind by 18%",
-        statusColor: "red",
-      },
-      {
-        role: "SOC2 Compliance · Cloud Infrastructure",
-        status: "In jeopardy",
+        role: "Cross-Team Communication · Mid-Level",
+        status: "Coaching suggested",
         statusColor: "amber",
       },
       {
-        role: "Multi-tenant Architecture Rollout",
+        role: "Technical Leadership · Senior Track",
+        status: "Skill gap flagged",
+        statusColor: "red",
+      },
+      {
+        role: "OKR Planning & Execution · Leads",
         status: "On schedule",
         statusColor: "green",
       },
@@ -99,12 +105,14 @@ const defaultQueries: AskClaripaQuery[] = [
 
 export const AskClaripa: React.FC<AskClaripaProps> = ({
   eyebrow = "ASK CLARIPA",
-  title = "Turn Performance \nInformation into Clearer \nNext Steps",
+  title = "Turn Performance \nInformation into Clearer \nNext Steps.",
   description = "Claripa uses AI to support goal creation, performance understanding, and employee development. Ask Claripa for assistance in structuring OKRs, reviewing alignment, summarizing performance information, and identifying areas that may require attention.",
   featureOneTitle = "AI-Assisted Goal Setting",
-  featureOneText = "Use AI to structure strategic objectives and align OKRs with organizational priorities.",
-  featureTwoTitle = "AI-Assisted Goal Setting",
-  featureTwoText = "Bring performance insights together to help managers track progress and lead meaningful check-ins.",
+  featureOneText = "Develop strategic objectives and OKRs with AI assistance, helping users structure goals and connect them with organizational priorities.",
+  featureTwoTitle = "AI-Assisted Performance Summaries",
+  featureTwoText = "Bring relevant performance information together to help managers prepare for check-ins, understand progress, and support constructive discussions.",
+  featureThreeTitle = "Development Insights",
+  featureThreeText = "Use performance and competency information to identify potential skill gaps and consider appropriate employee development interventions.",
   className = "",
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -208,20 +216,20 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
               className="font-sora text-sm sm:text-lg text-[#5F7373] font-normal leading-[1.3] max-w-3xl mb-6"
             />
 
-            {/* Two Sub-Features Grid at Bottom of Left Column */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-3">
+            {/* Three Sub-Features Grid at Bottom of Left Column */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-3">
               <div>
                 <BlurText
                   as="h3"
                   delay={20}
                   text={featureOneTitle}
-                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-2.5"
+                  className="font-sora text-sm sm:text-base font-semibold text-[#1C3B47] mb-2"
                 />
                 <BlurText
                   as="p"
                   delay={20}
                   text={featureOneText}
-                  className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0"
+                  className="font-sora text-xs sm:text-[13px] text-[#62737A] font-normal leading-relaxed m-0"
                 />
               </div>
 
@@ -230,13 +238,28 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                   as="h3"
                   delay={20}
                   text={featureTwoTitle}
-                  className="font-sora text-sm sm:text-lg font-semibold text-[#62737A] mb-2.5"
+                  className="font-sora text-sm sm:text-base font-semibold text-[#1C3B47] mb-2"
                 />
                 <BlurText
                   as="p"
                   delay={20}
                   text={featureTwoText}
-                  className="font-sora text-xs sm:text-base text-[#62737A] font-normal leading-[1.2] m-0"
+                  className="font-sora text-xs sm:text-[13px] text-[#62737A] font-normal leading-relaxed m-0"
+                />
+              </div>
+
+              <div>
+                <BlurText
+                  as="h3"
+                  delay={20}
+                  text={featureThreeTitle}
+                  className="font-sora text-sm sm:text-base font-semibold text-[#1C3B47] mb-2"
+                />
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text={featureThreeText}
+                  className="font-sora text-xs sm:text-[13px] text-[#62737A] font-normal leading-relaxed m-0"
                 />
               </div>
             </div>
@@ -245,24 +268,29 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
           {/* Right Column: Floating "Ask Claripa" Chat Interface Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
             <div className="w-full max-w-[440px] rounded-[24px] bg-white border border-[#E9ECEF] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,31,31,0.08)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_24px_60px_rgba(0,31,31,0.12)]">
-              {/* Card Header: Teal Star Logo & "Ask Claripa" */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="text-[#0D8E9B] flex items-center justify-center">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
+              {/* Card Header: Teal Star Logo & "Ask Claripa" + Illustrative label */}
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="text-[#0D8E9B] flex items-center justify-center">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  </div>
+                  <span className="font-sora text-xs font-semibold text-[#1C3B47]">
+                    Ask Claripa
+                  </span>
                 </div>
-                <span className="font-sora text-xs font-semibold text-[#1C3B47]">
-                  Ask Claripa
+                <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#8C9DA3]">
+                  Illustrative Demo
                 </span>
               </div>
 

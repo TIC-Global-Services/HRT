@@ -43,7 +43,7 @@ export const solutionsData: SolutionCard[] = [
   },
   {
     id: "align-goals",
-    title: "Align Goals. Track Performance",
+    title: "Align Goals. Track Performance.",
     description:
       "Create and align OKRs, monitor progress through check-ins, manage performance reviews, and connect tasks with individual objectives to support organisational goals.",
     href: "/solution-hub#align-goals",
@@ -53,7 +53,7 @@ export const solutionsData: SolutionCard[] = [
     id: "performance-intelligence",
     title: "Performance Intelligence for Organisations",
     description:
-      "Bring people, performance, and task management together in one platform to support goal alignment, performance visibility, and informed organisational decisions",
+      "Bring people, performance, and task management together in one platform to support goal alignment, performance visibility, and informed organisational decisions.",
     href: "/solution-hub#performance-intelligence",
     patternType: "enterprise-matrix",
   },
@@ -340,7 +340,7 @@ export default function BuildFor() {
           <BlurText
             as="h2"
             delay={20}
-            text={"Built for how your\norganisation works"}
+            text={"Built for How Your\nOrganisation Works"}
             className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1] mb-5"
           />
 
@@ -348,7 +348,7 @@ export default function BuildFor() {
           <BlurText
             as="p"
             delay={20}
-            text="Claripa connects people management, performance, and task workflows to help organisations align goals, track progress, understand performance, and make informed people decisions"
+            text="Claripa connects people management, performance, and task workflows to help organisations align goals, track progress, understand performance, and make informed people decisions."
             className="font-sans text-base sm:text-lg text-slate-500 leading-[1.3] max-w-4xl"
           />
         </div>

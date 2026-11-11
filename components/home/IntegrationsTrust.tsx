@@ -2,16 +2,17 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { FolderLock } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, FolderLock, ShieldCheck, Globe, Server } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
 
 // Orbit nodes with their fixed radial positions (in degrees) matching the design
 const orbitNodes = [
-  { label: "HRIS", angle: -90 },
-  { label: "LMS", angle: -10 },
-  { label: "SURVEYS", angle: 52 },
-  { label: "PAYROLL", angle: 140 },
-  { label: "ATS", angle: 200 },
+  { label: "HRMS", angle: -90 },
+  { label: "ERP", angle: -10 },
+  { label: "CRM", angle: 52 },
+  { label: "TASKS", angle: 140 },
+  { label: "API", angle: 200 },
 ];
 
 export default function IntegrationsTrust() {
@@ -81,14 +82,14 @@ export default function IntegrationsTrust() {
               <BlurText
                 as="h3"
                 delay={20}
-                text="Connect Claripa with Your Existing Systems"
+                text="Connect Claripa with Your Existing Systems."
                 className="font-heading font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#142938] leading-[1.2] mb-3"
               />
               <BlurText
                 as="p"
                 delay={20}
-                text="Claripa brings people, performance, and task management together to help organisations connect workforce information and make more informed decisions."
-                className="font-sora text-sm sm:text-[16px] text-slate-500 leading-[1.2]"
+                text="Claripa is designed to work with your existing HR systems and tools, helping organisations bring relevant workforce information together without unnecessary complexity."
+                className="font-sora text-sm sm:text-[16px] text-slate-500 leading-[1.3]"
               />
             </div>
 
@@ -144,21 +145,21 @@ export default function IntegrationsTrust() {
             </div>
 
             {/* Bottom Footer Link */}
-            {/* <div className="pt-4 border-t border-slate-200/60">
+            <div className="pt-4 border-t border-slate-200/60">
               <Link
-                href="/integrations"
+                href="/platform#integrations"
                 className="group inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider text-slate-700 hover:text-[#E26D35] uppercase transition-colors"
               >
-                <span>SEE INTEGRATIONS</span>
+                <span>EXPLORE INTEGRATIONS</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
-            </div> */}
+            </div>
           </div>
 
           {/* =========================================================================
               CARD 2 (RIGHT): SECURITY & TRUST (Dark Card with 4 Feature Tiles)
               ========================================================================= */}
-          <div className="rounded-[32px] sm:rounded-[36px] bg-[#254F5F] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between shadow-xl">
+          <div className="rounded-[32px] sm:rounded-[36px] bg-[#254F5F] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between gap-6 shadow-xl">
             {/* Header Content */}
             <div className="max-w-md">
               <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E26D35] uppercase mb-3">
@@ -167,77 +168,85 @@ export default function IntegrationsTrust() {
               <BlurText
                 as="h3"
                 delay={20}
-                text="Your Workforce Data Deserves Careful Protection"
+                text="Your Workforce Data Deserves Careful Protection."
                 className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-white leading-[1.2] mb-3"
               />
               <BlurText
                 as="p"
                 delay={20}
-                text="Claripa is designed to support organisations in managing workforce information responsibly. Details about its security controls, data handling practices, and infrastructure should be communicated based on verified product and security information."
-                className="font-sora text-sm sm:text-[16px] text-[#ECE9E3] leading-[1.2]"
+                text="Claripa is designed to support organisations in managing workforce information responsibly, with structured controls for data protection, access governance, and infrastructure."
+                className="font-sora text-sm sm:text-[16px] text-[#ECE9E3] leading-[1.3]"
               />
             </div>
 
             {/* 2x2 Grid of Security Capability Boxes */}
-            <div className="">
-              {/* Tile 1: Encryption */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {/* Tile 1: Data Protection */}
               <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
                 <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <FolderLock className="w-4 h-4" />
-                  <span className="text-base font-semibold text-white">Security claims</span>
+                  <FolderLock className="w-4 h-4 shrink-0" />
+                  <span className="text-sm font-semibold text-white">Encryption & Protection</span>
                 </div>
                 <BlurText
                   as="p"
                   delay={20}
-                  text="Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified."
-                  className="text-sm text-[#ADB5BD] leading-relaxed font-sans"
+                  text="Structured safeguards across workforce workflows"
+                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
                 />
               </div>
 
               {/* Tile 2: Role-based access */}
-              {/* <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
+              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
                 <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span className="text-sm font-semibold text-white">Role-based access</span>
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span className="text-sm font-semibold text-white">Role-Based Access</span>
                 </div>
-                <p className="text-xs text-slate-300/80 leading-relaxed font-sans">
-                  Right insight, right person only
-                </p>
-              </div> */}
-
-              {/* Tile 3: Data residency */}
-              {/* <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
-                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <Globe className="w-4 h-4" />
-                  <span className="text-sm font-semibold text-white">Data residency</span>
-                </div>
-                <p className="text-xs text-slate-300/80 leading-snug">
-                  Regions to confirm
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text="Right insight, aligned to user roles and permissions"
+                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
+                />
               </div>
 
-              {/* Tile 4: Compliance */}
-              {/* <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
+              {/* Tile 3: Data residency */}
+              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
                 <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <FileCheck2 className="w-4 h-4" />
-                  <span className="text-sm font-semibold text-white">Compliance</span>
+                  <Globe className="w-4 h-4 shrink-0" />
+                  <span className="text-sm font-semibold text-white">Data Residency</span>
                 </div>
-                <p className="text-xs text-slate-300/80 leading-snug">
-                  Enterprise-ready controls
-                </p>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text="Managed cloud storage and regional data governance"
+                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
+                />
+              </div>
+
+              {/* Tile 4: Infrastructure */}
+              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
+                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
+                  <Server className="w-4 h-4 shrink-0" />
+                  <span className="text-sm font-semibold text-white">Hosting & Compliance</span>
+                </div>
+                <BlurText
+                  as="p"
+                  delay={20}
+                  text="Controlled cloud infrastructure and reliability practices"
+                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
+                />
               </div>
             </div>
 
             {/* Bottom Footer Link */}
-              {/* <div className="pt-4 border-t border-white/10">
+            <div className="pt-4 border-t border-white/10">
               <Link
-                href="/security"
+                href="/platform#security-and-trust"
                 className="group inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider text-slate-300 hover:text-white uppercase transition-colors"
               >
                 <span>SECURITY OVERVIEW</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
-            </div> */}
             </div>
           </div>
         </div>

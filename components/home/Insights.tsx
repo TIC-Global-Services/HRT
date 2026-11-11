@@ -19,20 +19,20 @@ export interface InsightCardItem {
 
 export const insightsData: InsightCardItem[] = [
   {
-    id: "gcc-performance",
-    date: "APR 22, 2025",
-    category: "CASE STUDY",
-    title: "GCC Performance \nAcross Engineering",
-    href: "/insights/gcc-performance-across-engineering",
-    imageSrc: "/insight-1.jpg",
-    ctaText: "READ THE FULL CASE STUDY",
-  },
-  {
-    id: "employee-disengagement",
-    date: "APR 22, 2025",
+    id: "hidden-cost-employee-disengagement",
+    date: "MAY 14, 2025",
     category: "BLOG POST",
     title: "The Hidden Cost of \nEmployee Disengagement",
-    href: "/insights/hidden-cost-of-employee-disengagement",
+    href: "/insight/hidden-cost-employee-disengagement",
+    imageSrc: "/domino_effect.png",
+    ctaText: "READ THE FULL ARTICLE",
+  },
+  {
+    id: "rethinking-performance-management-ai-era",
+    date: "MAY 28, 2025",
+    category: "BLOG POST",
+    title: "Rethinking Performance \nManagement in the AI Era",
+    href: "/insight/rethinking-performance-management-ai-era",
     imageSrc: "/insigth-2.jpg",
     ctaText: "READ THE FULL ARTICLE",
   },
@@ -82,7 +82,7 @@ export default function Insights() {
           {/* Explore Blogs & Guides Pill Button */}
           <div>
             <Link
-              href="/insights"
+              href="/insight"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-base font-mono font-semibold tracking-tight uppercase transition-colors duration-200"
             >
               <span>EXPLORE BLOGS & GUIDES</span>

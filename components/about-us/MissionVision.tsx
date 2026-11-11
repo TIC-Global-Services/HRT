@@ -72,7 +72,7 @@ const defaultValues: ValueCardItem[] = [
 
 export default function MissionVision({
   eyebrow = "WHAT DRIVES US",
-  title = "The Next Evolution of HR is\nintelligence",
+  title = "The Next Evolution of HR is\nintelligence.",
   overviewLabel = "Overview",
   overviewText = "Claripa is an AI-powered workforce intelligence platform that transforms people data into meaningful insights, helping organisations understand performance, strengthen alignment, and make informed people decisions.",
   imageSrc = "/about_hero.jpg",

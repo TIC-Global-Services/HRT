@@ -257,7 +257,7 @@ export default function IntegrationsNetwork({
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search integrations..."
+              placeholder="Search integrations"
               aria-label="Search integrations"
               className="w-full h-full rounded-full border border-[#DFDDD7] bg-[#F6F5F2] px-4 font-mono text-[10.5px] sm:text-[11.5px] md:text-[12px] text-[#1D4452] placeholder:text-[#8C989C] text-center outline-none focus:border-[#E56A1E]/60 transition-colors shadow-2xs"
             />

@@ -14,6 +14,7 @@ export { MakeYourNextMove };
 const Footer: React.FC = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isPlatform = pathname === "/platform";
 
   return (
     <footer
@@ -23,7 +24,17 @@ const Footer: React.FC = () => {
     >
       {/* 1. "Make Your Next Move" CTA Section */}
       <div className="relative z-30">
-        <MakeYourNextMove />
+        {isPlatform ? (
+          <MakeYourNextMove
+            eyebrow="SEE CLARIPA IN ACTION"
+            title="Bring Greater Clarity to Performance Management."
+            subtitle="Discover how Claripa connects goals, tasks, performance reviews, and workforce insights to support better-aligned teams and more meaningful performance conversations."
+            buttonText="BOOK A DEMO"
+            buttonHref="/contact-us"
+          />
+        ) : (
+          <MakeYourNextMove />
+        )}
       </div>
 
       {/* 2. Floating Frosted Glass Footer Section Container */}
@@ -109,8 +120,8 @@ const Footer: React.FC = () => {
                 <BlurText
                   as="p"
                   delay={20}
-                  text="Claripa turns workforce data into actionable intelligence for better people decisions."
-                  className="text-xs sm:text-lg text-slate-200/95 leading-relaxed max-w-[240px] font-normal"
+                  text="Claripa by HRT Consulting brings together human resources, technology, and strategic consulting for better people decisions."
+                  className="text-xs sm:text-base text-slate-200/95 leading-relaxed max-w-[270px] font-normal"
                 />
               </div>
 
@@ -121,7 +132,7 @@ const Footer: React.FC = () => {
                     LOCATION
                   </span>
                   <span className="text-slate-200 uppercase">
-                    CHENNAI, MUMBAI
+                    BENGALURU, KARNATAKA
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -129,10 +140,10 @@ const Footer: React.FC = () => {
                     EMAIL
                   </span>
                   <a
-                    href="mailto:sales@claripa.com"
+                    href="mailto:info@hrtconsulting.co.in"
                     className="text-slate-200 hover:text-white transition-colors"
                   >
-                    sales@claripa.com
+                    info@hrtconsulting.co.in
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
@@ -140,10 +151,10 @@ const Footer: React.FC = () => {
                     PHONE
                   </span>
                   <a
-                    href="tel:+910000000000"
+                    href="tel:+919811208080"
                     className="text-slate-200 hover:text-white transition-colors"
                   >
-                    +91 00000 00000
+                    +91 9811208080
                   </a>
                 </div>
               </div>

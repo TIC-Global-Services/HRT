@@ -25,27 +25,42 @@ const defaultPlatformFaqs: FaqItem[] = [
   {
     question: "Can Claripa help create and align OKRs?",
     answer:
-      "Yes, Claripa aligns organizational, departmental, and personal OKRs with clear milestones, ownership tracking, and AI-guided progress indicators.",
+      "Yes. Claripa supports AI-assisted OKR creation and cascading, helping organizations connect strategic objectives with company, team, and individual goals.",
   },
   {
     question: "Can Claripa track tasks linked to OKRs?",
     answer:
-      "Yes, day-to-day team tasks can be mapped directly to strategic OKRs, providing leadership and managers with visibility into real-time execution.",
+      "Claripa supports task creation linked to OKRs and day-to-day task progress tracking. AI nudges can support timely follow-ups and accountability.",
   },
   {
     question: "Does Claripa support performance reviews and check-ins?",
     answer:
-      "Claripa provides continuous feedback loops, scheduled 1:1 check-in templates, manager coaching prompts, and automated review summaries.",
+      "Yes. Claripa supports configurable performance assessment cycles, performance reviews, check-ins, and AI-assisted performance summaries.",
   },
   {
     question: "Can Claripa identify employee skill gaps?",
     answer:
-      "Yes, workforce intelligence surfaces emerging competency and behavioural gaps, helping organizations plan timely employee development interventions.",
+      "Claripa supports behavioural competency assessment and skill gap analysis to help identify development needs and guide appropriate interventions.",
+  },
+  {
+    question: "Can Claripa integrate with our existing HRMS or business systems?",
+    answer:
+      "Integration requirements can be evaluated based on your existing systems, available data, and technical requirements. Specific integrations and their availability can be discussed with the Claripa team.",
+  },
+  {
+    question: "How long does Claripa implementation take?",
+    answer:
+      "The implementation timeline depends on the organization's requirements, configuration, data readiness, and integration needs. Contact the Claripa team to discuss the expected timeline for your organization.",
+  },
+  {
+    question: "How can we see Claripa in action?",
+    answer:
+      "Book a personalised demonstration to explore Claripa's workflows, understand its capabilities, and discuss your organization's performance management requirements.",
   },
 ];
 
 export default function PlatformFaq({
-  eyebrow = "FAQ",
+  eyebrow = "PLATFORM QUESTIONS",
   title = "Questions\nAbout Claripa?",
   lead = "Learn more about Claripa's performance management capabilities and how the platform can support your organization.",
   contactText = "TALK TO OUR TEAM",

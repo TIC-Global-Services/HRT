@@ -18,10 +18,10 @@ export default function AboutUsContent() {
       {/* 3. What Drives Us: Overview, Mission, Vision & 4 Core Values (Image 3) */}
       <MissionVision />
 
-      {/* 4. Real-world Impact Stats: 50+, 03+, 30+ (Image 4) */}
+      {/* 4. Real-world Impact Stats: 50+, 3+, 30+ (Image 4) */}
       <AboutImpact />
 
-      {/* 5. Team Grid: Technology should make work more human (Image 5) */}
+      {/* 5. Our People and Culture Team Grid (Image 5) */}
       <MeetTheTeam />
 
       {/* 6. Where We Are: Offices and Teams */}

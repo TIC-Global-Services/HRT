@@ -1,55 +1,33 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
 
 export interface EmployeeExperienceProps {
   eyebrow?: string;
   title?: string;
+  description?: string;
   benefits?: string[];
   imageSrc?: string;
-  appStoreHref?: string;
-  googlePlayHref?: string;
+  ctaHref?: string;
+  ctaText?: string;
 }
 
 const defaultBenefits = [
-  "Personalised growth paths",
-  "Self-service leave, payslips, requests",
-  "Feedback, recognition and surveys",
-  "Chat-based HR helpdesk",
+  "Personal Goals & Responsibilities — Understand OKRs and contributions to organizational objectives",
+  "Performance & Task Visibility — View assigned tasks, progress, and performance updates",
+  "Feedback & Performance Conversations — Support structured reviews and manager–employee check-ins",
+  "Development Support — Identify growth needs with behavioural competency and skill gap insights",
 ];
-
-function AppleIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 384 512" className={className} fill="currentColor" aria-hidden="true">
-      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-    </svg>
-  );
-}
-
-function GooglePlayIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
-      <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#00E676" />
-      <path
-        d="M47 38.1c-4.8 8.4-7.5 18.7-7.5 30.7v374.4c0 12 2.7 22.3 7.5 30.7l232.7-238-232.7-197.8z"
-        fill="#00C3FF"
-      />
-      <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#FF3A44" />
-      <path
-        d="M447.1 234.8l-61.7-35.4-60.1 60.1 60.1 60.1 61.7-35.4c17.5-10 27.9-28.5 27.9-49.7s-10.4-39.7-27.9-49.7z"
-        fill="#FFC107"
-      />
-    </svg>
-  );
-}
 
 export default function EmployeeExperience({
   eyebrow = "EMPLOYEE EXPERIENCE",
-  title = "Clarity and growth for every employee.",
+  title = "Clarity and Growth for Every Employee.",
+  description = "Claripa helps employees understand their goals, track their responsibilities, and participate in meaningful performance conversations. By connecting individual contributions with organizational objectives, the platform supports greater clarity, accountability, and continuous development.",
   benefits = defaultBenefits,
   imageSrc = "/solution-detail/img_9.jpeg",
-  appStoreHref = "#",
-  googlePlayHref = "#",
+  ctaHref = "/solution-hub",
+  ctaText = "Explore Claripa",
 }: EmployeeExperienceProps) {
   return (
     <section className="px-5 py-16 sm:px-[5%] md:py-24" id="employee-experience">
@@ -64,7 +42,7 @@ export default function EmployeeExperience({
           >
             <Image
               alt=""
-              className="object-cover object-[62%_center]"
+              className="object-cover object-[50%_center]"
               fill
               preload={imageIndex === 0}
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
@@ -86,10 +64,19 @@ export default function EmployeeExperience({
             className="m-0 text-2xl sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
           />
 
-          <ul className="mb-0 mt-7 grid gap-3.5 p-0 list-none">
+          {description && (
+            <BlurText
+              as="p"
+              delay={20}
+              text={description}
+              className="mb-0 mt-4 text-sm sm:text-[15px] leading-relaxed text-[#5A6D75] font-sora"
+            />
+          )}
+
+          <ul className="mb-0 mt-6 grid gap-3.5 p-0 list-none">
             {benefits.map((benefit) => (
-              <li className="flex items-center gap-3 text-sm sm:text-base text-[#254F5F] font-sora font-normal tracking-tight" key={benefit}>
-                <span className="grid size-5 shrink-0 place-items-center border border-[#ECE9E3] rounded-full  text-[#f8780c]">
+              <li className="flex items-start gap-3 text-sm sm:text-[15px] text-[#254F5F] font-sora font-normal leading-snug tracking-tight" key={benefit}>
+                <span className="mt-0.5 grid size-5 shrink-0 place-items-center border border-[#ECE9E3] bg-white/70 rounded-full text-[#f8780c]">
                   <Check aria-hidden="true" size={12} strokeWidth={2.5} />
                 </span>
                 <BlurText delay={20} text={benefit} />
@@ -97,14 +84,14 @@ export default function EmployeeExperience({
             ))}
           </ul>
 
-          {/* Download on App Store & Google Play Badges */}
           <div className="mt-8 sm:mt-10 flex flex-wrap items-start gap-3">
-              <div className="flex gap-3 bg-[#254F5F] font-geist-mono uppercase text-base rounded-full px-6 py-3 text-white tracking-tight">
-                <span>Explore Claripa</span>
-                <span>
-                  <ArrowUpRight strokeWidth={1}/>
-                </span>
-              </div>
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center gap-2.5 bg-[#254F5F] hover:bg-[#193A47] font-geist-mono uppercase text-sm sm:text-base rounded-full px-6 py-3 text-white tracking-tight transition-colors"
+            >
+              <span>{ctaText}</span>
+              <ArrowUpRight className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </div>

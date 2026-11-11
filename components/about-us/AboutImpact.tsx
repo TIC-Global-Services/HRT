@@ -13,7 +13,7 @@ const defaultStats: StatItem[] = [
     label: "Years of Founders HR Expertise",
   },
   {
-    number: "03+",
+    number: "3+",
     label: "Years of HR Consulting Expertise",
   },
   {

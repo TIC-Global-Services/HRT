@@ -15,8 +15,8 @@ export default function DottedWorldMap({
   eyebrow = "OFFICES AND TEAMS",
   title = "Let’s Transform\nPerformance Together",
   locationLabel = "MAP",
-  address = "6th Floor, WeWork Lightbridge, Saki Vihar Rd, Tunga Village, Chandivali, Powai, Mumbai, \nMaharashtra 400072",
-  mapHref = "https://maps.google.com/?q=WeWork+Lightbridge+Saki+Vihar+Road+Mumbai",
+  address = "6th Floor, WeWork Lightbridge, Saki Vihar Rd, Tunga Village, Chandivali, Powai, Mumbai,\nMaharashtra 400072",
+  mapHref = "https://maps.google.com/?q=WeWork+Lightbridge,+Saki+Vihar+Rd,+Tunga+Village,+Chandivali,+Powai,+Mumbai,+Maharashtra+400072",
 }: OfficesAndTeamsProps) {
   return (
     <section
@@ -79,22 +79,36 @@ export default function DottedWorldMap({
 
           {/* Right Column: Dotted World Map Graphic */}
           <div className="relative w-full rounded-[20px] sm:rounded-[24px] overflow-hidden bg-[#F0F0F0] flex items-center justify-center min-h-[260px] sm:min-h-[320px] md:min-h-[380px] lg:min-h-[420px]">
-            <Image
-              src="/offices_map_full.svg"
-              alt="Claripa office locations map across the world, highlighting Chennai HQ"
-              width={765}
-              height={470}
-              priority
-              className="w-full h-auto object-contain select-none"
-            />
-            {/* Subtle animated beacon at Chennai location */}
-            <div
-              className="absolute pointer-events-none -translate-x-1/2 -translate-y-1/2"
-              style={{ left: "60%", top: "60.5%" }}
-              aria-hidden="true"
-            >
-              <span className="absolute -inset-2 rounded-full bg-[#E56A1E]/35 animate-ping" />
-              <span className="relative block w-2 h-2 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.8)]" />
+            <div className="relative w-full aspect-[765/470]">
+              <Image
+                src="/offices_map_clean.svg"
+                alt="Claripa office locations map across the world, highlighting Mumbai HQ"
+                width={765}
+                height={470}
+                priority
+                className="w-full h-full object-contain select-none"
+              />
+              {/* Animated beacon at Mumbai HQ location */}
+              <div
+                className="absolute pointer-events-none -translate-x-1/2 -translate-y-1/2"
+                style={{ left: "56.95%", top: "57.5%" }}
+                aria-hidden="true"
+              >
+                <span className="absolute -inset-2.5 rounded-full bg-[#F8780C]/35 animate-ping" />
+                <span className="relative block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#F8780C] ring-4 ring-[#F8780C]/20 shadow-[0_0_10px_rgba(248,120,12,0.85)]" />
+              </div>
+              {/* HQ - Mumbai pill */}
+              <div
+                className="absolute pointer-events-none -translate-y-1/2"
+                style={{ left: "56.95%", top: "49.5%" }}
+                aria-hidden="true"
+              >
+                <div className="bg-[#254F5F] text-[#F8780C] px-3 sm:px-3.5 h-[26px] sm:h-[30px] rounded-full font-mono text-[10px] sm:text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.16)] whitespace-nowrap">
+                  <span>HQ</span>
+                  <span className="text-[#F8780C]/80 text-[9px]">-</span>
+                  <span>Mumbai</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

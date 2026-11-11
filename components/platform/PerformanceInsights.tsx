@@ -15,25 +15,25 @@ export interface PerformanceInsightRow {
 const defaultRows: PerformanceInsightRow[] = [
   {
     name: "Engineering",
-    status: "High risk",
-    value: "78%",
+    status: "Reviews in progress",
+    value: "84%",
     barWidth: "w-4/5",
     barColor: "bg-[#f8780c]",
-    statusColor: "text-[#c4321a]",
+    statusColor: "text-[#d94c0b]",
   },
   {
     name: "Customer Success",
-    status: "Watch",
-    value: "53%",
-    barWidth: "w-1/2",
+    status: "Check-ins active",
+    value: "72%",
+    barWidth: "w-2/3",
     barColor: "bg-[#f7a166]",
     statusColor: "text-[#a55b00]",
   },
   {
-    name: "Finance",
-    status: "Stable",
-    value: "23%",
-    barWidth: "w-1/4",
+    name: "Operations & Finance",
+    status: "OKRs aligned",
+    value: "91%",
+    barWidth: "w-11/12",
     barColor: "bg-[#254f5f]",
     statusColor: "text-[#28733d]",
   },
@@ -96,7 +96,7 @@ function AnimatedPercent({
 
 export default function PerformanceInsights({
   eyebrow = "ANALYTICS",
-  title = "Make better decisions with performance insights.",
+  title = "Make Better Decisions with Performance Insights.",
   description = "Claripa brings performance information into a structured view, helping leaders and HR teams understand goal progress, review performance, and identify areas that may require attention.",
   rows = defaultRows,
 }: PerformanceInsightsProps) {
@@ -146,31 +146,31 @@ export default function PerformanceInsights({
         >
           <div className="mb-5 flex items-center justify-between gap-4">
             <p className="m-0 font-mono text-[11px] uppercase tracking-wide text-[#62737a]">
-              Leadership view · Q3
+              Organizational Performance Overview
             </p>
-            <span className="font-mono text-[11px] uppercase tracking-wide text-[#254f5f]">
-              Overview ↗
+            <span className="font-mono text-[11px] uppercase tracking-wide text-[#8C9DA3]">
+              Illustrative Data
             </span>
           </div>
 
           {/* Metric Cards with Animated Counters */}
           <div className="mb-5 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
             <div className="rounded-2xl bg-[#F7F6F3] p-4 transition-transform hover:scale-[1.02]">
-              <p className="m-0 text-xs text-[#62737a]">People risk</p>
-              <p className="mb-0 mt-1 text-2xl font-medium text-[#d94c0b]">
-                Medium
+              <p className="m-0 text-xs text-[#62737a]">OKR goal alignment</p>
+              <p className="mb-0 mt-1 text-2xl font-medium text-[#d94c0b] tabular-nums">
+                <AnimatedPercent value={84} start={hasAnimated} duration={1400} />
               </p>
             </div>
             <div className="rounded-2xl bg-[#F7F6F3] p-4 transition-transform hover:scale-[1.02]">
-              <p className="m-0 text-xs text-[#62737a]">Goal alignment</p>
+              <p className="m-0 text-xs text-[#62737a]">Task completion</p>
               <p className="mb-0 mt-1 text-2xl font-medium text-[#254f5f] tabular-nums">
-                <AnimatedPercent value={82} start={hasAnimated} duration={1400} />
+                <AnimatedPercent value={76} start={hasAnimated} duration={1400} />
               </p>
             </div>
             <div className="rounded-2xl bg-[#F7F6F3] p-4 transition-transform hover:scale-[1.02]">
-              <p className="m-0 text-xs text-[#62737a]">Bench strength</p>
+              <p className="m-0 text-xs text-[#62737a]">Review completion</p>
               <p className="mb-0 mt-1 text-2xl font-medium text-[#254f5f] tabular-nums">
-                <AnimatedPercent value={67} start={hasAnimated} duration={1400} />
+                <AnimatedPercent value={88} start={hasAnimated} duration={1400} />
               </p>
             </div>
           </div>

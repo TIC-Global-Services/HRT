@@ -26,7 +26,7 @@ export const workforceContent = {
   eyebrow: "The Future of People Decisions",
   headline: {
     line1: "Spot the Signals.",
-    line2: "Act with Confidence",
+    line2: "Act with Confidence.",
   },
   description:
     "Claripa connects performance, engagement, capability, and behaviour signals to help organisations identify meaningful patterns, make informed people decisions, and take timely action.",

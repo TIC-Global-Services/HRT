@@ -22,7 +22,7 @@ export const caseStudiesData: CaseStudyItem[] = [
     id: "semiconductor-engineering",
     category: "SEMICONDUCTOR ENGINEERING",
     title: "How a Semiconductor Design \nCenter Accelerated Engineering Ramp-Up",
-    href: "/case-studies/semiconductor-design-center",
+    href: "/solution-details",
     imageSrc: "/real-world-impact-1.jpg",
     stats: [
       {
@@ -42,7 +42,7 @@ export const caseStudiesData: CaseStudyItem[] = [
     category: "ENTERPRISE TECHNOLOGY",
     title:
       "How a Global Software Enterprise Retained Critical Engineering Talent Across 14 Hubs",
-    href: "/case-studies/enterprise-technology-retention",
+    href: "/solution-hub",
     imageSrc: "/real-world-impact-2.jpg",
     stats: [
       {
@@ -69,7 +69,7 @@ export default function BetterPeople() {
       headingLines={["Better people decisions.", "Measurable outcomes."]}
       description="Discover how organisations use workforce intelligence to identify risks earlier, improve performance visibility and make more timely decisions about their people."
       ctaLabel="READ MORE SUCCESS STUDIES"
-      ctaHref="/case-studies"
+      ctaHref="/solution-hub"
     />
   );
 }

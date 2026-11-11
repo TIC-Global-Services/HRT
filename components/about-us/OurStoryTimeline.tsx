@@ -54,14 +54,15 @@ const defaultMilestones: TimelineMilestone[] = [
     ),
     year: "2024",
     description:
-      "Claripa expanded its reach by partnering with its first enterprise, bringing workforce",
+      "Claripa expanded its reach by partnering with its first enterprise, bringing workforce intelligence and AI-powered insights to organisational decision-making.",
     heightDesktop: 500,
     widthDesktop: 219,
   },
   {
     kicker: <>Platform launch</>,
     year: "2026",
-    description: "Claripa launched as an AI-powered workforce",
+    description:
+      "Claripa launched as an AI-powered workforce intelligence platform, connecting people data, performance signals and insights to help organisations make better workforce decisions.",
     heightDesktop: 460,
     widthDesktop: 219,
   },
@@ -74,7 +75,8 @@ const defaultMilestones: TimelineMilestone[] = [
       </>
     ),
     year: "TODAY",
-    description: undefined,
+    description:
+      "Claripa is in the process of building four intelligence engines and one operating picture. Each engine fits the same single fabric, the raw materials that 2 years from now become...",
     heightDesktop: 420,
     widthDesktop: 219,
   },
@@ -82,7 +84,7 @@ const defaultMilestones: TimelineMilestone[] = [
 
 export default function OurStoryTimeline({
   eyebrow = "OUR STORY",
-  title = "From an idea to a platform",
+  title = "From an idea to a platform.",
   highlightText = "Claripa continues to advance connected workforce intelligence and AI-enabled HR experiences.",
   milestones = defaultMilestones,
 }: OurStoryTimelineProps) {
@@ -213,7 +215,7 @@ export default function OurStoryTimeline({
                 ref={(el) => {
                   cardRefs.current[idx] = el;
                 }}
-                className={`group relative z-10 flex-none w-[220px] sm:w-[230px] lg:w-[219px] ${heightClasses[idx]} h-[440px] rounded-[30px] overflow-hidden bg-transparent border border-[#ECE9E3] shadow-[0_2px_12px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#E26D35]/40 hover:shadow-[0_12px_32px_rgba(226,109,53,0.10)] snap-start flex flex-col justify-end`}
+                className={`group relative z-10 flex-none w-[220px] sm:w-[230px] lg:w-[219px] ${heightClasses[idx]} min-h-[440px] lg:min-h-0 rounded-[30px] overflow-hidden bg-transparent border border-[#ECE9E3] shadow-[0_2px_12px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#E26D35]/40 hover:shadow-[0_12px_32px_rgba(226,109,53,0.10)] snap-start flex flex-col justify-end`}
               >
                 {/* Text Content at the Bottom */}
                 <div className="relative z-10 px-[22px] pb-[26px] pointer-events-none">
@@ -228,7 +230,7 @@ export default function OurStoryTimeline({
                       as="p"
                       delay={20}
                       text={milestone.description}
-                      className="text-sm leading-[1.5] text-[#254F5F]/90 font-sora"
+                      className="text-[13px] leading-[1.45] text-[#254F5F]/90 font-sora"
                     />
                   )}
                 </div>
