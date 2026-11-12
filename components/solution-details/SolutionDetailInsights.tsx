@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { allCaseStudies } from "@/data/blogs";
 import BlurText from "@/reuseable/BlurText";
 
 export interface SolutionInsightItem {
@@ -14,36 +15,13 @@ export interface SolutionInsightItem {
   href: string;
 }
 
-const defaultInsights: SolutionInsightItem[] = [
-  {
-    id: "insight-1",
-    image: "/insight-1.jpg",
-    date: "APR 22, 2025",
-    title: "GCC Performance Across Engineering",
-    href: "/insight",
-  },
-  {
-    id: "insight-2",
-    image: "/insigth-2.jpg",
-    date: "APR 22, 2025",
-    title: "The Hidden Cost of Employee Disengagement",
-    href: "/insight",
-  },
-  {
-    id: "insight-3",
-    image: "/insight-1.jpg",
-    date: "APR 22, 2025",
-    title: "GCC Performance Across Engineering",
-    href: "/insight",
-  },
-  {
-    id: "insight-4",
-    image: "/insigth-2.jpg",
-    date: "APR 22, 2025",
-    title: "The Hidden Cost of Employee Disengagement",
-    href: "/insight",
-  },
-];
+const defaultInsights: SolutionInsightItem[] = allCaseStudies.map((cs) => ({
+  id: cs.id,
+  image: cs.image,
+  date: cs.date,
+  title: cs.title,
+  href: `/insight/${cs.slug}`,
+}));
 
 export interface SolutionDetailInsightsProps {
   eyebrow?: string;
@@ -123,7 +101,10 @@ export default function SolutionDetailInsights({
                       />
 
                       {/* Gradient Scrim for text readability */}
-                      {/* <div className="absolute inset-0 bg-gradient-to-t from-[#002E40]/90 via-[#002E40]/35 to-transparent pointer-events-none" /> */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25 pointer-events-none"
+                        aria-hidden="true"
+                      />
 
                       {/* Top Date Tag with dot */}
                       <div className="relative z-10 flex items-center gap-2">

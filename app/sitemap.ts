@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { allSolutions } from "@/data/solutions";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://claripa.ai";
@@ -29,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...allSolutions.map((solution) => ({
+      url: `${baseUrl}/solution-details/${solution.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
     {
       url: `${baseUrl}/insight`,
       lastModified: now,

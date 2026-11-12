@@ -1,4 +1,7 @@
 // Auto-generated blog dataset for Claripa Insights
+import { allCaseStudies } from "./caseStudies";
+
+export { allCaseStudies };
 export interface BlogContentBlock {
   type: "paragraph" | "heading" | "subheading" | "bullet-list" | "comparison-table" | "quote" | "stat";
   text?: string;
@@ -25,6 +28,7 @@ export interface BlogPost {
   subtitle: string;
   category: string;
   topic: string;
+  isFeatured?: boolean;
   date: string;
   readTime: string;
   author: {
@@ -51,6 +55,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "Employee disengagement is no longer just an HR concern; it is a global economic challenge. Gallup research estimates that disengaged employees cost the world economy up to $8.9 trillion annually, roughly 9% of global GDP. For organizations, this isn’t an abstract statistic. It is a compounding drag on productivity, innovation and growth that quietly accumulates, often undetected, until the damage is expensive to reverse.",
     "category": "BLOGS",
     "topic": "ENGAGEMENT",
+    "isFeatured": true,
     "date": "MAY 14, 2025",
     "readTime": "6 min read",
     "author": {
@@ -252,6 +257,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "Performance management, despite its importance, has long faced questions around its effectiveness.",
     "category": "BLOGS",
     "topic": "AI",
+    "isFeatured": true,
     "date": "MAY 28, 2025",
     "readTime": "7 min read",
     "author": {
@@ -486,6 +492,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "Most organizations treat onboarding as a process to complete. The most effective ones treat it as an intelligence opportunity to act on.",
     "category": "BLOGS",
     "topic": "ONBOARDING",
+    "isFeatured": false,
     "date": "JUN 10, 2025",
     "readTime": "5 min read",
     "author": {
@@ -663,6 +670,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "Most organizations default to external hiring when a capability gap emerges. Whether a new technology surfaces, a strategic initiative takes shape or a critical role opens up, the response is instinctive: open a requisition, engage recruiters, begin the search.",
     "category": "BLOGS",
     "topic": "ANALYTICS",
+    "isFeatured": false,
     "date": "JUN 24, 2025",
     "readTime": "6 min read",
     "author": {
@@ -864,6 +872,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "There is a moment in every employee’s exit story - sometimes weeks before the resignation, sometimes months - where a manager or HR leader might have sensed something was off: a quieter presence in meetings or a disinterest in a project they once owned.",
     "category": "BLOGS",
     "topic": "ATTRITION",
+    "isFeatured": true,
     "date": "JUL 08, 2025",
     "readTime": "6 min read",
     "author": {
@@ -1024,6 +1033,7 @@ export const allBlogs: BlogPost[] = [
     "subtitle": "Most organizations invest heavily in HR technology. Few invest in the layer that sits closest to the workforce - their managers.",
     "category": "BLOGS",
     "topic": "ENGAGEMENT",
+    "isFeatured": false,
     "date": "JUL 22, 2025",
     "readTime": "7 min read",
     "author": {
@@ -1207,14 +1217,24 @@ export const allBlogs: BlogPost[] = [
   }
 ];
 
+export const allInsights: BlogPost[] = [...allBlogs, ...allCaseStudies];
+
 export function getAllBlogs(): BlogPost[] {
   return allBlogs;
 }
 
+export function getAllCaseStudies(): BlogPost[] {
+  return allCaseStudies;
+}
+
+export function getFeaturedInsights(): BlogPost[] {
+  return [...allCaseStudies, ...allBlogs].filter((item) => item.isFeatured === true);
+}
+
 export function getBlogBySlug(slug: string): BlogPost | undefined {
-  return allBlogs.find((b) => b.slug === slug || b.id === slug);
+  return allInsights.find((b) => b.slug === slug || b.id === slug);
 }
 
 export function getRelatedBlogs(currentSlug: string, count = 3): BlogPost[] {
-  return allBlogs.filter((b) => b.slug !== currentSlug && b.id !== currentSlug).slice(0, count);
+  return allInsights.filter((b) => b.slug !== currentSlug && b.id !== currentSlug).slice(0, count);
 }

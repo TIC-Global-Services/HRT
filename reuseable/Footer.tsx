@@ -8,6 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import MakeYourNextMove from "@/components/MakeYourNextMove";
 import FlutedGlassBackground from "@/reuseable/HeroBg";
 import BlurText from "@/reuseable/BlurText";
+import { defaultSolution, getSolutionBySlug } from "@/data/solutions";
 
 export { MakeYourNextMove };
 
@@ -15,6 +16,12 @@ const Footer: React.FC = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isPlatform = pathname === "/platform";
+  const matchedSolution =
+    pathname === "/solution-details"
+      ? defaultSolution
+      : pathname?.startsWith("/solution-details/")
+        ? getSolutionBySlug(pathname.replace("/solution-details/", "").split("/")[0])
+        : undefined;
 
   return (
     <footer
@@ -31,6 +38,14 @@ const Footer: React.FC = () => {
             subtitle="Discover how Claripa connects goals, tasks, performance reviews, and workforce insights to support better-aligned teams and more meaningful performance conversations."
             buttonText="BOOK A DEMO"
             buttonHref="/contact-us"
+          />
+        ) : matchedSolution ? (
+          <MakeYourNextMove
+            eyebrow={matchedSolution.finalCta.eyebrow}
+            title={matchedSolution.finalCta.title}
+            subtitle={matchedSolution.finalCta.subtitle}
+            buttonText={matchedSolution.finalCta.buttonText}
+            buttonHref={matchedSolution.finalCta.buttonHref}
           />
         ) : (
           <MakeYourNextMove />

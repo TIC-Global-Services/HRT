@@ -1,7 +1,10 @@
 "use client";
 
 import { Search } from "lucide-react";
-import FeaturedInsights, { ArticleItem } from "./FeaturedInsights";
+import FeaturedInsights, {
+  ArticleItem,
+  defaultArticles as defaultFeaturedArticles,
+} from "./FeaturedInsights";
 import BlurText from "@/reuseable/BlurText";
 
 export interface InsightsHeroProps {
@@ -31,7 +34,7 @@ export default function InsightsHero({
   popularTags = defaultPopularTags,
   onTagClick,
   showFeatured = true,
-  featuredArticles,
+  featuredArticles = defaultFeaturedArticles,
 }: InsightsHeroProps) {
   const handleTagClick = (tag: string) => {
     if (onTagClick) {

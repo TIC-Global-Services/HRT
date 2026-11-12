@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { allBlogs, allCaseStudies } from "@/data/blogs";
 import BlurText from "@/reuseable/BlurText";
 
 export interface ArticleItem {
@@ -13,64 +14,21 @@ export interface ArticleItem {
   image: string;
   href: string;
   cta?: string;
+  isFeatured?: boolean;
 }
 
-export const defaultArticles: ArticleItem[] = [
-  {
-    title: "GCC Performance Across Engineering",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "APR 22, 2025",
-    image: "/insight-1.jpg",
-    href: "/solution-details",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    title: "The Hidden Cost of Employee Disengagement",
-    category: "BLOG",
-    topic: "Engagement",
-    date: "MAY 14, 2025",
-    image: "/blogs/blog-1.png",
-    href: "/insight/hidden-cost-employee-disengagement",
-    cta: "READ FULL ARTICLE",
-  },
-  {
-    title: "Why Exit Interviews Come Too Late",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "MAY 08, 2025",
-    image: "/real-world-impact-1.jpg",
-    href: "/solution-hub",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    title: "Claripa Introduces Ask Claripa, AI for People Decisions",
-    category: "CASE STUDY",
-    topic: "AI",
-    date: "MAY 20, 2025",
-    image: "/real-world-impact-2.jpg",
-    href: "/platform",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    title: "From Dashboards to Decisions: Making HR Data Actionable",
-    category: "CASE STUDY",
-    topic: "Analytics",
-    date: "JUN 11, 2025",
-    image: "/insight-1.jpg",
-    href: "/platform",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    title: "Onboarding Engineers at Scale: A 90-Day Signal Checklist",
-    category: "CASE STUDY",
-    topic: "Onboarding",
-    date: "JUN 25, 2025",
-    image: "/insigth-2.jpg",
-    href: "/solution-hub",
-    cta: "READ THE FULL CASE STUDY",
-  },
-];
+export const defaultArticles: ArticleItem[] = [...allCaseStudies, ...allBlogs]
+  .map((item) => ({
+    title: item.title,
+    category: item.category,
+    topic: item.topic.charAt(0).toUpperCase() + item.topic.slice(1).toLowerCase(),
+    date: item.date,
+    image: item.image,
+    href: `/insight/${item.slug}`,
+    cta: item.category === "CASE STUDY" ? "READ THE FULL CASE STUDY" : "READ FULL ARTICLE",
+    isFeatured: item.isFeatured === true,
+  }))
+  .filter((item) => item.isFeatured);
 
 export interface FeaturedInsightsProps {
   eyebrow?: string;
@@ -85,10 +43,12 @@ export default function FeaturedInsights({
 }: FeaturedInsightsProps) {
   const [activeSlide, setActiveSlide] = useState(0);
 
+  const featuredArticles = articles.filter((article) => article.isFeatured === true);
+
   // Group into pairs (2 articles per slide)
   const slides: ArticleItem[][] = [];
-  for (let i = 0; i < articles.length; i += 2) {
-    slides.push(articles.slice(i, i + 2));
+  for (let i = 0; i < featuredArticles.length; i += 2) {
+    slides.push(featuredArticles.slice(i, i + 2));
   }
 
   const totalSlides = Math.max(slides.length, 1);

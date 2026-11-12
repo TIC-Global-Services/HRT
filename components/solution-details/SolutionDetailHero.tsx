@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Play, Sparkles } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
+import type { SolutionDashboardData } from "@/data/solutions";
 
 export interface SolutionDetailHeroProps {
   breadcrumb?: string;
@@ -14,16 +15,52 @@ export interface SolutionDetailHeroProps {
   overviewText?: string;
   overviewHref?: string;
   bannerSrc?: string;
+  dashboard?: SolutionDashboardData;
 }
 
+const defaultDashboard: SolutionDashboardData = {
+  floatingBadgeTitle: "24 Goals Need Attention",
+  floatingBadgeSubtitle: "across aligned teams",
+  eyebrow: "GOAL ALIGNMENT · ORGANIZATION-WIDE",
+  attentionBadge: "24 NEED ATTENTION",
+  heading: "24 Goals Need Attention",
+  rows: [
+    {
+      initials: "01",
+      title: "Organizational Goal Alignment",
+      subtitle: "Company objectives vs. department targets",
+      severity: "High",
+      progress: 85,
+      highlighted: true,
+    },
+    {
+      initials: "DP",
+      title: "Department Progress",
+      subtitle: "Team OKRs trailing quarterly milestones",
+      severity: "Medium",
+      progress: 58,
+    },
+    {
+      initials: "OK",
+      title: "Individual OKR Tracking",
+      subtitle: "Goals awaiting mid-cycle alignment check",
+      severity: "Medium",
+      progress: 50,
+    },
+  ],
+  suggestedNextStep:
+    "Review goals that are falling behind and realign team priorities.",
+};
+
 export default function SolutionDetailHero({
-  breadcrumb = "HOME / SOLUTIONS / SOLUTION DETAIL",
-  title = "Align every goal with the \nbigger picture.",
-  description = "Connect organizational objectives with team priorities and individual contributions. Claripa helps you create aligned goals, track performance and identify gaps before they impact \nbusiness outcomes.",
+  breadcrumb = "HOME / SOLUTIONS / ALIGN GOALS AND IMPROVE PERFORMANCE",
+  title = "Align every goal with the\nbigger picture.",
+  description = "Connect organizational objectives with team priorities and individual contributions. Claripa helps you create aligned goals, track performance and identify gaps before they impact business outcomes.",
   talkText = "BOOK A DEMO",
   talkHref = "/contact-us",
   overviewText = "WATCH OVERVIEW",
   overviewHref = "#the-solution",
+  dashboard = defaultDashboard,
 }: SolutionDetailHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isTriggered, setIsTriggered] = useState(false);
@@ -124,7 +161,7 @@ export default function SolutionDetailHero({
 
           {/* Centered Inner Dashboard Card Container */}
           <div className="relative z-10 w-full max-w-[560px] sm:max-w-[600px] mx-auto shrink-0">
-            {/* Single Floating Pop-Up Card: Flagged 6 weeks early (overlapping top-left of title and row 1) */}
+            {/* Single Floating Pop-Up Card (overlapping top-left of title and row 1) */}
             <div
               className={`absolute -left-4 sm:-left-8 lg:-left-10 top-11 sm:top-22 z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                 isTriggered
@@ -140,10 +177,10 @@ export default function SolutionDetailHero({
                   </div>
                   <div className="text-left">
                     <div className="text-xs sm:text-[13px] font-bold text-[#002E40] leading-tight whitespace-nowrap font-sora">
-                      Flagged 6 weeks early
+                      {dashboard.floatingBadgeTitle}
                     </div>
                     <div className="text-[10px] sm:text-[11px] font-medium text-[#71828A] mt-0.5 whitespace-nowrap">
-                      before any resignation
+                      {dashboard.floatingBadgeSubtitle}
                     </div>
                   </div>
                 </div>
@@ -155,123 +192,106 @@ export default function SolutionDetailHero({
               {/* Header: Eyebrow + Badge */}
               <div className="flex items-center justify-between gap-3 mb-1.5">
                 <p className="font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-[#71828A] m-0 font-medium">
-                  RETENTION WATCH · ENGINEERING
+                  {dashboard.eyebrow}
                 </p>
 
                 <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-[#D45218] bg-[#FCEEE6] border border-[#FADCCB] px-3 py-1 rounded-full whitespace-nowrap">
-                  6 NEED ATTENTION
+                  {dashboard.attentionBadge}
                 </span>
               </div>
 
               {/* Main Cohort Title */}
               <h2 className="font-sora text-xl sm:text-[22px] font-semibold text-[#002E40] tracking-tight mb-3.5 sm:mb-4">
-                Flight risk: 3–5 yr cohort
+                {dashboard.heading}
               </h2>
 
-              {/* Employee Rows */}
+              {/* Signal Rows */}
               <div className="space-y-2 sm:space-y-2.5">
-                {/* Row 1: High Risk (Highlighted) */}
-                <div className="rounded-2xl p-3 sm:p-3.5 bg-[#FFF4ED] border border-[#FCE4D6] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#FAD2BD]">
-                  <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFE4D4] border border-[#FCD4BE] flex items-center justify-center shrink-0">
-                      <svg
-                        className="w-4 h-4 text-[#D45218]"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
+                {dashboard.rows.map((row, index) => {
+                  const isHighlighted = row.highlighted ?? index === 0;
+                  const delayMs = 200 + index * 150;
+
+                  if (isHighlighted) {
+                    return (
+                      <div
+                        key={row.title}
+                        className="rounded-2xl p-3 sm:p-3.5 bg-[#FFF4ED] border border-[#FCE4D6] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#FAD2BD]"
                       >
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                      </svg>
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-sora text-xs sm:text-sm font-semibold text-[#002E40] truncate">
-                        Senior Engineer · Platform
-                      </div>
-                      <div className="font-sora text-[11px] sm:text-xs text-[#71828A] truncate mt-0.5">
-                        No 1:1 in 5 weeks · growth stalled
-                      </div>
-                    </div>
-                  </div>
+                        <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFE4D4] border border-[#FCD4BE] flex items-center justify-center shrink-0">
+                            <svg
+                              className="w-4 h-4 text-[#D45218]"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                          </div>
+                          <div className="min-w-0">
+                            <div className="font-sora text-xs sm:text-sm font-semibold text-[#002E40] truncate">
+                              {row.title}
+                            </div>
+                            <div className="font-sora text-[11px] sm:text-xs text-[#71828A] truncate mt-0.5">
+                              {row.subtitle}
+                            </div>
+                          </div>
+                        </div>
 
-                  <div className="shrink-0 flex flex-col items-end">
-                    <div className="w-24 sm:w-32 md:w-36 h-1.5 sm:h-2 bg-[#F6DDD0] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[#E85D1B] rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: isTriggered ? "90%" : "0%",
-                          transitionDelay: isTriggered ? "200ms" : "0ms",
-                        }}
-                      />
-                    </div>
-                    <span className="text-[11px] sm:text-xs font-semibold text-[#D45218] mt-1">
-                      High
-                    </span>
-                  </div>
-                </div>
-
-                {/* Row 2: Medium Risk (PK) */}
-                <div className="rounded-2xl p-3 sm:p-3.5 bg-white border border-[#ECE7E0] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#DDD7CF]">
-                  <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF1F5] text-[#254F5F] font-mono text-xs font-bold flex items-center justify-center shrink-0">
-                      PK
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-sora text-xs sm:text-sm font-semibold text-[#002E40] truncate">
-                        Tech Lead · Payments
+                        <div className="shrink-0 flex flex-col items-end">
+                          <div className="w-24 sm:w-32 md:w-36 h-1.5 sm:h-2 bg-[#F6DDD0] rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-[#E85D1B] rounded-full transition-all duration-1000 ease-out"
+                              style={{
+                                width: isTriggered ? `${row.progress}%` : "0%",
+                                transitionDelay: isTriggered ? `${delayMs}ms` : "0ms",
+                              }}
+                            />
+                          </div>
+                          <span className="text-[11px] sm:text-xs font-semibold text-[#D45218] mt-1">
+                            {row.severity}
+                          </span>
+                        </div>
                       </div>
-                      <div className="font-sora text-[11px] sm:text-xs text-[#71828A] truncate mt-0.5">
-                        Feedback volume down 40%
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  }
 
-                  <div className="shrink-0 flex flex-col items-end">
-                    <div className="w-24 sm:w-32 md:w-36 h-1.5 sm:h-2 bg-[#EFECE8] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[#F07A38] rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: isTriggered ? "55%" : "0%",
-                          transitionDelay: isTriggered ? "350ms" : "0ms",
-                        }}
-                      />
-                    </div>
-                    <span className="text-[11px] sm:text-xs font-semibold text-[#B5591C] mt-1">
-                      Medium
-                    </span>
-                  </div>
-                </div>
-
-                {/* Row 3: Medium Risk (SN) */}
-                <div className="rounded-2xl p-3 sm:p-3.5 bg-white border border-[#ECE7E0] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#DDD7CF]">
-                  <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF1F5] text-[#254F5F] font-mono text-xs font-bold flex items-center justify-center shrink-0">
-                      SN
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-sora text-xs sm:text-sm font-semibold text-[#002E40] truncate">
-                        Engineer II · Data
+                  return (
+                    <div
+                      key={row.title}
+                      className="rounded-2xl p-3 sm:p-3.5 bg-white border border-[#ECE7E0] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#DDD7CF]"
+                    >
+                      <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF1F5] text-[#254F5F] font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                          {row.initials}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-sora text-xs sm:text-sm font-semibold text-[#002E40] truncate">
+                            {row.title}
+                          </div>
+                          <div className="font-sora text-[11px] sm:text-xs text-[#71828A] truncate mt-0.5">
+                            {row.subtitle}
+                          </div>
+                        </div>
                       </div>
-                      <div className="font-sora text-[11px] sm:text-xs text-[#71828A] truncate mt-0.5">
-                        Pay below band for role
+
+                      <div className="shrink-0 flex flex-col items-end">
+                        <div className="w-24 sm:w-32 md:w-36 h-1.5 sm:h-2 bg-[#EFECE8] rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-[#F07A38] rounded-full transition-all duration-1000 ease-out"
+                            style={{
+                              width: isTriggered ? `${row.progress}%` : "0%",
+                              transitionDelay: isTriggered ? `${delayMs}ms` : "0ms",
+                            }}
+                          />
+                        </div>
+                        <span className="text-[11px] sm:text-xs font-semibold text-[#B5591C] mt-1">
+                          {row.severity}
+                        </span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="shrink-0 flex flex-col items-end">
-                    <div className="w-24 sm:w-32 md:w-36 h-1.5 sm:h-2 bg-[#EFECE8] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[#F07A38] rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: isTriggered ? "50%" : "0%",
-                          transitionDelay: isTriggered ? "500ms" : "0ms",
-                        }}
-                      />
-                    </div>
-                    <span className="text-[11px] sm:text-xs font-semibold text-[#B5591C] mt-1">
-                      Medium
-                    </span>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
 
               {/* Bottom Action Section: Suggested Next Step */}
@@ -284,7 +304,7 @@ export default function SolutionDetailHero({
                     SUGGESTED NEXT STEP
                   </p>
                   <p className="font-sora text-xs sm:text-sm text-[#002E40] leading-relaxed m-0">
-                    Book a growth conversation with your Senior Engineer this week, and share the Team Lead path.
+                    {dashboard.suggestedNextStep}
                   </p>
                 </div>
               </div>

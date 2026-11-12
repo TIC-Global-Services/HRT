@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
+import { allSolutions } from "@/data/solutions";
 
 export const solutionFilters = [
   "By need",
@@ -23,51 +24,13 @@ export interface SolutionItem {
   featured?: boolean;
 }
 
-const defaultSolutions: SolutionItem[] = [
-  {
-    title: "Align Goals and Improve Performance",
-    description:
-      "Connect company objectives with team and individual OKRs. Use AI-assisted goal creation and performance tracking to improve alignment and visibility.",
-    tags: "Goal Alignment, OKRs, Performance Management",
-    slug: "/solution-details",
-    featured: true,
-  },
-  {
-    title: "Track Tasks and Execution",
-    description:
-      "Connect tasks to OKRs, monitor day-to-day progress, and use AI nudges to support timely follow-ups and accountability.",
-    tags: "Task Management, Progress Tracking, AI Nudges",
-    slug: "/solution-details",
-  },
-  {
-    title: "Support Employee Development",
-    description:
-      "Identify skill gaps and behavioural competency development needs to help organizations plan appropriate employee development interventions.",
-    tags: "Skill Gap Analysis, Competencies, Development",
-    slug: "/solution-details",
-  },
-  {
-    title: "Empower Managers",
-    description:
-      "Support managers with performance summaries, regular check-ins, and AI-assisted coaching to make conversations with team members more meaningful.",
-    tags: "Manager Effectiveness, Check-ins, AI Coach",
-    slug: "/solution-details",
-  },
-  {
-    title: "Gain Workforce Performance Insights",
-    description:
-      "Use performance dashboards to understand progress, identify areas requiring attention, and support informed decisions across teams and the organization.",
-    tags: "Performance Dashboards, Workforce Insights, Analytics",
-    slug: "/solution-details",
-  },
-  {
-    title: "Improve Performance by Development Interventions",
-    description:
-      "Use performance and skill gap insights to identify development needs and guide appropriate interventions to support employee improvement.",
-    tags: "Performance Improvement, Skill Gaps, Interventions",
-    slug: "/solution-details",
-  },
-];
+const defaultSolutions: SolutionItem[] = allSolutions.map((solution) => ({
+  title: solution.cardTitle,
+  description: solution.cardDescription,
+  tags: solution.cardTags,
+  slug: `/solution-details/${solution.slug}`,
+  featured: solution.featured,
+}));
 
 export interface SolutionFinderProps {
   eyebrow?: string;

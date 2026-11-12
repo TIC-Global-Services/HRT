@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Play, Sparkles } from "lucide-react";
-import { allBlogs } from "@/data/blogs";
+import { allBlogs, allCaseStudies, type BlogPost } from "@/data/blogs";
 import BlurText from "@/reuseable/BlurText";
 
 export interface LibraryArticleItem {
@@ -24,9 +24,6 @@ export const defaultCategories = [
   "ALL",
   "BLOGS",
   "CASE STUDIES",
-  "REPORTS & GUIDES",
-  "WEBINARS",
-  "NEWS",
 ];
 
 export const defaultTopics = [
@@ -38,112 +35,35 @@ export const defaultTopics = [
   "ONBOARDING",
 ];
 
-// Map all 6 official blogs to library items
-export const blogLibraryArticles: LibraryArticleItem[] = allBlogs.map((b) => ({
-  id: b.slug,
-  title: b.title,
-  category: "BLOGS",
-  topic: b.topic.charAt(0).toUpperCase() + b.topic.slice(1).toLowerCase(),
-  date: b.date,
-  image: b.image,
-  href: `/insight/${b.slug}`,
-  cta: "READ FULL ARTICLE",
-}));
+function mapPostToLibraryItem(
+  post: BlogPost,
+  category: string,
+  cta: string
+): LibraryArticleItem {
+  return {
+    id: post.slug,
+    title: post.title,
+    category,
+    topic: post.topic.charAt(0).toUpperCase() + post.topic.slice(1).toLowerCase(),
+    date: post.date,
+    image: post.image,
+    href: `/insight/${post.slug}`,
+    cta,
+  };
+}
+
+// Map all 6 official blogs and 3 product case studies to library items
+export const blogLibraryArticles: LibraryArticleItem[] = allBlogs.map((b) =>
+  mapPostToLibraryItem(b, "BLOGS", "READ FULL ARTICLE")
+);
+
+export const caseStudyLibraryArticles: LibraryArticleItem[] = allCaseStudies.map((cs) =>
+  mapPostToLibraryItem(cs, "CASE STUDY", "READ THE FULL CASE STUDY")
+);
 
 export const defaultLibraryArticles: LibraryArticleItem[] = [
   ...blogLibraryArticles,
-  {
-    id: "gcc-performance-1",
-    title: "GCC Performance Across Engineering",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-1.jpg",
-    href: "/solution-details",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    id: "exit-interviews-1",
-    title: "Why Exit Interviews Come Too Late",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-2.jpg",
-    href: "/solution-hub",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    id: "ask-claripa-ai",
-    title: "Claripa Introduces Ask Claripa, AI for People Decisions",
-    category: "NEWS",
-    topic: "AI",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-3.jpg",
-    href: "/platform",
-    cta: "READ MORE",
-    isAskClaripa: true,
-  },
-  {
-    id: "dashboards-to-decisions",
-    title: "From Dashboards to Decisions: Making HR Data Actionable",
-    category: "WEBINAR",
-    topic: "Analytics",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-4.jpg",
-    href: "/platform",
-    cta: "WATCH NOW",
-    isVideo: true,
-  },
-  {
-    id: "semiconductor-ramp-up",
-    title: "How a Semiconductor Center Ramped Up Engineers 40% Faster",
-    category: "CASE STUDY",
-    topic: "Onboarding",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-5.jpg",
-    href: "/solution-details",
-    cta: "READ STORY",
-  },
-  {
-    id: "state-of-people-decisions-2026",
-    title: "The State of People Decisions 2026",
-    category: "REPORT",
-    topic: "Analytics",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-6.jpg",
-    href: "/platform",
-    cta: "READ MORE",
-  },
-  {
-    id: "exit-interviews-2",
-    title: "Why Exit Interviews Come Too Late",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-7.jpg",
-    href: "/solution-hub",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    id: "gcc-performance-2",
-    title: "GCC Performance Across Engineering",
-    category: "CASE STUDY",
-    topic: "Attrition",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-8.jpg",
-    href: "/solution-details",
-    cta: "READ THE FULL CASE STUDY",
-  },
-  {
-    id: "onboarding-engineers-scale",
-    title: "Onboarding Engineers at Scale: A 90-Day Signal Checklist",
-    category: "GUIDE",
-    topic: "Onboarding",
-    date: "APR 22, 2025",
-    image: "/insight-library/clean-library-9.jpg",
-    href: "/solution-hub",
-    cta: "READ NOW",
-  },
+  ...caseStudyLibraryArticles,
 ];
 
 export interface InsightsLibraryProps {
@@ -174,9 +94,6 @@ export default function InsightsLibrary({
         if (selectedCategory === "ALL") return true;
         const cat = article.category.toUpperCase();
         if (selectedCategory === "CASE STUDIES") return cat.includes("CASE");
-        if (selectedCategory === "REPORTS & GUIDES") return cat.includes("REPORT") || cat.includes("GUIDE");
-        if (selectedCategory === "WEBINARS") return cat.includes("WEBINAR");
-        if (selectedCategory === "NEWS") return cat.includes("NEWS");
         if (selectedCategory === "BLOGS") return cat.includes("BLOG");
         return cat === selectedCategory;
       })();

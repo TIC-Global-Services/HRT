@@ -1,10 +1,11 @@
 import SolutionDetailContent from "@/components/solution-details";
+import { defaultSolution } from "@/data/solutions";
 
 export const metadata = {
-  title: "Solution Details",
-  description: "In-depth look at Claripa flight risk mitigation and talent intelligence workflows.",
+  title: defaultSolution.metadata.title,
+  description: defaultSolution.metadata.description,
 };
 
 export default function SolutionDetailsPage() {
-  return <SolutionDetailContent />;
+  return <SolutionDetailContent solution={defaultSolution} />;
 }

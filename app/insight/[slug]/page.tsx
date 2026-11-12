@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allBlogs, getBlogBySlug } from "@/data/blogs";
+import { allInsights, getBlogBySlug } from "@/data/blogs";
 import BlogViewContent from "@/components/insight/BlogViewContent";
 
 interface PageProps {
@@ -10,8 +10,8 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return allBlogs.map((blog) => ({
-    slug: blog.slug,
+  return allInsights.map((insight) => ({
+    slug: insight.slug,
   }));
 }
 
