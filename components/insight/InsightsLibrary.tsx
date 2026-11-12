@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Sparkles } from "lucide-react";
+import { Play, Search, Sparkles } from "lucide-react";
 import { allBlogs, allCaseStudies, type BlogPost } from "@/data/blogs";
 import BlurText from "@/reuseable/BlurText";
 
@@ -69,6 +69,8 @@ export const defaultLibraryArticles: LibraryArticleItem[] = [
 export interface InsightsLibraryProps {
   articles?: LibraryArticleItem[];
   searchQuery?: string;
+  onSearchQueryChange?: (value: string) => void;
+  searchPlaceholder?: string;
   categories?: string[];
   topics?: string[];
   className?: string;
@@ -76,17 +78,29 @@ export interface InsightsLibraryProps {
 
 export default function InsightsLibrary({
   articles = defaultLibraryArticles,
-  searchQuery = "",
+  searchQuery,
+  onSearchQueryChange,
+  searchPlaceholder = "Search articles, case studies...",
   categories = defaultCategories,
   topics = defaultTopics,
   className = "",
 }: InsightsLibraryProps) {
+  const [internalSearchQuery, setInternalSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selectedTopic, setSelectedTopic] = useState("ALL");
   const [visibleCount, setVisibleCount] = useState(9);
 
+  const activeSearchQuery = searchQuery ?? internalSearchQuery;
+  const handleSearchChange = (value: string) => {
+    if (onSearchQueryChange) {
+      onSearchQueryChange(value);
+    } else {
+      setInternalSearchQuery(value);
+    }
+  };
+
   const filteredArticles = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
+    const query = activeSearchQuery.trim().toLowerCase();
 
     return articles.filter((article) => {
       // Category filter matching
@@ -113,7 +127,7 @@ export default function InsightsLibrary({
 
       return matchesCategory && matchesTopic && matchesSearch;
     });
-  }, [articles, searchQuery, selectedCategory, selectedTopic]);
+  }, [articles, activeSearchQuery, selectedCategory, selectedTopic]);
 
   const displayedArticles = filteredArticles.slice(0, visibleCount);
 
@@ -124,6 +138,33 @@ export default function InsightsLibrary({
   return (
     <section className={`w-full py-10 md:py-14 ${className}`.trim()}>
       <div className="max-w-6xl mx-auto">
+        {/* Search Bar */}
+        <form
+          className="relative w-full max-w-[640px] mx-auto mb-6 md:mb-8 flex items-center bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] py-1.5 pl-5 pr-2 transition-all duration-200 focus-within:border-[#204958]/40 focus-within:shadow-[0_2px_16px_rgba(0,0,0,0.06)]"
+          onSubmit={(event) => event.preventDefault()}
+          role="search"
+        >
+          <Search
+            aria-hidden="true"
+            size={18}
+            className="shrink-0 text-[#8B9DA6] mr-3"
+          />
+          <input
+            aria-label="Search articles and case studies"
+            onChange={(event) => handleSearchChange(event.target.value)}
+            placeholder={searchPlaceholder}
+            type="search"
+            value={activeSearchQuery}
+            className="w-full min-w-0 border-0 outline-none text-[#002e40] text-[13px] sm:text-sm font-sora placeholder-[#8B9DA6] bg-transparent"
+          />
+          <button
+            type="submit"
+            className="inline-flex min-h-[38px] items-center justify-center px-6 rounded-full bg-[#204958] text-white font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider cursor-pointer hover:bg-[#153845] transition-colors shrink-0 shadow-xs"
+          >
+            SEARCH
+          </button>
+        </form>
+
         {/* Floating Filter Bar */}
         <div className="w-full bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] px-2.5 py-1.5 sm:px-3 sm:py-2 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 mb-8 md:mb-10">
           {/* Category Tabs */}
