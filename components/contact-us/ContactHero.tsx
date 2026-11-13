@@ -77,50 +77,50 @@ export default function ContactHero({
                   delay={20}
                   className="text-[#62737a] font-sora text-sm leading-relaxed"
                 />
-              </span>
-            </li>
-          )
-        )}
-      </ul>
-      <figure className="mt-12 sm:mt-16 p-6 sm:p-7 border border-[#ece9e3] rounded-[26px] bg-white text-center">
-        <blockquote className="m-0 text-[#62737a] font-sora text-lg sm:text-[24px] font-semibold tracking-[-0.025em] leading-snug">
-          “Short testimonial quote that builds trust at the point of conversion.”
-        </blockquote>
-        <figcaption className="mt-3.5 text-[#62737a] font-sora text-[14px]">
-          {promiseSubtitle}
-        </figcaption>
-      </figure>
-      <div
-        className="overflow-hidden min-w-0 w-full mt-6 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
-        role="group"
-        aria-label="Trusted by teams at"
-      >
-        <div className="flex items-center w-max animate-marquee hover:[animation-play-state:paused]">
-          {[false, true].map((isDuplicate) => (
-            <ul
-              aria-hidden={isDuplicate || undefined}
-              className="flex items-center flex-none gap-9 pr-9 m-0 p-0 list-none"
-              key={String(isDuplicate)}
-            >
-              {companyLogos.map(({ src, name }) => (
-                <li
-                  className="flex min-w-0 items-center justify-center"
-                  key={name}
-                >
-                  <Image
-                    src={src}
-                    alt={isDuplicate ? "" : name}
-                    width={120}
-                    height={20}
-                    className="w-auto max-w-full h-20 object-contain opacity-80"
-                    // className="w-auto max-w-full h-6 object-contain opacity-80"
-                  />
-                </li>
-              ))}
-            </ul>
-          ))}
+                </span>
+              </li>
+            )
+          )}
+        </ul>
+        <figure className="mt-12 sm:mt-16 p-6 sm:p-7 border border-[#ece9e3] rounded-[26px] bg-white text-center">
+          <blockquote className="m-0 text-[#62737a] font-sora text-lg sm:text-[24px] font-semibold tracking-[-0.025em] leading-snug">
+            “Short testimonial quote that builds trust at the point of conversion.”
+          </blockquote>
+          <figcaption className="mt-3.5 text-[#62737a] font-sora text-[14px]">
+            {promiseSubtitle}
+          </figcaption>
+        </figure>
+        <div
+          className="overflow-hidden min-w-0 w-full mt-6 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
+          role="group"
+          aria-label="Trusted by teams at"
+        >
+          <div className="flex items-center w-max animate-marquee">
+            {[false, true].map((isDuplicate) => (
+              <ul
+                aria-hidden={isDuplicate || undefined}
+                className="flex items-center flex-none gap-8 pr-8 m-0 p-0 list-none"
+                key={String(isDuplicate)}
+              >
+                {companyLogos.map(({ src, name }) => (
+                  <li
+                    className="flex h-12 sm:h-14 w-28 sm:w-32 items-center justify-center shrink-0"
+                    key={`${isDuplicate ? "dup-" : ""}${name}`}
+                  >
+                    <Image
+                      src={src}
+                      alt={isDuplicate ? "" : name}
+                      width={120}
+                      height={48}
+                      loading="eager"
+                      className="max-h-10 sm:max-h-12 w-auto max-w-full object-contain opacity-80 transition-opacity hover:opacity-100"
+                    />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
