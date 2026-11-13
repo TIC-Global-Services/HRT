@@ -47,7 +47,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
             <span className="absolute -inset-2 rounded-full bg-[#F8750C]/5 blur-[6px] pointer-events-none" />
             <span className="relative w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F8750C] shadow-[0_0_10px_2px_rgba(248,117,12,0.55)]" />
           </span>
-          <span className="text-[#F8750C] text-xs sm:text-base font-medium tracking-wider uppercase font-mono">
+          <span className="text-[#F8750C] text-xs sm:text-base font-medium tracking-tight uppercase font-mono">
             {eyebrow}
           </span>
         </div>
