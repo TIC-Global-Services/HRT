@@ -137,13 +137,13 @@ export default function MeetTheTeam({
           as="h2"
           delay={20}
           text={title}
-          className="text-[#142938] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]"
+          className="text-[#254F5F] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]"
         />
-        {subtitle && (
+        {/* {subtitle && (
           <p className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed mt-3.5 max-w-xl">
             {subtitle}
           </p>
-        )}
+        )} */}
       </div>
 
       {/* Team Cards Grid (3 cards per row, bottom row centered) */}
