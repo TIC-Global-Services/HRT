@@ -4,9 +4,17 @@ import { MessageSquare, Tag, ThumbsUp } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
 
 const companyLogos = [
-  { src: "/company_logo/mitsubishi.png", name: "Mitsubishi" },
-  { src: "/company_logo/siemens.png", name: "Siemens" },
-  { src: "/company_logo/oracle.png", name: "Oracle" },
+  { src: "/company_logo/ani.png", name: "ani" },
+  { src: "/company_logo/charcoal.png", name: "charcoal" },
+  { src: "/company_logo/cozentus.png", name: "cozentus" },
+  { src: "/company_logo/firstrand.png", name: "firstrand" },
+  { src: "/company_logo/h-56.png", name: "h-56" },
+  { src: "/company_logo/htpc.png", name: "htpc" },
+  { src: "/company_logo/ivalue.png", name: "ivalue" },
+  { src: "/company_logo/mobiledrive.png", name: "mobiledrive" },
+  { src: "/company_logo/pria.png", name: "pria" },
+  { src: "/company_logo/tianu.png", name: "tianu" },
+  { src: "/company_logo/vaysd.png", name: "vaysd" },
 ];
 
 export interface ContactHeroProps {
@@ -104,7 +112,7 @@ export default function ContactHero({
                     alt={isDuplicate ? "" : name}
                     width={120}
                     height={20}
-                    className="w-auto max-w-full h-4 object-contain opacity-80"
+                    className="w-auto max-w-full h-8 object-contain opacity-80"
                     // className="w-auto max-w-full h-6 object-contain opacity-80"
                   />
                 </li>

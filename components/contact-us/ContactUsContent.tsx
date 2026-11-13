@@ -3,6 +3,7 @@ import ContactForm from "./ContactForm";
 import DirectLines from "./DirectLines";
 import OfficeLocations from "./OfficeLocations";
 import ContactFAQ from "./ContactFAQ";
+import DottedWorldMap from "../about-us/DottedWorldMap";
 
 export default function ContactUsContent() {
   return (
@@ -14,7 +15,7 @@ export default function ContactUsContent() {
         </div>
       </section>
       <DirectLines />
-      <OfficeLocations />
+      <DottedWorldMap />
       <ContactFAQ />
       {/* <div className="w-[min(1200px,calc(100%-48px))] mx-auto"> */}
         {/* <ImpactCTA /> */}

@@ -48,33 +48,35 @@ export default function DottedWorldMap({
             </div>
 
             {/* Address Pill Box */}
-            <div className="flex items-center justify-between gap-3 sm:gap-4 rounded-[18px] sm:rounded-[22px] bg-[#F7F6F3] border border-[#E8E6DF] p-3.5 sm:p-4 md:p-4.5 mt-8 lg:mt-auto">
-              <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
-                <div
-                  aria-hidden="true"
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#E56A1E] text-white flex items-center justify-center shrink-0 shadow-xs"
-                >
-                  <MapPin size={18} className="stroke-white stroke-[2.2]" />
+            <Link
+              href={mapHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Mumbai office in Google Maps"
+              className="group block mt-8 lg:mt-auto"
+            >
+              <div className="flex items-center justify-between gap-3 sm:gap-4 rounded-[18px] sm:rounded-[22px] bg-[#F7F6F3] border border-[#E8E6DF] p-3.5 sm:p-4 md:p-4.5 transition-colors group-hover:border-[#d7d4cb]">
+                <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                  <div
+                    aria-hidden="true"
+                    className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#E56A1E] text-white flex items-center justify-center shrink-0 shadow-xs"
+                  >
+                    <MapPin size={18} className="stroke-white stroke-[2.2]" />
+                  </div>
+                  <BlurText
+                    as="p"
+                    delay={20}
+                    text={address}
+                    className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium tracking-tight leading-[1.2] max-w-[330px]"
+                  />
                 </div>
-                <BlurText
-                  as="p"
-                  delay={20}
-                  text={address}
-                  className="text-[#102A33] font-sora text-[11px] sm:text-xs md:text-base font-medium tracking-tight leading-[1.2] max-w-[330px]"
-                />
-              </div>
 
-              <Link
-                href={mapHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Mumbai office in Google Maps"
-                className="font-mono text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#254F5F] hover:text-[#E56A1E] transition-colors shrink-0 flex items-start gap-1 self-start sm:self-start pt-1 sm:pt-0"
-              >
-                <span>{locationLabel}</span>
-                <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
+                <span className="font-mono text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#254F5F] group-hover:text-[#E56A1E] transition-colors shrink-0 flex items-start gap-1 self-start sm:self-start pt-1 sm:pt-0">
+                  <span>{locationLabel}</span>
+                  <span aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </Link>
           </div>
 
           {/* Right Column: Dotted World Map Graphic */}
@@ -98,17 +100,24 @@ export default function DottedWorldMap({
                 <span className="relative block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#F8780C] ring-4 ring-[#F8780C]/20 shadow-[0_0_10px_rgba(248,120,12,0.85)]" />
               </div>
               {/* HQ - Mumbai pill */}
+
               <div
-                className="absolute pointer-events-none -translate-y-1/2"
+                className="absolute -translate-y-1/2 z-10"
                 style={{ left: "56.95%", top: "49.5%" }}
-                aria-hidden="true"
               >
-                <div className="bg-[#254F5F] text-[#F8780C] px-3 sm:px-3.5 h-[26px] sm:h-[30px] rounded-full font-mono text-[10px] sm:text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.16)] whitespace-nowrap">
+                <Link
+                  href={mapHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open Mumbai office in Google Maps"
+                  className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] hover:text-[#ff933b] px-3 sm:px-3.5 h-[26px] sm:h-[30px] rounded-full font-mono cursor-pointer text-[10px] sm:text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.2)] whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95"
+                >
                   <span>HQ</span>
                   <span className="text-[#F8780C]/80 text-[9px]">-</span>
                   <span>Mumbai</span>
-                </div>
+                </Link>
               </div>
+
             </div>
           </div>
         </div>
