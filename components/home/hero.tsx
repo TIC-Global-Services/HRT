@@ -110,7 +110,7 @@ const HeroSection: React.FC = () => {
           <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-0 bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-[0_25px_60px_-15px_rgba(240,106,37,0.12),0_15px_35px_-10px_rgba(15,23,42,0.08)]">
             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-inner">
               <Image
-                src="/claripa-dashboard.png"
+                src="/claripa-dashboard-new.png"
                 alt="Claripa AI Dashboard - Welcome back, Aarav"
                 width={2496}
                 height={1664}

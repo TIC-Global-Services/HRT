@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import GradientBlinds from "@/components/GradientBlinds";
 import BlurText from "@/reuseable/BlurText";
@@ -7,7 +8,8 @@ import BlurText from "@/reuseable/BlurText";
 export interface ValueCardItem {
   id: string;
   title: string;
-  bullets: string[];
+  description?: ReactNode;
+  bullets?: string[];
 }
 
 export interface MissionVisionProps {
@@ -27,46 +29,62 @@ const defaultValues: ValueCardItem[] = [
   {
     id: "01",
     title: "Our Word, Our Work",
-    bullets: [
-      "What we say is what we do.",
-      "We earn trust by doing what we promise. Every commitment to a client, a candidate or a colleague is one we intend to keep.",
-      "We commit only to what we can deliver, and then we deliver it.",
-      "We take ownership of outcomes, not just tasks.",
-      "If something changes, we say so early and openly. There are no surprises.",
-    ],
+    description: (
+      <>
+        We build trust through{" "}
+        <strong className="font-bold text-[#002E40]">
+          honesty, ownership, and follow-through.
+        </strong>{" "}
+        We make realistic commitments, deliver on our promises, take
+        responsibility for outcomes, and communicate openly whenever things
+        change—ensuring there are no surprises.
+      </>
+    ),
   },
   {
     id: "02",
     title: "Speed with Substance",
-    bullets: [
-      "We strive to deliver at phenomenal speed.",
-      "Our clients' business doesn't wait, and neither do we. We move fast without cutting corners on quality.",
-      "We respond promptly and keep work moving.",
-      "We remove unnecessary steps and make decisions quickly.",
-      "Fast never means careless: every deliverable still meets our standard.",
-    ],
+    description: (
+      <>
+        We believe in{" "}
+        <strong className="font-bold text-[#002E40]">
+          moving fast without compromising quality.
+        </strong>{" "}
+        We respond promptly, simplify processes, make timely decisions, and keep
+        work moving forward while ensuring every deliverable meets our
+        standards.
+      </>
+    ),
   },
   {
     id: "03",
     title: "We Hear You",
-    bullets: [
-      "Listening comes before advising.",
-      "We take time to understand each client's business, people and culture before we recommend anything. Every voice matters, whether it's a client, a candidate or a team member.",
-      "We ask before we assume.",
-      "We listen to understand, not just to reply.",
-      "Our solutions fit the client's context. We don't use one-size-fits-all templates.",
-    ],
+    description: (
+      <>
+        We believe{" "}
+        <strong className="font-bold text-[#002E40]">
+          understanding comes before advising.
+        </strong>{" "}
+        We listen to every perspective, ask before assuming, and take the time
+        to understand each client&apos;s business, people, and culture so we can
+        deliver thoughtful, tailored solutions that truly fit their needs.
+      </>
+    ),
   },
   {
     id: "04",
     title: "Feedback Fuels Us",
-    bullets: [
-      "We accept your feedback.",
-      "Feedback is how we get better, so we ask for it, welcome it and act on it.",
-      "We seek feedback regularly instead of waiting for it.",
-      "We receive it with openness, not defensiveness.",
-      "We act on it and tell the person what changed as a result.",
-    ],
+    description: (
+      <>
+        We believe{" "}
+        <strong className="font-bold text-[#002E40]">
+          feedback drives continuous improvement.
+        </strong>{" "}
+        We actively seek input, welcome different perspectives with an open
+        mind, and turn feedback into meaningful action while communicating the
+        improvements made.
+      </>
+    ),
   },
 ];
 
@@ -212,27 +230,34 @@ export default function MissionVision({
           </div>
 
           {/* 4 Values Cards Grid (2x2) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {values.map((v) => (
               <article
                 key={v.id}
                 className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-6 sm:p-8 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
               >
-                <div className="flex items-center gap-2 mb-3.5">
-                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md border border-[#E5DFD7] text-[#5A6D75] font-mono text-[13px] font-semibold">
+                <div className="flex items-center gap-2.5 mb-3.5 sm:mb-4">
+                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md border border-[#E5DFD7] bg-[#FAF8F5] text-[#5A6D75] font-mono text-[13px] font-semibold">
                     {v.id}
                   </span>
-                  <h3 className="font-sora text-sm sm:text-xl font-semibold text-[#002E40] m-0">
+                  <h3 className="font-sora text-base sm:text-xl font-bold text-[#002E40] m-0">
                     <BlurText delay={20} text={v.title} />
                   </h3>
                 </div>
-                <ul className="text-xs sm:text-base text-[#62737A] font-sora leading-[1.2] list-disc list-inside">
-                  {v.bullets.map((b, bi) => (
-                    <li key={bi} className="leading-[1.2] tracking-tight">
-                      <BlurText delay={20} text={b} className="-ml-1" />
-                    </li>
-                  ))}
-                </ul>
+                {v.description && (
+                  <p className="text-sm sm:text-[15px] lg:text-base text-[#62737A] font-sora leading-relaxed">
+                    {v.description}
+                  </p>
+                )}
+                {v.bullets && v.bullets.length > 0 && (
+                  <ul className="text-xs sm:text-base text-[#62737A] font-sora leading-[1.2] list-disc list-inside">
+                    {v.bullets.map((b, bi) => (
+                      <li key={bi} className="leading-[1.2] tracking-tight">
+                        <BlurText delay={20} text={b} className="-ml-1" />
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </article>
             ))}
           </div>

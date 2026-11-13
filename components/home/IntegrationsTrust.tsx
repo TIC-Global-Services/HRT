@@ -2,28 +2,27 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, FolderLock, ShieldCheck, Globe, Server } from "lucide-react";
+import { FolderLock } from "lucide-react";
 import BlurText from "@/reuseable/BlurText";
 
 // Orbit nodes with their fixed radial positions (in degrees) matching the design
 const orbitNodes = [
-  { label: "HRMS", angle: -90 },
-  { label: "ERP", angle: -10 },
-  { label: "CRM", angle: 52 },
-  { label: "TASKS", angle: 140 },
-  { label: "API", angle: 200 },
+  { label: "HRIS", angle: -90 },
+  { label: "LMS", angle: 15 },
+  { label: "SURVEYS", angle: 70 },
+  { label: "PAYROLL", angle: 145 },
+  { label: "ATS", angle: 200 },
 ];
 
 export default function IntegrationsTrust() {
-  const [radius, setRadius] = useState<number>(125);
+  const [radius, setRadius] = useState<number>(105);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         const width = containerRef.current.offsetWidth;
-        const calculatedRadius = Math.min(145, Math.max(105, Math.round(width * 0.32)));
+        const calculatedRadius = Math.min(115, Math.max(90, Math.round(width * 0.28)));
         setRadius(calculatedRadius);
       }
     };
@@ -68,39 +67,39 @@ export default function IntegrationsTrust() {
         }
       `}</style>
 
-      <div className="px-[10%]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <div className="px-4 sm:px-6 lg:px-[5%] max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* =========================================================================
-              CARD 1 (LEFT): INTEGRATIONS (With Smooth Rotating Orbit)
+              CARD 1 (LEFT): INTEGRATIONS (Light Card with Smooth Rotating Orbit)
               ========================================================================= */}
-          <div className="rounded-[32px] sm:rounded-[36px] bg-[#F9F9F7] border border-neutral-200/80 p-8 sm:p-10 lg:p-10 flex flex-col justify-between shadow-xs">
+          <div className="rounded-[28px] sm:rounded-[34px] bg-[#FAF9F5] border border-[#EBE8E1] p-7 sm:p-9 lg:p-11 flex flex-col justify-between shadow-xs">
             {/* Header Content */}
             <div className="max-w-md">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E26D35] uppercase mb-3">
+              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E56A1E] uppercase mb-3">
                 INTEGRATIONS
               </div>
               <BlurText
                 as="h3"
                 delay={20}
-                text="Connect Claripa with Your Existing Systems."
-                className="font-heading font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#142938] leading-[1.2] mb-3"
+                text={"Connect Claripa with Your\nExisting Systems"}
+                className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#102A33] leading-[1.2] mb-3.5 whitespace-pre-line"
               />
               <BlurText
                 as="p"
                 delay={20}
-                text="Claripa is designed to work with your existing HR systems and tools, helping organisations bring relevant workforce information together without unnecessary complexity."
-                className="font-sora text-sm sm:text-[16px] text-slate-500 leading-[1.3]"
+                text="Claripa brings people, performance, and task management together to help organisations connect workforce information and make more informed decisions."
+                className="font-sora text-sm sm:text-[15px] text-[#62737A] leading-relaxed"
               />
             </div>
 
             {/* Rotating Orbit Graphic matching the exact design */}
             <div
               ref={containerRef}
-              className="orbit-container relative w-full h-[320px] sm:h-[360px] md:h-[360px] my-0 flex items-center justify-center select-none overflow-hidden"
+              className="orbit-container relative w-full h-[260px] sm:h-[290px] md:h-[300px] mt-6 flex items-center justify-center select-none overflow-hidden"
             >
               {/* Outer Dashed Orbit Circle (Rotates smoothly) */}
               <div
-                className="relative rounded-full border-[1.5px] border-dashed border-[#7E8B95] flex items-center justify-center animate-orbit-cw"
+                className="relative rounded-full border-[1.5px] border-dashed border-[#B8C4CC] flex items-center justify-center animate-orbit-cw"
                 style={{
                   width: radius * 2,
                   height: radius * 2,
@@ -122,7 +121,7 @@ export default function IntegrationsTrust() {
                     >
                       {/* Counter-rotating container keeps text permanently upright and legible */}
                       <div className="animate-orbit-ccw">
-                        <span className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-[18px] sm:rounded-[22px] bg-[#FFF4EC] text-[#002E40] text-[11px] sm:text-xs font-mono font-medium tracking-wider shadow-xs whitespace-nowrap">
+                        <span className="inline-flex items-center justify-center px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#FFF4EC] text-[#002E40] text-[11px] sm:text-xs font-mono font-medium tracking-wider shadow-2xs border border-[#FCDBC5]/60 whitespace-nowrap">
                           {node.label}
                         </span>
                       </div>
@@ -132,121 +131,53 @@ export default function IntegrationsTrust() {
               </div>
 
               {/* Center Core: Dark Navy Claripa Queen Badge (Stays anchored in center) */}
-              <div className="absolute z-10 w-22 h-22 sm:w-24 sm:h-24 md:w-20 md:h-20 rounded-[24px] sm:rounded-[28px] md:rounded-[32px] bg-[#002E40] flex items-center justify-center shadow-xl shadow-[#002E40]/25 transition-transform duration-300 hover:scale-105">
+              <div className="absolute z-10 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-[20px] sm:rounded-[24px] bg-[#0E2833] flex items-center justify-center shadow-lg shadow-[#0E2833]/20 transition-transform duration-300 hover:scale-105">
                 <Image
                   src="/claripa-queen-transparent.png"
                   alt="Claripa Queen"
                   width={42}
                   height={86}
-                  className="w-auto h-11 sm:h-10 md:h-10 object-contain"
+                  className="w-auto h-9 sm:h-10 md:h-11 object-contain"
                   priority
                 />
               </div>
             </div>
-
-            {/* Bottom Footer Link */}
-            <div className="pt-4 border-t border-slate-200/60">
-              <Link
-                href="/platform#integrations"
-                className="group inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider text-slate-700 hover:text-[#E26D35] uppercase transition-colors"
-              >
-                <span>EXPLORE INTEGRATIONS</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
-            </div>
           </div>
 
           {/* =========================================================================
-              CARD 2 (RIGHT): SECURITY & TRUST (Dark Card with 4 Feature Tiles)
+              CARD 2 (RIGHT): SECURITY & TRUST (Dark Card with Security Claims Box)
               ========================================================================= */}
-          <div className="rounded-[32px] sm:rounded-[36px] bg-[#254F5F] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between gap-6 shadow-xl">
+          <div className="rounded-[28px] sm:rounded-[34px] bg-[#254F5F] border border-[#1E4351] text-white p-7 sm:p-9 lg:p-11 flex flex-col justify-between gap-8 shadow-xl">
             {/* Header Content */}
             <div className="max-w-md">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E26D35] uppercase mb-3">
+              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#E56A1E] uppercase mb-3">
                 SECURITY & TRUST
               </div>
               <BlurText
                 as="h3"
                 delay={20}
-                text="Your Workforce Data Deserves Careful Protection."
-                className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-white leading-[1.2] mb-3"
+                text={"Your Workforce Data\nDeserves Careful Protection"}
+                className="font-sora text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-white leading-[1.2] mb-3.5 whitespace-pre-line"
               />
               <BlurText
                 as="p"
                 delay={20}
-                text="Claripa is designed to support organisations in managing workforce information responsibly, with structured controls for data protection, access governance, and infrastructure."
-                className="font-sora text-sm sm:text-[16px] text-[#ECE9E3] leading-[1.3]"
+                text="Claripa is designed to support organisations in managing workforce information responsibly. Details about its security controls, data handling practices, and infrastructure should be communicated based on verified product and security information."
+                className="font-sora text-sm sm:text-[15px] text-[#C5D2D8] leading-relaxed"
               />
             </div>
 
-            {/* 2x2 Grid of Security Capability Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {/* Tile 1: Data Protection */}
-              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
-                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <FolderLock className="w-4 h-4 shrink-0" />
-                  <span className="text-sm font-semibold text-white">Encryption & Protection</span>
-                </div>
-                <BlurText
-                  as="p"
-                  delay={20}
-                  text="Structured safeguards across workforce workflows"
-                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
-                />
+            {/* Bottom Security Claims Container Box matching screenshot */}
+            <div className="rounded-[22px] bg-white/[0.04] border border-white/[0.12] p-5 sm:p-6 transition-colors hover:bg-white/[0.06]">
+              <div className="flex items-center gap-2.5 mb-2.5 text-[#E56A1E]">
+                <FolderLock className="w-4 h-4 shrink-0 stroke-[2]" />
+                <span className="font-sora text-sm sm:text-base font-semibold text-white">
+                  Security claims
+                </span>
               </div>
-
-              {/* Tile 2: Role-based access */}
-              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
-                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <ShieldCheck className="w-4 h-4 shrink-0" />
-                  <span className="text-sm font-semibold text-white">Role-Based Access</span>
-                </div>
-                <BlurText
-                  as="p"
-                  delay={20}
-                  text="Right insight, aligned to user roles and permissions"
-                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
-                />
-              </div>
-
-              {/* Tile 3: Data residency */}
-              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
-                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <Globe className="w-4 h-4 shrink-0" />
-                  <span className="text-sm font-semibold text-white">Data Residency</span>
-                </div>
-                <BlurText
-                  as="p"
-                  delay={20}
-                  text="Managed cloud storage and regional data governance"
-                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
-                />
-              </div>
-
-              {/* Tile 4: Infrastructure */}
-              <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-5 hover:bg-white/[0.07] transition-all">
-                <div className="flex items-center gap-2 mb-2 text-[#E26D35]">
-                  <Server className="w-4 h-4 shrink-0" />
-                  <span className="text-sm font-semibold text-white">Hosting & Compliance</span>
-                </div>
-                <BlurText
-                  as="p"
-                  delay={20}
-                  text="Controlled cloud infrastructure and reliability practices"
-                  className="text-xs text-[#CBD5E1] leading-relaxed font-sans m-0"
-                />
-              </div>
-            </div>
-
-            {/* Bottom Footer Link */}
-            <div className="pt-4 border-t border-white/10">
-              <Link
-                href="/platform#security-and-trust"
-                className="group inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider text-slate-300 hover:text-white uppercase transition-colors"
-              >
-                <span>SECURITY OVERVIEW</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
+              <p className="font-sora text-xs sm:text-[13.5px] text-[#A4B5BC] leading-relaxed m-0">
+                Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified.
+              </p>
             </div>
           </div>
         </div>

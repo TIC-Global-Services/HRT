@@ -15,7 +15,7 @@ export type {
   PlatformShowcaseModule,
 } from "./ModuleShowcase";
 export { default as EmployeeExperience } from "./EmployeeExperience";
-export type { EmployeeExperienceProps } from "./EmployeeExperience";
+export * from "./EmployeeExperience";
 export { default as GettingStartedAndSecurity } from "./GettingStartedAndSecurity";
 export type {
   GettingStartedAndSecurityProps,

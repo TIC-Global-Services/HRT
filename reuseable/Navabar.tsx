@@ -31,12 +31,12 @@ const navItems: NavItem[] = [
         href: "/solution-hub",
         icon: <Users className="w-4 h-4 text-[#F06A25]" />,
       },
-      {
-        title: "Solution Details",
-        description: "Deep dive into capabilities, workflows and impact",
-        href: "/solution-details",
-        icon: <BarChart3 className="w-4 h-4 text-[#1C4E5B]" />,
-      },
+      // {
+      //   title: "Solution Details",
+      //   description: "Deep dive into capabilities, workflows and impact",
+      //   href: "/solution-details",
+      //   icon: <BarChart3 className="w-4 h-4 text-[#1C4E5B]" />,
+      // },
       // {
       //   title: "Talent Retention & Risk",
       //   description: "Spot disengagement signals early and prevent unwanted turnover",
@@ -137,9 +137,13 @@ const Navabar: React.FC = () => {
 
   return (
     <header
-      className={`top-0 z-50 w-full  transition-all duration-300 ${
+      className={`top-0 z-50 w-full transition-all duration-300 ${
         isHome
-          ? "sticky bg-white/80 backdrop-blur-md border-b border-slate-200/50"
+          ? `sticky bg-white/80 backdrop-blur-md ${
+              scrolled
+                ? "border-b border-[#EAE6DF]"
+                : "border-b border-transparent"
+            }`
           : "bg-transparent border-b-transparent"
       }`}
     >
@@ -147,7 +151,7 @@ const Navabar: React.FC = () => {
       <div
         className={`w-full transition-colors font-sora duration-200 ${
           isHome
-            ? "border-b border-slate-200/50 bg-white/40"
+            ? "border-b border-[#EAE6DF] bg-white/40"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -162,11 +166,7 @@ const Navabar: React.FC = () => {
 
       {/* 2. Main Navigation Bar */}
       <nav
-        className={`w-full transition-all font-mono duration-200 py-3.5 ${
-          isHome
-            ? `bg-white/60 backdrop-blur-md ${scrolled ? "shadow-xs border-b border-slate-200/40" : ""}`
-            : "bg-transparent border-none shadow-none"
-        }`}
+        className="w-full transition-all font-mono duration-200 py-3.5 bg-transparent border-none shadow-none"
       >
         <div className="px-4 sm:px-6 lg:px-[5%] flex items-center justify-between">
           {/* Brand Logo */}
@@ -199,11 +199,10 @@ const Navabar: React.FC = () => {
                   <Link
                     key={item.label}
                     href={item.href || "/"}
-                    className={`text-[14px]  font-medium tracking-tight transition-colors duration-150 ${
-                      isActive
+                    className={`text-[14px]  font-medium tracking-tight transition-colors duration-150 ${isActive
                         ? "text-slate-950 font-semibold"
                         : "text-slate-700 hover:text-slate-950"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -220,18 +219,16 @@ const Navabar: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveDropdown(isDropdownOpen ? null : item.label)}
-                    className={`inline-flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors duration-150 py-1.5 ${
-                      isDropdownOpen
+                    className={`inline-flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors duration-150 py-1.5 ${isDropdownOpen
                         ? "text-slate-950 font-semibold"
                         : "text-slate-700 hover:text-slate-950"
-                    }`}
+                      }`}
                     aria-expanded={isDropdownOpen}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
-                      className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180 text-slate-900" : ""
-                      }`}
+                      className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${isDropdownOpen ? "rotate-180 text-slate-900" : ""
+                        }`}
                     />
                   </button>
 
@@ -309,9 +306,8 @@ const Navabar: React.FC = () => {
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div
-            className={`lg:hidden border-t border-slate-200 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl ${
-              isHome ? "bg-white/95 backdrop-blur-xl" : "bg-[#F7F6F3]"
-            }`}
+            className={`lg:hidden border-t border-slate-200 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl ${isHome ? "bg-white/95 backdrop-blur-xl" : "bg-[#F7F6F3]"
+              }`}
           >
             <div className="space-y-2">
               {navItems.map((item) => {
@@ -341,9 +337,8 @@ const Navabar: React.FC = () => {
                     >
                       <span>{item.label}</span>
                       <ChevronDown
-                        className={`w-4 h-4 text-slate-500 transition-transform ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 text-slate-500 transition-transform ${isExpanded ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                     {isExpanded && (

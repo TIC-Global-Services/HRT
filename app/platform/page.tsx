@@ -1,4 +1,4 @@
-import { Objective } from "@/components/platform";
+import { Objective, PerformanceCycle } from "@/components/platform";
 import AskClaripa from "@/components/platform/AskClaripa";
 import ConnectedModules from "@/components/platform/ConnectedModules";
 import EmployeeExperience from "@/components/platform/EmployeeExperience";
@@ -21,6 +21,7 @@ export default function PlatformPage() {
       <PlatformHero />
       <ConnectedModules />
       <Objective/>
+      <PerformanceCycle/>
       <AskClaripa />
       <EmployeeExperience />
       <PerformanceInsights />

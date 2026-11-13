@@ -1,63 +1,96 @@
 "use client";
 
 import React from "react";
-import CaseStudyCarousel from "@/reuseable/Casestudycarosal";
+import CaseStudyCarousel, {
+  type CaseStudyItem,
+  type CaseStudyStat,
+} from "@/reuseable/Casestudycarosal";
+import { allCaseStudies } from "@/data/caseStudies";
 
-export interface CaseStudyItem {
-  id: string;
-  category: string;
-  title: string;
-  href: string;
-  imageSrc: string;
-  stats: {
-    value: string;
-    label: string;
-    highlighted?: boolean;
-  }[];
-}
+export type { CaseStudyItem, CaseStudyStat };
 
-// Exactly 2 case studies as specified
-export const caseStudiesData: CaseStudyItem[] = [
+// Domain categories and dual metrics mapped from each case study in data/caseStudies.ts
+const caseStudyMetricsMap: Record<
+  string,
   {
-    id: "semiconductor-engineering",
-    category: "SEMICONDUCTOR ENGINEERING",
-    title: "How a Semiconductor Design \nCenter Accelerated Engineering Ramp-Up",
-    href: "/solution-details",
-    imageSrc: "/real-world-impact-1.jpg",
-    stats: [
-      {
-        value: "28%",
-        label: "Reduction in first-six-month attrition",
-        highlighted: false,
-      },
-      {
-        value: "40%",
-        label: "Reduction in time to meaningful contribution",
-        highlighted: true,
-      },
-    ],
-  },
-  {
-    id: "enterprise-technology",
-    category: "ENTERPRISE TECHNOLOGY",
-    title:
-      "How a Global Software Enterprise Retained Critical Engineering Talent Across 14 Hubs",
-    href: "/solution-hub",
-    imageSrc: "/real-world-impact-2.jpg",
+    category: string;
+    stats: CaseStudyStat[];
+  }
+> = {
+  "software-services-firm-attrition-transformation": {
+    category: "SOFTWARE SERVICES",
     stats: [
       {
         value: "34%",
-        label: "Increase in leadership bench depth",
-        highlighted: false,
+        label: "Reduction in voluntary attrition across 3–5 yr cohort",
+        highlighted: true,
       },
       {
-        value: "55%",
-        label: "Reduction in unprompted key-talent flight risk",
-        highlighted: true,
+        value: "< 3 wks",
+        label: "Average time between meaningful performance check-ins",
+        highlighted: false,
       },
     ],
   },
-];
+  "semiconductor-design-center-engineering-ramp-up": {
+    category: "SEMICONDUCTOR ENGINEERING",
+    stats: [
+      {
+        value: "40%",
+        label: "Faster time to meaningful engineering contribution",
+        highlighted: true,
+      },
+      {
+        value: "28%",
+        label: "Reduction in first-six-month new-hire attrition",
+        highlighted: false,
+      },
+    ],
+  },
+  "automotive-gcc-india-performance-visibility": {
+    category: "AUTOMOTIVE GCC",
+    stats: [
+      {
+        value: "25–30%",
+        label: "Improvement in cross-team goal alignment",
+        highlighted: true,
+      },
+      {
+        value: "2×",
+        label: "Increase in frequency of meaningful performance conversations",
+        highlighted: false,
+      },
+    ],
+  },
+};
+
+// Generated dynamically from allCaseStudies dataset
+export const caseStudiesData: CaseStudyItem[] = allCaseStudies.map((study) => {
+  const metrics = caseStudyMetricsMap[study.slug] || {
+    category: study.topic ? `${study.topic} · CASE STUDY` : study.category,
+    stats: [
+      {
+        value: study.statsHighlight?.value || "—",
+        label: study.statsHighlight?.label || "Measurable business outcome",
+        highlighted: true,
+      },
+      {
+        value: "100%",
+        label: "Visibility into team performance signals",
+        highlighted: false,
+      },
+    ],
+  };
+
+  return {
+    id: study.id,
+    category: metrics.category,
+    title: study.title,
+    href: `/insight/${study.slug}`,
+    imageSrc: study.image,
+    stats: metrics.stats,
+  };
+});
 
 export default function BetterPeople() {
   return (
@@ -69,7 +102,7 @@ export default function BetterPeople() {
       headingLines={["Better people decisions.", "Measurable outcomes."]}
       description="Discover how organisations use workforce intelligence to identify risks earlier, improve performance visibility and make more timely decisions about their people."
       ctaLabel="READ MORE SUCCESS STUDIES"
-      ctaHref="/solution-hub"
+      ctaHref="/insight"
     />
   );
 }
