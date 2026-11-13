@@ -153,7 +153,7 @@ export default function CaseStudyCarousel({
           {/* Left Column: Eyebrow, Headline, and CTA Pill */}
           <div className="max-w-xl">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#E26D35] uppercase mb-4 font-mono">
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
               <span className="text-base leading-none font-bold">*</span>
               <span>{eyebrow}</span>
             </div>
@@ -163,14 +163,14 @@ export default function CaseStudyCarousel({
               as="h2"
               delay={20}
               text={headingLines.join("\n")}
-              className="font-heading text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#142938] leading-[1.14] mb-6"
+              className="font-heading text-3xl sm:text-4xl md:text-5xl font-sora font-medium tracking-tight text-[#254F5F] leading-[1.14] mb-6"
             />
 
             {/* Header CTA Pill */}
             <div>
               <Link
                 href={ctaHref}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#142938] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#254F5F] text-base font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
               >
                 <span>{ctaLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -179,12 +179,12 @@ export default function CaseStudyCarousel({
           </div>
 
           {/* Right Column: Subtitle Description */}
-          <div className="lg:max-w-md lg:pt-8">
+          <div className="lg:max-w-lg lg:pt-8">
             <BlurText
               as="p"
               delay={20}
               text={description}
-              className="font-sans text-base sm:text-lg text-slate-500 leading-relaxed"
+              className="font-sora text-base sm:text-lg text-slate-500 leading-relaxed"
             />
           </div>
         </div>

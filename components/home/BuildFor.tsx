@@ -327,7 +327,7 @@ export default function BuildFor() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="px-[5%]">
+      <div className="px-[10%]">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center  mb-14 sm:mb-16">
           {/* Eyebrow */}
@@ -341,7 +341,7 @@ export default function BuildFor() {
             as="h2"
             delay={20}
             text={"Built for How Your\nOrganisation Works"}
-            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.1] mb-5"
+            className="font-heading text-3xl sm:text-4xl md:text-5xl font-sora lg:text-[46px] font-medium tracking-tight text-[#254F5F] leading-[1.1] mb-5"
           />
 
           {/* Subtitle */}

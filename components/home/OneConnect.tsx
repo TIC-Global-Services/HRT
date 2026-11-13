@@ -119,7 +119,7 @@ function CardItem({ card }: { card: OneConnectCard }) {
   );
 }
 
-export default function OneConnect({
+export default function  OneConnect({
   eyebrow = "ONE CONNECTED PLATFORM",
   title = "Connect People, Align\nPerformance, Manage Tasks.",
   description = "Claripa is an AI-powered workforce intelligence platform that brings people management, performance management, and task management together. It helps organisations manage employee information, align individual and organisational goals, track performance, and connect tasks with objectives.",

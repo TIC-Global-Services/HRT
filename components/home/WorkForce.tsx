@@ -216,11 +216,11 @@ function DisconnectedSignalsMiniUI() {
 
       {/* Two outcomes */}
       <div className="flex items-center justify-between w-full max-w-[240px] px-1 gap-2 mt-0.5">
-        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
+        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-[#F8780C] shadow-2xs transition-transform hover:scale-105">
           <Check className="w-3 h-3 text-[#F8780C] stroke-[2.5] shrink-0" />
           <span>Update status</span>
         </div>
-        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-zinc-800 shadow-2xs transition-transform hover:scale-105">
+        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-[#F8780C] shadow-2xs transition-transform hover:scale-105">
           <ArrowUpRight className="w-3.5 h-3.5 text-[#F8780C] stroke-[2.5] shrink-0 animate-arrow-nudge" />
           <span>Notify team</span>
         </div>
@@ -585,7 +585,7 @@ export default function Workforce() {
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <DisconnectedSignalsMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[0].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
                   <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
@@ -611,7 +611,7 @@ export default function Workforce() {
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ReactiveDecisionsMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[1].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
                   <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3 mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
@@ -637,7 +637,7 @@ export default function Workforce() {
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ManagersWithoutContextMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[2].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
                   <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
@@ -663,7 +663,7 @@ export default function Workforce() {
             <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
               <ProactiveActionMiniUI />
             </div>
-            <div className="relative z-10 pt-4 border-t border-zinc-200/50 group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
               {cards[3].description && (
                 <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
                   <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">

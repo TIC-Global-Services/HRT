@@ -135,7 +135,7 @@ export default function Insights() {
             as="h2"
             delay={20}
             text={"Insights That Move Work\nForward"}
-            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#142938] leading-[1.14] mb-6"
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#254F5F] leading-[1.14] mb-6"
           />
 
           {/* Explore Blogs & Guides Pill Button */}

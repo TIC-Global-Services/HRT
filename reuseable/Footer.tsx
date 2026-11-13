@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
 
         {/* Ambient warm glow behind blinds crest */}
         <div
-          className="absolute -top-28 sm:-top-36 left-1/2 -translate-x-1/2 w-[600px] sm:w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(240,106,37,0.18)_0%,rgba(255,160,80,0.08)_50%,transparent_75%)] pointer-events-none -z-10 blur-2xl"
+          className="absolute -top-28 sm:-top-36 left-1/2 -translate-x-1/2 w-[600px] sm:w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(240,106,37,0.18)_0%,rgba(255,160,80,0.08)_50%,transparent_75%)] pointer-events-none -z-10 blur-xl"
           aria-hidden="true"
         />
        
@@ -120,13 +120,13 @@ const Footer: React.FC = () => {
                   className="inline-block transition-opacity hover:opacity-90"
                   aria-label="Claripa Home"
                 >
-                  <div className="relative h-7 sm:h-8 w-36 aspect-[1570/440]">
+                  <div className="relative h-7 sm:h-10 w-36">
                     <Image
-                      src="/claripa_logo.png"
+                      src="/claripa_logo_white-new.png"
                       alt="Claripa"
                       fill
                       priority
-                      className="object-cover object-left"
+                      className="object-contain object-left"
                     />
                   </div>
                 </Link>
@@ -136,38 +136,38 @@ const Footer: React.FC = () => {
                   as="p"
                   delay={20}
                   text="Claripa by HRT Consulting brings together human resources, technology, and strategic consulting for better people decisions."
-                  className="text-xs sm:text-base text-slate-200/95 leading-relaxed max-w-[270px] font-normal"
+                  className="text-xs sm:text-base text-white leading-[1.3] max-w-[290px] font-normal"
                 />
               </div>
 
               {/* Contact Info Meta */}
-              <div className="space-y-1.5 text-[11px] sm:text-base font-mono text-slate-300">
+              <div className="space-y-1.5 text-[11px] sm:text-base font-mono text-white">
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-400 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
+                  <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     LOCATION
                   </span>
-                  <span className="text-slate-200 uppercase">
+                  <span className="text-white uppercase">
                     BENGALURU, KARNATAKA
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-400 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
+                  <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     EMAIL
                   </span>
                   <a
                     href="mailto:info@hrtconsulting.co.in"
-                    className="text-slate-200 hover:text-white transition-colors"
+                    className="text-white hover:text-white transition-colors"
                   >
                     info@hrtconsulting.co.in
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-400 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
+                  <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     PHONE
                   </span>
                   <a
                     href="tel:+919811208080"
-                    className="text-slate-200 hover:text-white transition-colors"
+                    className="text-white hover:text-white transition-colors"
                   >
                     +91 9811208080
                   </a>
@@ -197,7 +197,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/solution-hub"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Retain Key Talent
                     </Link>
@@ -205,7 +205,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/solution-hub"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Onboard & Ramp Up
                     </Link>
@@ -213,7 +213,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/solution-hub"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Continuous Performance
                     </Link>
@@ -221,7 +221,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/solution-hub"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Empower Managers
                     </Link>
@@ -229,7 +229,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/solution-hub"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Grow & Plan Succession
                     </Link>
@@ -255,7 +255,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Performance Management
                     </Link>
@@ -263,7 +263,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Performance Intelligence
                     </Link>
@@ -271,7 +271,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Manager Intelligence
                     </Link>
@@ -279,7 +279,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Talent & Development
                     </Link>
@@ -295,7 +295,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Integrations
                     </Link>
@@ -303,7 +303,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/platform"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Security & Trust
                     </Link>
@@ -320,7 +320,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/insight"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Blog
                     </Link>
@@ -328,7 +328,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/insight"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Case Studies
                     </Link>
@@ -336,7 +336,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/insight"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Reports & Guides
                     </Link>
@@ -344,7 +344,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/insight"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Webinars
                     </Link>
@@ -352,7 +352,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/insight"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       News
                     </Link>
@@ -369,7 +369,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/about-us"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       About Us
                     </Link>
@@ -377,7 +377,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/contact-us"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Careers
                     </Link>
@@ -385,7 +385,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/contact-us"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Contact Us
                     </Link>
@@ -393,7 +393,7 @@ const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/contact-us"
-                      className="text-slate-200/90 hover:text-white transition-colors"
+                      className="text-white/90 hover:text-white transition-colors"
                     >
                       Book a Demo
                     </Link>
@@ -404,7 +404,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Bar inside the Card (No horizontal divider line, flowing with breathing room) */}
-          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] sm:text-sm font-mono text-slate-300/85">
+          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] sm:text-sm font-mono text-white/85">
             <p>© 2026 Claripa by HRT. All rights reserved.</p>
 
             <div className="flex items-center gap-6">
@@ -428,9 +428,9 @@ const Footer: React.FC = () => {
               </Link>
             </div>
 
-            <p className="text-slate-300/80">
+            <p className="text-white/80">
               Designed & Developed by{" "}
-              <span className="text-slate-200">TIC Global Services</span>
+              <span className="text-white">TIC Global Services</span>
             </p>
           </div>
         </div>
