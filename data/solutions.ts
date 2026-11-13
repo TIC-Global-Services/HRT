@@ -88,7 +88,6 @@ export const allSolutions: SolutionDetailData[] = [
     cardDescription:
       "Connect company objectives with team and individual OKRs. Use AI-assisted goal creation and performance tracking to improve alignment and visibility.",
     cardTags: "Goal Alignment, OKRs, Performance Management",
-    featured: true,
     metadata: {
       title: "Align Goals & Improve Performance",
       description:

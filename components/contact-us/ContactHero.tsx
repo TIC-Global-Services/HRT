@@ -112,7 +112,7 @@ export default function ContactHero({
                     alt={isDuplicate ? "" : name}
                     width={120}
                     height={20}
-                    className="w-auto max-w-full h-8 object-contain opacity-80"
+                    className="w-auto max-w-full h-20 object-contain opacity-80"
                     // className="w-auto max-w-full h-6 object-contain opacity-80"
                   />
                 </li>

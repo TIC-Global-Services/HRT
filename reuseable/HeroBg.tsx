@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react"
 
 /**
@@ -591,6 +593,7 @@ export default function FlutedGlassBackground({
             if (tex) gl.deleteTexture(tex)
             gl.deleteProgram(prog)
             gl.deleteBuffer(buf)
+            gl.getExtension("WEBGL_lose_context")?.loseContext()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [textureSrc, compositeKey])

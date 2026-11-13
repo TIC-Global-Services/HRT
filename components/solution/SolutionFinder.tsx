@@ -120,55 +120,43 @@ export default function SolutionFinder({
 
       {/* Solutions Cards Grid matching the exact design */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 w-full">
-        {filteredSolutions.map((solution, index) => {
-          const isFeatured = solution.featured ?? index === 0;
+        {filteredSolutions.map((solution, index) => (
+          <Link
+            key={`${solution.title}-${index}`}
+            href={solution.slug || "/solution-details"}
+            className="group flex flex-col justify-center rounded-[22px] sm:rounded-[22px] p-7 sm:p-8 lg:p-9 min-h-[290px] sm:min-h-[310px] bg-white border border-[#E5E7EB] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:bg-[#FFF5ED] hover:border-[#FDD8C2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a]"
+          >
+            {/* Top: Title & Description */}
+            <div>
+              <BlurText
+                as="h3"
+                text={solution.title}
+                delay={20}
+                className="font-sora text-xl sm:text-2xl font-semibold leading-[1.2] whitespace-pre-line mb-2 text-[#142938] group-hover:text-[#E26D35] transition-colors"
+              />
+              <BlurText
+                as="p"
+                text={solution.description}
+                delay={20}
+                className="font-sora text-sm sm:text-base leading-[1.2] text-[#5A6A72]"
+              />
+            </div>
 
-          return (
-            <Link
-              key={`${solution.title}-${index}`}
-              href={solution.slug || "/solution-details"}
-              className={`group flex flex-col justify-center rounded-[22px] sm:rounded-[22px] p-7 sm:p-8 lg:p-9 min-h-[290px] sm:min-h-[310px] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] ${
-                isFeatured
-                  ? "bg-[#FFF5ED] border border-[#FDD8C2] shadow-xs"
-                  : "bg-white border border-[#E5E7EB] shadow-xs"
-              }`}
-            >
-              {/* Top: Title & Description */}
-              <div>
-                <BlurText
-                  as="h3"
-                  text={solution.title}
-                  delay={20}
-                  className={`font-sora text-xl sm:text-2xl font-semibold leading-[1.2] whitespace-pre-line mb-2 transition-colors ${
-                    isFeatured
-                      ? "text-[#E26D35]"
-                      : "text-[#142938] group-hover:text-[#E26D35]"
-                  }`}
-                />
-                <BlurText
-                  as="p"
-                  text={solution.description}
-                  delay={20}
-                  className="font-sora text-sm sm:text-base leading-[1.2] text-[#5A6A72]"
-                />
+            {/* Bottom: Tags & Explore Link */}
+            <div className="mt-3 pt-2">
+              <div className="font-mono text-[11px] sm:text-xs text-[#254F5F] tracking-tight mb-4">
+                {solution.tags}
               </div>
-
-              {/* Bottom: Tags & Explore Link */}
-              <div className="mt-3 pt-2">
-                <div className="font-mono text-[11px] sm:text-xs text-[#254F5F] tracking-tight mb-4">
-                  {solution.tags}
-                </div>
-                <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold tracking-wide text-[#E26D35] uppercase group-hover:gap-2.5 transition-all">
-                  <span>EXPLORE</span>
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
-                  />
-                </span>
-              </div>
-            </Link>
-          );
-        })}
+              <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold tracking-wide text-[#E26D35] uppercase group-hover:gap-2.5 transition-all">
+                <span>EXPLORE</span>
+                <ArrowRight
+                  aria-hidden="true"
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                />
+              </span>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );
