@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
               <div className="space-y-1.5 text-[11px] sm:text-base font-mono text-white">
                 <div className="flex items-center gap-2">
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
-                    LOCATION
+                    Headquarters
                   </span>
                   <span className="text-white uppercase">
                     BENGALURU, KARNATAKA
