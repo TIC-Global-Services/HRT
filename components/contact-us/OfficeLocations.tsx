@@ -27,19 +27,6 @@ export interface OfficeLocationsProps {
 
 const defaultOffices: OfficeLocationItem[] = [
   {
-    id: "chennai",
-    name: "Chennai",
-    tag: "[HQ]",
-    address: "Street address, city, country",
-    mapHref: "https://maps.google.com/?q=Chennai,+India",
-    coords: {
-      pinLeft: "60.2%",
-      pinTop: "60.5%",
-      pillLeft: "60.2%",
-      pillTop: "51.7%",
-    },
-  },
-  {
     id: "mumbai",
     name: "Mumbai",
     tag: "[HQ]",

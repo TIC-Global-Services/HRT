@@ -342,11 +342,7 @@ export default function IntegrationsNetwork({
                   onMouseLeave={() => {
                     isPausedRef.current = false;
                   }}
-                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] hover:scale-115 transition-all duration-300 cursor-pointer ${
-                    isMatch
-                      ? "scale-100 ring-2 ring-transparent hover:ring-[#E56A1E]/50"
-                      : "opacity-25 grayscale scale-90"
-                  }`}
+                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]  transition-all duration-300 cursor-pointer `}
                   title={item.name}
                 >
                   <Image

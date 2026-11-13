@@ -79,7 +79,7 @@ export const defaultCards: EmployeeExperienceCardItem[] = [
     src: "/employee-experience-1.png",
     alt: "Employee clarity and growth on mobile",
     className:
-      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[680px]",
+      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh]",
     preload: true,
   },
   {
@@ -88,7 +88,7 @@ export const defaultCards: EmployeeExperienceCardItem[] = [
     src: "/employee-experience-2.png",
     alt: "Employee performance tracking and task visibility",
     className:
-      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[680px] hidden md:block",
+      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden md:block",
     preload: false,
   },
   {
@@ -125,7 +125,7 @@ export default function EmployeeExperience({
         src: imageSrc || "/employee-experience-1.png",
         alt: "Employee clarity and growth on mobile",
         className:
-          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[680px]",
+          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh]",
         preload: true,
       },
       {
@@ -134,7 +134,7 @@ export default function EmployeeExperience({
         src: imageSrc2 || "/employee-experience-2.png",
         alt: "Employee performance tracking and task visibility",
         className:
-          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[680px] hidden md:block",
+          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden md:block",
         preload: false,
       },
       {
@@ -169,7 +169,7 @@ export default function EmployeeExperience({
                   className="object-cover object-[50%_center]"
                   fill
                   preload={card.preload}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  // sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   src={card.src}
                 />
               </div>

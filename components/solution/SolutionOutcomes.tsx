@@ -87,7 +87,7 @@ export default function SolutionOutcomes({
                   as="p"
                   text={outcome.description}
                   delay={20}
-                  className="text-[#5A6A72] font-sora text-sm sm:text-[14.5px] leading-relaxed"
+                  className="text-[#5A6A72] font-sora text-sm sm:text-[14.5px] leading-[1.3]"
                 />
               </div>
 
