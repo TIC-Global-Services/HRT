@@ -18,7 +18,7 @@ export const allCaseStudies: BlogPost[] = [
       role: "Enterprise Delivery & Workforce Strategy",
       avatar: "/team.jpg",
     },
-    image: "/real-world-impact-2.jpg",
+    image: "/case-study-1.png",
     coverImageAlt:
       "Software services leadership and engineering team collaborating in a modern office",
     statsHighlight: {
@@ -142,7 +142,7 @@ export const allCaseStudies: BlogPost[] = [
       role: "Enterprise Delivery & Workforce Strategy",
       avatar: "/team.jpg",
     },
-    image: "/real-world-impact-1.jpg",
+    image: "/case-study-2.png",
     coverImageAlt:
       "Engineer holding a semiconductor processor above an engineering test board",
     statsHighlight: {
@@ -257,7 +257,7 @@ export const allCaseStudies: BlogPost[] = [
       role: "Enterprise Delivery & Workforce Strategy",
       avatar: "/team.jpg",
     },
-    image: "/insight-1.jpg",
+    image: "/case-study-3.png",
     coverImageAlt:
       "Engineering leaders aligning global program priorities and performance metrics on a team board",
     statsHighlight: {

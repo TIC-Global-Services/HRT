@@ -1,3 +1,4 @@
+import { Objective } from "@/components/platform";
 import AskClaripa from "@/components/platform/AskClaripa";
 import ConnectedModules from "@/components/platform/ConnectedModules";
 import EmployeeExperience from "@/components/platform/EmployeeExperience";
@@ -19,6 +20,7 @@ export default function PlatformPage() {
     <div className="min-h-screen bg-[#F7F6F3] font-sora text-[#002e40]">
       <PlatformHero />
       <ConnectedModules />
+      <Objective/>
       <AskClaripa />
       <EmployeeExperience />
       <PerformanceInsights />

@@ -26,21 +26,35 @@ const defaultTeamMembers: TeamMember[] = [
     name: "Anil Kumar",
     role: "CEO / Founder",
     imageSrc: "/founding_members/Anil_Kumar.png",
-    linkedinUrl: "https://www.linkedin.com/in/anil-kumar",
+    linkedinUrl: "https://www.linkedin.com/in/anil-kumar-55b2463b/",
     bio: "Empowering Growth, Enabling Transformation emphasizes fostering continuous growth, driving innovation, and enabling meaningful transformation for individuals and organizations.",
+  },
+  {
+    name: "Debashis Mukherjee",
+    role: "Technical Advisor",
+    imageSrc: "/founding_members/Debashis-Mukherjee.png",
+    linkedinUrl: "https://www.linkedin.com/in/debashis-mukherjee",
+    bio: "Specializing in embedded software development, with expertise in Automotive Infotainment and Telematics. As a Senior Software Developer, he brings technical knowledge and development experience to support technology direction, engineering excellence, and product innovation",
+  },
+  {
+    name: "Dr. Partha Datta",
+    role: "Business Strategy Advisor",
+    imageSrc: "/founding_members/Partha-Datta.png",
+    linkedinUrl: "https://www.linkedin.com/in/parthadatta",
+    bio: "Provides strategic guidance on business direction, organizational growth, and long-term value creation. His advisory role supports strategic planning, business alignment, and translating organizational priorities into actionable initiatives.",
   },
   {
     name: "Poonam Dhanavati",
     role: "Co-Founder",
     imageSrc: "/founding_members/Poonam_Dhanavati.png",
-    linkedinUrl: "https://www.linkedin.com/in/poonam-dhanavati-",
+    linkedinUrl: "https://www.linkedin.com/in/poonam-dhanavati-3591755/",
     bio: "Responsible for driving business growth, managing client relationships, and leading the firm's overall strategic direction to achieve organizational goals.",
   },
   {
     name: "Kalyanee Khele",
     role: "Senior Human Resource Consultant",
     imageSrc: "/founding_members/Kalyanee_Khele.png",
-    linkedinUrl: "https://www.linkedin.com/in/kalyani-khele-",
+    linkedinUrl: "https://www.linkedin.com/in/kalyani-khele-00aa1b56/",
     bio: "Provides strategic HR guidance, supports talent management and organizational development, and advises on HR policies and practices to improve employee performance, strengthen workforce effectiveness, and align people strategies with business goals.",
   },
   {
@@ -61,7 +75,7 @@ const defaultTeamMembers: TeamMember[] = [
     name: "Tanvi Ingale",
     role: "Senior Talent Acquisition Specialist",
     imageSrc: "/founding_members/Tanvi_Ingale.png",
-    linkedinUrl: "https://www.linkedin.com/in/tanvi-ingale-",
+    linkedinUrl: "https://www.linkedin.com/in/tanvi-ingale-9a2ab326a/",
     bio: "Leads end-to-end recruitment, develops talent acquisition strategies, and manages candidate and stakeholder relationships to attract top talent. Focuses on aligning hiring practices with organizational goals and ensuring an efficient recruitment process.",
   },
   {
@@ -135,14 +149,22 @@ export default function MeetTheTeam({
       {/* Team Cards Grid (3 cards per row, bottom row centered) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 max-w-6xl mx-auto">
         {members.map((member, index) => {
-          // Centering the last row of 2 items on 3-column layout
-          const isSecondLast = index === 6;
-          const isLast = index === 7;
+          // Centering bottom row on 3-column layout
+          const remainder = members.length % 3;
+          const isLast = index === members.length - 1;
+          const isSecondLast = index === members.length - 2;
+
           let centeringClass = "";
-          if (isSecondLast) {
-            centeringClass = "lg:col-start-1 lg:translate-x-1/2";
-          } else if (isLast) {
-            centeringClass = "lg:col-start-2 lg:translate-x-1/2";
+          if (remainder === 1 && isLast) {
+            // When 1 card is left on the bottom row, center it in the middle column
+            centeringClass = "lg:col-start-2";
+          } else if (remainder === 2) {
+            // When 2 cards are left on the bottom row, shift both by half column + half gap
+            if (isSecondLast) {
+              centeringClass = "lg:col-start-1 lg:translate-x-[calc(50%+14px)]";
+            } else if (isLast) {
+              centeringClass = "lg:col-start-2 lg:translate-x-[calc(50%+14px)]";
+            }
           }
 
           return (
@@ -180,10 +202,16 @@ export default function MeetTheTeam({
               {/* Card Footer: Name, Role & LinkedIn */}
               <div className="flex items-center justify-between px-2 pb-1.5 pt-0.5 gap-2">
                 <div className="min-w-0">
-                  <h3 className="font-sora text-sm sm:text-[15px] font-semibold text-[#142938] leading-tight truncate">
+                  <h3
+                    title={member.name}
+                    className="font-sora text-sm sm:text-[15px] font-semibold text-[#142938] leading-tight truncate"
+                  >
                     {member.name}
                   </h3>
-                  <p className="font-sora text-[11px] sm:text-xs text-[#71838a] leading-tight mt-0.5 truncate">
+                  <p
+                    title={member.role}
+                    className="font-sora text-[11px] sm:text-xs text-[#71838a] leading-tight mt-0.5 truncate"
+                  >
                     {member.role}
                   </p>
                 </div>

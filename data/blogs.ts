@@ -63,7 +63,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/domino_effect.png",
+    "image": "/blog-1.png",
     "coverImageAlt": "The Hidden Cost of Employee Disengagement - AI Workforce Signals",
     "keyTakeaways": [
       "Employee disengagement is a multi-trillion-dollar problem impacting productivity, culture and retention",
@@ -265,7 +265,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-2.jpg",
+    "image": "/blog-2.png",
     "coverImageAlt": "Rethinking Performance Management in the AI Era",
     "keyTakeaways": [
       "Traditional performance management is too slow, too subjective and too retrospective for how work happens today",
@@ -500,7 +500,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-3.jpg",
+    "image": "/blog-3.png",
     "coverImageAlt": "Onboarding Reimagined: The Strategic ROI of Predictive Assimilation",
     "keyTakeaways": [
       "The first 90 days are the most critical phase of the employee lifecycle, shaping long-term engagement, productivity and retention",
@@ -678,7 +678,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-4.jpg",
+    "image": "/blog-4.png",
     "coverImageAlt": "Unlocking Workforce Potential through Skill Adjacency",
     "keyTakeaways": [
       "Most capability gaps exist not because talent is missing, but because existing skills are not visible or fully understood",
@@ -880,7 +880,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-5.jpg",
+    "image": "/blog-5.png",
     "coverImageAlt": "The Attrition Algorithm: Predicting Flight Risk Before It Hits the Bottom Line",
     "keyTakeaways": [
       "Attrition signals exist long before the resignation; they’re just rarely connected or surfaced in time to act",
@@ -1041,7 +1041,7 @@ export const allBlogs: BlogPost[] = [
       "role": "Workforce Research & Strategy",
       "avatar": "/team.jpg"
     },
-    "image": "/blogs/blog-6.jpg",
+    "image": "/blog-6.png",
     "coverImageAlt": "Why Your Managers Are Your Most Untapped Source of Workforce Intelligence",
     "keyTakeaways": [
       "Managers are the closest source of real-time workforce intelligence in any organization but most have no system to support how they capture and act on what they observe",

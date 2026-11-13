@@ -31,3 +31,7 @@ export { default as PlatformFaq } from "./PlatformFaq";
 export type { PlatformFaqProps } from "./PlatformFaq";
 export { default as AskClaripa } from "./AskClaripa";
 export * from "./AskClaripa";
+export { default as Objective } from "./objective";
+export * from "./objective";
+export { default as PerformanceCycle } from "./performancecycle";
+export * from "./performancecycle";

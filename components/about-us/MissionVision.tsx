@@ -75,7 +75,7 @@ export default function MissionVision({
   title = "The Next Evolution of HR is\nintelligence.",
   overviewLabel = "Overview",
   overviewText = "Claripa is an AI-powered workforce intelligence platform that transforms people data into meaningful insights, helping organisations understand performance, strengthen alignment, and make informed people decisions.",
-  imageSrc = "/about_hero.jpg",
+  imageSrc = "/next-evolve.png",
   missionKicker = "OUR MISSION",
   missionText = "To connect workforce data, performance signals, and AI-driven insights into a unified intelligence platform that enables organisations to improve performance, align individual contributions with business goals, and make smarter, evidence-based people decisions.",
   visionKicker = "OUR VISION",

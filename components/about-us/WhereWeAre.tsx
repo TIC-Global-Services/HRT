@@ -19,7 +19,7 @@ export default function WhereWeAre({
   heading = "Shape the Future of Work with Claripa",
   ctaText = "BEGIN A CAREER WITH US",
   noOpeningsMessage = "We don’t have any openings for now.",
-  imageSrc = "/team.jpg",
+  imageSrc = "/along-with-team-claripa.png",
   imageAlt = "Claripa team together in the office",
 }: WhereWeAreProps) {
   const [isOpeningsModalOpen, setIsOpeningsModalOpen] = useState(false);
