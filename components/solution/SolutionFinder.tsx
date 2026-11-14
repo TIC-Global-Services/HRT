@@ -40,7 +40,7 @@ export interface SolutionFinderProps {
   showFilters?: boolean;
 }
 
-export default function SolutionFinder({
+export default function   SolutionFinder({
   eyebrow = "Find the right solution",
   title = "Built around the decisions you make every day.",
   description,
@@ -63,7 +63,7 @@ export default function SolutionFinder({
       id="solution-finder"
     >
       <div className="flex flex-col items-center text-center px-4 max-w-2xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-base font-medium tracking-wide uppercase">
+        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-xs  md:text-base font-medium tracking-tight uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b0a] shadow-[0_0_8px_rgba(255,107,10,0.45)]" />
           {eyebrow}
         </p>
@@ -71,7 +71,7 @@ export default function SolutionFinder({
           as="h2"
           text={title}
           delay={20}
-          className="mt-3 text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]"
+          className="mt-3 text-[#254F5F] text-[28px] sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05]"
         />
         {description && (
           <BlurText
@@ -138,16 +138,16 @@ export default function SolutionFinder({
                 as="p"
                 text={solution.description}
                 delay={20}
-                className="font-sora text-sm sm:text-base leading-[1.2] text-[#5A6A72]"
+                className="font-sora text-xs sm:text-base leading-[1.2] text-[#5A6A72]"
               />
             </div>
 
             {/* Bottom: Tags & Explore Link */}
             <div className="mt-3 pt-2">
-              <div className="font-mono text-[11px] sm:text-xs text-[#254F5F] tracking-tight mb-4">
+              <div className="font-mono text-xs sm:text-xs text-[#254F5F] tracking-tight mb-4">
                 {solution.tags}
               </div>
-              <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold tracking-wide text-[#E26D35] uppercase group-hover:gap-2.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 font-mono text-[10px] md:text-xs font-semibold tracking-wide text-[#E26D35] uppercase group-hover:gap-2.5 transition-all">
                 <span>EXPLORE</span>
                 <ArrowRight
                   aria-hidden="true"

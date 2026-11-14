@@ -52,7 +52,7 @@ export default function SolutionOutcomes({
     >
       {/* Section Header */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#F8780D] font-mono text-base font-medium tracking-wider uppercase">
+        <p className="inline-flex items-center gap-2 text-[#F8780D] font-mono text-xs md:text-base font-medium tracking-tight uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#F8780D] shadow-[0_0_8px_rgba(255,107,10,0.55)]" />
           {eyebrow}
         </p>
@@ -60,7 +60,7 @@ export default function SolutionOutcomes({
           as="h2"
           text={title}
           delay={20}
-          className="mt-3 text-[#254F5F] font-sora text-3xl sm:text-4xl md:text-[46px] lg:text-[48px] font-normal tracking-tight leading-[1.1]"
+          className="mt-3 text-[#254F5F] font-sora text-[28px] sm:text-4xl md:text-[46px] lg:text-[48px] font-normal tracking-tight leading-[1.1]"
         />
       </div>
 
@@ -74,25 +74,25 @@ export default function SolutionOutcomes({
             >
               {/* Top: Metric, Title & Description */}
               <div>
-                <strong className="block text-[#FF6B0A] font-sora font-light text-6xl sm:text-[68px] lg:text-[74px] tracking-tight leading-none">
+                <strong className="block text-[#FF6B0A] font-sora font-light text-[40px] mb-2 md:mb-0 sm:text-[68px] lg:text-[74px] tracking-tight leading-none">
                   {outcome.metricNumber}
                 </strong>
                 <BlurText
                   as="h3"
                   text={outcome.metricLabel}
                   delay={20}
-                  className="text-[#142938] font-sora font-semibold text-lg sm:text-[19px] leading-snug mb-3"
+                  className="text-[#142938] font-sora font-semibold text-xl sm:text-[20px] leading-[1.2] mb-3"
                 />
                 <BlurText
                   as="p"
                   text={outcome.description}
                   delay={20}
-                  className="text-[#5A6A72] font-sora text-sm sm:text-[14.5px] leading-[1.3]"
+                  className="text-[#5A6A72] font-sora text-xs sm:text-[14.5px] leading-[1.3]"
                 />
               </div>
 
               {/* Bottom: Monospace Tag */}
-              <div className="mt-2 pt-2">
+              <div className="mt-2 md:pt-2">
                 <span className="font-mono text-xs sm:text-[13px] text-[#8C9AA0] tracking-wide">
                   {outcome.tag}
                 </span>

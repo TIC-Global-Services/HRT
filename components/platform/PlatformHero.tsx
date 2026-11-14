@@ -241,7 +241,7 @@ export default function PlatformHero({
                     </div>
 
                     <div
-                      className={`absolute top-1/2 -translate-y-[36%] -right-3 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+                      className={`absolute -top-[10%]  md:top-1/2 md: -translate-y-[36%] -right-3 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                         isTriggered
                           ? "opacity-100 scale-100 translate-x-0"
                           : "opacity-0 scale-75 translate-x-6 pointer-events-none"

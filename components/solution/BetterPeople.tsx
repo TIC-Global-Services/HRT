@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import BlurText from "@/reuseable/BlurText";
 
 export interface CaseStudyItem {
@@ -64,6 +65,7 @@ export const caseStudiesData: CaseStudyItem[] = [
 
 export default function BetterPeople() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
   const [maxOffset, setMaxOffset] = useState<number>(0);
   const [stepWidth, setStepWidth] = useState<number>(0);
   const firstCardRef = useRef<HTMLDivElement>(null);
@@ -76,7 +78,12 @@ export default function BetterPeople() {
     const updateOffset = () => {
       if (firstCardRef.current) {
         const cardWidth = firstCardRef.current.offsetWidth;
-        const gap = window.innerWidth >= 640 ? 28 : 20;
+        const gap =
+          window.innerWidth >= 1024
+            ? 28
+            : window.innerWidth >= 640
+            ? 32
+            : 24;
         const leftPadding = window.innerWidth * 0.05;
         const rightPadding = window.innerWidth * 0.05;
         const totalContentWidth =
@@ -97,14 +104,14 @@ export default function BetterPeople() {
     return () => window.removeEventListener("resize", updateOffset);
   }, []);
 
-  // Auto-advance every 6 seconds
+  // Auto-advance every 6 seconds, pausing on hover
   useEffect(() => {
-    if (caseStudiesData.length < 2) return;
-    const timer = setTimeout(() => {
+    if (isPaused || caseStudiesData.length < 2) return;
+    const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev >= lastIndex ? 0 : prev + 1));
     }, 6000);
-    return () => clearTimeout(timer);
-  }, [currentIndex, lastIndex]);
+    return () => clearInterval(timer);
+  }, [isPaused, lastIndex]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
@@ -128,9 +135,11 @@ export default function BetterPeople() {
       id="impacts"
       aria-label="Real World Impacts"
       className="relative w-full bg-[#F7F6F3] py-16 sm:py-20 lg:py-24 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Centered Header Section */}
-      <div className="px-[5%] mb-10 sm:mb-12 flex flex-col items-center text-center">
+      <div className="px-[5%] mb-8 sm:mb-10 lg:mb-12 flex flex-col items-center text-center">
         {/* Eyebrow */}
         <div className="inline-flex items-center justify-center gap-2 text-[11px] sm:text-base font-geist-mono font-medium tracking-tight text-[#F06A25] uppercase mb-3.5">
           <span
@@ -145,13 +154,13 @@ export default function BetterPeople() {
           as="h2"
           delay={20}
           text={"Better people decisions.\nMeasurable outcomes."}
-          className="font-sora text-3xl sm:text-4xl lg:text-[46px] font-sora font-normal tracking-[-0.03em] text-[#254F5F] leading-[1.14] mb-6"
+          className="font-sora text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.03em] text-[#254F5F] leading-[1.14] mb-0 lg:mb-6"
         />
 
-        {/* Centered CTA Pill */}
+        {/* Desktop CTA Pill (Hidden on Mobile & Tablet, placed at bottom on mobile/tablet like Casestudycarosal) */}
         <Link
           href="/case-studies"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#ECE8E2] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:border-[#F06A25]/40 text-[#142938] text-base font-mono font-medium tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-0.5"
+          className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#ECE8E2] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:border-[#F06A25]/40 text-[#142938] text-base font-mono font-medium tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-0.5"
         >
           <span>READ MORE SUCCESS STUDIES</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-[#62737A]" />
@@ -165,7 +174,7 @@ export default function BetterPeople() {
         onTouchEnd={handleTouchEnd}
       >
         <div
-          className="flex pl-[5%] gap-5 sm:gap-7 transition-transform duration-600 ease-out"
+          className="flex pl-[5%] gap-6 sm:gap-8 lg:gap-7 transition-transform duration-500 ease-out"
           style={{
             transform: `translateX(-${translateX}px)`,
           }}
@@ -183,11 +192,17 @@ export default function BetterPeople() {
                     setCurrentIndex(idx);
                   }
                 }}
-                className={`relative shrink-0 rounded-[24px] sm:rounded-[28px] overflow-hidden border select-none w-[86vw] sm:w-[80vw] lg:w-[76vw] h-[460px] sm:h-[500px] lg:h-[520px] flex items-stretch justify-end p-3 sm:p-4 lg:p-3 transition-all duration-300 ease-out ${
+                className={cn(
+                  "relative shrink-0 rounded-[28px] sm:rounded-[30px] lg:rounded-[24px] overflow-hidden border select-none cursor-pointer",
+                  // Mobile / Tab: w-[85vw] / w-[80vw], height matches Casestudycarosal (h-[560px] sm:h-[580px])
+                  // Desktop: w-[76vw] h-[520px] untouched
+                  "w-[85vw] sm:w-[80vw] lg:w-[76vw]",
+                  "h-[560px] sm:h-[580px] lg:h-[520px] flex flex-col md:flex-row lg:flex-row justify-end items-stretch md:items-end lg:items-stretch p-3 sm:p-4 lg:p-3",
+                  "transition-all duration-300 ease-out",
                   isCardActive
-                    ? "border-[#E3DDD5] shadow-[0_14px_40px_rgba(0,30,45,0.08)] opacity-100"
-                    : "border-[#E8E4DD] opacity-80 cursor-pointer hover:opacity-100"
-                }`}
+                    ? "border-slate-300/80 lg:border-[#E3DDD5] shadow-2xl lg:shadow-[0_14px_40px_rgba(0,30,45,0.08)] opacity-100"
+                    : "border-slate-200/70 lg:border-[#E8E4DD] opacity-75 lg:opacity-80 hover:opacity-95 lg:hover:opacity-100"
+                )}
               >
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
@@ -199,49 +214,54 @@ export default function BetterPeople() {
                     className="object-cover object-center"
                     sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1100px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent sm:hidden" />
+                  {/* Dark gradient for mobile readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent sm:hidden" />
                 </div>
 
-                {/* Inset White Content Card */}
-                <div className="relative z-10 bg-[#FAF9F7]/95 backdrop-blur-sm sm:bg-[#FAF9F7] rounded-[20px] sm:rounded-[22px] p-6 sm:p-8 lg:p-9 shadow-sm border border-[#F0ECE6] w-full sm:w-[420px] lg:w-[460px] h-full flex flex-col justify-between">
+                {/* Inset White Content Card - Auto height on mobile/tablet to prevent cutting off */}
+                <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] lg:bg-[#FAF9F7] rounded-[24px] sm:rounded-[28px] lg:rounded-[20px] p-5 sm:p-8 lg:p-9 shadow-xl lg:shadow-sm border border-neutral-100/90 lg:border-[#F0ECE6] w-full sm:w-[480px] lg:w-[460px] h-auto md:h-full lg:h-full flex flex-col justify-between">
                   <div>
-                    <div className="text-[10.5px] sm:text-[11px] font-mono font-medium tracking-[0.06em] text-[#78888F] uppercase">
+                    {/* Category */}
+                    <div className="text-[10px] sm:text-xs lg:text-[10.5px] font-mono font-semibold lg:font-medium tracking-wider lg:tracking-[0.06em] text-slate-400 lg:text-[#78888F] uppercase mb-2 sm:mb-3 lg:mb-0">
                       {study.category}
                     </div>
-                  </div>
 
-                  <div>
+                    {/* Title */}
                     <BlurText
                       as="h3"
                       delay={20}
                       text={study.title}
-                      className="text-xl sm:text-2xl font-semibold tracking-[-0.02em] text-[#0F313F] font-sora leading-[1.28] mb-4"
+                      className="text-base sm:text-2xl lg:text-xl font-bold lg:font-semibold tracking-tight lg:tracking-[-0.02em] text-[#142938] lg:text-[#0F313F] font-sora leading-snug lg:leading-[1.28] mb-2 md:mb-4 lg:mb-4"
                     />
 
-                    <Link
-                      href={study.href}
-                      onClick={(e) => e.stopPropagation()}
-                      className="group inline-flex items-center gap-1.5 text-base font-mono font-medium tracking-tight text-[#254F5F] hover:text-[#F06A25] uppercase transition-colors duration-200"
-                    >
-                      <span>READ THE FULL CASE STUDY</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
+                    {/* CTA Link */}
+                    <div className="mb-3 sm:mb-6 lg:mb-0">
+                      <Link
+                        href={study.href}
+                        onClick={(e) => e.stopPropagation()}
+                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-mono font-semibold lg:font-medium tracking-tight text-[#254F5F] hover:text-[#F06A25] uppercase transition-colors duration-200"
+                      >
+                        <span>READ THE FULL CASE STUDY</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Bottom Stats */}
-                  <div className="grid grid-cols-2 gap-5 pt-5">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 pt-3 sm:pt-6 lg:pt-5 border-t border-slate-200/70 lg:border-t-0">
                     {study.stats.map((stat, sIdx) => (
                       <div key={sIdx} className="flex flex-col">
                         <span
-                          className={`text-3xl sm:text-[42px] font-sora font-normal tracking-tight mb-1 leading-none ${
+                          className={cn(
+                            "text-[26px] sm:text-[42px] font-geist font-bold lg:font-sora lg:font-normal tracking-tight leading-none mb-1",
                             stat.highlighted
-                              ? "text-[#F06A25]"
+                              ? "text-[#F8720C] lg:text-[#F06A25]"
                               : "text-[#62737A]"
-                          }`}
+                          )}
                         >
                           {stat.value}
                         </span>
-                        <span className="text-[11.5px] sm:text-sm font-sora text-[#62737A] leading-[1.35]">
+                        <span className="text-[10px] md:text-sm lg:text-[11.5px] font-sora text-[#62737A] leading-[1.2] lg:leading-[1.35]">
                           {stat.label}
                         </span>
                       </div>
@@ -254,8 +274,8 @@ export default function BetterPeople() {
         </div>
       </div>
 
-      {/* Bottom Pagination Bars */}
-      <div className="flex items-center justify-center gap-2.5 mt-7 sm:mt-8 px-[5%]">
+      {/* Bottom Pagination Indicators matching Casestudycarosal */}
+      <div className="flex items-center justify-center gap-3 lg:gap-2.5 mt-6 sm:mt-8 lg:mt-7 px-[5%]">
         {caseStudiesData.map((_, dotIdx) => {
           const isCurrent = currentIndex === dotIdx;
           return (
@@ -264,14 +284,33 @@ export default function BetterPeople() {
               type="button"
               aria-label={`Go to case study ${dotIdx + 1}`}
               onClick={() => setCurrentIndex(dotIdx)}
-              className={`h-[3.5px] rounded-full transition-all duration-300 cursor-pointer focus:outline-none ${
+              className={cn(
+                "relative rounded-full transition-all duration-300 cursor-pointer focus:outline-none overflow-hidden",
+                // Mobile & Tablet: h-1.5 animated pulse pills
+                // Desktop: h-[3.5px] untouched
+                "h-1.5 lg:h-[3.5px]",
                 isCurrent
-                  ? "w-12 sm:w-14 bg-[#F06A25]"
-                  : "w-12 sm:w-14 bg-[#CBD2D6] hover:bg-[#AEB8BD]"
-              }`}
-            />
+                  ? "w-14 sm:w-16 lg:w-14 bg-[#E26D35] lg:bg-[#F06A25]"
+                  : "w-10 sm:w-12 lg:w-14 bg-[#CBD5E1] lg:bg-[#CBD2D6] hover:bg-slate-400 lg:hover:bg-[#AEB8BD]"
+              )}
+            >
+              {isCurrent && !isPaused && (
+                <span className="absolute inset-0 bg-white/30 animate-pulse lg:hidden" />
+              )}
+            </button>
           );
         })}
+      </div>
+
+      {/* Bottom CTA Button (Mobile & Tablet only, matching Casestudycarosal) */}
+      <div className="flex items-center justify-center mt-7 sm:mt-8 px-[5%] lg:hidden">
+        <Link
+          href="/case-studies"
+          className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#F4F4F4] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
+        >
+          <span>READ MORE SUCCESS STUDIES</span>
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
       </div>
     </section>
   );
