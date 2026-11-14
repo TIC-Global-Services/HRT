@@ -88,7 +88,7 @@ export const defaultCards: EmployeeExperienceCardItem[] = [
     src: "/employee-experience-2.png",
     alt: "Employee performance tracking and task visibility",
     className:
-      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden md:block",
+      "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden lg:block",
     preload: false,
   },
   {
@@ -134,7 +134,7 @@ export default function EmployeeExperience({
         src: imageSrc2 || "/employee-experience-2.png",
         alt: "Employee performance tracking and task visibility",
         className:
-          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden md:block",
+          "relative min-h-[400px] overflow-hidden rounded-[24px] sm:min-h-[480px] lg:min-h-[20dvh] hidden lg:block",
         preload: false,
       },
       {
@@ -154,8 +154,8 @@ export default function EmployeeExperience({
     ];
 
   return (
-    <section className="px-5 py-16 sm:px-[5%] md:py-24" id="employee-experience">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr]">
+    <section className="px-5 py-16 sm:px-[5%] lg:py-24" id="employee-experience">
+      <div className="grid gap-4 lg:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr]">
         {displayCards.map((card) => {
           if (card.type === "image") {
             return (
