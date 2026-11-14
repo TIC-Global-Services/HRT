@@ -247,7 +247,7 @@ const Footer: React.FC = () => {
               </div>
 
               {/* PLATFORM */}
-              <div>
+              {/* <div>
                 <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
                   PLATFORM
                 </h3>
@@ -309,7 +309,7 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
               {/* INSIGHTS */}
               <div>
@@ -376,6 +376,14 @@ const Footer: React.FC = () => {
                   </li>
                   <li>
                     <Link
+                      href="/platform"
+                      className="text-white/90 hover:text-white transition-colors"
+                    >
+                      Platform
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/contact-us"
                       className="text-white/90 hover:text-white transition-colors"
                     >
@@ -404,10 +412,10 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Bar inside the Card (No horizontal divider line, flowing with breathing room) */}
-          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] sm:text-sm font-mono text-white/85">
+          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] sm:text-sm font-mono text-white/85">
             <p>© 2026 Claripa by HRT. All rights reserved.</p>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 md:gap-6">
               <Link
                 href="/contact-us"
                 className="hover:text-white transition-colors underline underline-offset-4"

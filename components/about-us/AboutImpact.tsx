@@ -209,7 +209,7 @@ export default function AboutImpact({ stats = defaultStats }: AboutImpactProps) 
     >
       {/* Outer White Card Container matching Image 4 */}
       <div className="rounded-[28px] sm:rounded-[36px] bg-white border border-[#E9ECEF] p-4 sm:p-5 lg:p-4 shadow-xs">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-4">
           {stats.map((stat, index) => (
             <article
               key={`${stat.label}-${index}`}
@@ -222,7 +222,7 @@ export default function AboutImpact({ stats = defaultStats }: AboutImpactProps) 
                   : "opacity-0 translate-y-5"
               }`}
             >
-              <strong className="block text-[#FF6B0A] font-sora font-light text-5xl sm:text-6xl lg:text-[64px] tracking-tight leading-none mb-3.5">
+              <strong className="block text-[#FF6B0A] font-sora font-semibold lg:font-light text-[64px] tracking-tight leading-none mb-3.5">
                 <StatCounter
                   value={stat.number}
                   start={isVisible}
@@ -230,7 +230,7 @@ export default function AboutImpact({ stats = defaultStats }: AboutImpactProps) 
                   duration={1800}
                 />
               </strong>
-              <span className="font-sora text-xs sm:text-base font-medium text-[#102A33] tracking-tight">
+              <span className="font-sora text-base font-normal lg:font-medium text-[#102A33] tracking-tight">
                 {stat.label}
               </span>
             </article>

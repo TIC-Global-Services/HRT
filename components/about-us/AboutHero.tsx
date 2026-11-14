@@ -17,7 +17,7 @@ export default function AboutHero({
   description = "Claripa connects goals, performance evidence and structured assessment to help leaders make more consistent, transparent and informed decisions about people.",
   ctaText = "MEET THE TEAM",
   ctaHref = "#team",
-  imageSrc = "/about/hands-joined.jpg",
+  imageSrc = "/about/about-img-2.jpg",
 }: AboutHeroProps) {
   return (
     <section className="pt-12 sm:pt-16 lg:pt-20 pb-10 sm:pb-14 px-[5%]">
@@ -30,22 +30,29 @@ export default function AboutHero({
           as="h1"
           delay={20}
           trigger="load"
-          text={title}
-          className="font-sora text-[#002E40] text-3xl sm:text-5xl md:text-[54px] lg:text-[60px] font-normal tracking-[-0.035em] leading-[1.08]"
+          text={"Co-pilot shaping the future of\npeople intelligence"}
+          className="font-sora text-[#002E40] text-[28px] sm:text-5xl md:text-[54px] lg:text-[60px] font-normal tracking-[-0.035em] leading-[1.08] hidden lg:block"
+        />
+        <BlurText
+          as="h1"
+          delay={20}
+          trigger="load"
+          text={"Co-pilot shaping the future of people intelligence"}
+          className="font-sora text-[#002E40] text-[28px] sm:text-5xl md:text-[54px] lg:text-[60px] font-normal tracking-[-0.035em] leading-[1.08] lg:hidden"
         />
       </div>
 
       {/* Large White Rounded Card Container matching Image exactly */}
-      <div className="w-full rounded-[28px] sm:rounded-[36px] md:rounded-[40px] bg-white border border-[#96AAB2] shadow-xs overflow-hidden">
+      <div className="w-full rounded-[30px] sm:rounded-[36px] md:rounded-[40px] bg-white border border-[#96AAB2] shadow-xs overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_1fr] items-stretch">
           {/* Left Column: Description + Button */}
-          <div className="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 md:px-14 md:py-16 lg:pl-16 lg:pr-10">
+          <div className="flex flex-col justify-center md:items-start items-center px-7 py-10 sm:px-12 sm:py-14 md:px-14 md:py-16 lg:pl-16 lg:pr-10">
             <BlurText
               as="p"
               delay={20}
               trigger="load"
               text={description}
-              className="text-[#62737A] font-sora text-base sm:text-lg md:text-2xl leading-[1.38] font-normal mb-8 max-w-[450px]"
+              className="text-[#62737A] font-sora text-sm sm:text-lg md:text-2xl leading-[1.38] font-normal mb-8 max-w-[450px] text-center md:text-left"
             />
             <div>
               <Link
@@ -58,8 +65,8 @@ export default function AboutHero({
           </div>
 
           {/* Right Column: Anchored Bottom-Right Photo with Top-Left Curve */}
-          <div className="relative w-full pt-6 sm:pt-9 lg:pt-10 flex flex-col justify-end">
-            <div className="relative w-full h-[260px] sm:h-[320px] md:h-[360px] lg:h-full min-h-[280px] lg:min-h-[350px] rounded-tl-[32px] sm:rounded-tl-[40px] md:rounded-tl-[44px] overflow-hidden bg-slate-100">
+          <div className="relative w-full p-4 sm:pt-9 lg:pt-10 flex flex-col justify-end">
+            <div className="relative w-full h-[260px] sm:h-[320px] md:h-[360px] lg:h-full min-h-[280px] lg:min-h-[350px] rounded-[30px] md:rounded-tl-[32px] sm:rounded-tl-[40px] md:rounded-tl-[44px] overflow-hidden bg-slate-100">
               <Image
                 src={imageSrc}
                 alt="Co-pilot shaping the future of people intelligence"

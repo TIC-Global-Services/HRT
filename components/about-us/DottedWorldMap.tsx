@@ -24,7 +24,109 @@ export default function DottedWorldMap({
       aria-label="Office locations"
       className="pt-3 sm:pt-4 lg:pt-5 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-[5%]"
     >
-      <div className="w-full rounded-[28px] sm:rounded-[30px] md:rounded-[30px] bg-white border border-[#E5EAEB] p-5 sm:p-7 md:p-8 lg:p-10 shadow-xs">
+      {/* Mobile View: Layout matching uploaded reference (Header outside, stacked card with map on top and details below) */}
+      <div className="block md:hidden max-w-lg mx-auto">
+        {/* Mobile Header outside the card */}
+        <div className="mb-5 sm:mb-6">
+          <p className="flex items-center gap-2 font-mono text-xs font-medium tracking-[0.78px] uppercase text-[#F8780D] mb-2.5">
+            <span
+              aria-hidden="true"
+              className="w-1.5 h-1.5 rounded-full bg-[#F8780D] shrink-0"
+            />
+            {eyebrow}
+          </p>
+
+          <BlurText
+            as="h2"
+            delay={20}
+            text={title}
+            className="font-sora text-[#254F5F] text-[28px] sm:text-3xl font-normal tracking-tight leading-[1.15]"
+          />
+        </div>
+
+        {/* Mobile White Card */}
+        <div className="w-full rounded-[28px] bg-white border border-[#E5EAEB] p-4 sm:p-5 shadow-xs">
+          {/* Top Map Box */}
+          <div className="relative w-full rounded-[20px] overflow-hidden bg-[#F0F0F0] flex items-center justify-center aspect-[16/10] sm:aspect-[765/470]">
+            <Image
+              src="/offices_map_clean.svg"
+              alt="Claripa office locations map across the world, highlighting Mumbai HQ"
+              width={765}
+              height={470}
+              priority
+              className="w-full h-full object-contain select-none"
+            />
+
+            {/* Animated beacon at Mumbai HQ location */}
+            <div
+              className="absolute pointer-events-none -translate-x-1/2 -translate-y-1/2"
+              style={{ left: "56.95%", top: "57.5%" }}
+              aria-hidden="true"
+            >
+              <span className="absolute -inset-2 rounded-full bg-[#F8780C]/35 animate-ping" />
+              <span className="relative block w-2 h-2 rounded-full bg-[#F8780C] ring-4 ring-[#F8780C]/20 shadow-[0_0_8px_rgba(248,120,12,0.85)]" />
+            </div>
+
+            {/* HQ - Mumbai pill on Map */}
+            <div
+              className="absolute -translate-y-1/2 z-10"
+              style={{ left: "56.95%", top: "48%" }}
+            >
+              <Link
+                href={mapHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Mumbai office in Google Maps"
+                className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] px-2.5 h-[22px] rounded-full font-mono text-[9px] font-semibold tracking-wider flex items-center justify-center gap-1 shadow-md whitespace-nowrap"
+              >
+                <span>HQ</span>
+                <span className="text-[#F8780C]/80 text-[8px]">-</span>
+                <span>Mumbai</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Location Details Row */}
+          <Link
+            href={mapHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Mumbai office in Google Maps"
+            className="group flex items-start gap-3 sm:gap-4 mt-4 sm:mt-5 p-1 rounded-2xl transition-colors hover:bg-slate-50/60"
+          >
+            {/* Square Peach MapPin Icon Box */}
+            <div
+              aria-hidden="true"
+              className="w-12 h-12 rounded-[16px] sm:rounded-[18px] bg-[#FDF2EC] border border-[#FADCCB] text-[#E56A1E] flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform"
+            >
+              <MapPin size={22} className="stroke-[#E56A1E] stroke-[2]" />
+            </div>
+
+            {/* Location Text */}
+            <div className="flex-1 min-w-0">
+              {/* Badge: HQ · Mumbai */}
+              <div className="mb-1.5">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#FDF2EC] text-[#E56A1E] font-mono text-[10px] font-semibold tracking-wider uppercase border border-[#FADCCB]">
+                  HQ · Mumbai
+                </span>
+              </div>
+
+              {/* Office Name */}
+              <h3 className="font-sora text-sm sm:text-[15px] font-bold text-[#102A33] leading-snug tracking-tight">
+                Claripa Headquarters
+              </h3>
+
+              {/* Street Address */}
+              <p className="font-sora text-xs text-[#71838A] leading-relaxed mt-1 font-normal">
+                {address}
+              </p>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Desktop View: Completely Untouched */}
+      <div className="hidden md:block w-full rounded-[28px] sm:rounded-[30px] md:rounded-[30px] bg-white border border-[#E5EAEB] p-5 sm:p-7 md:p-8 lg:p-10 shadow-xs">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] xl:grid-cols-[1fr_1.42fr] gap-6 lg:gap-8 xl:gap-10 items-stretch">
           {/* Left Column: Eyebrow, Heading & Address Card */}
           <div className="flex flex-col justify-between h-full min-h-[280px] sm:min-h-[320px] lg:min-h-full py-1 sm:py-2 pl-1 sm:pl-2">

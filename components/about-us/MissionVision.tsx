@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import GradientBlinds from "@/components/GradientBlinds";
 import BlurText from "@/reuseable/BlurText";
+import ScrollTimeline, { type ScrollTimelineItem } from "@/reuseable/ScrollTimeline";
 
 export interface ValueCardItem {
   id: string;
@@ -100,15 +101,36 @@ export default function MissionVision({
   visionText = "To make performance intelligence the foundation of better people decisions.",
   values = defaultValues,
 }: MissionVisionProps) {
+  // Map values to mobile timeline items
+  const valuesTimelineItems: ScrollTimelineItem[] = values.map((v) => ({
+    id: v.id,
+    badge: v.id,
+    title: v.title,
+    description: (
+      <>
+        {v.description}
+        {v.bullets && v.bullets.length > 0 && (
+          <ul className="text-xs sm:text-sm text-[#62737A] font-sora leading-relaxed list-disc list-inside mt-2 space-y-1">
+            {v.bullets.map((b, bi) => (
+              <li key={bi} className="leading-relaxed tracking-tight">
+                {b}
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    ),
+  }));
+
   return (
     <section
       id="mission-vision"
       aria-label="What Drives Us"
       className="py-14 sm:py-18 lg:py-24 px-4 sm:px-6 lg:px-[5%]"
     >
-      {/* Section Header matching Image 2 */}
-      <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-12 sm:mb-16">
-        <p className="inline-flex items-center gap-2 text-[#F8780C] font-sora text-xs sm:text-sm font-normal tracking-[0.78px] uppercase mb-3">
+      {/* Section Header */}
+      <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-16">
+        <p className="inline-flex items-center gap-2 text-[#F8780C] font-geist-mono text-xs sm:text-sm font-medium md:font-normal tracking-tight uppercase mb-3">
           <span
             aria-hidden="true"
             className="w-1.5 h-1.5 rounded-full tracking-tight bg-[#F8780C] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
@@ -119,22 +141,73 @@ export default function MissionVision({
           as="h2"
           delay={20}
           text={title}
-          className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12]"
+          className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12] hidden lg:block"
         />
+        <BlurText
+          as="h2"
+          delay={20}
+          text={"The Next Evolution of HR is intelligence"}
+          className="text-[#002E40] font-sora text-[28px] sm:text-3xl font-normal tracking-tight leading-[1.18] lg:hidden"
+        />
+
+        {/* Mobile Overview Subtitle placed right below heading matching design */}
+        <p className="block lg:hidden text-[#5A6D75] font-sora text-sm sm:text-base leading-relaxed text-center max-w-md md:max-w-2xl  mx-auto mt-4">
+          {overviewText}
+        </p>
       </div>
 
-      {/* Asymmetric 2-Column Layout matching Image 2 */}
-      <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] xl:grid-cols-[350px_1fr] gap-8 lg:gap-12 items-start">
+      {/* Mobile Stacked View: Matches user mockup image 100% & ScrollTimeline for 4 values */}
+      <div className="block lg:hidden max-w-md md:max-w-2xl mx-auto space-y-5 sm:space-y-6">
+        {/* Top Chip Image with softly rounded corners */}
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-[28px] overflow-hidden bg-slate-100 shadow-2xs">
+          <Image
+            src={imageSrc}
+            alt="The Next Evolution of HR is intelligence"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+
+        {/* Mission Card (Dark Petrol, Centered) */}
+        <article className="rounded-[28px] bg-[#1E4D5B] py-8 px-6 sm:px-8 text-white shadow-xs text-center">
+          <span className="font-mono text-xl sm:text- text-[#96AAB2] tracking-wider uppercase mb-3.5 block font-medium">
+            {missionKicker}
+          </span>
+          <p className="font-sora text-sm sm:text-sm text-white/90 leading-relaxed font-normal">
+            {missionText}
+          </p>
+        </article>
+
+        {/* Vision Card (Ivory/Cream, Centered) */}
+        <article className="rounded-[28px] bg-[#FAF9F5] border border-[#ECE9E3] py-8 px-6 sm:px-8 shadow-xs text-center">
+          <span className="font-mono text-xs sm:text-sm text-[#62737A] tracking-wider uppercase mb-3.5 block font-medium">
+            {visionKicker}
+          </span>
+          <p className="font-sora text-xs sm:text-sm text-[#002E40] leading-relaxed font-normal">
+            {visionText}
+          </p>
+        </article>
+
+        {/* 4 Values Cards rendered via ScrollTimeline */}
+        <div className="pt-4 sm:pt-6">
+          <ScrollTimeline items={valuesTimelineItems} />
+        </div>
+      </div>
+
+      {/* Desktop View: Asymmetric 2-Column Layout matching Figma geometry (untouched) */}
+      <div className="hidden lg:grid grid-cols-[250px_1fr] xl:grid-cols-[350px_1fr] gap-8 lg:gap-12 items-start">
         {/* Left Column: Overview Callout */}
         <div className="lg:sticky lg:top-28">
-          <span className="text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase mb-2.5 block">
+          <span className="text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase lg:mb-2.5 hidden lg:block">
             {overviewLabel}
           </span>
           <BlurText
             as="p"
             delay={20}
             text={overviewText}
-            className="text-[#001F1F] font-sora text-sm sm:text-xl leading-[1.3] max-w-xs m-0"
+            className="text-[#001F1F] font-sora text-sm sm:text-xl leading-[1.3] max-w-xs m-0 lg:text-left text-center"
           />
         </div>
 

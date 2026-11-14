@@ -4,6 +4,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import FlutedGlassBackground from "@/reuseable/HeroBg";
 import BlurText from "@/reuseable/BlurText";
+import ScrollTimeline, { type ScrollTimelineItem } from "@/reuseable/ScrollTimeline";
 
 export interface TimelineMilestone {
   kicker: React.ReactNode;
@@ -128,6 +129,14 @@ export default function OurStoryTimeline({
     };
   }, [milestones.length]);
 
+  // Map milestones to mobile timeline items
+  const mobileTimelineItems: ScrollTimelineItem[] = milestones.map((m, idx) => ({
+    id: idx,
+    badge: m.year,
+    title: m.kicker,
+    description: m.description,
+  }));
+
   return (
     <section
       id="our-story"
@@ -148,9 +157,14 @@ export default function OurStoryTimeline({
         />
       </div>
 
-      {/* 5 Cards Row - Stepped Height Architecture matching exact Figma geometry */}
+      {/* Mobile View: Vertical Scroll-Reveal Timeline */}
+      <div className="block lg:hidden px-2 sm:px-4">
+        <ScrollTimeline items={mobileTimelineItems} />
+      </div>
+
+      {/* Desktop View: 5 Cards Row - Stepped Height Architecture matching exact Figma geometry */}
       {/* Total desktop width = 219*4 + 400 + 16*4 = 1340px */}
-      <div className="flex flex-nowrap overflow-x-auto lg:overflow-visible items-start justify-start lg:justify-center gap-4 pb-6 lg:pb-0 scrollbar-none snap-x snap-mandatory max-w-[1340px] mx-auto">
+      <div className="hidden lg:flex flex-nowrap overflow-visible items-start justify-center gap-4 max-w-[1340px] mx-auto">
         {/* CARDS 1 to 4: Shared 1-Canvas Continuous Fluted Glass Background */}
         <div
           ref={groupRef}

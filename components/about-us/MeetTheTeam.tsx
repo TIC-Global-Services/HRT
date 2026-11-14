@@ -97,7 +97,6 @@ const defaultTeamMembers: TeamMember[] = [
 export default function MeetTheTeam({
   eyebrow = "OUR PEOPLE AND CULTURE",
   title = "Technology should make\nwork more human.",
-  subtitle = "Bringing together Claripa’s product and AI builders with HRT Consulting’s strategic HR specialists.",
   members = defaultTeamMembers,
 }: MeetTheTeamProps) {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -128,16 +127,22 @@ export default function MeetTheTeam({
       className="py-12 sm:py-16 lg:py-20 px-[5%]"
     >
       {/* Header */}
-      <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-wider uppercase mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
+      <div className="flex flex-col items-center text-center lg:px-4 lg:max-w-3xl mx-auto mb-10 sm:mb-12">
+        <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-tight uppercase mb-3">
+          <span className="w-1.5 h-1.5 rounded-full  bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
           {eyebrow}
         </p>
         <BlurText
           as="h2"
           delay={20}
           text={title}
-          className="text-[#254F5F] font-sora text-3xl sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]"
+          className="text-[#254F5F] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1] hidden lg:block"
+        />
+        <BlurText
+          as="h2"
+          delay={20}
+          text={"Technology should make \nwork more human."}
+          className="text-[#254F5F] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]  lg:hidden"
         />
         {/* {subtitle && (
           <p className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed mt-3.5 max-w-xl">
@@ -147,7 +152,7 @@ export default function MeetTheTeam({
       </div>
 
       {/* Team Cards Grid (3 cards per row, bottom row centered) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-7 max-w-6xl mx-auto">
         {members.map((member, index) => {
           // Centering bottom row on 3-column layout
           const remainder = members.length % 3;
@@ -180,7 +185,7 @@ export default function MeetTheTeam({
                   setSelectedMember(member);
                 }
               }}
-              className={`group cursor-pointer rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] hover:border-[#E56A1E]/45 p-3 sm:p-3.5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E56A1E] flex flex-col justify-between ${centeringClass}`}
+              className={`group cursor-pointer rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] hover:border-[#E56A1E]/45 active:scale-[0.98] active:border-[#E56A1E] p-3 sm:p-3.5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E56A1E] flex flex-col justify-between ${centeringClass}`}
             >
               {/* Photo Box */}
               <div className="relative aspect-square w-full rounded-[18px] sm:rounded-[22px] overflow-hidden bg-slate-100 mb-3.5">
@@ -193,8 +198,9 @@ export default function MeetTheTeam({
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
                 />
                 {member.bio && (
-                  <span className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-[#002E40]/80 backdrop-blur-xs text-white font-mono text-[10px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    Read Bio
+                  <span className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#002E40]/85 backdrop-blur-xs text-white font-mono text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1 shadow-xs border border-white/15 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                    <span>Read More</span>
+                    <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F8780C]" />
                   </span>
                 )}
               </div>
@@ -242,72 +248,77 @@ export default function MeetTheTeam({
       {/* Team Member Description Modal */}
       {selectedMember && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#001A24]/70 backdrop-blur-xs animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 pb-12 sm:p-6 sm:pb-14 bg-[#001A24]/70 backdrop-blur-xs animate-in fade-in duration-150"
           onClick={() => setSelectedMember(null)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="team-modal-name"
         >
+          {/* Modal Container */}
           <div
-            className="relative w-full max-w-3xl rounded-[24px] sm:rounded-[28px] overflow-hidden bg-white shadow-2xl border border-white/15 grid grid-cols-1 md:grid-cols-[0.9fr_1.35fr] animate-in zoom-in-95 duration-150"
+            className="relative w-full max-w-3xl animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Left Photo Column */}
-            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[380px] bg-[#E9ECEF]">
-              <Image
-                src={selectedMember.imageSrc}
-                alt={selectedMember.name}
-                fill
-                className="object-cover"
-                style={{ objectPosition: "50% 8%" }}
-                sizes="(max-width: 768px) 100vw, 340px"
-              />
-            </div>
-
-            {/* Right Bio Panel */}
-            <div className="relative bg-gradient-to-br from-[#063244] via-[#0F4960] to-[#1A627B] text-white p-6 sm:p-8 md:p-9 flex flex-col justify-between">
-              <button
-                type="button"
-                onClick={() => setSelectedMember(null)}
-                aria-label="Close profile"
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              <div>
-                <h3
-                  id="team-modal-name"
-                  className="font-sora text-xl sm:text-2xl font-bold uppercase tracking-wide text-white pr-8 leading-tight"
-                >
-                  {selectedMember.name}
-                </h3>
-                <p className="font-mono text-xs sm:text-sm text-[#FFB076] mt-1 tracking-tight">
-                  {selectedMember.role}
-                </p>
-
-                <div className="h-px w-full bg-white/30 my-4 sm:my-5" />
-
-                <p className="font-sora text-sm sm:text-[15px] leading-[1.65] text-white/90 font-normal">
-                  {selectedMember.bio ||
-                    "Part of the Claripa and HRT Consulting team advancing connected workforce intelligence."}
-                </p>
+            {/* Modal Card */}
+            <div className="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-white shadow-2xl border border-white/15 grid grid-cols-1 md:grid-cols-[0.9fr_1.35fr] max-h-[82vh] overflow-y-auto">
+              {/* Left Photo Column */}
+              <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[380px] bg-[#E9ECEF]">
+                <Image
+                  src={selectedMember.imageSrc}
+                  alt={selectedMember.name}
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "50% 8%" }}
+                  sizes="(max-width: 768px) 100vw, 340px"
+                />
               </div>
 
-              {selectedMember.linkedinUrl && (
-                <div className="mt-6 pt-2">
-                  <Link
-                    href={selectedMember.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/25 text-white font-mono text-xs uppercase tracking-wider transition-colors"
+              {/* Right Bio Panel */}
+              <div className="relative bg-gradient-to-br from-[#063244] via-[#0F4960] to-[#1A627B] text-white p-6 sm:p-8 md:p-9 flex flex-col justify-between">
+                <div>
+                  <h3
+                    id="team-modal-name"
+                    className="font-sora text-xl sm:text-2xl font-bold uppercase tracking-wide text-white pr-2 leading-tight"
                   >
-                    <span>LinkedIn Profile</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
+                    {selectedMember.name}
+                  </h3>
+                  <p className="font-mono text-xs sm:text-sm text-[#FFB076] mt-1 tracking-tight">
+                    {selectedMember.role}
+                  </p>
+
+                  <div className="h-px w-full bg-white/30 my-4 sm:my-5" />
+
+                  <p className="font-sora text-sm sm:text-[15px] leading-[1.3] text-white/90 font-normal">
+                    {selectedMember.bio ||
+                      "Part of the Claripa and HRT Consulting team advancing connected workforce intelligence."}
+                  </p>
                 </div>
-              )}
+
+                {selectedMember.linkedinUrl && (
+                  <div className="mt-6 pt-2">
+                    <Link
+                      href={selectedMember.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/25 text-white font-mono text-xs uppercase tracking-wider transition-colors"
+                    >
+                      <span>LinkedIn Profile</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Bottom Circular Close Button matching user image */}
+            <button
+              type="button"
+              onClick={() => setSelectedMember(null)}
+              aria-label="Close profile"
+              className="absolute -bottom-15   left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white hover:bg-slate-50 text-[#002E40] shadow-[0_6px_20px_rgba(0,0,0,0.3)] border border-slate-200/80 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer z-30"
+            >
+              <X className="w-5 h-5 text-[#002E40]" strokeWidth={2.5} />
+            </button>
           </div>
         </div>
       )}
