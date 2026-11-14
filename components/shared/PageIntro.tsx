@@ -7,7 +7,8 @@ export interface PageIntroProps {
   title: string;
   description?: string;
   children?: ReactNode;
-  align?: "left" | "center";
+  align?: "left" | "center" | "responsive";
+  className?: string;
 }
 
 export default function PageIntro({
@@ -16,14 +17,18 @@ export default function PageIntro({
   description,
   children,
   align = "left",
+  className = "",
 }: PageIntroProps) {
+  const alignmentClass =
+    align === "center"
+      ? "items-center text-center mx-auto"
+      : align === "responsive"
+      ? "items-center text-center mx-auto lg:items-start lg:text-left lg:mx-0"
+      : "items-start text-left";
+
   return (
     <div
-      className={`flex flex-col gap-[18px] ${
-        align === "center"
-          ? "items-center text-center mx-auto"
-          : "items-start text-left"
-      }`}
+      className={`flex flex-col gap-[18px] ${alignmentClass} ${className}`.trim()}
     >
       <SectionEyebrow>{eyebrow}</SectionEyebrow>
       <BlurText
@@ -31,7 +36,7 @@ export default function PageIntro({
         delay={20}
         trigger="load"
         text={title}
-        className="m-0 text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px]"
+        className="m-0 text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] max-w-[760px]"
       />
       {description && (
         <BlurText
@@ -39,8 +44,12 @@ export default function PageIntro({
           delay={20}
           trigger="load"
           text={description}
-          className={`m-0 text-[#3E4A4F] font-sora text-lg leading-[1.3] ${
-            align === "center" ? "max-w-[700px]" : "max-w-[640px]"
+          className={`m-0 text-[#3E4A4F] font-sora text-base sm:text-lg leading-[1.3] ${
+            align === "center"
+              ? "max-w-[700px]"
+              : align === "responsive"
+              ? "max-w-[700px] lg:max-w-[640px]"
+              : "max-w-[640px]"
           }`}
         />
       )}

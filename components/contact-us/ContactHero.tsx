@@ -54,16 +54,21 @@ export default function ContactHero({
   ];
 
   return (
-    <div className="flex flex-col min-w-0">
-      <PageIntro eyebrow={eyebrow} title={title} description={description} />
-      <ul className="flex flex-col gap-4 mt-8 m-0 p-0 list-none">
+    <div className="flex flex-col min-w-0 w-full max-w-2xl mx-auto lg:max-w-none">
+      <PageIntro
+        eyebrow={eyebrow}
+        title={title}
+        description={description}
+        align="responsive"
+      />
+      <ul className="flex flex-col gap-4 mt-4 md:mt-8 m-0 p-0 list-none w-full max-w-xl mx-auto lg:max-w-none text-left">
         {benefits.map(
           ({ icon: Icon, title: benefitTitle, description: benefitDescription }) => (
             <li
               className="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-3.5"
               key={benefitTitle}
             >
-              <span className="grid w-10 h-10 place-items-center border border-[#e9e5df] rounded-[11px] bg-white text-[#254f5f]">
+              <span className="grid w-10 h-10 place-items-center border border-[#e9e5df] rounded-[11px] bg-white text-[#254f5f] shrink-0">
                 <Icon aria-hidden="true" size={20} strokeWidth={1.6} />
               </span>
               <span className="flex flex-col gap-0.5">
@@ -75,24 +80,24 @@ export default function ContactHero({
                   text={benefitDescription}
                   trigger="load"
                   delay={20}
-                  className="text-[#62737a] font-sora text-sm leading-relaxed"
+                  className="text-[#62737a] font-sora text-sm leading-[1.3]"
                 />
-                </span>
-              </li>
-            )
-          )}
-        </ul>
-        <figure className="mt-12 sm:mt-16 p-6 sm:p-7 border border-[#ece9e3] rounded-[26px] bg-white text-center">
-          <blockquote className="m-0 text-[#62737a] font-sora text-lg sm:text-[24px] font-semibold tracking-[-0.025em] leading-snug">
-            “Short testimonial quote that builds trust at the point of conversion.”
-          </blockquote>
-          <figcaption className="mt-3.5 text-[#62737a] font-sora text-[14px]">
-            {promiseSubtitle}
-          </figcaption>
-        </figure>
-        <div
-          className="overflow-hidden min-w-0 w-full mt-6 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
-          role="group"
+              </span>
+            </li>
+          )
+        )}
+      </ul>
+      <figure className="mt-8 sm:mt-12 lg:mt-16 p-6 sm:p-7 border border-[#ece9e3] rounded-[26px] bg-white text-center w-full max-w-xl mx-auto lg:max-w-none shadow-xs">
+        <blockquote className="m-0 text-[#62737a] font-sora text-base sm:text-xl lg:text-[24px] font-semibold tracking-[-0.025em] leading-snug">
+          “Short testimonial quote that builds trust at the point of conversion.”
+        </blockquote>
+        <figcaption className="mt-3.5 text-[#62737a] font-sora text-[14px]">
+          {promiseSubtitle}
+        </figcaption>
+      </figure>
+      <div
+        className="overflow-hidden min-w-0 w-full mt-6 max-w-xl mx-auto lg:max-w-none [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
+        role="group"
           aria-label="Trusted by teams at"
         >
           <div className="flex items-center w-max animate-marquee">

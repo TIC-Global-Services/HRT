@@ -66,16 +66,16 @@ export default function DirectLines({
   lines = defaultDirectLines,
 }: DirectLinesProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#F7F6F3]">
-      <div className="px-[5%]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#F7F6F3]">
+      <div className="container mx-auto px-[5%]">
         {/* Section Header */}
-        <div className="mb-8 md:mb-10">
-          <div className="flex items-center gap-2 mb-3">
+        <div className="mb-8 md:mb-10 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start gap-2 mb-2.5 sm:mb-3">
             <span
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780D] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-base font-medium text-[#F8780D] tracking-wider uppercase">
+            <span className="font-mono text-xs sm:text-sm font-semibold text-[#F8780D] tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -83,22 +83,22 @@ export default function DirectLines({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+            className="font-sora text-[#002E40] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
           />
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-md sm:max-w-2xl lg:max-w-none mx-auto">
           {lines.map((line) => {
             const Icon = line.icon;
             return (
               <div
                 key={line.title}
-                className="rounded-[22px] bg-white border border-[#ECE9E3] px-6 sm:px-7 pt-4 flex flex-col min-h-[230px] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(248,120,12,0.06)] group"
+                className="rounded-[22px] bg-white border border-[#ECE9E3] p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[220px] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(248,120,12,0.06)] group"
               >
                 {/* Top content */}
                 <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#FFF5EE] border border-[#FFE7D6] flex items-center justify-center text-[#F8780C] mb-5 shadow-sm transition-transform duration-200 group-hover:scale-105">
+                  <div className="w-11 h-11 rounded-xl bg-[#FFF5EE] border border-[#FFE7D6] flex items-center justify-center text-[#F8780C] mb-4 sm:mb-5 shadow-xs transition-transform duration-200 group-hover:scale-105">
                     <Icon size={20} strokeWidth={2} />
                   </div>
                   <BlurText
@@ -111,18 +111,18 @@ export default function DirectLines({
                     as="p"
                     text={line.description}
                     delay={20}
-                    className="font-sora text-[#62737A] text- leading-relaxed mt-1"
+                    className="font-sora text-[#62737A] text-xs sm:text-sm leading-relaxed mt-1"
                   />
                 </div>
 
                 {/* Bottom details & arrow */}
-                <div className="flex items-end justify-between mt-6">
+                <div className="flex items-end justify-between mt-5 sm:mt-6 pt-2">
                   <div className="flex flex-col gap-1 min-w-0">
                     {line.contacts.map((contact) => (
                       <Link
                         key={contact.label}
                         href={contact.href}
-                        className="font-sora text-sm font-medium text-[#002E40] hover:text-[#F8780C] transition-colors truncate block"
+                        className="font-sora text-xs sm:text-sm font-medium text-[#002E40] hover:text-[#F8780C] transition-colors truncate block"
                       >
                         {contact.label}
                       </Link>

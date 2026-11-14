@@ -159,10 +159,12 @@ export default function Insights() {
         if (mobileSliderRef.current) {
           const slide = mobileSliderRef.current.children[next] as HTMLElement | undefined;
           if (slide) {
-            slide.scrollIntoView({
+            const container = mobileSliderRef.current;
+            // Scroll horizontally within the container ONLY without scrolling the entire window/page
+            const targetLeft = slide.offsetLeft - container.offsetLeft - (container.clientWidth - slide.offsetWidth) / 2;
+            container.scrollTo({
+              left: Math.max(0, targetLeft),
               behavior: "smooth",
-              block: "nearest",
-              inline: "center",
             });
           }
         }
@@ -188,10 +190,11 @@ export default function Insights() {
     if (mobileSliderRef.current) {
       const slide = mobileSliderRef.current.children[idx] as HTMLElement | undefined;
       if (slide) {
-        slide.scrollIntoView({
+        const container = mobileSliderRef.current;
+        const targetLeft = slide.offsetLeft - container.offsetLeft - (container.clientWidth - slide.offsetWidth) / 2;
+        container.scrollTo({
+          left: Math.max(0, targetLeft),
           behavior: "smooth",
-          block: "nearest",
-          inline: "center",
         });
       }
     }

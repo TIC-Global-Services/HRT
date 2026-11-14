@@ -19,7 +19,7 @@ export default function ContactForm({
 
   return (
     <form
-      className="p-6 sm:p-7 md:p-[30px] rounded-[24px] border border-[#e9edef] bg-white shadow-[0_16px_50px_rgba(0,46,64,0.06)]"
+      className="w-full max-w-xl mx-auto lg:max-w-none p-5 sm:p-7 md:p-[30px] rounded-[24px] border border-[#e9edef] bg-white shadow-[0_16px_50px_rgba(0,46,64,0.06)]"
       action="mailto:sales@claripa.com"
       method="post"
       encType="text/plain"
@@ -38,7 +38,7 @@ export default function ContactForm({
             className="mt-2 text-[#254f5f] font-sora text-xl sm:text-2xl lg:text-[25px] font-medium tracking-[-0.04em]"
           />
         </div>
-        <span className="text-[#62737a] font-mono text-[11px]">01 / 01</span>
+        {/* <span className="text-[#62737a] font-mono text-[11px]">01 / 01</span> */}
       </div>
 
       <fieldset className="flex flex-wrap gap-1.5 mb-5 p-0 border-0">

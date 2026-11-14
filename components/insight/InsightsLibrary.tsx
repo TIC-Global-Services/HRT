@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Search, Sparkles } from "lucide-react";
+import { ChevronDown, Play, Search, Sparkles } from "lucide-react";
 import { allBlogs, allCaseStudies, type BlogPost } from "@/data/blogs";
 import BlurText from "@/reuseable/BlurText";
 
@@ -136,18 +136,18 @@ export default function InsightsLibrary({
   };
 
   return (
-    <section className={`w-full py-10 md:py-14 ${className}`.trim()}>
-      <div className="max-w-6xl mx-auto">
+    <section className={`w-full py-8 sm:py-10 md:py-14 ${className}`.trim()}>
+      <div className="w-[min(1200px,calc(100%-32px))] sm:w-[min(1200px,calc(100%-48px))] mx-auto">
         {/* Search Bar */}
         <form
-          className="relative w-full max-w-[640px] mx-auto mb-6 md:mb-8 flex items-center bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] py-1.5 pl-5 pr-2 transition-all duration-200 focus-within:border-[#204958]/40 focus-within:shadow-[0_2px_16px_rgba(0,0,0,0.06)]"
+          className="relative w-full max-w-[640px] mx-auto mb-6 md:mb-8 flex items-center bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] py-1.5 pl-4 sm:pl-5 pr-1.5 sm:pr-2 transition-all duration-200 focus-within:border-[#204958]/40 focus-within:shadow-[0_2px_16px_rgba(0,0,0,0.06)]"
           onSubmit={(event) => event.preventDefault()}
           role="search"
         >
           <Search
             aria-hidden="true"
             size={18}
-            className="shrink-0 text-[#8B9DA6] mr-3"
+            className="shrink-0 text-[#8B9DA6] mr-2.5 sm:mr-3"
           />
           <input
             aria-label="Search articles and case studies"
@@ -159,17 +159,17 @@ export default function InsightsLibrary({
           />
           <button
             type="submit"
-            className="inline-flex min-h-[38px] items-center justify-center px-6 rounded-full bg-[#204958] text-white font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider cursor-pointer hover:bg-[#153845] transition-colors shrink-0 shadow-xs"
+            className="inline-flex min-h-[36px] sm:min-h-[38px] items-center justify-center px-4 sm:px-6 rounded-full bg-[#204958] text-white font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider cursor-pointer hover:bg-[#153845] transition-colors shrink-0 shadow-xs"
           >
             SEARCH
           </button>
         </form>
 
         {/* Floating Filter Bar */}
-        <div className="w-full bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] px-2.5 py-1.5 sm:px-3 sm:py-2 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 mb-8 md:mb-10">
+        <div className="w-full bg-white rounded-[22px] sm:rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] p-2 sm:px-3 sm:py-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-4 mb-8 md:mb-10">
           {/* Category Tabs */}
           <div
-            className="flex items-center gap-1 sm:gap-2 overflow-x-auto w-full md:w-auto py-1 no-scrollbar"
+            className="flex items-center gap-1 sm:gap-2 overflow-x-auto w-full sm:w-auto py-0.5 no-scrollbar"
             role="tablist"
             aria-label="Filter by category"
           >
@@ -182,7 +182,7 @@ export default function InsightsLibrary({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 sm:px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-sm font-semibold tracking-tight uppercase transition-all duration-150 cursor-pointer whitespace-nowrap shrink-0 ${
+                  className={`px-3.5 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs md:text-sm font-semibold tracking-tight uppercase transition-all duration-150 cursor-pointer whitespace-nowrap shrink-0 ${
                     isActive
                       ? "bg-[#204958] text-white shadow-xs"
                       : "text-[#62737A] hover:text-[#002e40] bg-transparent"
@@ -195,13 +195,13 @@ export default function InsightsLibrary({
           </div>
 
           {/* Topic Dropdown */}
-          <div className="relative shrink-0 self-end md:self-auto pr-1">
-            <label className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E3E8EA] text-[#62737A] font-mono text-[10px] sm:text-xs font-medium tracking-tight uppercase bg-transparent cursor-pointer hover:border-[#CBD6DA] transition-colors">
-              <span>TOPIC:</span>
+          <div className="relative shrink-0 flex items-center justify-end sm:justify-start pt-1.5 sm:pt-0 border-t border-[#E3E8EA]/70 sm:border-t-0">
+            <label className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E3E8EA] text-[#62737A] font-mono text-[10px] sm:text-xs font-medium tracking-tight uppercase bg-[#FBFBFA] sm:bg-transparent cursor-pointer hover:border-[#CBD6DA] transition-colors">
+              <span className="text-[#8B9DA6]">TOPIC:</span>
               <select
                 value={selectedTopic}
                 onChange={(e) => setSelectedTopic(e.target.value)}
-                className="bg-transparent border-0 outline-none text-[#002e40] font-semibold cursor-pointer uppercase tracking-wider"
+                className="bg-transparent border-0 outline-none text-[#002e40] font-semibold cursor-pointer uppercase tracking-wider text-[11px] sm:text-xs"
               >
                 {topics.map((t) => (
                   <option key={t} value={t} className="text-[#002e40] bg-white">
@@ -209,7 +209,7 @@ export default function InsightsLibrary({
                   </option>
                 ))}
               </select>
-              {/* <ChevronDown size={14} className="text-[#8B9DA6]" aria-hidden="true" /> */}
+              <ChevronDown size={14} className="text-[#8B9DA6] shrink-0" aria-hidden="true" />
             </label>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function InsightsLibrary({
               <Link
                 key={`${article.id}-${idx}`}
                 href={article.href}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] md:rounded-[26px] min-h-[380px] sm:min-h-[420px] p-6 sm:p-7 text-white no-underline shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-[22px] sm:rounded-[24px] md:rounded-[26px] min-h-[380px] sm:min-h-[410px] md:min-h-[420px] p-6 sm:p-7 text-white no-underline shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300"
               >
                 {/* Background Image / Solid Color */}
                 {article.isAskClaripa ? (
@@ -240,7 +240,7 @@ export default function InsightsLibrary({
                     />
                     {/* Dark gradient overlay for text readability */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 pointer-events-none"
+                      className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20 pointer-events-none"
                       aria-hidden="true"
                     />
                   </>
@@ -248,7 +248,7 @@ export default function InsightsLibrary({
 
                 {/* Top Row: Date + Category Glass Badge */}
                 <div className="relative z-10 flex items-center justify-between w-full">
-                  <span className="inline-flex items-center gap-2 text-white/90 font-mono text-[11px] tracking-wider uppercase font-medium">
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 text-white/90 font-mono text-[11px] tracking-wider uppercase font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
                     {article.date}
                   </span>
@@ -282,10 +282,10 @@ export default function InsightsLibrary({
                     as="h3"
                     text={article.title}
                     delay={20}
-                    className="text-white font-sora text-xl sm:text-[28px] font-medium leading-[1.2] tracking-tight group-hover:text-white/95 transition-colors"
+                    className="text-white font-sora text-xl sm:text-2xl lg:text-[24px] font-medium leading-[1.25] tracking-tight group-hover:text-white/95 transition-colors"
                   />
 
-                  <span className="inline-flex items-center gap-2 text-white font-mono text-base tracking-tight uppercase font-medium group-hover:text-[#F8750C] transition-colors">
+                  <span className="inline-flex items-center gap-2 text-white font-mono text-xs sm:text-[13px] tracking-wider uppercase font-medium group-hover:text-[#F8750C] transition-colors">
                     {article.cta}
                     <span className="text-sm font-sans transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
                       →
@@ -296,8 +296,8 @@ export default function InsightsLibrary({
             ))}
           </div>
         ) : (
-          <div className="py-16 px-6 border border-dashed border-[#CBD6DA] rounded-3xl text-center bg-white/50">
-            <p className="text-[#62737A] font-sora text-base m-0">
+          <div className="py-14 sm:py-16 px-6 border border-dashed border-[#CBD6DA] rounded-3xl text-center bg-white/50">
+            <p className="text-[#62737A] font-sora text-sm sm:text-base m-0">
               No resources match those filters. Try selecting another topic or category.
             </p>
           </div>
@@ -305,11 +305,11 @@ export default function InsightsLibrary({
 
         {/* Load More Button */}
         {filteredArticles.length > visibleCount && (
-          <div className="flex justify-center mt-12 md:mt-16">
+          <div className="flex justify-center mt-10 md:mt-14">
             <button
               type="button"
               onClick={handleLoadMore}
-              className="font-mono text-[11px] font-semibold tracking-[0.2em] uppercase text-[#62737A] hover:text-[#002e40] transition-colors cursor-pointer py-2 px-6"
+              className="inline-flex items-center justify-center font-mono text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase text-[#204958] hover:text-[#002e40] bg-white hover:bg-[#F0F3F4] border border-[#DCE3E6] rounded-full px-7 py-3 transition-colors cursor-pointer shadow-xs"
             >
               LOAD MORE
             </button>

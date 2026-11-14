@@ -11,7 +11,7 @@ export default function SectionEyebrow({
 }: SectionEyebrowProps) {
   return (
     <p
-      className={`inline-flex items-center gap-2 m-0 text-[#F8750C] font-mono text-lg font-medium tracking-[0.02em] leading-normal uppercase ${className}`.trim()}
+      className={`inline-flex items-center gap-2 m-0 text-[#F8750C] font-mono text-xs md:text-lg font-medium tracking-[0.02em] leading-normal uppercase ${className}`.trim()}
     >
       {/* <span
         aria-hidden="true"
