@@ -351,7 +351,7 @@ export default function PerformanceCycle({
         {/* Inner Content Container */}
         <div className="relative z-10 flex flex-col gap-8 sm:gap-10 md:gap-12 w-full">
           {/* Top Header Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-10 items-start mt-5 lg:mt-0">
             <div>
               {/* Eyebrow */}
               <div className="inline-flex items-center gap-2 mb-3">
@@ -366,13 +366,13 @@ export default function PerformanceCycle({
                 as="h2"
                 delay={20}
                 text={title}
-                className="font-sora text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.12]"
+                className="font-sora text-[28px] sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.12]"
               />
             </div>
 
             {/* Header Right Paragraph */}
             <div className="lg:pt-4">
-              <p className="font-sora text-sm sm:text-[14.5px] text-[#62737A] leading-relaxed max-w-lg">
+              <p className="font-sora text-sm sm:text-[14.5px] text-[#62737A] leading-[1.3] max-w-lg">
                 {description}
               </p>
             </div>
@@ -402,10 +402,106 @@ export default function PerformanceCycle({
               </button>
             </div>
 
-            {/* Full-width Responsive Loop Viewport spanning the entire card */}
+            {/* ----------------- MOBILE VIEW (< 768px): Stationary Centered Hub + Bottom Orbit Marquee ----------------- */}
+            <div
+              className="md:hidden relative w-full overflow-hidden flex flex-col items-center justify-center pt-8 pb-5 min-h-[340px] select-none"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Soft Edge Gradient Fade Masks */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-[#F7F6F3] to-transparent z-20"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-[#F7F6F3] to-transparent z-20"
+              />
+
+              {/* Stationary Central Circular Hub (Double Ring matching Desktop Hub) */}
+              <div className="relative mb-7 sm:mb-9 flex items-center justify-center">
+                {/* Subtle Dashed Orbit Ring Background */}
+                <div
+                  aria-hidden="true"
+                  className="absolute w-[205px] h-[205px] rounded-full border border-dashed border-[#D0D9DE] pointer-events-none"
+                />
+
+                {/* Outer soft translucent halo ring */}
+                <div className="w-[165px] h-[165px] rounded-full bg-[#E8EEF1]/60 border border-[#D5E1E6]/70 flex items-center justify-center shadow-xs">
+                  {/* Inner crisp white circle */}
+                  <div className="w-[124px] h-[124px] rounded-full bg-white shadow-[0_10px_35px_rgba(16,42,51,0.08)] border border-[#E0E9EE] flex flex-col items-center justify-center text-center p-2.5">
+                    <span className="font-sora text-[13px] sm:text-sm font-bold text-[#102A33] leading-tight block">
+                      Claripa
+                    </span>
+                    <span className="font-sora text-[13px] sm:text-sm font-bold text-[#102A33] leading-tight block">
+                      Performance
+                    </span>
+                    <span className="font-sora text-[13px] sm:text-sm font-bold text-[#102A33] leading-tight block">
+                      Cycle
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Marquee Stream with all 7 Orbit Pills */}
+              <div className="w-full overflow-hidden py-1">
+                <div
+                  className="flex items-center gap-3 w-max animate-marquee"
+                  style={{
+                    animationDuration: "30s",
+                    animationPlayState: isRotating && !isHovered ? "running" : "paused",
+                  }}
+                >
+                  {[...pills, ...pills].map((pill, idx) => {
+                    const isActive = activePillId === pill.id;
+                    return (
+                      <React.Fragment key={`marquee-${pill.id}-${idx}`}>
+                        <div
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => setActivePillId(isActive ? null : pill.id)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              setActivePillId(isActive ? null : pill.id);
+                            }
+                          }}
+                          className={`group cursor-pointer rounded-full ${
+                            pill.bgClass
+                          } border ${
+                            isActive
+                              ? "border-[#E56A1E] ring-2 ring-[#E56A1E]/30 scale-105"
+                              : `${pill.borderClass} ${pill.hoverBorderClass}`
+                          } pl-2 pr-5 py-2.5 flex items-center gap-2.5 shadow-xs transition-all duration-200 hover:scale-105 hover:shadow-md select-none shrink-0`}
+                        >
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-xs flex items-center justify-center shrink-0">
+                            {renderIcon(pill.icon, pill.iconColor)}
+                          </div>
+                          <div className="text-left whitespace-nowrap">
+                            <span className="font-sora text-xs sm:text-[13px] font-bold text-[#102A33] leading-tight block">
+                              {pill.title}
+                            </span>
+                            <span className="font-sora text-[10.5px] sm:text-xs text-[#52646B] leading-tight block mt-0.5">
+                              {pill.subtitle}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Directional Flow Arrow */}
+                        <div className="w-5 h-5 rounded-full bg-white border border-[#FFD9C2] text-[#E56A1E] shadow-2xs flex items-center justify-center shrink-0">
+                          <ArrowRight className="w-2.5 h-2.5 stroke-[2.5]" />
+                        </div>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* ----------------- DESKTOP & TABLET VIEW (>= 768px): Full-width Interactive Orbit Loop ----------------- */}
             <div
               ref={containerRef}
-              className="relative w-full overflow-hidden flex items-center justify-center min-h-[340px] sm:min-h-[420px] md:min-h-[460px] lg:min-h-[500px] xl:min-h-[530px] aspect-[16/9] sm:aspect-[2/1] lg:aspect-[2.15/1] max-h-[580px]"
+              className="hidden md:flex relative w-full overflow-hidden items-center justify-center min-h-[420px] md:min-h-[460px] lg:min-h-[500px] xl:min-h-[530px] aspect-[2/1] lg:aspect-[2.15/1] max-h-[580px]"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >

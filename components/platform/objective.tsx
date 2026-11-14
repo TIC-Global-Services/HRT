@@ -106,7 +106,7 @@ export default function Objective({
         </div>
 
         {/* Content Grid */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center p-6 sm:p-10 md:p-12 lg:p-14">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center p-6 sm:p-10 md:p-12 lg:p-14 mt-5 lg:mt-0">
           {/* Left Column: Copy & Checklist */}
           <div className="flex flex-col items-start max-w-xl">
             {/* Eyebrow */}
@@ -122,11 +122,11 @@ export default function Objective({
               as="h2"
               delay={20}
               text={title}
-              className="font-sora text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.12] mb-4 sm:mb-5"
+              className="font-sora text-[28px] sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.2] mb-4 sm:mb-5"
             />
 
             {/* Description */}
-            <p className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed max-w-lg mb-6 sm:mb-8 font-normal">
+            <p className="font-sora text-sm sm:text-base text-black leading-[1.2] max-w-lg mb-6 sm:mb-8 font-normal">
               {description}
             </p>
 
@@ -137,7 +137,7 @@ export default function Objective({
                   <span className="w-5 h-5 rounded-full bg-[#FFEDE2] text-[#E56A1E] flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 stroke-[2.75]" />
                   </span>
-                  <span className="font-sora text-sm sm:text-[15px] font-medium text-[#102A33]">
+                  <span className="font-sora text-xs sm:text-[15px] font-medium text-[#102A33]">
                     {feature}
                   </span>
                 </li>
@@ -147,7 +147,7 @@ export default function Objective({
             {/* CTA Button */}
             <Link
               href={ctaHref}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#102A33] hover:bg-[#183B47] text-white font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#102A33] hover:bg-[#183B47] text-white font-mono text-[10px] md:text-xs font-semibold uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -156,13 +156,22 @@ export default function Objective({
 
           {/* Right Column: OKR Framework Card */}
           <div className="relative rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-5 sm:p-7 md:p-8 shadow-[0_12px_40px_rgba(16,42,51,0.06)] w-full">
+            {/* SVG Defs for Glowing Particles (Mobile & Desktop) */}
+            <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+              <defs>
+                <filter id="dot-glow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#E56A1E" floodOpacity="0.75" />
+                </filter>
+              </defs>
+            </svg>
+
             {/* Framework Header Tag */}
-            <span className="block font-mono text-[10px] sm:text-[11px] font-semibold text-[#8FA2A8] tracking-widest uppercase mb-6 sm:mb-7">
+            <span className="block font-mono text-[10px] sm:text-[11px] font-semibold text-[#8FA2A8] tracking-widest uppercase mb-6 sm:mb-7 text-center md:text-left">
               OKR FRAMEWORK
             </span>
 
             {/* Target + Connector Tree + 3 Stacked Cards */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
+            <div className="flex flex-col sm:flex-row items-center gap-0 sm:gap-0">
               {/* Target Graphic */}
               <div className="relative w-28 sm:w-36 md:w-40 lg:w-44 aspect-square shrink-0 flex items-center justify-center">
                 <Image
@@ -382,15 +391,15 @@ export default function Objective({
                 </svg>
               </div>
 
-              {/* Mobile Animated Flow Indicator */}
+              {/* Mobile Animated Flow Indicator (Target -> First Card) */}
               <div className="sm:hidden relative w-full h-8 flex justify-center items-center my-1">
                 <svg className="w-8 h-8 overflow-visible" viewBox="0 0 32 32" fill="none">
-                  <line x1="16" y1="0" x2="16" y2="32" stroke="#DCE2E6" strokeWidth="1.5" />
+                  <line x1="16" y1="0" x2="16" y2="28" stroke="#DCE2E6" strokeWidth="1.5" />
                   <line
                     x1="16"
                     y1="0"
                     x2="16"
-                    y2="32"
+                    y2="28"
                     stroke="#E56A1E"
                     strokeWidth="1.75"
                     strokeDasharray="3 5"
@@ -405,31 +414,81 @@ export default function Objective({
                     />
                   </line>
                   <circle r="3" fill="#E56A1E" filter="url(#dot-glow)">
-                    <animateMotion path="M 16 0 L 16 32" dur="1.2s" repeatCount="indefinite" />
+                    <animateMotion path="M 16 0 L 16 26" dur="1.2s" repeatCount="indefinite" />
                   </circle>
-                  <circle cx="16" cy="32" r="2.5" fill="#E56A1E" />
+                  <circle r="2" fill="#FFA812" opacity="0.85">
+                    <animateMotion path="M 16 0 L 16 26" dur="1.2s" begin="0.6s" repeatCount="indefinite" />
+                  </circle>
+                  <path
+                    d="M 12.5 23.5 L 16 27.5 L 19.5 23.5"
+                    stroke="#E56A1E"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
 
               {/* 3 Stacked Cards (Objective, Key Results, Tasks) */}
-              <div className="flex-1 flex flex-col gap-3 sm:gap-3.5 w-full">
-                {frameworkItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="group/item rounded-[16px] sm:rounded-[18px] bg-[#F6F5F2] border border-[#ECE8E1] p-3 sm:p-3.5 flex items-center gap-3 sm:gap-3.5 transition-all duration-200 hover:bg-[#EFECE5] hover:border-[#E2DDD3]"
-                  >
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#102A33] text-white flex items-center justify-center shrink-0 shadow-2xs">
-                      {renderFrameworkIcon(item.icon)}
+              <div className="flex-1 flex flex-col sm:gap-3.5 w-full">
+                {frameworkItems.map((item, idx) => (
+                  <React.Fragment key={item.id}>
+                    <div
+                      className="group/item rounded-[16px] sm:rounded-[18px] bg-[#F6F5F2] border border-[#ECE8E1] p-3 sm:p-3.5 flex items-center gap-3 sm:gap-3.5 transition-all duration-200 hover:bg-[#EFECE5] hover:border-[#E2DDD3]"
+                    >
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#102A33] text-white flex items-center justify-center shrink-0 shadow-2xs">
+                        {renderFrameworkIcon(item.icon)}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-sora text-xs sm:text-[13.5px] font-bold text-[#102A33] leading-tight">
+                          {item.title}
+                        </h4>
+                        <p className="font-sora text-[11px] sm:text-xs text-[#62737A] leading-snug mt-0.5">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <h4 className="font-sora text-xs sm:text-[13.5px] font-bold text-[#102A33] leading-tight">
-                        {item.title}
-                      </h4>
-                      <p className="font-sora text-[11px] sm:text-xs text-[#62737A] leading-snug mt-0.5">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
+
+                    {/* Animated moving line between cards on mobile */}
+                    {idx < frameworkItems.length - 1 && (
+                      <div className="sm:hidden relative w-full h-7 flex justify-center items-center my-0.5">
+                        <svg className="w-8 h-7 overflow-visible" viewBox="0 0 32 28" fill="none">
+                          <line x1="16" y1="0" x2="16" y2="25" stroke="#DCE2E6" strokeWidth="1.5" />
+                          <line
+                            x1="16"
+                            y1="0"
+                            x2="16"
+                            y2="25"
+                            stroke="#E56A1E"
+                            strokeWidth="1.75"
+                            strokeDasharray="3 5"
+                            strokeLinecap="round"
+                          >
+                            <animate
+                              attributeName="stroke-dashoffset"
+                              from="0"
+                              to="-16"
+                              dur="0.8s"
+                              repeatCount="indefinite"
+                            />
+                          </line>
+                          <circle r="2.8" fill="#E56A1E" filter="url(#dot-glow)">
+                            <animateMotion path="M 16 0 L 16 23" dur="1.2s" repeatCount="indefinite" />
+                          </circle>
+                          <circle r="2" fill="#FFA812" opacity="0.85">
+                            <animateMotion path="M 16 0 L 16 23" dur="1.2s" begin="0.6s" repeatCount="indefinite" />
+                          </circle>
+                          <path
+                            d="M 12.5 21 L 16 25 L 19.5 21"
+                            stroke="#E56A1E"
+                            strokeWidth="1.75"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </div>

@@ -65,7 +65,7 @@ export default function PlatformHero({
           delay={20}
           trigger="load"
           text={title}
-          className="text-[#002E40] font-sora text-3xl sm:text-5xl md:text-[56px] lg:text-[60px] font-normal tracking-tight leading-[1.1] text-center mb-3.5 sm:mb-4"
+          className="text-[#002E40] font-sora text-[28px] sm:text-5xl md:text-[56px] lg:text-[60px] font-normal tracking-tight leading-[1.1] text-center mb-3.5 sm:mb-4"
         />
 
         {/* Description */}
@@ -241,7 +241,7 @@ export default function PlatformHero({
                     </div>
 
                     <div
-                      className={`absolute -top-[10%]  md:top-1/2 md: -translate-y-[36%] -right-3 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+                      className={`absolute -top-[20%]  md:top-1/2 md:-translate-y-[36%] -right-8 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                         isTriggered
                           ? "opacity-100 scale-100 translate-x-0"
                           : "opacity-0 scale-75 translate-x-6 pointer-events-none"
@@ -289,7 +289,7 @@ export default function PlatformHero({
                     </div>
 
                     <div
-                      className={`absolute top-[calc(100%-1px)] right-1 sm:right-2 lg:right-0 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+                      className={`absolute top-[calc(100%-1px)] -right-10 sm:right-2 lg:right-0 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                         isTriggered
                           ? "opacity-100 scale-100 translate-y-0"
                           : "opacity-0 scale-75 translate-y-4 pointer-events-none"

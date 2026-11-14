@@ -74,11 +74,11 @@ export default function PlatformFaq({
       aria-label="Frequently Asked Questions"
       className={`w-full bg-[#F7F6F3] py-16 sm:py-20 md:py-24 ${className}`.trim()}
     >
-      <div className="w-[min(1200px,calc(100%-32px))] sm:w-[min(1200px,calc(100%-48px))] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-10 lg:gap-16 items-start">
+      <div className="w-[min(1200px,calc(100%-32px))] sm:w-[min(1200px,calc(100%-48px))] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-10 lg:gap-16 justify-center items-center   md:items-start">
         {/* Left Column: Heading & CTA matching image */}
-        <div>
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Eyebrow */}
-          <p className="inline-flex items-center gap-2 font-mono text-xs sm:text-[13px] font-semibold uppercase tracking-[0.16em] text-[#E56A1E] mb-3">
+          <p className="inline-flex justify-center items-center gap-2 font-mono text-xs sm:text-[13px] font-semibold uppercase tracking-tight text-[#E56A1E] mb-3">
             <span
               aria-hidden="true"
               className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
@@ -91,7 +91,7 @@ export default function PlatformFaq({
             as="h2"
             delay={20}
             text={title}
-            className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-[44px] font-semibold tracking-[-0.035em] leading-[1.12] mb-4"
+            className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-[44px] font-semibold tracking-[-0.035em] leading-[1.12] mb-4 text-center lg:text-left"
           />
 
           {/* Description */}
@@ -99,7 +99,7 @@ export default function PlatformFaq({
             as="p"
             delay={20}
             text={lead}
-            className="text-[#5A6D75] font-sora text-sm sm:text-base leading-[1.3] max-w-[360px] mb-8"
+            className="text-[#5A6D75] font-sora text-sm sm:text-base leading-[1.3] max-w-[360px] mb-8 text-center lg:text-left"
           />
 
           {/* Contact Button */}

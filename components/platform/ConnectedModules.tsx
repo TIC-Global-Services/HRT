@@ -18,7 +18,7 @@ export interface ExtensionCardData {
 
 const defaultCards: ExtensionCardData[] = [
   {
-    category: "Module 01 · People",
+    category: "Core HR",
     title: "People",
     description:
       "Maintain employee information and organizational structures to establish the foundation for goal alignment, performance management, and employee accountability.",
@@ -27,25 +27,25 @@ const defaultCards: ExtensionCardData[] = [
       "Organizational and reporting structures",
       "Employee data import through a predefined Excel format",
     ],
-    flowHeader: "FROM GOALS TO GROWTH",
+    flowHeader: "PERFORMANCE FLOW",
     flowRow1: [
-      { label: "Objectives", isPrimary: true },
-      { label: "Company OKRs" },
-      { label: "Individual OKRs" },
+      { label: "Goals", isPrimary: true },
+      { label: "KRAs" },
+      { label: "Contributions" },
     ],
     flowRow2: [
-      { label: "Tasks" },
+      { label: "Feedback" },
       { label: "Reviews" },
-      { label: "Development", isHighlight: true },
+      { label: "Ratings", isHighlight: true },
     ],
     progress: [
-      { label: "Employee records structured", value: "92%" },
-      { label: "Reporting lines mapped", value: "88%" },
-      { label: "Onboarding readiness", value: "84%", isOrange: true },
+      { label: "Ship platform v2", value: "80%" },
+      { label: "Improve client retention", value: "62%" },
+      { label: "Reduce release defects", value: "38%", isOrange: true },
     ],
   },
   {
-    category: "Module 02 · Performance",
+    category: "Performance",
     title: "Performance",
     description:
       "Connect strategic objectives with company, team, and individual OKRs. Support performance reviews, check-ins, behavioural competency assessments, and AI-assisted performance summaries.",
@@ -54,7 +54,7 @@ const defaultCards: ExtensionCardData[] = [
       "Configurable performance assessment cycles",
       "Performance reviews, check-ins & competency insights",
     ],
-    flowHeader: "FROM GOALS TO GROWTH",
+    flowHeader: "PERFORMANCE FLOW",
     flowRow1: [
       { label: "Company OKRs", isPrimary: true },
       { label: "Team OKRs" },
@@ -72,7 +72,7 @@ const defaultCards: ExtensionCardData[] = [
     ],
   },
   {
-    category: "Module 03 · Task",
+    category: "Execution",
     title: "Task",
     description:
       "Connect day-to-day tasks with performance objectives to improve visibility into execution, progress, and accountability.",
@@ -81,7 +81,7 @@ const defaultCards: ExtensionCardData[] = [
       "Task-to-objective linkage",
       "Day-to-day task progress tracking & AI nudges",
     ],
-    flowHeader: "FROM GOALS TO GROWTH",
+    flowHeader: "PERFORMANCE FLOW",
     flowRow1: [
       { label: "OKRs", isPrimary: true },
       { label: "Linked Tasks" },
@@ -167,20 +167,22 @@ function AnimatedProgressItem({
 
   return (
     <div>
-      <div className="flex items-center justify-between text-[11px] mb-1.5">
-        <span className="font-sora text-[#35464E] font-normal">{label}</span>
+      <div className="flex items-center justify-between text-xs sm:text-[14px] md:text-[15px] mb-2 sm:mb-2.5">
+        <span className="font-sora text-[#1B323C] font-normal">{label}</span>
         <span
-          className={`font-mono font-normal tabular-nums ${
-            isOrange ? "text-[#E56A1E]" : "text-[#62737A]"
+          className={`font-sora tabular-nums ${
+            isOrange
+              ? "text-[#E56A1E] font-medium"
+              : "text-[#5A6D75] font-normal"
           }`}
         >
           {current}%
         </span>
       </div>
-      <div className="h-[5px] w-full bg-[#E9EEF0] rounded-full overflow-hidden">
+      <div className="h-[6px] sm:h-[7px] w-full bg-[#EEF2F4] rounded-full overflow-hidden">
         <div
-          className={`h-full rounded-full transition-all duration-800 ease-out ${
-            isOrange ? "bg-[#EA5E1B]" : "bg-[#1B4251]"
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${
+            isOrange ? "bg-[#E56A1E]" : "bg-[#1D404E]"
           }`}
           style={{ width: `${barWidth}%` }}
         />
@@ -198,6 +200,23 @@ export default function ConnectedModules({
 }: ConnectedModulesProps) {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isOrbitPaused, setIsOrbitPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 50) {
+      setActiveCardIndex((prev) => (prev + 1) % cards.length);
+    } else if (diff < -50) {
+      setActiveCardIndex((prev) => (prev - 1 + cards.length) % cards.length);
+    }
+    setTouchStartX(null);
+  };
 
   // Auto-advance automatically every 6 seconds
   useEffect(() => {
@@ -240,7 +259,13 @@ export default function ConnectedModules({
             as="h2"
             delay={20}
             text={title}
-            className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4"
+            className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 hidden md:block"
+          />
+          <BlurText
+            as="h2"
+            delay={20}
+            text={"Three Connected\nModules,One Clearer\nView of Performance"}
+            className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 whitespace-pre-line md:hidden"
           />
 
           {/* Subtitle / Description */}
@@ -248,7 +273,13 @@ export default function ConnectedModules({
             as="p"
             delay={20}
             text={description}
-            className="text-[#62737A] font-sora text-sm sm:text-lg leading-[1.3] max-w-5xl whitespace-pre-line mx-auto m-0"
+            className="text-[#62737A] font-sora text-sm sm:text-lg leading-[1.3] max-w-5xl whitespace-pre-line mx-auto m-0 md:block hidden"
+          />
+          <BlurText
+            as="p"
+            delay={20}
+            text={"Claripa brings people information, performance management, and task execution together in one platform. By connecting organizational goals with individual contributions and performance insights, Claripa helps leaders, HR teams, and managers work towards shared priorities."}
+            className="text-[#62737A] font-sora text-xs sm:text-base leading-[1.45] max-w-[360px] mx-auto m-0 md:hidden"
           />
         </div>
 
@@ -408,7 +439,11 @@ export default function ConnectedModules({
         </div>
 
         {/* ----------------- Carousel Cards Section (Connected with Pills) ----------------- */}
-        <div className="w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-visible px-2 sm:px-0">
+        <div
+          className="w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-hidden px-1 sm:px-0"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {/* Card Carousel Slider Track */}
           <div
             className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] gap-6 items-stretch"
@@ -422,34 +457,34 @@ export default function ConnectedModules({
                 <div
                   key={card.title}
                   onClick={() => setActiveCardIndex(cardIdx)}
-                  className={`w-full shrink-0 bg-[#FAF9F7] rounded-[22px] sm:rounded-[26px] border border-[#ECE8E2]/90 px-6 py-7 sm:px-10 sm:py-9 shadow-[0_14px_40px_rgba(0,30,45,0.05)] flex flex-col justify-between transition-opacity duration-500 ${
+                  className={`w-full shrink-0 bg-white rounded-[28px] sm:rounded-[32px] border border-[#E5EAEB] p-5 sm:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col md:justify-between transition-opacity duration-500 ${
                     isCurrent ? "opacity-100" : "opacity-90 cursor-pointer hover:opacity-100"
                   }`}
                 >
                   {/* Top Category Tag */}
-                  <span className="font-mono text-xs sm:text-[13px] text-[#F06A25] font-normal mb-7 sm:mb-9 block">
+                  <span className="font-mono text-xs sm:text-[13px] text-[#F06A25] font-semibold uppercase tracking-wider mb-2.5 sm:mb-3.5 block">
                     {card.category}
                   </span>
 
                   {/* Main 2-Column Body */}
-                  <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.96fr] gap-7 md:gap-10 items-end">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.96fr] gap-6 sm:gap-7 lg:gap-10 items-end">
                     {/* Left Column: Title, Description, Checklist */}
                     <div className="flex flex-col pb-1">
-                      <h3 className="text-[#143747] font-sora text-2xl sm:text-[26px] font-medium leading-[1.2] tracking-tight mb-3 m-0">
+                      <h3 className="text-[#143747] font-sora text-2xl sm:text-[28px] font-semibold leading-[1.2] tracking-tight mb-2.5 sm:mb-3 m-0">
                         {card.title}
                       </h3>
 
-                      <p className="text-[#5A6A72] font-sora text-[13px] sm:text-sm leading-[1.5] mb-6 sm:mb-7 m-0 max-w-[400px]">
+                      <p className="text-[#5A6A72] font-sora text-xs sm:text-sm leading-[1.5] mb-5 sm:mb-6 m-0 max-w-[440px]">
                         {card.description}
                       </p>
 
                       {/* Checklist with soft peach circles matching screenshot */}
-                      <ul className="space-y-2.5 m-0 p-0 list-none">
+                      <ul className="space-y-3 m-0 p-0 list-none mb-6 lg:mb-0">
                         {card.checklist.map((item) => (
-                          <li key={item} className="flex items-center gap-2.5">
+                          <li key={item} className="flex items-start gap-2.5">
                             <span
                               aria-hidden="true"
-                              className="w-4 h-4 rounded-full bg-[#FDE8D8] flex items-center justify-center shrink-0"
+                              className="w-4 h-4 rounded-full bg-[#FDE8D8] flex items-center justify-center shrink-0 mt-0.5"
                             >
                               <Check
                                 size={10}
@@ -457,7 +492,7 @@ export default function ConnectedModules({
                                 className="text-[#F06A25]"
                               />
                             </span>
-                            <span className="font-sora text-xs sm:text-[13px] text-[#1F3944] font-normal leading-normal">
+                            <span className="font-sora text-xs sm:text-sm text-[#1F3944] font-normal leading-normal">
                               {item}
                             </span>
                           </li>
@@ -466,51 +501,51 @@ export default function ConnectedModules({
                     </div>
 
                     {/* Right Column: Performance Flow Preview Box */}
-                    <div className="bg-white rounded-[18px] border border-[#EDEAE4] p-5 sm:p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-                      <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.06em] text-[#6D7C82] uppercase font-medium mb-3.5 block">
+                    <div className="bg-white rounded-[20px] sm:rounded-[24px] border border-[#ECEAE5] p-5 sm:p-6 md:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                      <span className="font-mono text-[11px] sm:text-xs tracking-[0.16em] text-[#6D7C82] uppercase font-semibold mb-4 sm:mb-5 block">
                         {card.flowHeader || "PERFORMANCE FLOW"}
                       </span>
 
                       {/* Flow Steps: Row 1 */}
-                      <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                      <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-3.5 flex-nowrap overflow-x-auto no-scrollbar">
                         {card.flowRow1.map((step) => (
-                          <div key={step.label} className="inline-flex items-center gap-1.5">
+                          <div key={step.label} className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <span
-                              className={`px-3 py-1 rounded-full text-[11px] font-sora font-medium ${
+                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-sora font-medium leading-none whitespace-nowrap ${
                                 step.isPrimary
-                                  ? "bg-[#1B4251] text-white"
-                                  : "bg-[#EEF3F5] text-[#1D3E4C]"
+                                  ? "bg-[#1D404E] text-white shadow-xs"
+                                  : "bg-[#E8F0F3] text-[#1D404E]"
                               }`}
                             >
                               {step.label}
                             </span>
-                            <ArrowRight size={11} className="text-[#9BAAAF] shrink-0" aria-hidden="true" />
+                            <ArrowRight size={13} className="text-[#9BAAB0] shrink-0" aria-hidden="true" />
                           </div>
                         ))}
                       </div>
 
                       {/* Flow Steps: Row 2 */}
-                      <div className="flex items-center gap-1.5 mb-5 flex-wrap">
+                      <div className="flex items-center gap-1.5 sm:gap-2 mb-6 sm:mb-7 flex-nowrap overflow-x-auto no-scrollbar">
                         {card.flowRow2.map((step, stepIdx) => (
-                          <div key={step.label} className="inline-flex items-center gap-1.5">
+                          <div key={step.label} className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <span
-                              className={`px-3 py-1 rounded-full text-[11px] font-sora font-medium ${
+                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-sora font-medium leading-none whitespace-nowrap ${
                                 step.isHighlight
-                                  ? "bg-[#FCE0C8] text-[#B85217]"
-                                  : "bg-[#EEF3F5] text-[#1D3E4C]"
+                                  ? "bg-[#FCE4D6] text-[#D45D18]"
+                                  : "bg-[#E8F0F3] text-[#1D404E]"
                               }`}
                             >
                               {step.label}
                             </span>
                             {stepIdx < card.flowRow2.length - 1 && (
-                              <ArrowRight size={11} className="text-[#9BAAAF] shrink-0" aria-hidden="true" />
+                              <ArrowRight size={13} className="text-[#9BAAB0] shrink-0" aria-hidden="true" />
                             )}
                           </div>
                         ))}
                       </div>
 
                       {/* Progress Bars with Counting Animation */}
-                      <div className="space-y-3 pt-1">
+                      <div className="space-y-4 sm:space-y-4.5 pt-0.5">
                         {card.progress.map((prog, pIdx) => (
                           <AnimatedProgressItem
                             key={`${prog.label}-${activeCardIndex}`}
@@ -531,7 +566,7 @@ export default function ConnectedModules({
 
           {/* 3 Pagination Capsule Bars matching Image 100% */}
           <div
-            className="flex items-center justify-center gap-2.5 mt-7 sm:mt-9"
+            className="flex items-center justify-center gap-2 mt-6 sm:mt-8"
             role="tablist"
             aria-label="Module cards navigation"
           >
@@ -545,8 +580,8 @@ export default function ConnectedModules({
                   aria-selected={isActive}
                   aria-label={`Go to slide ${idx + 1}`}
                   onClick={() => setActiveCardIndex(idx)}
-                  className={`h-[3.5px] rounded-full transition-all duration-300 cursor-pointer ${
-                    isActive ? "w-12 sm:w-14 bg-[#E56A1E]" : "w-12 sm:w-14 bg-[#CFD5D8] hover:bg-[#B4BEC2]"
+                  className={`h-1 sm:h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive ? "w-8 sm:w-10 bg-[#F06A25]" : "w-8 sm:w-10 bg-[#CBD5D8] hover:bg-[#B4BEC2]"
                   }`}
                 />
               );

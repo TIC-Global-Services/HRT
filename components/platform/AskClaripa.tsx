@@ -187,7 +187,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
         />
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10  mt-5 lg:mt-0">
           {/* Left Column: Eyebrow, Heading, Description & 2 Feature Columns */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
             {/* Eyebrow Pill Tag */}
@@ -204,8 +204,14 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
             <BlurText
               as="h2"
               delay={20}
-              text={title}
-              className="font-sora text-3xl sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4"
+              text={"Turn Performance \nInformation into Clearer \nNext Steps."}
+              className="font-sora text-[28px] sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 lg:block hidden"
+            />
+            <BlurText
+              as="h2"
+              delay={20}
+              text={"Turn Performance Information into Clearer Next Steps."}
+              className="font-sora text-[28px] sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 lg:hidden"
             />
 
             {/* Detailed Body Paragraph */}
@@ -217,7 +223,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
             />
 
             {/* Three Sub-Features Grid at Bottom of Left Column */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-5 pt-1 md:pt-3">
               <div>
                 <BlurText
                   as="h3"
@@ -296,14 +302,14 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
 
               {/* User Query Bubble (Right-Aligned Petrol Pill) */}
               <div className="flex justify-end mb-4">
-                <div className="bg-[#1C434F] text-white text-[11px] sm:text-[11px] font-normal px-4 py-2 rounded-full shadow-sm max-w-[90%] text-right transition-all duration-200">
+                <div className="bg-[#1C434F] text-white text-[10px] sm:text-[11px] font-normal px-4 py-2 rounded-full shadow-sm max-w-[90%] text-right transition-all duration-200">
                   {activeQuery.question}
                 </div>
               </div>
 
               {/* AI Response Container (Soft Off-White/Cream Panel) */}
               <div className="rounded-[16px] bg-[#F7F6F3] p-4 sm:p-4.5 border border-[#ECEAE4] mb-4">
-                <h4 className="font-sora text-xs sm:text-[11px] font-bold text-[#002129] mb-3">
+                <h4 className="font-sora text-[10px] sm:text-[11px] font-bold text-[#002129] mb-3">
                   {activeQuery.responseTitle}
                 </h4>
 
@@ -314,11 +320,11 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                       key={idx}
                       className="bg-white rounded-[10px] sm:rounded-[12px] px-3.5 py-2.5 flex items-center justify-between border border-[#EAE7E0] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-transform duration-150 hover:-translate-y-0.5"
                     >
-                      <span className="font-sora text-[10px] text-[#2B3E45] tracking-tight font-medium truncate pr-2">
+                      <span className="font-sora text-[8px] md:text-[10px] text-[#2B3E45] tracking-tight font-medium truncate pr-2">
                         {item.role}
                       </span>
                       <span
-                        className={`font-sora text-[10px] sm:text-xs font-semibold shrink-0 ${
+                        className={`font-sora text-[8px] sm:text-xs font-semibold shrink-0 ${
                           item.statusColor === "red"
                             ? "text-[#B93826]"
                             : item.statusColor === "amber"
@@ -344,7 +350,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                       key={q.question}
                       type="button"
                       onClick={() => setActiveIndex(targetIdx)}
-                      className="text-[10px] font-sora rounded-full px-3 py-1.5 border border-[#E1E5E7] bg-white text-[#62757E] tracking-tight hover:border-[#1C434F] hover:text-[#1C434F] transition-all duration-200 text-left cursor-pointer shadow-2xs hover:shadow-xs active:scale-[0.98]"
+                      className="text-[8px] md:text-[10px] font-sora rounded-full px-3 py-1.5 border border-[#E1E5E7] bg-white text-[#62757E] tracking-tight hover:border-[#1C434F] hover:text-[#1C434F] transition-all duration-200 text-left cursor-pointer shadow-2xs hover:shadow-xs active:scale-[0.98]"
                     >
                       {q.chipLabel}
                     </button>

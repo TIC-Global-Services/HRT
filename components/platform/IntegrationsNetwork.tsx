@@ -36,6 +36,21 @@ const CENTER_Y = 632;
 const RADIUS = 362;
 const VISIBLE_BOUND = 72; // Visible within [-72°, +72°] along the orange arc
 
+// Mobile: stretch the orbit horizontally so it covers more of the card width
+const MOBILE_X_SCALE = 1.8; // 1.2–1.4 works well
+
+// Position + tangent rotation on a (possibly horizontally stretched) arc
+const getArcPoint = (angleDeg: number, xScale: number) => {
+  const rad = (angleDeg * Math.PI) / 180;
+  const rx = RADIUS * xScale;
+  const x = CENTER_X + rx * Math.sin(rad);
+  const y = CENTER_Y - RADIUS * Math.cos(rad);
+  // Tangent angle so tiles stay aligned with the line
+  const rot =
+    (Math.atan2(RADIUS * Math.sin(rad), rx * Math.cos(rad)) * 180) / Math.PI;
+  return { x, y, rot };
+};
+
 export const partners: IntegrationPartner[] = basePartners.map((p, i) => ({
   ...p,
   angleDeg: -67.5 + i * 19.2,
@@ -57,12 +72,22 @@ export default function IntegrationsNetwork({
   className = "",
 }: IntegrationsNetworkProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [xScale, setXScale] = useState(1);
 
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isPausedRef = useRef(false);
   const angleOffsetRef = useRef(0);
   const lastTimeRef = useRef(0);
   const rafIdRef = useRef<number | null>(null);
+
+  // Detect mobile and widen the orbit
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const update = () => setXScale(mq.matches ? MOBILE_X_SCALE : 1);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const filterMap = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -117,9 +142,7 @@ export default function IntegrationsNetwork({
             return;
           }
 
-          const rad = (angle * Math.PI) / 180;
-          const x = CENTER_X + RADIUS * Math.sin(rad);
-          const y = CENTER_Y - RADIUS * Math.cos(rad);
+          const { x, y, rot } = getArcPoint(angle, xScale);
 
           const xPct = (x / 1024) * 100;
           const yPct = (y / 504) * 100;
@@ -130,10 +153,10 @@ export default function IntegrationsNetwork({
 
           el.style.left = `${xPct}%`;
           el.style.top = `${yPct}%`;
-          el.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+          el.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
           el.style.opacity = `${edgeFade}`;
           el.style.pointerEvents = "auto";
-          el.style.setProperty("--tile-rot", `${angle}deg`);
+          el.style.setProperty("--tile-rot", `${rot}deg`);
         });
       }
 
@@ -148,7 +171,7 @@ export default function IntegrationsNetwork({
         cancelAnimationFrame(rafIdRef.current);
       }
     };
-  }, [revolvingItems]);
+  }, [revolvingItems, xScale]);
 
   return (
     <section
@@ -168,6 +191,7 @@ export default function IntegrationsNetwork({
             - Middle Ring 2: R = 587
             - Inner Ring 3: R = 475
             - Orange Track: R = 362
+            On mobile every ring is stretched horizontally by xScale.
           */}
           <svg
             viewBox="0 0 1024 504"
@@ -176,10 +200,11 @@ export default function IntegrationsNetwork({
             aria-hidden="true"
           >
             {/* Outer Gray Arc */}
-            <circle
+            <ellipse
               cx={CENTER_X}
               cy={CENTER_Y}
-              r="715"
+              rx={715 * xScale}
+              ry="715"
               stroke="#E5ECEE"
               strokeDasharray="6 6"
               strokeWidth="1.2"
@@ -187,10 +212,11 @@ export default function IntegrationsNetwork({
             />
 
             {/* Middle Gray Arc */}
-            <circle
+            <ellipse
               cx={CENTER_X}
               cy={CENTER_Y}
-              r="587"
+              rx={587 * xScale}
+              ry="587"
               stroke="#DFE7E9"
               strokeDasharray="6 6"
               strokeWidth="1.2"
@@ -198,10 +224,11 @@ export default function IntegrationsNetwork({
             />
 
             {/* Inner Gray Arc */}
-            <circle
+            <ellipse
               cx={CENTER_X}
               cy={CENTER_Y}
-              r="475"
+              rx={475 * xScale}
+              ry="475"
               stroke="#E5ECEE"
               strokeDasharray="6 6"
               strokeWidth="1.2"
@@ -209,10 +236,11 @@ export default function IntegrationsNetwork({
             />
 
             {/* Orange Track Arc (aligned directly with rotating partner icons) */}
-            <circle
+            <ellipse
               cx={CENTER_X}
               cy={CENTER_Y}
-              r={RADIUS}
+              rx={RADIUS * xScale}
+              ry={RADIUS}
               stroke="#F06A25"
               strokeDasharray="6 6"
               strokeWidth="1.5"
@@ -305,20 +333,24 @@ export default function IntegrationsNetwork({
 
           {/*
             4. Rotating Partner Tiles Along the Orange Arc (Left to Right)
-            Rendered with exact SSR positions, continuously advanced via requestAnimationFrame.
+            Rendered with initial positions, continuously advanced via requestAnimationFrame.
           */}
           {revolvingItems.map((item, index) => {
             const isMatch = filterMap.get(item.id) ?? true;
 
-            // SSR initial coordinates for pre-rendering
+            // Initial coordinates for pre-rendering (respects mobile stretch)
             const initialAngle = item.initialSlotAngle;
-            const isInitiallyVisible = initialAngle >= -VISIBLE_BOUND && initialAngle <= VISIBLE_BOUND;
-            const rad = (initialAngle * Math.PI) / 180;
-            const initX = CENTER_X + RADIUS * Math.sin(rad);
-            const initY = CENTER_Y - RADIUS * Math.cos(rad);
+            const isInitiallyVisible =
+              initialAngle >= -VISIBLE_BOUND && initialAngle <= VISIBLE_BOUND;
+            const { x: initX, y: initY, rot: initRot } = getArcPoint(
+              initialAngle,
+              xScale
+            );
             const initXPct = (initX / 1024) * 100;
             const initYPct = (initY / 504) * 100;
-            const initFade = isInitiallyVisible ? Math.min(1, (VISIBLE_BOUND - Math.abs(initialAngle)) / 7) : 0;
+            const initFade = isInitiallyVisible
+              ? Math.min(1, (VISIBLE_BOUND - Math.abs(initialAngle)) / 7)
+              : 0;
 
             return (
               <div
@@ -329,7 +361,7 @@ export default function IntegrationsNetwork({
                 style={{
                   left: `${initXPct}%`,
                   top: `${initYPct}%`,
-                  transform: `translate(-50%, -50%) rotate(${initialAngle}deg)`,
+                  transform: `translate(-50%, -50%) rotate(${initRot}deg)`,
                   opacity: initFade,
                   pointerEvents: isInitiallyVisible ? "auto" : "none",
                 }}
@@ -342,7 +374,7 @@ export default function IntegrationsNetwork({
                   onMouseLeave={() => {
                     isPausedRef.current = false;
                   }}
-                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]  transition-all duration-300 cursor-pointer `}
+                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 cursor-pointer`}
                   title={item.name}
                 >
                   <Image
@@ -358,7 +390,8 @@ export default function IntegrationsNetwork({
                   <div
                     className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden group-hover/tile:block z-50 whitespace-nowrap rounded-md bg-[#002e40] px-2.5 py-1 text-[11px] font-mono font-medium text-white shadow-lg"
                     style={{
-                      transform: "translate(-50%, 0) rotate(calc(-1 * var(--tile-rot, 0deg)))",
+                      transform:
+                        "translate(-50%, 0) rotate(calc(-1 * var(--tile-rot, 0deg)))",
                     }}
                   >
                     {item.name}

@@ -198,7 +198,7 @@ export default function EmployeeExperience({
                 as="h2"
                 delay={20}
                 text={card.title}
-                className="m-0 text-2xl sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
+                className="m-0 text-[28px] sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
               />
 
               {/* Description */}
@@ -207,7 +207,7 @@ export default function EmployeeExperience({
                   as="p"
                   delay={20}
                   text={card.description}
-                  className="mb-0 mt-4 text-sm sm:text-[15px] leading-relaxed text-[#5A6D75] font-sora"
+                  className="mb-0 mt-4 text-sm sm:text-[15px] leading-[1.3] text-[#5A6D75] font-sora"
                 />
               )}
 
@@ -227,7 +227,7 @@ export default function EmployeeExperience({
                   return (
                     <li
                       key={itemKey || idx}
-                      className="flex items-start gap-3 text-sm sm:text-[15px] text-[#254F5F] font-sora font-normal leading-snug tracking-tight"
+                      className="flex items-start gap-3 text-xs sm:text-[15px] text-[#254F5F] font-sora font-normal leading-snug tracking-tight"
                     >
                       <span className="mt-0.5 grid size-5 shrink-0 place-items-center border border-[#ECE9E3] bg-white/70 rounded-full text-[#f8780c]">
                         <Check aria-hidden="true" size={12} strokeWidth={2.5} />
@@ -242,7 +242,7 @@ export default function EmployeeExperience({
               <div className="mt-8 sm:mt-10 flex flex-wrap items-start gap-3">
                 <Link
                   href={card.ctaHref}
-                  className="inline-flex items-center gap-2.5 bg-[#254F5F] hover:bg-[#193A47] font-geist-mono uppercase text-sm sm:text-base rounded-full px-6 py-3 text-white tracking-tight transition-colors"
+                  className="inline-flex items-center gap-2.5 bg-[#254F5F] hover:bg-[#193A47] font-geist-mono uppercase text-xs sm:text-base rounded-full px-6 py-3 text-white tracking-tight transition-colors"
                 >
                   <span>{card.ctaText}</span>
                   <ArrowUpRight
