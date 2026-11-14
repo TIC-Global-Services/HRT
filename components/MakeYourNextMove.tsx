@@ -57,7 +57,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="h2"
           delay={20}
           text={title}
-          className="text-[28px] sm:text-5xl md:text-6xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
+          className="text-[28px] sm:text-5xl md:text-5xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
         />
 
         {/* Subtitle */}

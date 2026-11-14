@@ -27,22 +27,23 @@ export default function PlatformHero({
 }: PlatformHeroProps) {
   const dashboardRef = useRef<HTMLDivElement>(null);
   const [isTriggered, setIsTriggered] = useState(false);
+  const [showFloatingCards, setShowFloatingCards] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset || 0;
-      let inView = false;
-      if (dashboardRef.current) {
-        const rect = dashboardRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        // Triggered when dashboard is in the focal area of the viewport
-        inView = rect.top < windowHeight * 0.88;
-      }
+      if (!dashboardRef.current) return;
 
-      if (scrollY > 35 || inView) {
+      const rect = dashboardRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      // Floating cards show when scrolling on the dashboard, and disappear when moving to next section
+      const onDashboard = scrollY > 20 && rect.top < windowHeight * 0.82 && rect.bottom > 120;
+      setShowFloatingCards(onDashboard);
+
+      // Trigger metric counters and chart animation once focal area is reached
+      if (scrollY > 35 || rect.top < windowHeight * 0.88) {
         setIsTriggered(true);
-      } else if (scrollY < 15) {
-        setIsTriggered(false);
       }
     };
 
@@ -242,11 +243,11 @@ export default function PlatformHero({
 
                     <div
                       className={`absolute -top-[20%]  md:top-1/2 md:-translate-y-[36%] -right-8 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-                        isTriggered
+                        showFloatingCards
                           ? "opacity-100 scale-100 translate-x-0"
                           : "opacity-0 scale-75 translate-x-6 pointer-events-none"
                       }`}
-                      style={{ transitionDelay: isTriggered ? "100ms" : "0ms" }}
+                      style={{ transitionDelay: showFloatingCards ? "100ms" : "0ms" }}
                     >
                       <div className="animate-float-1">
                         <div className="bg-white/95 backdrop-blur-md rounded-[12px] sm:rounded-[14px] p-2 sm:p-2.5 pr-4 sm:pr-5 border border-[#F0ECE6] shadow-[0_12px_30px_rgba(0,25,40,0.09)] flex items-center gap-2.5 whitespace-nowrap transition-transform hover:scale-[1.03]">
@@ -290,11 +291,11 @@ export default function PlatformHero({
 
                     <div
                       className={`absolute top-[calc(100%-1px)] -right-10 sm:right-2 lg:right-0 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-                        isTriggered
+                        showFloatingCards
                           ? "opacity-100 scale-100 translate-y-0"
                           : "opacity-0 scale-75 translate-y-4 pointer-events-none"
                       }`}
-                      style={{ transitionDelay: isTriggered ? "440ms" : "0ms" }}
+                      style={{ transitionDelay: showFloatingCards ? "440ms" : "0ms" }}
                     >
                       <div className="animate-float-3">
                         <div className="bg-white/95 backdrop-blur-md rounded-[12px] sm:rounded-[14px] px-3 py-2 sm:py-2 pr-4 sm:pr-1 border border-[#F0ECE6] shadow-[0_12px_30px_rgba(0,25,40,0.09)] flex items-center gap-2.5 whitespace-nowrap transition-transform hover:scale-[1.03]">
@@ -326,11 +327,11 @@ export default function PlatformHero({
             {/* Floating Overlay Badge 1: Ask Claripa (Bottom Left - Pop-up on scroll) */}
             <div
               className={`mt-5 lg:mt-0 lg:absolute lg:bottom-4 lg:-left-14 xl:-left-16 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-                isTriggered
+                showFloatingCards
                   ? "opacity-100 scale-100 translate-x-0 translate-y-0"
                   : "opacity-0 scale-75 -translate-x-6 translate-y-6 pointer-events-none"
               }`}
-              style={{ transitionDelay: isTriggered ? "280ms" : "0ms" }}
+              style={{ transitionDelay: showFloatingCards ? "280ms" : "0ms" }}
             >
               <div className="animate-float-2">
                 <div className="bg-[#FDF2EB] rounded-[14px] sm:rounded-[16px] p-3.5 sm:p-4 border border-[#F5E4D9]/80 shadow-[0_14px_34px_rgba(0,30,45,0.10)] max-w-[235px] sm:max-w-[248px] transition-transform hover:scale-[1.03]">

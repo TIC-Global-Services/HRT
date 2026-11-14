@@ -166,51 +166,54 @@ export default function InsightsLibrary({
         </form>
 
         {/* Floating Filter Bar */}
-        <div className="w-full bg-white rounded-[22px] sm:rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] p-2 sm:px-3 sm:py-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-4 mb-8 md:mb-10">
-          {/* Category Tabs */}
-          <div
-            className="flex items-center gap-1 sm:gap-2 overflow-x-auto w-full sm:w-auto py-0.5 no-scrollbar"
-            role="tablist"
-            aria-label="Filter by category"
-          >
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs md:text-sm font-semibold tracking-tight uppercase transition-all duration-150 cursor-pointer whitespace-nowrap shrink-0 ${
-                    isActive
-                      ? "bg-[#204958] text-white shadow-xs"
-                      : "text-[#62737A] hover:text-[#002e40] bg-transparent"
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
+        <div className="w-full bg-white rounded-full border border-[#E3E8EA] shadow-[0_2px_12px_rgba(0,0,0,0.03)] p-1.5 sm:px-3 sm:py-2 mb-8 md:mb-10">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full no-scrollbar py-0.5">
+            {/* Category Tabs */}
+            <div
+              className="flex items-center gap-1 sm:gap-2 shrink-0"
+              role="tablist"
+              aria-label="Filter by category"
+            >
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs md:text-sm font-semibold tracking-tight uppercase transition-all duration-150 cursor-pointer whitespace-nowrap shrink-0 ${
+                      isActive
+                        ? "bg-[#204958] text-white shadow-xs"
+                        : "text-[#62737A] hover:text-[#002e40] bg-transparent"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
 
-          {/* Topic Dropdown */}
-          <div className="relative shrink-0 flex items-center justify-end sm:justify-start pt-1.5 sm:pt-0 border-t border-[#E3E8EA]/70 sm:border-t-0">
-            <label className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E3E8EA] text-[#62737A] font-mono text-[10px] sm:text-xs font-medium tracking-tight uppercase bg-[#FBFBFA] sm:bg-transparent cursor-pointer hover:border-[#CBD6DA] transition-colors">
-              <span className="text-[#8B9DA6]">TOPIC:</span>
-              <select
-                value={selectedTopic}
-                onChange={(e) => setSelectedTopic(e.target.value)}
-                className="bg-transparent border-0 outline-none text-[#002e40] font-semibold cursor-pointer uppercase tracking-wider text-[11px] sm:text-xs"
-              >
-                {topics.map((t) => (
-                  <option key={t} value={t} className="text-[#002e40] bg-white">
-                    {t}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown size={14} className="text-[#8B9DA6] shrink-0" aria-hidden="true" />
-            </label>
+            {/* Topic Dropdown in same single line */}
+            <div className="relative shrink-0 flex items-center justify-center sm:ml-auto">
+              <label className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-full border border-[#E3E8EA] text-[#62737A] font-mono text-[10px] sm:text-xs font-medium tracking-tight uppercase bg-[#FBFBFA] sm:bg-transparent cursor-pointer hover:border-[#CBD6DA] transition-colors whitespace-nowrap">
+                <span className="text-[#8B9DA6]">TOPIC:</span>
+                <select
+                  value={selectedTopic}
+                  onChange={(e) => setSelectedTopic(e.target.value)}
+                  aria-label="Filter by topic"
+                  className="bg-transparent border-0 outline-none text-[#002e40] font-semibold cursor-pointer uppercase tracking-wider text-[10px] sm:text-xs"
+                >
+                  {topics.map((t) => (
+                    <option key={t} value={t} className="text-[#002e40] bg-white">
+                      {t}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={14} className="text-[#8B9DA6] shrink-0" aria-hidden="true" />
+              </label>
+            </div>
           </div>
         </div>
 

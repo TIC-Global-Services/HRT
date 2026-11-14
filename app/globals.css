@@ -27,6 +27,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -36,6 +37,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(-360deg);
   }
@@ -46,6 +48,7 @@ body {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -58,27 +61,36 @@ body {
 
 /* Floating Card Idle Bobbing */
 @keyframes float-bob-1 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-8px);
   }
 }
 
 @keyframes float-bob-2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-6px);
   }
 }
 
 @keyframes float-bob-3 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-9px);
   }
@@ -96,11 +108,21 @@ body {
   animation: float-bob-3 5s ease-in-out infinite 0.4s;
 }
 
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+html, body {
+  overflow-x: clip;
+}
+
 /* Vertical Marquee (Bottom to Top) */
 @keyframes marquee-vertical {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(-50%);
   }
@@ -115,6 +137,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: -16;
   }
@@ -124,6 +147,7 @@ body {
   from {
     stroke-dashoffset: 0;
   }
+
   to {
     stroke-dashoffset: -16;
   }
@@ -138,9 +162,12 @@ body {
 }
 
 @keyframes arrow-nudge {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(3px, -3px);
   }
@@ -151,12 +178,15 @@ body {
     transform: translateY(-8px);
     opacity: 0;
   }
+
   40% {
     opacity: 1;
   }
+
   80% {
     opacity: 0.9;
   }
+
   100% {
     transform: translateY(16px);
     opacity: 0;
@@ -174,5 +204,3 @@ body {
 .animate-flow-down {
   animation: flow-down-pulse 1.8s ease-in-out infinite;
 }
-
-

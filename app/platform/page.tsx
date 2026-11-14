@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function PlatformPage() {
   return (
-    <div className="min-h-screen bg-[#F7F6F3] font-sora text-[#002e40]">
+    <div className="min-h-screen bg-[#F7F6F3] font-sora text-[#002e40] overflow-hidden">
       <PlatformHero />
       <ConnectedModules />
       <Objective/>
