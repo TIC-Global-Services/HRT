@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 /**
  * FlutedGlassBackground
@@ -37,6 +37,8 @@ type Props = {
     mouseStrength?: number
     /** Optional background image texture driven through the fluted glass shader */
     textureSrc?: string
+    /** Optional fallback image source if WebGL is unavailable or fails */
+    fallbackSrc?: string
     /** Optional stitched multi-card texture sources composited into one continuous WebGL canvas */
     compositeSources?: { src: string; x: number; y: number; w: number; h: number }[]
     /** Coordinate space dimensions when using compositeSources */
@@ -53,7 +55,11 @@ void main(){ gl_Position = vec4(a_pos, 0.0, 1.0); }
 `
 
 const FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
+#else
+precision mediump float;
+#endif
 uniform vec2  u_res;
 uniform float u_time;
 uniform vec2  u_mouse;
@@ -310,6 +316,7 @@ export default function FlutedGlassBackground({
     speed = 1,
     mouseStrength = 1,
     textureSrc,
+    fallbackSrc,
     compositeSources,
     compositeSize,
     preset = "hero",
@@ -317,22 +324,24 @@ export default function FlutedGlassBackground({
     style,
 }: Props) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
+    const [failed, setFailed] = useState(false)
+
     // Keep latest props readable inside the animation loop without restarting it
     const propsRef = useRef({
         colorA, colorB, background, desktopSlits, mobileSlitWidth,
         desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
-        compositeSources, compositeSize, preset,
+        fallbackSrc, compositeSources, compositeSize, preset,
     })
     useEffect(() => {
         propsRef.current = {
             colorA, colorB, background, desktopSlits, mobileSlitWidth,
             desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
-            compositeSources, compositeSize, preset,
+            fallbackSrc, compositeSources, compositeSize, preset,
         }
     }, [
         colorA, colorB, background, desktopSlits, mobileSlitWidth,
         desktopBreakpoint, squeeze, lip, speed, mouseStrength, textureSrc,
-        compositeSources, compositeSize, preset,
+        fallbackSrc, compositeSources, compositeSize, preset,
     ])
 
     const compositeKey = compositeSources ? compositeSources.map((s) => `${s.src}:${s.x}:${s.y}:${s.w}:${s.h}`).join("|") : ""
@@ -340,37 +349,95 @@ export default function FlutedGlassBackground({
     useEffect(() => {
         const canvas = canvasRef.current
         if (!canvas) return
-        const isTexMode = Boolean(textureSrc || (compositeSources && compositeSources.length > 0))
-        const gl = canvas.getContext("webgl", { antialias: false, alpha: true })
-        if (!gl) {
-            canvas.style.background = isTexMode
-                ? "transparent"
-                : `linear-gradient(135deg, ${background} 30%, ${colorA} 55%, ${colorB} 75%, ${background})`
+
+        let gl: WebGLRenderingContext | null = null
+        try {
+            gl = canvas.getContext("webgl", {
+                antialias: false,
+                alpha: true,
+                powerPreference: "high-performance",
+            })
+        } catch {
+            gl = null
+        }
+
+        if (!gl || gl.isContextLost()) {
+            setFailed(true)
             return
         }
 
         const compile = (type: number, src: string) => {
-            const sh = gl.createShader(type)!
+            if (!gl) return null
+            const sh = gl.createShader(type)
+            if (!sh) return null
             gl.shaderSource(sh, src)
             gl.compileShader(sh)
-            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS))
-                console.error(gl.getShaderInfoLog(sh))
+            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+                const info = gl.getShaderInfoLog(sh)
+                if (info) console.warn("WebGL shader compile info:", info)
+                gl.deleteShader(sh)
+                return null
+            }
             return sh
         }
-        const prog = gl.createProgram()!
-        gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT))
-        gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG))
+
+        const vertSh = compile(gl.VERTEX_SHADER, VERT)
+        const fragSh = compile(gl.FRAGMENT_SHADER, FRAG)
+        if (!vertSh || !fragSh) {
+            if (vertSh) gl.deleteShader(vertSh)
+            if (fragSh) gl.deleteShader(fragSh)
+            setFailed(true)
+            return
+        }
+
+        const prog = gl.createProgram()
+        if (!prog) {
+            gl.deleteShader(vertSh)
+            gl.deleteShader(fragSh)
+            setFailed(true)
+            return
+        }
+
+        gl.attachShader(prog, vertSh)
+        gl.attachShader(prog, fragSh)
         gl.linkProgram(prog)
+
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+            const info = gl.getProgramInfoLog(prog)
+            if (info) console.warn("WebGL program link info:", info)
+            gl.deleteProgram(prog)
+            gl.deleteShader(vertSh)
+            gl.deleteShader(fragSh)
+            setFailed(true)
+            return
+        }
+
         gl.useProgram(prog)
 
         const buf = gl.createBuffer()
+        if (!buf) {
+            gl.deleteProgram(prog)
+            gl.deleteShader(vertSh)
+            gl.deleteShader(fragSh)
+            setFailed(true)
+            return
+        }
+
         gl.bindBuffer(gl.ARRAY_BUFFER, buf)
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
         const loc = gl.getAttribLocation(prog, "a_pos")
+        if (loc === -1) {
+            gl.deleteBuffer(buf)
+            gl.deleteProgram(prog)
+            gl.deleteShader(vertSh)
+            gl.deleteShader(fragSh)
+            setFailed(true)
+            return
+        }
         gl.enableVertexAttribArray(loc)
         gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
 
-        const U = (n: string) => gl.getUniformLocation(prog, n)
+        const U = (n: string) => gl?.getUniformLocation(prog, n)
         const u = {
             res: U("u_res"), time: U("u_time"), mouse: U("u_mouse"),
             strips: U("u_strips"), inf: U("u_influence"), squeeze: U("u_squeeze"),
@@ -398,7 +465,7 @@ export default function FlutedGlassBackground({
                 )
             )
                 .then((loaded) => {
-                    if (disposed || !tex) return
+                    if (disposed || !tex || !gl) return
                     const off = document.createElement("canvas")
                     off.width = compositeSize.w
                     off.height = compositeSize.h
@@ -470,7 +537,7 @@ export default function FlutedGlassBackground({
                     hasTex = 1
                 })
                 .catch(() => {
-                    // Fallback to transparent overlay over SSR images
+                    // Fallback handled gracefully
                 })
         } else if (textureSrc) {
             tex = gl.createTexture()
@@ -478,7 +545,7 @@ export default function FlutedGlassBackground({
             img.crossOrigin = "anonymous"
             img.src = textureSrc
             img.onload = () => {
-                if (disposed || !tex) return
+                if (disposed || !tex || !gl) return
                 texAspect = img.naturalWidth / Math.max(img.naturalHeight, 1)
                 gl.bindTexture(gl.TEXTURE_2D, tex)
                 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
@@ -490,20 +557,41 @@ export default function FlutedGlassBackground({
             }
         }
 
-        // Size the canvas to its parent
+        // Size the canvas to its parent with clamped DPR for high performance
         let W = 0, H = 0, cssW = 1
         const resize = () => {
+            if (disposed || !gl) return
             const r = canvas.getBoundingClientRect()
-            const dpr = Math.min(window.devicePixelRatio || 1, 2)
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
             cssW = Math.max(1, r.width)
             const cssH = Math.max(1, r.height)
-            W = Math.floor(cssW * dpr); H = Math.floor(cssH * dpr)
-            canvas.width = W; canvas.height = H
+            W = Math.floor(cssW * dpr)
+            H = Math.floor(cssH * dpr)
+            if (canvas.width !== W || canvas.height !== H) {
+                canvas.width = W
+                canvas.height = H
+            }
             gl.viewport(0, 0, W, H)
         }
         const ro = new ResizeObserver(resize)
         ro.observe(canvas)
         resize()
+
+        // IntersectionObserver pauses rendering when element is off-screen to save GPU
+        let isVisible = true
+        const io = new IntersectionObserver((entries) => {
+            const entry = entries[0]
+            if (entry) isVisible = entry.isIntersecting
+        }, { threshold: 0 })
+        io.observe(canvas)
+
+        const handleContextLost = (e: Event) => {
+            e.preventDefault()
+            disposed = true
+            cancelAnimationFrame(raf)
+            setFailed(true)
+        }
+        canvas.addEventListener("webglcontextlost", handleContextLost, false)
 
         // Pointer tracking (works even with content layered on top)
         const target = { x: 0.55, y: 0.55 }, cur = { x: 0.55, y: 0.55 }
@@ -529,17 +617,31 @@ export default function FlutedGlassBackground({
         const pm = (e: PointerEvent) => onMove(e.clientX, e.clientY)
         const tm = (e: TouchEvent) => { const t = e.touches[0]; if (t) onMove(t.clientX, t.clientY) }
         const leave = () => { infTarget = 0 }
-        window.addEventListener("pointermove", pm)
-        window.addEventListener("pointerdown", pm)
+        window.addEventListener("pointermove", pm, { passive: true })
+        window.addEventListener("pointerdown", pm, { passive: true })
         window.addEventListener("touchmove", tm, { passive: true })
         document.addEventListener("pointerleave", leave)
 
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        const reduce = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let raf = 0, time = 0, prev = performance.now()
 
+        // Cache parsed RGB values so hexToRgb isn't parsed 60 times a second
+        let lastColA = "", lastColB = "", lastBg = ""
+        let rgbA = hexToRgb(colorA), rgbB = hexToRgb(colorB), rgbBg = hexToRgb(background)
+
         const frame = (now: number) => {
+            if (disposed || !gl) return
+            raf = requestAnimationFrame(frame)
+
+            // Pause GPU render loop when element is completely off-screen
+            if (!isVisible) {
+                prev = now
+                return
+            }
+
             const p = propsRef.current
-            const dt = Math.min((now - prev) / 1000, 0.05); prev = now
+            const dt = Math.min((now - prev) / 1000, 0.05)
+            prev = now
             if (!reduce) time += dt * p.speed
             if (now - lastMove > 3500) infTarget = 0
             const ease = 1 - Math.exp(-dt * 3.2)
@@ -551,7 +653,6 @@ export default function FlutedGlassBackground({
             if (awaitingTex && hasTex < 0.5) {
                 gl.clearColor(0, 0, 0, 0)
                 gl.clear(gl.COLOR_BUFFER_BIT)
-                raf = requestAnimationFrame(frame)
                 return
             }
 
@@ -562,23 +663,27 @@ export default function FlutedGlassBackground({
             if (hasTex > 0.5 && tex) {
                 gl.activeTexture(gl.TEXTURE0)
                 gl.bindTexture(gl.TEXTURE_2D, tex)
-                gl.uniform1i(u.tex, 0)
+                if (u.tex) gl.uniform1i(u.tex, 0)
             }
-            gl.uniform1f(u.hasTex, hasTex)
-            gl.uniform1f(u.texAspect, texAspect)
-            gl.uniform1f(u.preset, p.preset === "timeline" ? 1 : 0)
-            gl.uniform2f(u.res, W, H)
-            gl.uniform1f(u.time, time)
-            gl.uniform2f(u.mouse, cur.x, cur.y)
-            gl.uniform1f(u.strips, strips)
-            gl.uniform1f(u.inf, inf * p.mouseStrength)
-            gl.uniform1f(u.squeeze, p.squeeze)
-            gl.uniform1f(u.lip, p.lip)
-            gl.uniform3fv(u.colA, hexToRgb(p.colorA))
-            gl.uniform3fv(u.colB, hexToRgb(p.colorB))
-            gl.uniform3fv(u.bg, hexToRgb(p.background))
+            if (u.hasTex) gl.uniform1f(u.hasTex, hasTex)
+            if (u.texAspect) gl.uniform1f(u.texAspect, texAspect)
+            if (u.preset) gl.uniform1f(u.preset, p.preset === "timeline" ? 1 : 0)
+            if (u.res) gl.uniform2f(u.res, W, H)
+            if (u.time) gl.uniform1f(u.time, time)
+            if (u.mouse) gl.uniform2f(u.mouse, cur.x, cur.y)
+            if (u.strips) gl.uniform1f(u.strips, strips)
+            if (u.inf) gl.uniform1f(u.inf, inf * p.mouseStrength)
+            if (u.squeeze) gl.uniform1f(u.squeeze, p.squeeze)
+            if (u.lip) gl.uniform1f(u.lip, p.lip)
+
+            if (p.colorA !== lastColA) { lastColA = p.colorA; rgbA = hexToRgb(p.colorA); }
+            if (p.colorB !== lastColB) { lastColB = p.colorB; rgbB = hexToRgb(p.colorB); }
+            if (p.background !== lastBg) { lastBg = p.background; rgbBg = hexToRgb(p.background); }
+            if (u.colA) gl.uniform3fv(u.colA, rgbA)
+            if (u.colB) gl.uniform3fv(u.colB, rgbB)
+            if (u.bg) gl.uniform3fv(u.bg, rgbBg)
+
             gl.drawArrays(gl.TRIANGLES, 0, 3)
-            raf = requestAnimationFrame(frame)
         }
         raf = requestAnimationFrame(frame)
 
@@ -586,17 +691,57 @@ export default function FlutedGlassBackground({
             disposed = true
             cancelAnimationFrame(raf)
             ro.disconnect()
+            io.disconnect()
+            canvas.removeEventListener("webglcontextlost", handleContextLost)
             window.removeEventListener("pointermove", pm)
             window.removeEventListener("pointerdown", pm)
             window.removeEventListener("touchmove", tm)
             document.removeEventListener("pointerleave", leave)
             if (tex) gl.deleteTexture(tex)
-            gl.deleteProgram(prog)
-            gl.deleteBuffer(buf)
-            gl.getExtension("WEBGL_lose_context")?.loseContext()
+            if (buf) gl.deleteBuffer(buf)
+            if (prog) {
+                if (vertSh) { gl.detachShader(prog, vertSh); gl.deleteShader(vertSh); }
+                if (fragSh) { gl.detachShader(prog, fragSh); gl.deleteShader(fragSh); }
+                gl.deleteProgram(prog)
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [textureSrc, compositeKey])
+
+    if (failed) {
+        const effectiveFallback = fallbackSrc || (preset === "hero" ? "/hero-gradient-blinds.png" : textureSrc)
+        return (
+            <div
+                className={className}
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    pointerEvents: "none",
+                    background: effectiveFallback
+                        ? "transparent"
+                        : `linear-gradient(135deg, ${background} 30%, ${colorA} 55%, ${colorB} 75%, ${background})`,
+                    ...style,
+                }}
+            >
+                {effectiveFallback && (
+                    <img
+                        src={effectiveFallback}
+                        alt=""
+                        aria-hidden="true"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: preset === "hero" ? "contain" : "cover",
+                            objectPosition: "top",
+                            display: "block",
+                        }}
+                    />
+                )}
+            </div>
+        )
+    }
 
     return (
         <canvas

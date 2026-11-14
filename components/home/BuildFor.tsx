@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -59,38 +59,38 @@ export const solutionsData: SolutionCard[] = [
   },
 
   // Page 2 (Cards 5-8)
-  {
-    id: "culture-alignment",
-    title: "Culture & Alignment",
-    description:
-      "Align distributed teams with core values, clear expectations, and continuous feedback loops that strengthen morale and organisational trust.",
-    href: "/solution-hub#culture-alignment",
-    patternType: "radial-pulse",
-  },
-  {
-    id: "leadership-succession",
-    title: "Leadership & Succession",
-    description:
-      "Identify emerging leaders early, map high-impact talent pipelines, and proactively prepare your teams for key strategic transitions.",
-    href: "/solution-hub#leadership-succession",
-    patternType: "beacon-orbit",
-  },
-  {
-    id: "skills-capabilities",
-    title: "Skills & Capabilities",
-    description:
-      "Track real-time capabilities across business units, pinpoint critical competency gaps, and fuel dynamic internal mobility.",
-    href: "/solution-hub#skills-capabilities",
-    patternType: "network-grid",
-  },
-  {
-    id: "compliance-wellbeing",
-    title: "Compliance & Wellbeing",
-    description:
-      "Safeguard your workforce with automated compliance visibility, early burnout indicators, and holistic employee wellbeing insights.",
-    href: "/solution-hub#compliance-wellbeing",
-    patternType: "shield-balance",
-  },
+  // {
+  //   id: "culture-alignment",
+  //   title: "Culture & Alignment",
+  //   description:
+  //     "Align distributed teams with core values, clear expectations, and continuous feedback loops that strengthen morale and organisational trust.",
+  //   href: "/solution-hub#culture-alignment",
+  //   patternType: "radial-pulse",
+  // },
+  // {
+  //   id: "leadership-succession",
+  //   title: "Leadership & Succession",
+  //   description:
+  //     "Identify emerging leaders early, map high-impact talent pipelines, and proactively prepare your teams for key strategic transitions.",
+  //   href: "/solution-hub#leadership-succession",
+  //   patternType: "beacon-orbit",
+  // },
+  // {
+  //   id: "skills-capabilities",
+  //   title: "Skills & Capabilities",
+  //   description:
+  //     "Track real-time capabilities across business units, pinpoint critical competency gaps, and fuel dynamic internal mobility.",
+  //   href: "/solution-hub#skills-capabilities",
+  //   patternType: "network-grid",
+  // },
+  // {
+  //   id: "compliance-wellbeing",
+  //   title: "Compliance & Wellbeing",
+  //   description:
+  //     "Safeguard your workforce with automated compliance visibility, early burnout indicators, and holistic employee wellbeing insights.",
+  //   href: "/solution-hub#compliance-wellbeing",
+  //   patternType: "shield-balance",
+  // },
 ];
 
 /* =========================================================================
@@ -242,7 +242,7 @@ function DotMatrix({ patternType, isActive }: DotMatrixProps) {
       };
 
   return (
-    <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] shrink-0 select-none">
+    <div className="w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] xl:w-[155px] xl:h-[155px] shrink-0 select-none">
       <svg
         viewBox="0 0 144 144"
         className="w-full h-full"
@@ -285,16 +285,21 @@ export default function BuildFor() {
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
+  // Mobile slider state
+  const mobileSliderRef = useRef<HTMLDivElement>(null);
+  const [mobileActiveIndex, setMobileActiveIndex] = useState<number>(0);
+  const [isMobilePaused, setIsMobilePaused] = useState<boolean>(false);
+
   const CARDS_PER_PAGE = 4;
   const totalPages = Math.ceil(solutionsData.length / CARDS_PER_PAGE); // 2 pages
 
-  // Slice visible cards for the active page
+  // Slice visible cards for the active page (Desktop / Tablet)
   const visibleCards = solutionsData.slice(
     currentPage * CARDS_PER_PAGE,
     (currentPage + 1) * CARDS_PER_PAGE
   );
 
-  // Switch page with smooth transition
+  // Switch page with smooth transition (Desktop / Tablet)
   const switchPage = useCallback((nextPage: number) => {
     setCurrentPage((curr) => {
       if (nextPage === curr) return curr;
@@ -308,9 +313,9 @@ export default function BuildFor() {
     });
   }, [CARDS_PER_PAGE]);
 
-  // Auto-change timer: changes page every 5 seconds (pauses on user hover)
+  // Desktop / Tablet auto-change timer: changes page every 5.5 seconds (pauses on user hover)
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || totalPages <= 1) return;
 
     const interval = setInterval(() => {
       switchPage((currentPage + 1) % totalPages);
@@ -318,6 +323,54 @@ export default function BuildFor() {
 
     return () => clearInterval(interval);
   }, [currentPage, isPaused, totalPages, switchPage]);
+
+  // Mobile auto-slide timer (cycles through cards every 4.5 seconds, pauses on touch/drag)
+  useEffect(() => {
+    if (isMobilePaused) return;
+
+    const interval = setInterval(() => {
+      setMobileActiveIndex((prev) => {
+        const next = (prev + 1) % solutionsData.length;
+        if (mobileSliderRef.current) {
+          const slide = mobileSliderRef.current.children[next] as HTMLElement | undefined;
+          if (slide) {
+            slide.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "center",
+            });
+          }
+        }
+        return next;
+      });
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isMobilePaused]);
+
+  // Track swipe/scroll position on mobile to update active dot
+  const handleMobileScroll = useCallback(() => {
+    if (!mobileSliderRef.current) return;
+    const { scrollLeft, clientWidth } = mobileSliderRef.current;
+    const cardEl = mobileSliderRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = cardEl ? cardEl.offsetWidth + 16 : clientWidth * 0.88;
+    const currentSlide = Math.round(scrollLeft / cardWidth);
+    setMobileActiveIndex(Math.min(Math.max(currentSlide, 0), solutionsData.length - 1));
+  }, []);
+
+  const goToMobileSlide = (idx: number) => {
+    setMobileActiveIndex(idx);
+    if (mobileSliderRef.current) {
+      const slide = mobileSliderRef.current.children[idx] as HTMLElement | undefined;
+      if (slide) {
+        slide.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+  };
 
   return (
     <section
@@ -327,7 +380,7 @@ export default function BuildFor() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="px-[10%]">
+      <div className="px-[5%] md:px-[6%] xl:px-[10%]">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center  mb-14 sm:mb-16">
           {/* Eyebrow */}
@@ -353,10 +406,83 @@ export default function BuildFor() {
           />
         </div>
 
-        {/* 2x2 Grid of Solution Cards (with Smooth Crossfade on Page Change) */}
+        {/* Mobile Slider View (Auto-changing slider matching visual specification) */}
+        <div className="block md:hidden">
+          <div
+            ref={mobileSliderRef}
+            onScroll={handleMobileScroll}
+            onTouchStart={() => setIsMobilePaused(true)}
+            onTouchEnd={() => {
+              setTimeout(() => setIsMobilePaused(false), 2000);
+            }}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 -mx-[5%] px-[5%]"
+          >
+            {solutionsData.map((card, idx) => {
+              const isSlideActive = mobileActiveIndex === idx;
+
+              return (
+                <div
+                  key={card.id}
+                  className={cn(
+                    "shrink-0 w-full  snap-center rounded-[32px] p-6 sm:p-7 flex flex-col items-center text-center transition-all duration-500 border",
+                    isSlideActive
+                      ? "bg-[#FFF6F0] border-[#FED7AA]/90 shadow-lg shadow-orange-500/5 ring-1 ring-orange-200/60"
+                      : "bg-[#FFF9F5] border-[#FED7AA]/50"
+                  )}
+                >
+                  {/* Dot Matrix Graphic (Centered at top) */}
+                  <div className="flex items-center justify-center mb-5 mt-2">
+                    <DotMatrix patternType={card.patternType} isActive={true} />
+                  </div>
+
+                  {/* Title (Centered, Orange) */}
+                  <h3 className="font-heading text-base font-semibold text-[#E26D35] tracking-tight leading-[1.2] mb-3">
+                    {card.title}
+                  </h3>
+
+                  {/* Description (Centered, Slate/Zinc) */}
+                  <p className="font-sans text-xs sm:text-sm text-slate-600 leading-[1.2]">
+                    {card.description}
+                  </p>
+
+                  {/* Action Link (Centered) */}
+                  <div className="mt-auto">
+                    <Link
+                      href={card.href}
+                      className="inline-flex items-center gap-1.5 text-xs mt-1 font-mono font-semibold tracking-wider uppercase text-zinc-800 hover:text-[#E26D35] transition-colors"
+                    >
+                      <span>SEE HOW IT WORKS</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-700" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile Pagination Indicators (4 Pills) */}
+          <div className="flex items-center justify-center gap-2 mt-6" aria-hidden="true">
+            {solutionsData.map((card, idx) => (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => goToMobileSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
+                  mobileActiveIndex === idx
+                    ? "w-8 bg-[#F06A25]"
+                    : "w-6 bg-[#CBD3D7] hover:bg-zinc-400"
+                )}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 2x2 Grid of Solution Cards for Tablet & Desktop (with Smooth Crossfade on Page Change) */}
         <div
           className={cn(
-            "grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7 transition-all duration-300 ease-out",
+            "hidden md:grid md:grid-cols-2 gap-5 lg:gap-7 transition-all duration-300 ease-out",
             isAnimating
               ? "opacity-0 translate-y-2 scale-[0.99]"
               : "opacity-100 translate-y-0 scale-100"
@@ -371,19 +497,19 @@ export default function BuildFor() {
                 onClick={() => setActiveCardId(card.id)}
                 onMouseEnter={() => setActiveCardId(card.id)}
                 className={cn(
-                  "group relative rounded-3xl p-8 sm:p-10 flex flex-col justify-between cursor-pointer transition-all duration-300 ease-out border",
+                  "group relative rounded-3xl p-6 lg:p-8 xl:p-10 flex flex-col justify-between items-center lg:items-stretch cursor-pointer transition-all duration-300 ease-out border",
                   isActive
                     ? "bg-[#FFF6F0] border-[#FED7AA]/90 shadow-xl shadow-orange-500/5 ring-1 ring-orange-200/60"
                     : "bg-[#F8F8F6] border-[#ECECE8] hover:border-zinc-300/80 hover:bg-[#F5F5F2]"
                 )}
               >
-                {/* Content Row: Text on left, Dot Matrix Graphic on right */}
-                <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-8 mb-8 sm:mb-10">
+                {/* Content Row: Stacked on tablet (md), Row on desktop (lg/xl) */}
+                <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-5 lg:gap-6 xl:gap-8 mb-6 lg:mb-8 xl:mb-10 w-full">
                   {/* Left Column: Title & Description */}
-                  <div className="flex-1">
+                  <div className="flex-1 text-center lg:text-left w-full">
                     <h3
                       className={cn(
-                        "font-heading text-2xl sm:text-[26px] font-medium tracking-tight leading-[1.2] mb-3 transition-colors duration-200",
+                        "font-heading text-lg sm:text-xl lg:text-[22px] xl:text-[26px] font-medium tracking-tight leading-[1.2] mb-2 sm:mb-3 transition-colors duration-200",
                         isActive ? "text-[#E26D35]" : "text-[#142938]"
                       )}
                     >
@@ -393,21 +519,23 @@ export default function BuildFor() {
                       as="p"
                       delay={20}
                       text={card.description}
-                      className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans max-w-md"
+                      className="text-xs sm:text-sm xl:text-base text-slate-600 leading-[1.4] xl:leading-[1.3] font-sora w-full lg:max-w-md mx-auto lg:mx-0"
                     />
                   </div>
 
                   {/* Right Column: Dot Matrix Graphic */}
-                  <DotMatrix patternType={card.patternType} isActive={isActive} />
+                  <div className="shrink-0">
+                    <DotMatrix patternType={card.patternType} isActive={isActive} />
+                  </div>
                 </div>
 
                 {/* Footer Action: SEE HOW IT WORKS */}
-                <div>
+                <div className="w-full flex justify-center lg:justify-start">
                   <Link
                     href={card.href}
                     onClick={(e) => e.stopPropagation()}
                     className={cn(
-                      "inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200",
+                      "inline-flex items-center gap-1.5 text-[10px] md:text-xs font-mono font-semibold tracking-tight uppercase transition-colors duration-200",
                       isActive
                         ? "text-zinc-900 group-hover:text-[#E26D35]"
                         : "text-zinc-700 group-hover:text-zinc-900"
@@ -422,31 +550,33 @@ export default function BuildFor() {
           })}
         </div>
 
-        {/* Bottom Pagination / Auto-Change Indicators */}
-        <div className="flex items-center justify-center gap-3 mt-10 sm:mt-12">
-          {Array.from({ length: totalPages }).map((_, pageIdx) => {
-            const isCurrent = currentPage === pageIdx;
-            return (
-              <button
-                key={pageIdx}
-                type="button"
-                aria-label={`View page ${pageIdx + 1} of solutions`}
-                onClick={() => switchPage(pageIdx)}
-                className={cn(
-                  "relative h-1.5 rounded-full transition-all duration-300 cursor-pointer focus:outline-none overflow-hidden",
-                  isCurrent
-                    ? "w-14 sm:w-16 bg-[#E26D35]"
-                    : "w-10 sm:w-12 bg-[#CBD5E1] hover:bg-slate-400"
-                )}
-              >
-                {/* Visual pulse/progress indicator when active and not paused */}
-                {isCurrent && !isPaused && (
-                  <span className="absolute inset-0 bg-white/30 animate-pulse" />
-                )}
-              </button>
-            );
-          })}
-        </div>
+        {/* Bottom Pagination / Auto-Change Indicators (Desktop / Tablet) */}
+        {totalPages > 1 && (
+          <div className="hidden md:flex items-center justify-center gap-3 mt-10 sm:mt-12">
+            {Array.from({ length: totalPages }).map((_, pageIdx) => {
+              const isCurrent = currentPage === pageIdx;
+              return (
+                <button
+                  key={pageIdx}
+                  type="button"
+                  aria-label={`View page ${pageIdx + 1} of solutions`}
+                  onClick={() => switchPage(pageIdx)}
+                  className={cn(
+                    "relative h-1.5 rounded-full transition-all duration-300 cursor-pointer focus:outline-none overflow-hidden",
+                    isCurrent
+                      ? "w-14 sm:w-16 bg-[#E26D35]"
+                      : "w-10 sm:w-12 bg-[#CBD5E1] hover:bg-slate-400"
+                  )}
+                >
+                  {/* Visual pulse/progress indicator when active and not paused */}
+                  {isCurrent && !isPaused && (
+                    <span className="absolute inset-0 bg-white/30 animate-pulse" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

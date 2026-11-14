@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
   Check,
   Clock,
   Zap,
-  ChevronLeft,
-  ChevronRight,
   BellOff,
 } from "lucide-react";
 import FlutedGlassBackground from "@/reuseable/HeroBg";
@@ -457,7 +455,7 @@ function ProactiveActionMiniUI() {
    ========================================================================= */
 function CardHoverGradientBlinds() {
   return (
-    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
+    <div className="hidden md:block absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
       <FlutedGlassBackground
         colorA="#FFA812"
         colorB="#FF4D0A"
@@ -478,29 +476,22 @@ function CardHoverGradientBlinds() {
 export default function Workforce() {
   const { eyebrow, headline, description, ctaButton, cards } = workforceContent;
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [, setActiveSlide] = useState(0);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeSlide, setActiveSlide] = useState(0);
 
-  const updateScrollState = () => {
+  const updateScrollState = useCallback(() => {
     if (!sliderRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-
-    const slideWidth = clientWidth * 0.85;
-    const currentSlide = Math.round(scrollLeft / slideWidth);
+    const { scrollLeft, clientWidth } = sliderRef.current;
+    const cardEl = sliderRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = cardEl ? cardEl.offsetWidth + 16 : clientWidth * 0.88;
+    const currentSlide = Math.round(scrollLeft / cardWidth);
     setActiveSlide(Math.min(Math.max(currentSlide, 0), cards.length - 1));
-  };
+  }, [cards.length]);
 
-  const scrollSlider = (direction: "left" | "right") => {
-    if (!sliderRef.current) return;
-    const scrollAmount = sliderRef.current.clientWidth * 0.85;
-    sliderRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, [updateScrollState]);
 
   return (
     <section
@@ -510,15 +501,15 @@ export default function Workforce() {
     >
       <div className="px-[5%]">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-10 sm:pb-12">
+        <div className="flex flex-col items-center lg:flex-row lg:items-end lg:justify-between gap-6 sm:gap-8 pb-8 sm:pb-12 text-center lg:text-left">
           {/* Left: Eyebrow + Headline */}
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-tight text-[#F06A25] uppercase mb-3">
-              <span className="text-base leading-none font-bold">*</span>
+          <div className="max-w-2xl flex flex-col items-center lg:items-start">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#F06A25] uppercase mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#F06A25] shadow-[0_0_8px_rgba(240,106,37,0.7)] shrink-0" />
               <span>{eyebrow}</span>
             </div>
 
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#142938] leading-[1.14]">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#254F5F] leading-[1.14]">
               <BlurText
                 as="span"
                 delay={20}
@@ -528,157 +519,162 @@ export default function Workforce() {
           </div>
 
           {/* Right: Description & CTA Button */}
-          <div className="flex flex-col items-start lg:items-end gap-5 max-w-lg">
+          <div className="flex flex-col items-center lg:items-end gap-5 max-w-lg">
             <BlurText
               as="p"
               delay={20}
               text={description}
-              className="font-sans text-base sm:text-[17px] text-zinc-600 leading-[1.3] lg:text-left"
+              className="font-sora text-sm sm:text-base text-[#254F5F] leading-[1.2] lg:leading-[1.3] text-center lg:text-left"
             />
 
-            <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end">
+            <div className="flex items-center justify-center lg:justify-end w-full lg:w-auto">
               <Link
                 href={ctaButton.href}
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 font-mono text-xs font-semibold tracking-wider uppercase text-[#142938] shadow-2xs hover:bg-zinc-50 hover:border-zinc-300 transition-all active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-[#F4F4F4]/70 md:bg-white px-5 py-2.5 font-mono text-[10px] md:text-xs font-semibold tracking-wider uppercase text-[#142938] shadow-2xs hover:bg-zinc-50 hover:border-zinc-300 transition-all active:scale-95"
               >
                 <span>{ctaButton.label}</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
-
-              {/* Slider Controls (Mobile & Tablet) */}
-              <div className="flex items-center gap-2 xl:hidden">
-                <button
-                  type="button"
-                  onClick={() => scrollSlider("left")}
-                  disabled={!canScrollLeft}
-                  aria-label="Previous card"
-                  className="w-9 h-9 rounded-full border border-zinc-200 bg-white flex items-center justify-center text-zinc-700 shadow-2xs hover:bg-zinc-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollSlider("right")}
-                  disabled={!canScrollRight}
-                  aria-label="Next card"
-                  className="w-9 h-9 rounded-full border border-zinc-200 bg-white flex items-center justify-center text-zinc-700 shadow-2xs hover:bg-zinc-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* 4 Feature Cards Grid */}
+        {/* Feature Cards: 4-Column on Desktop, 2x2 on Tablet, Slider on Mobile */}
         <div
           ref={sliderRef}
           onScroll={updateScrollState}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 overflow-x-auto xl:overflow-x-visible snap-x snap-mandatory pb-4 pt-2"
+          className="flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none pb-4 md:pt-2 -mx-[5%] px-[5%] md:mx-0 md:px-0"
         >
           {/* Card 1: Disconnected Signals */}
           <Link
             href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
               <DisconnectedSignalsMiniUI />
             </div>
-            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
+              <div className="order-1 md:order-2 flex items-center justify-between">
+                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[0].title}
+                </h3>
+                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
               {cards[0].description && (
-                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[0].description}
                   </p>
                 </div>
               )}
-              <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[0].title}
-                </h3>
-                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
             </div>
           </Link>
 
           {/* Card 2: Reactive Decisions */}
           <Link
             href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
               <ReactiveDecisionsMiniUI />
             </div>
-            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
+              <div className="order-1 md:order-2 flex items-center justify-between">
+                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[1].title}
+                </h3>
+                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
               {cards[1].description && (
-                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3 mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[1].description}
                   </p>
                 </div>
               )}
-              <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[1].title}
-                </h3>
-                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
             </div>
           </Link>
 
           {/* Card 3: Managers Without Context */}
           <Link
             href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
               <ManagersWithoutContextMiniUI />
             </div>
-            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
+              <div className="order-1 md:order-2 flex items-center justify-between">
+                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[2].title}
+                </h3>
+                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
               {cards[2].description && (
-                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[2].description}
                   </p>
                 </div>
               )}
-              <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[2].title}
-                </h3>
-                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
             </div>
           </Link>
 
           {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
           <Link
             href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[28px] border border-zinc-200/70 hover:border-orange-300/80 bg-[#F7F6F3] hover:bg-[#FFF5ED] p-6 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-500 h-[500px] overflow-hidden"
+            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
           >
             <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-focus-visible:opacity-0 group-focus-visible:scale-95 group-focus-visible:pointer-events-none">
+            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
               <ProactiveActionMiniUI />
             </div>
-            <div className="relative z-10 pt-4  group-hover:border-orange-200/60 mt-auto shrink-0 transition-colors duration-300">
+            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
+              <div className="order-1 md:order-2 flex items-center justify-between">
+                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                  {cards[3].title}
+                </h3>
+                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
               {cards[3].description && (
-                <div className="overflow-hidden max-h-0 group-hover:max-h-36 group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-xs sm:text-sm text-zinc-600 group-hover:text-[#142938] leading-[1.3] mb-3 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[3].description}
                   </p>
                 </div>
               )}
-              <div className="flex items-center justify-between">
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#142938] group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[3].title}
-                </h3>
-                <ArrowUpRight className="h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
             </div>
           </Link>
+        </div>
+
+        {/* Pagination Indicator Dots (Mobile Only) */}
+        <div className="flex items-center justify-center gap-2.5 mt-2 md:mt-7 md:hidden" aria-hidden="true">
+          {cards.map((card, idx) => (
+            <button
+              key={card.id}
+              type="button"
+              onClick={() => {
+                if (!sliderRef.current) return;
+                const slide = sliderRef.current.children[idx] as HTMLElement | undefined;
+                if (slide) {
+                  slide.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "center",
+                  });
+                }
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                activeSlide === idx
+                  ? "w-8 bg-[#F06A25]"
+                  : "w-6 bg-[#CBD3D7] hover:bg-zinc-400"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

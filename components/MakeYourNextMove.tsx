@@ -26,7 +26,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
   return (
     <section
       className={`relative w-full text-center px-4 sm:px-6 lg:px-8 ${
-        showStandaloneBackground ? "py-20 sm:py-28 overflow-hidden bg-white" : "pt-16 sm:pt-20 lg:pt-24 pb-8"
+        showStandaloneBackground ? "py-20 sm:py-28 overflow-hidden bg-white" : "pt-16 sm:pt-20 lg:pt-24 pb-20"
       } ${className}`}
     >
       {/* Optional Standalone Background */}
@@ -57,7 +57,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="h2"
           delay={20}
           text={title}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
+          className="text-[28px] sm:text-5xl md:text-6xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
         />
 
         {/* Subtitle */}
@@ -65,7 +65,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="p"
           delay={20}
           text={subtitle}
-          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.3] mb-8 sm:mb-8 font-normal"
+          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.3] mb-4 sm:mb-8 font-normal"
         />
 
         {/* Action Button */}

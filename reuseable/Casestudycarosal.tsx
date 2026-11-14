@@ -149,11 +149,11 @@ export default function CaseStudyCarousel({
     >
       {/* Top Header Section */}
       <div className="px-[5%] mb-12 sm:mb-16">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:items-start lg:justify-between gap-4 md:gap-8 text-center lg:text-left">
           {/* Left Column: Eyebrow, Headline, and CTA Pill */}
-          <div className="max-w-xl">
+          <div className="max-w-xl flex flex-col items-center lg:items-start">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
+            <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
               <span className="text-base leading-none font-bold">*</span>
               <span>{eyebrow}</span>
             </div>
@@ -163,14 +163,14 @@ export default function CaseStudyCarousel({
               as="h2"
               delay={20}
               text={headingLines.join("\n")}
-              className="font-heading text-3xl sm:text-4xl md:text-5xl font-sora font-medium tracking-tight text-[#254F5F] leading-[1.14] mb-6"
+              className="font-heading text-[28px] sm:text-4xl md:text-5xl font-sora font-medium tracking-tight text-[#254F5F] leading-[1.14]  md:mb-6 text-center lg:text-left"
             />
 
-            {/* Header CTA Pill */}
-            <div>
+            {/* Header CTA Pill (Desktop Only) */}
+            <div className="hidden lg:flex justify-start w-full">
               <Link
-                href={ctaHref}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#254F5F] text-base font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
+                href={ctaHref || "/insight"}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#254F5F] text-xs md:text-base font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
               >
                 <span>{ctaLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -179,12 +179,12 @@ export default function CaseStudyCarousel({
           </div>
 
           {/* Right Column: Subtitle Description */}
-          <div className="lg:max-w-lg lg:pt-8">
+          <div className="w-full lg:max-w-lg lg:pt-8 pt-0 flex flex-col items-center lg:items-start">
             <BlurText
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-base sm:text-lg text-slate-500 leading-relaxed"
+              className="font-sora text-sm sm:text-lg text-slate-500 leading-[1.2] text-center lg:text-left"
             />
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function CaseStudyCarousel({
                   "relative shrink-0 rounded-[28px] sm:rounded-[30px] overflow-hidden border select-none cursor-pointer",
                   // Card width spans 76-85vw so adjacent card peeks nicely
                   "w-[85vw] sm:w-[80vw] lg:w-[76vw]",
-                  "h-[500px] sm:h-[540px] lg:h-[65dvh] flex items-stretch justify-end p-3 sm:p-4 lg:p-2",
+                  "h-[560px] sm:h-[580px] lg:h-[65dvh] flex flex-col md:flex-row justify-end items-stretch md:items-end p-3 sm:p-4 lg:p-3",
                   "transition-all duration-300 ease-out",
                   isCardActive
                     ? "border-slate-300/80 shadow-2xl shadow-slate-900/10 opacity-100"
@@ -240,29 +240,28 @@ export default function CaseStudyCarousel({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent sm:hidden" />
                 </div>
 
-                {/* Inset White Content Card - Full Height */}
-                <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 lg:p-10 shadow-xl border border-neutral-100/90 w-full sm:w-[480px] lg:w-[530px] h-full flex flex-col justify-between">
+                {/* Inset White Content Card - Auto height on mobile to prevent clipping */}
+                <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] rounded-[24px] sm:rounded-[28px] p-5 sm:p-8 lg:p-10 shadow-xl border border-neutral-100/90 w-full sm:w-[480px] lg:w-[530px] h-auto md:h-full flex flex-col justify-between">
                   <div>
                     {/* Category */}
-                    <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-3">
+                    <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2 sm:mb-3">
                       {study.category}
                     </div>
-                  </div>
-                  <div>
+
                     {/* Title */}
                     <BlurText
                       as="h3"
                       delay={20}
                       text={study.title}
-                      className="text-xl sm:text-2xl font-bold tracking-tight text-[#142938] font-sora leading-snug mb-4"
+                      className="text-base sm:text-2xl font-bold tracking-tight text-[#142938] font-sora leading-snug mb-2 md:mb-4"
                     />
 
                     {/* CTA Link */}
-                    <div className="mb-6">
+                    <div className="mb-3 sm:mb-6">
                       <Link
                         href={study.href}
                         onClick={(e) => e.stopPropagation()}
-                        className="group inline-flex items-center gap-1.5 text-base font-mono font-semibold tracking-tight text-[#254F5F] hover:text-[#E26D35] uppercase transition-colors duration-200"
+                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-mono font-semibold tracking-tight text-[#254F5F] hover:text-[#E26D35] uppercase transition-colors duration-200"
                       >
                         <span>{cardLinkLabel}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -271,12 +270,12 @@ export default function CaseStudyCarousel({
                   </div>
 
                   {/* Bottom Stats */}
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200/70">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-6 border-t border-slate-200/70">
                     {study.stats.map((stat, sIdx) => (
                       <div key={sIdx} className="flex flex-col">
                         <span
                           className={cn(
-                            "text-3xl sm:text-[42px] font-geist font-bold tracking-tight mb-1",
+                            "text-[26px] sm:text-[42px] font-geist font-bold tracking-tight leading-none mb-1",
                             stat.highlighted
                               ? "text-[#F8720C]"
                               : "text-[#62737A]"
@@ -284,7 +283,7 @@ export default function CaseStudyCarousel({
                         >
                           {stat.value}
                         </span>
-                        <span className="text-sm text-[#62737A] leading-snug">
+                        <span className="text-[10px] md:text-sm text-[#62737A] leading-[1.2]">
                           {stat.label}
                         </span>
                       </div>
@@ -298,7 +297,7 @@ export default function CaseStudyCarousel({
       </div>
 
       {/* Bottom Pagination Indicators */}
-      <div className="flex items-center justify-center gap-3 mt-10 sm:mt-8 px-[5%]">
+      <div className="flex items-center justify-center gap-3 mt-6 sm:mt-8 px-[5%]">
         {items.map((_, dotIdx) => {
           const isCurrent = currentIndex === dotIdx;
           return (
@@ -320,6 +319,17 @@ export default function CaseStudyCarousel({
             </button>
           );
         })}
+      </div>
+
+      {/* Bottom CTA Button (Mobile & Tablet) */}
+      <div className="flex items-center justify-center mt-7 sm:mt-8 px-[5%] lg:hidden">
+        <Link
+          href={ctaHref || "/insight"}
+          className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#F4F4F4] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
+        >
+          <span>{ctaLabel}</span>
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
       </div>
     </section>
   );

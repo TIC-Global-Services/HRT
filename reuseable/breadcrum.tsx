@@ -85,15 +85,15 @@ export const AnnouncementBar: React.FC<{
 }) => {
   const inner = (
     <div
-      className={`group flex items-center justify-center gap-2 text-xs md:text-[13px] font-medium text-slate-700 hover:text-slate-900 transition-colors py-2 px-4 ${className}`}
+      className={`group flex items-center justify-center gap-2 text-[10px] md:text-[13px] font-medium text-slate-700 hover:text-slate-900 transition-colors py-2 px-4 ${className}`}
       onClick={onClick}
     >
       {badgeText && (
-        <span className="bg-[#F06A25] hover:bg-[#E05914] text-white text-[10px] md:text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider font-sora shadow-xs transition-colors">
+        <span className="bg-[#F06A25] hover:bg-[#E05914] text-white text-[8px] md:text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider font-sora shadow-xs transition-colors">
           {badgeText}
         </span>
       )}
-      <span className="tracking-tight text-sm">{text}</span>
+      <span className="tracking-tight text-[10px] md:text-sm">{text}</span>
       <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-slate-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
     </div>
   );

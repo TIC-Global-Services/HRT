@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
         {/* 3D Carved Wooden Chess Queen Piece (Layer z-10, behind the card) */}
         {/* Crown sticks out above the card, body blurs behind the frosted glass, and base peeks out below */}
         <div
-          className="absolute -top-28 sm:-top-32 md:-top-36 lg:-top-50 -bottom-6 sm:-bottom-8 left-[6%] sm:left-[10%] md:left-[12%] lg:left-[14%] w-[240px] sm:w-[320px] md:w-[380px] lg:w-[540px] h-[800px] pointer-events-none select-none z-10"
+          className="absolute -top-20 sm:-top-32 md:-top-36 lg:-top-50 -bottom-6 sm:-bottom-8 left-[20%] sm:left-[10%] md:left-[12%] lg:left-[14%] w-[240px] sm:w-[320px] md:w-[380px] lg:w-[540px] h-[800px] pointer-events-none select-none z-10"
           aria-hidden="true"
         >
           <div className="relative w-full h-full ">

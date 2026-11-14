@@ -108,10 +108,10 @@ function CardItem({ card }: { card: OneConnectCard }) {
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <h3 className="font-sora text-sm sm:text-[16px] md:text-[17px] font-semibold text-[#E56A1E] leading-snug">
+        <h3 className="font-sora text-base sm:text-[16px] md:text-[17px] font-semibold text-[#E56A1E] leading-snug">
           {card.title}
         </h3>
-        <p className="font-sora text-xs sm:text-[13px] md:text-[13.5px] font-normal text-[#5A6E78] leading-relaxed mt-1 sm:mt-1.5">
+        <p className="font-sora text-xs sm:text-sm md:text-sm font-normal text-[#5A6E78] leading-[1.2] mt-1 sm:mt-1.5">
           {card.description}
         </p>
       </div>
@@ -168,7 +168,7 @@ export default function  OneConnect({
       <div className="px-[5%]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-30 items-center">
           {/* Left Column: Heading & Description */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center items-center">
             {/* Eyebrow */}
             <p className="flex items-center gap-2 font-mono text-xs sm:text-base font-semibold tracking-tight uppercase text-[#E56A1E] mb-3 sm:mb-4">
               <span
@@ -183,7 +183,7 @@ export default function  OneConnect({
               as="h2"
               delay={20}
               text={title}
-              className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6"
+              className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6 lg:text-left text-center"
             />
 
             {/* Description */}
@@ -191,7 +191,7 @@ export default function  OneConnect({
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-[#5A6E78] text-sm sm:text-lg leading-[1.3] font-normal max-w-xl"
+              className="font-sora text-[#5A6E78] text-sm sm:text-lg leading-[1.3] font-normal md:max-w-xl lg:text-left text-center tracking-tight "
             />
           </div>
 

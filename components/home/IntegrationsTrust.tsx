@@ -72,23 +72,29 @@ export default function IntegrationsTrust() {
           {/* =========================================================================
               CARD 1 (LEFT): INTEGRATIONS (Light Card with Smooth Rotating Orbit)
               ========================================================================= */}
-          <div className="rounded-[28px] sm:rounded-[34px] bg-[#FAF8F4] border border-[#EAE6DF] p-6 sm:p-8 lg:p-9 flex flex-col justify-between shadow-xs">
+          <div className="rounded-[28px] sm:rounded-[34px] bg-[#FAF8F4] border border-[#EAE6DF] p-5 sm:p-8 lg:p-9 flex flex-col  md:justify-between shadow-xs">
             {/* Header Content */}
-            <div className="max-w-md">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#F8780C] uppercase mb-2.5">
+            <div className="md:max-w-md w-full">
+              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#F8780C] uppercase mb-2.5 text-center md:text-left">
                 INTEGRATIONS
               </div>
               <BlurText
                 as="h3"
                 delay={20}
                 text={"Connect Claripa with Your\nExisting Systems"}
-                className="font-sora text-xl sm:text-2xl lg:text-[24px] font-sora font-bold tracking-tight text-[#002E40] leading-[1.25] mb-2.5 whitespace-pre-line"
+                className="font-sora text-[28px] sm:text-2xl lg:text-[24px] hidden lg:block font-normal md:font-bold tracking-tight text-[#002E40] leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
+              />
+              <BlurText
+                as="h3"
+                delay={20}
+                text={"Connect Claripa with Your Existing Systems"}
+                className="font-sora text-[28px] sm:text-2xl lg:text-[24px]  lg:hidden font-normal md:font-bold tracking-tight text-[#002E40] leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
               />
               <BlurText
                 as="p"
                 delay={20}
                 text="Claripa brings people, performance, and task management together to help organisations connect workforce information and make more informed decisions."
-                className="font-sora text-xs sm:text-base text-[#62737A] leading-[1.2] tracking-tight"
+                className="font-sora text-sm sm:text-base text-[#62737A] leading-[1.2] tracking-tight text-center md:text-left"
               />
             </div>
 
@@ -147,35 +153,41 @@ export default function IntegrationsTrust() {
           {/* =========================================================================
               CARD 2 (RIGHT): SECURITY & TRUST (Dark Card with Security Claims Box)
               ========================================================================= */}
-          <div className="rounded-[28px] sm:rounded-[34px] bg-[#254F5F] border border-[#1E4351] text-white p-6 sm:p-8 lg:p-9 flex flex-col justify-between shadow-xl">
+          <div className="rounded-[28px] sm:rounded-[34px] bg-[#254F5F] border border-[#1E4351] text-white p-6 sm:p-8 lg:p-9 flex flex-col gap-20 justify-between shadow-xl">
             {/* Header Content */}
             <div className="max-w-md">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#FF7324] uppercase mb-2.5">
+              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#FF7324] uppercase mb-2.5 text-center md:text-left">
                 SECURITY & TRUST
               </div>
               <BlurText
                 as="h3"
                 delay={20}
                 text={"Your Workforce Data\nDeserves Careful Protection"}
-                className="font-sora text-xl sm:text-2xl lg:text-[24px] font-bold tracking-tight text-white leading-[1.25] mb-2.5 whitespace-pre-line"
+                className="font-sora text-xl hidden lg:block sm:text-2xl lg:text-[24px] font-bold tracking-tight text-white leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
+              />
+              <BlurText
+                as="h3"
+                delay={20}
+                text={"Your Workforce Data Deserves Careful Protection"}
+                className="font-sora text-[28px] lg:hidden sm:text-2xl lg:text-[24px] font-normal tracking-tight text-white leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
               />
               <BlurText
                 as="p"
                 delay={20}
                 text="Claripa is designed to support organisations in managing workforce information responsibly. Details about its security controls, data handling practices, and infrastructure should be communicated based on verified product and security information."
-                className="font-sora text-xs sm:text-base text-[#C5D2D8] leading-[1.3]"
+                className="font-sora text-sm sm:text-base text-[#C5D2D8] leading-[1.3] text-center md:text-left"
               />
             </div>
 
             {/* Bottom Security Claims Container Box matching screenshot */}
             <div className="mt-6 sm:mt-8 rounded-[18px] sm:rounded-[22px] bg-white/[0.03] border border-[#395F6E] p-4 sm:p-5 transition-colors hover:border-[#4B7587]">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex justify-center md:justify-start items-center gap-2 mb-2">
                 <FolderLock className="w-4 h-4 text-[#FF7324] shrink-0" strokeWidth={2} />
                 <span className="font-sora text-xs sm:text-base font-semibold text-white">
                   Security claims
                 </span>
               </div>
-              <p className="font-sora text-[11px] sm:text-sm text-[#9AAEB8] leading-relaxed m-0">
+              <p className="font-sora text-xs sm:text-sm text-[#9AAEB8] leading-[1.2] m-0 text-center md:text-left">
                 Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified.
               </p>
             </div>
