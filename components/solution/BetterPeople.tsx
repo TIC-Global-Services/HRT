@@ -66,6 +66,7 @@ export const caseStudiesData: CaseStudyItem[] = [
 export default function BetterPeople() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
   const [maxOffset, setMaxOffset] = useState<number>(0);
   const [stepWidth, setStepWidth] = useState<number>(0);
   const firstCardRef = useRef<HTMLDivElement>(null);
@@ -76,14 +77,16 @@ export default function BetterPeople() {
   // Dynamically calculate exact slide offset for the peeking card track
   useEffect(() => {
     const updateOffset = () => {
+      const desktop = window.innerWidth >= 1024;
+      setIsDesktop(desktop);
+
       if (firstCardRef.current) {
         const cardWidth = firstCardRef.current.offsetWidth;
-        const gap =
-          window.innerWidth >= 1024
-            ? 28
-            : window.innerWidth >= 640
-            ? 32
-            : 24;
+        const gap = desktop
+          ? 28
+          : window.innerWidth >= 640
+          ? 32
+          : 24;
         const leftPadding = window.innerWidth * 0.05;
         const rightPadding = window.innerWidth * 0.05;
         const totalContentWidth =
@@ -100,8 +103,17 @@ export default function BetterPeople() {
     };
 
     updateOffset();
+
+    const ro = new ResizeObserver(updateOffset);
+    if (firstCardRef.current) {
+      ro.observe(firstCardRef.current);
+    }
+
     window.addEventListener("resize", updateOffset);
-    return () => window.removeEventListener("resize", updateOffset);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateOffset);
+    };
   }, []);
 
   // Auto-advance every 6 seconds, pausing on hover
@@ -120,15 +132,34 @@ export default function BetterPeople() {
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartXRef.current === null) return;
     const diff = touchStartXRef.current - e.changedTouches[0].clientX;
-    if (diff > 50) {
+    if (diff > 35) {
       setCurrentIndex((prev) => Math.min(prev + 1, lastIndex));
-    } else if (diff < -50) {
+    } else if (diff < -35) {
       setCurrentIndex((prev) => Math.max(prev - 1, 0));
     }
     touchStartXRef.current = null;
   };
 
-  const translateX = Math.min(currentIndex * stepWidth, maxOffset);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartXRef.current = e.clientX;
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (touchStartXRef.current === null) return;
+    const diff = touchStartXRef.current - e.clientX;
+    if (diff > 35) {
+      setCurrentIndex((prev) => Math.min(prev + 1, lastIndex));
+    } else if (diff < -35) {
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    }
+    touchStartXRef.current = null;
+  };
+
+  // On mobile and tablet, each card slides directly to the left focus guide-line (5%)
+  // On desktop, keep original maxOffset clamping so desktop remains 100% untouched
+  const translateX = isDesktop
+    ? Math.min(currentIndex * stepWidth, maxOffset)
+    : currentIndex * stepWidth;
 
   return (
     <section
@@ -169,9 +200,11 @@ export default function BetterPeople() {
 
       {/* Card Carousel Track */}
       <div
-        className="w-full overflow-hidden"
+        className="w-full overflow-hidden touch-pan-y select-none"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
       >
         <div
           className="flex pl-[5%] gap-6 sm:gap-8 lg:gap-7 transition-transform duration-500 ease-out"

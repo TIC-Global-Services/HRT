@@ -5,6 +5,7 @@ import SolutionLayers from "./SolutionLayers";
 import SolutionDetailInsights from "./SolutionDetailInsights";
 import SolutionDetailFAQ from "./SolutionDetailFAQ";
 import { defaultSolution, type SolutionDetailData } from "@/data/solutions";
+import Insights from "../home/Insights";
 
 export interface SolutionDetailContentProps {
   solution?: SolutionDetailData;
@@ -53,7 +54,7 @@ export default function SolutionDetailContent({
       {/* <SolutionDetailResults /> */}
 
       {/* 6. Explore Insights (2 Large Cards) */}
-      <SolutionDetailInsights />
+      <Insights />
 
       {/* 7. FAQ Section (Using Reusable FaqAccordion) */}
       <SolutionDetailFAQ

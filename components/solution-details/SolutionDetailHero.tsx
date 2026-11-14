@@ -88,14 +88,14 @@ export default function SolutionDetailHero({
   }, []);
 
   return (
-    <section className="pt-6 pb-14 sm:pt-10 sm:pb-20 bg-[#F7F6F3]">
+    <section className="pt-10 pb-14 sm:pt-10 sm:pb-20 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Top Breadcrumb */}
-        <div className="mb-8 sm:mb-12">
+        {/* <div className="mb-8 sm:mb-12">
           <p className="font-mono text-xs uppercase tracking-wider text-[#62737A] m-0">
             {breadcrumb}
           </p>
-        </div>
+        </div> */}
 
         {/* Centered Heading & Lead Text */}
         <div className="text-center mb-9 sm:mb-12">
@@ -104,7 +104,7 @@ export default function SolutionDetailHero({
             text={title}
             trigger="load"
             delay={20}
-            className="font-sora text-[#002E40] text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] mb-5 whitespace-pre-line"
+            className="font-sora text-[#002E40] text-[28px] sm:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] mb-5 whitespace-pre-line"
           />
 
           <BlurText

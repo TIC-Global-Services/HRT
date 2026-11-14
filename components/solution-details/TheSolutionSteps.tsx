@@ -68,7 +68,7 @@ export default function TheSolutionSteps({
   steps = defaultSteps,
 }: TheSolutionStepsProps) {
   return (
-    <section id="the-solution" className="py-16 md:py-24 bg-[#F7F6F3]">
+    <section id="the-solution" className="py-16 lg::py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -77,7 +77,7 @@ export default function TheSolutionSteps({
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
+            <span className="font-mono text-xs lg::text-base font-medium text-[#F8780C] tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -85,19 +85,19 @@ export default function TheSolutionSteps({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#254F5F] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+            className="font-sora text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
           />
         </div>
 
         {/* 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-4">
+        <div className="grid grid-cols-1 lg::grid-cols-2 gap-6 lg:gap-4">
           {steps.map((step) => (
             <div
               key={step.id}
-              className="rounded-[28px] border border-[#ECE9E3] bg-white p-8 sm:p-10 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_30px_rgba(0,46,64,0.05)]"
+              className="rounded-[28px] border border-[#ECE9E3] bg-white p-6 sm:p-10 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_30px_rgba(0,46,64,0.05)]"
             >
               <div>
-                <span className="block font-mono text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">
+                <span className="block font-mono text-xs md:text-sm lg:text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">
                   {step.tag}
                 </span>
 
@@ -105,14 +105,14 @@ export default function TheSolutionSteps({
                   as="h3"
                   text={step.title}
                   delay={20}
-                  className="font-sora text-[#002E40] leading-[1.2] text-[32px] font-normal whitespace-pre-line tracking-tight mb-3"
+                  className="font-sora text-[#002E40] leading-[1.2] text-xl md:text-2xl lg:text-[32px] font-normal whitespace-pre-line tracking-tight mb-3"
                 />
 
                 <BlurText
                   as="p"
                   text={step.description}
                   delay={20}
-                  className="font-sora text-lg text-[#5F7373] leading-[1.2] mb-6"
+                  className="font-sora text-xs md:text-base lg:text-lg text-[#5F7373] leading-[1.2] mb-6"
                 />
               </div>
 
@@ -127,7 +127,7 @@ export default function TheSolutionSteps({
                       as="span"
                       text={bullet}
                       delay={20}
-                      className="font-sora text-sm sm:text-base text-[#254F5F] leading-relaxed"
+                      className="font-sora text-xs sm:text-base text-[#254F5F] leading-relaxed"
                     />
                   </div>
                 ))}

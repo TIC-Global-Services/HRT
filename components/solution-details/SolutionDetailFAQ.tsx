@@ -52,10 +52,10 @@ export default function SolutionDetailFAQ({
 }: SolutionDetailFAQProps) {
   return (
     <section className="py-16 md:py-24 bg-[#F7F6F3]">
-      <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[440px_1fr] gap-10 lg:gap-16 items-start">
+      <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[440px_1fr] gap-10 lg:gap-16 items-center  md:items-start">
         {/* Left Header Column */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
+        <div className="">
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
             <span
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
@@ -69,22 +69,24 @@ export default function SolutionDetailFAQ({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12] mb-4"
+            className="font-sora text-[#002E40] text-[28px] sm:text-4xl lg:text-[44px] font-normal tracking-[-0.04em] leading-[1.12] mb-4 md:text-left text-center"
           />
 
           <BlurText
             as="p"
             text={lead}
             delay={20}
-            className="font-sora text-[#62737A] text-base leading-relaxed max-w-sm mb-8"
+            className="font-sora text-[#62737A] text-sm md:text-base leading-relaxed max-w-sm mb-8 md:text-left text-center"
           />
 
-          <Link
-            href={contactHref}
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#002E40] text-white font-mono text-xs uppercase font-medium tracking-wider hover:bg-[#174453] transition-all hover:-translate-y-0.5 shadow-sm"
-          >
-            {contactText} <ArrowUpRight size={15} />
-          </Link>
+          <div className="flex justify-center md:justify-start">
+            <Link
+              href={contactHref}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#002E40] text-white font-mono text-[10px] md:text-xs uppercase font-medium tracking-wider hover:bg-[#174453] transition-all hover:-translate-y-0.5 shadow-sm"
+            >
+              {contactText} <ArrowUpRight size={15} />
+            </Link>
+          </div>
         </div>
 
         {/* Right Accordion Column using Reusable FaqAccordion */}
