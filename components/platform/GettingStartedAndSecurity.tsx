@@ -193,8 +193,8 @@ export default function GettingStartedAndSecurity({
 
   return (
     <>
-      <section className="bg-[#F7F6F3] px-[5%] py-16 sm:px-8 md:py-24" id="getting-started">
-        <div>
+      <section className="bg-[#F7F6F3] w-full max-w-full overflow-hidden px-[5%] py-16 sm:px-8 md:py-24" id="getting-started">
+        <div className="w-full max-w-full">
           <div className="text-center max-w-5xl mx-auto">
             <p className="mb-4 flex items-center justify-center gap-2 font-mono text-center text-sm sm:text-base font-medium uppercase tracking-tight text-[#f8780c]">
               <span aria-hidden="true" className="size-1.5 rounded-full bg-[#f8780c]" />
@@ -268,8 +268,8 @@ export default function GettingStartedAndSecurity({
         </div>
       </section>
 
-      <section className="bg-[#F7F6F3] px-[5%] pb-16 sm:px-8 md:pb-24" id="security-and-trust">
-        <div className="rounded-[28px] border border-[#ebe8e3] bg-white p-6 sm:p-9 lg:p-10">
+      <section className="bg-[#F7F6F3] w-full max-w-full overflow-hidden px-[5%] pb-16 sm:px-8 md:pb-24" id="security-and-trust">
+        <div className="rounded-[28px] border border-[#ebe8e3] bg-white p-6 sm:p-9 lg:p-10 w-full max-w-full">
           <SectionHeading
             eyebrow="SECURITY & TRUST"
             title="People Data Deserves Responsible Protection."

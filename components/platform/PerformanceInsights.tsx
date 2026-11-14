@@ -126,7 +126,7 @@ export default function PerformanceInsights({
   return (
     <section
       aria-labelledby="performance-insights-title"
-      className="px-5 py-16 sm:px-[5%] md:py-24"
+      className="w-full max-w-full overflow-hidden px-5 py-16 sm:px-[5%] md:py-24"
       id="performance-insights"
     >
       <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">

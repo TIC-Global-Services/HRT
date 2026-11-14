@@ -39,63 +39,63 @@ const defaultCards: ExtensionCardData[] = [
       { label: "Ratings", isHighlight: true },
     ],
     progress: [
-      { label: "Ship platform v2", value: "80%" },
-      { label: "Improve client retention", value: "62%" },
-      { label: "Reduce release defects", value: "38%", isOrange: true },
+      { label: "Ship platform v2", value: "80%", width: "w-[80%]" },
+      { label: "Improve client retention", value: "62%", width: "w-[62%]" },
+      { label: "Reduce release defects", value: "38%", width: "w-[38%]", isOrange: true },
     ],
   },
   {
-    category: "Performance",
+    category: "Payroll",
     title: "Performance",
     description:
-      "Connect strategic objectives with company, team, and individual OKRs. Support performance reviews, check-ins, behavioural competency assessments, and AI-assisted performance summaries.",
+      "Connect strategy to execution across company, team, and individual levels. Support performance reviews with 360° feedback, behavioural competencies, and AI-assisted performance insights.",
     checklist: [
-      "AI-assisted OKR creation and cascading",
-      "Configurable performance assessment cycles",
-      "Performance reviews, check-ins & competency insights",
-    ],
-    flowHeader: "PERFORMANCE FLOW",
-    flowRow1: [
-      { label: "Company OKRs", isPrimary: true },
-      { label: "Team OKRs" },
-      { label: "Check-ins" },
-    ],
-    flowRow2: [
-      { label: "Reviews" },
-      { label: "Competencies" },
-      { label: "Growth", isHighlight: true },
-    ],
-    progress: [
-      { label: "OKR goal alignment", value: "84%" },
-      { label: "Scheduled check-ins", value: "76%" },
-      { label: "Development interventions", value: "42%", isOrange: true },
-    ],
-  },
-  {
-    category: "Execution",
-    title: "Task",
-    description:
-      "Connect day-to-day tasks with performance objectives to improve visibility into execution, progress, and accountability.",
-    checklist: [
-      "AI-assisted task creation from OKRs",
-      "Task-to-objective linkage",
-      "Day-to-day task progress tracking & AI nudges",
+      "AI-assisted OKR creation",
+      "Configurable performance reviews",
+      "Performance ratings and calibrations",
     ],
     flowHeader: "PERFORMANCE FLOW",
     flowRow1: [
       { label: "OKRs", isPrimary: true },
-      { label: "Linked Tasks" },
-      { label: "Execution" },
+      { label: "Check-ins" },
+      { label: "Peer 360°" },
+    ],
+    flowRow2: [
+      { label: "Feedback" },
+      { label: "Calibration" },
+      { label: "Ratings", isHighlight: true },
+    ],
+    progress: [
+      { label: "Ship platform v2", value: "80%", width: "w-[80%]" },
+      { label: "Improve client retention", value: "62%", width: "w-[62%]" },
+      { label: "Reduce release defects", value: "38%", width: "w-[38%]", isOrange: true },
+    ],
+  },
+  {
+    category: "Task Execution",
+    title: "Task",
+    description:
+      "Turn strategic priorities into daily execution. Track task completion, align day-to-day deliverables with broader OKRs, and unblock team execution with AI nudges.",
+    checklist: [
+      "Daily task tracking linked to OKRs",
+      "AI check-ins and performance nudges",
+      "Automated blockers identification",
+    ],
+    flowHeader: "PERFORMANCE FLOW",
+    flowRow1: [
+      { label: "Planning", isPrimary: true },
+      { label: "In Progress" },
+      { label: "Contributions" },
     ],
     flowRow2: [
       { label: "AI Nudges" },
-      { label: "Check-ins" },
-      { label: "Outcomes", isHighlight: true },
+      { label: "Reviews" },
+      { label: "Completed", isHighlight: true },
     ],
     progress: [
-      { label: "Tasks linked to OKRs", value: "85%" },
-      { label: "Milestone execution", value: "74%" },
-      { label: "Pending follow-ups", value: "28%", isOrange: true },
+      { label: "Sprint deliverables", value: "85%", width: "w-[85%]" },
+      { label: "Cross-team alignment", value: "72%", width: "w-[72%]" },
+      { label: "Unresolved blockers", value: "28%", width: "w-[28%]", isOrange: true },
     ],
   },
 ];
@@ -108,8 +108,89 @@ export interface ConnectedModulesProps {
   className?: string;
 }
 
-// Counting animation item for module showcase progress metrics
-function AnimatedProgressItem({
+// ----------------- Desktop Animated Progress Item (Exact original style matching screenshot) -----------------
+function DesktopAnimatedProgressItem({
+  label,
+  valueStr,
+  isOrange = false,
+  activeKey,
+  delay = 0,
+}: {
+  label: string;
+  valueStr: string;
+  isOrange?: boolean;
+  activeKey: number;
+  delay?: number;
+}) {
+  const target = parseInt(valueStr, 10) || 0;
+  const [current, setCurrent] = useState(0);
+  const [barWidth, setBarWidth] = useState(0);
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const rafId = requestAnimationFrame(() => {
+        setCurrent(target);
+        setBarWidth(target);
+      });
+      return () => cancelAnimationFrame(rafId);
+    }
+
+    let startTimestamp: number | null = null;
+    let animationFrameId: number;
+    const duration = 1000;
+
+    const timeoutId = setTimeout(() => {
+      setBarWidth(target);
+
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        setCurrent(Math.round(ease * target));
+
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(step);
+        }
+      };
+
+      animationFrameId = requestAnimationFrame(step);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [target, activeKey, delay]);
+
+  return (
+    <div>
+      <div className="flex items-center justify-between text-[11px] mb-1.5">
+        <span className="font-sora text-[#35464E] font-normal">{label}</span>
+        <span
+          className={`font-mono font-normal tabular-nums ${
+            isOrange ? "text-[#E56A1E]" : "text-[#62737A]"
+          }`}
+        >
+          {current}%
+        </span>
+      </div>
+      <div className="h-[5px] w-full bg-[#E9EEF0] rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all duration-800 ease-out ${
+            isOrange ? "bg-[#EA5E1B]" : "bg-[#1B4251]"
+          }`}
+          style={{ width: `${barWidth}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+// ----------------- Mobile Animated Progress Item (Refined mobile style) -----------------
+function MobileAnimatedProgressItem({
   label,
   valueStr,
   isOrange = false,
@@ -240,11 +321,11 @@ export default function ConnectedModules({
     <section
       id="connected-modules"
       aria-label="Three Connected Modules. One Clearer View of Performance."
-      className={`w-full bg-[#F7F6F3] py-16 sm:py-20 md:py-24 overflow-hidden ${className}`.trim()}
+      className={`w-full max-w-full bg-[#F7F6F3] py-16 sm:py-20 md:py-24 overflow-hidden ${className}`.trim()}
     >
-      <div className="flex flex-col items-center px-[5%]">
-        {/* Top Header matching reference screenshot 100% */}
-        <div className="text-center  mb-10 sm:mb-14">
+      <div className="flex flex-col items-center px-[5%] w-full max-w-full">
+        {/* Top Header */}
+        <div className="text-center mb-10 sm:mb-14">
           {/* Eyebrow Pill Tag */}
           <p className="inline-flex items-center justify-center gap-2 font-mono text-xs sm:text-base font-medium uppercase tracking-tight text-[#F06A25] mb-4">
             <span
@@ -254,12 +335,12 @@ export default function ConnectedModules({
             {eyebrow}
           </p>
 
-          {/* Main Title */}
+          {/* Main Title (Desktop original / Mobile tailored) */}
           <BlurText
             as="h2"
             delay={20}
             text={title}
-            className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 hidden md:block"
+            className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 hidden md:block"
           />
           <BlurText
             as="h2"
@@ -268,7 +349,7 @@ export default function ConnectedModules({
             className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 whitespace-pre-line md:hidden"
           />
 
-          {/* Subtitle / Description */}
+          {/* Subtitle / Description (Desktop original / Mobile tailored) */}
           <BlurText
             as="p"
             delay={20}
@@ -284,7 +365,7 @@ export default function ConnectedModules({
         </div>
 
         {/* ----------------- 3-Module Orbit System (2 Concentric Dashed Rings) ----------------- */}
-        <div className="relative w-[310px] h-[310px] sm:w-[440px] sm:h-[440px] md:w-[500px] md:h-[500px] flex items-center justify-center select-none my-2 sm:my-4">
+        <div className="relative w-[310px] h-[310px] sm:w-[440px] sm:h-[440px] md:w-[500px] md:h-[500px] max-w-full flex items-center justify-center select-none my-2 sm:my-4">
           {/* Central Warm Ambient Radial Glow */}
           <div
             aria-hidden="true"
@@ -438,9 +519,160 @@ export default function ConnectedModules({
           </div>
         </div>
 
-        {/* ----------------- Carousel Cards Section (Connected with Pills) ----------------- */}
+        {/* =========================================================================
+            DESKTOP VIEW (>= 768px): Desktop Carousel with Peek Next Card (Matching image 100%)
+           ========================================================================= */}
+        <div className="hidden md:block w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-visible px-2 sm:px-0">
+          {/* Card Carousel Slider Track */}
+          <div
+            className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] gap-6 items-stretch"
+            style={{
+              transform: `translateX(calc(-${activeCardIndex * 100}% - ${activeCardIndex * 24}px))`,
+            }}
+          >
+            {cards.map((card, cardIdx) => {
+              const isCurrent = cardIdx === activeCardIndex;
+              return (
+                <div
+                  key={`desktop-${card.title}-${cardIdx}`}
+                  onClick={() => setActiveCardIndex(cardIdx)}
+                  className={`w-full shrink-0 bg-[#FAF9F7] rounded-[22px] sm:rounded-[26px] border border-[#ECE8E2]/90 px-6 py-7 sm:px-10 sm:py-9 shadow-[0_14px_40px_rgba(0,30,45,0.05)] flex flex-col justify-between transition-opacity duration-500 ${
+                    isCurrent ? "opacity-100" : "opacity-90 cursor-pointer hover:opacity-100"
+                  }`}
+                >
+                  {/* Top Category Tag */}
+                  <span className="font-mono text-xs sm:text-[13px] text-[#F06A25] font-normal mb-7 sm:mb-9 block">
+                    {card.category}
+                  </span>
+
+                  {/* Main 2-Column Body */}
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.96fr] gap-7 md:gap-10 items-end">
+                    {/* Left Column: Title, Description, Checklist */}
+                    <div className="flex flex-col pb-1">
+                      <h3 className="text-[#143747] font-sora text-2xl sm:text-[26px] font-medium leading-[1.2] tracking-tight mb-3 m-0">
+                        {card.title}
+                      </h3>
+
+                      <p className="text-[#5A6A72] font-sora text-[13px] sm:text-sm leading-[1.5] mb-6 sm:mb-7 m-0 max-w-[400px]">
+                        {card.description}
+                      </p>
+
+                      {/* Checklist matching reference screenshot */}
+                      <ul className="space-y-2.5 m-0 p-0 list-none">
+                        {card.checklist.map((item) => (
+                          <li key={item} className="flex items-center gap-2.5">
+                            <span
+                              aria-hidden="true"
+                              className="w-4 h-4 rounded-full bg-[#FDE8D8] flex items-center justify-center shrink-0"
+                            >
+                              <Check
+                                size={10}
+                                strokeWidth={3}
+                                className="text-[#F06A25]"
+                              />
+                            </span>
+                            <span className="font-sora text-xs sm:text-[13px] text-[#1F3944] font-normal leading-normal">
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Right Column: Performance Flow Preview Box */}
+                    <div className="bg-white rounded-[18px] border border-[#EDEAE4] p-5 sm:p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                      <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.06em] text-[#6D7C82] uppercase font-medium mb-3.5 block">
+                        {card.flowHeader || "PERFORMANCE FLOW"}
+                      </span>
+
+                      {/* Flow Steps: Row 1 */}
+                      <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                        {card.flowRow1.map((step) => (
+                          <div key={step.label} className="inline-flex items-center gap-1.5">
+                            <span
+                              className={`px-3 py-1 rounded-full text-[11px] font-sora font-medium ${
+                                step.isPrimary
+                                  ? "bg-[#1B4251] text-white"
+                                  : "bg-[#EEF3F5] text-[#1D3E4C]"
+                              }`}
+                            >
+                              {step.label}
+                            </span>
+                            <ArrowRight size={11} className="text-[#9BAAAF] shrink-0" aria-hidden="true" />
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Flow Steps: Row 2 */}
+                      <div className="flex items-center gap-1.5 mb-5 flex-wrap">
+                        {card.flowRow2.map((step, stepIdx) => (
+                          <div key={step.label} className="inline-flex items-center gap-1.5">
+                            <span
+                              className={`px-3 py-1 rounded-full text-[11px] font-sora font-medium ${
+                                step.isHighlight
+                                  ? "bg-[#FCE0C8] text-[#B85217]"
+                                  : "bg-[#EEF3F5] text-[#1D3E4C]"
+                              }`}
+                            >
+                              {step.label}
+                            </span>
+                            {stepIdx < card.flowRow2.length - 1 && (
+                              <ArrowRight size={11} className="text-[#9BAAAF] shrink-0" aria-hidden="true" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Progress Bars with Counting Animation */}
+                      <div className="space-y-3 pt-1">
+                        {card.progress.map((prog, pIdx) => (
+                          <DesktopAnimatedProgressItem
+                            key={`desktop-prog-${prog.label}-${activeCardIndex}`}
+                            label={prog.label}
+                            valueStr={prog.value}
+                            isOrange={prog.isOrange}
+                            activeKey={activeCardIndex}
+                            delay={pIdx * 120}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 3 Pagination Capsule Bars matching Desktop 100% */}
+          <div
+            className="flex items-center justify-center gap-2.5 mt-7 sm:mt-9"
+            role="tablist"
+            aria-label="Module cards navigation"
+          >
+            {cards.map((_, idx) => {
+              const isActive = activeCardIndex === idx;
+              return (
+                <button
+                  key={`desktop-nav-${idx}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  onClick={() => setActiveCardIndex(idx)}
+                  className={`h-[3.5px] rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive ? "w-12 sm:w-14 bg-[#E56A1E]" : "w-12 sm:w-14 bg-[#CFD5D8] hover:bg-[#B4BEC2]"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* =========================================================================
+            MOBILE VIEW (< 768px): Tailored Mobile Card, Performance Flow & Touch Swipe
+           ========================================================================= */}
         <div
-          className="w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-hidden px-1 sm:px-0"
+          className="md:hidden w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-hidden px-1 sm:px-0"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -455,7 +687,7 @@ export default function ConnectedModules({
               const isCurrent = cardIdx === activeCardIndex;
               return (
                 <div
-                  key={card.title}
+                  key={`mobile-${card.title}-${cardIdx}`}
                   onClick={() => setActiveCardIndex(cardIdx)}
                   className={`w-full shrink-0 bg-white rounded-[28px] sm:rounded-[32px] border border-[#E5EAEB] p-5 sm:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col md:justify-between transition-opacity duration-500 ${
                     isCurrent ? "opacity-100" : "opacity-90 cursor-pointer hover:opacity-100"
@@ -507,11 +739,11 @@ export default function ConnectedModules({
                       </span>
 
                       {/* Flow Steps: Row 1 */}
-                      <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-3.5 flex-nowrap overflow-x-auto no-scrollbar">
+                      <div className="flex items-center gap-1 sm:gap-2 mb-3 sm:mb-3.5 flex-wrap overflow-x-auto no-scrollbar">
                         {card.flowRow1.map((step) => (
                           <div key={step.label} className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <span
-                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-sora font-medium leading-none whitespace-nowrap ${
+                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[8px] sm:text-xs md:text-[13px] font-sora font-medium leading-none whitespace-nowrap ${
                                 step.isPrimary
                                   ? "bg-[#1D404E] text-white shadow-xs"
                                   : "bg-[#E8F0F3] text-[#1D404E]"
@@ -527,9 +759,9 @@ export default function ConnectedModules({
                       {/* Flow Steps: Row 2 */}
                       <div className="flex items-center gap-1.5 sm:gap-2 mb-6 sm:mb-7 flex-nowrap overflow-x-auto no-scrollbar">
                         {card.flowRow2.map((step, stepIdx) => (
-                          <div key={step.label} className="inline-flex items-center gap-1.5 sm:gap-2 shrink-0">
+                          <div key={step.label} className="inline-flex items-center gap-1 sm:gap-2 shrink-0">
                             <span
-                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-sora font-medium leading-none whitespace-nowrap ${
+                              className={`px-3 sm:px-4 md:px-4.5 py-1.5 sm:py-2 rounded-full text-[8px] sm:text-xs md:text-[13px] font-sora font-medium leading-none tracking-tight whitespace-nowrap ${
                                 step.isHighlight
                                   ? "bg-[#FCE4D6] text-[#D45D18]"
                                   : "bg-[#E8F0F3] text-[#1D404E]"
@@ -547,8 +779,8 @@ export default function ConnectedModules({
                       {/* Progress Bars with Counting Animation */}
                       <div className="space-y-4 sm:space-y-4.5 pt-0.5">
                         {card.progress.map((prog, pIdx) => (
-                          <AnimatedProgressItem
-                            key={`${prog.label}-${activeCardIndex}`}
+                          <MobileAnimatedProgressItem
+                            key={`mobile-prog-${prog.label}-${activeCardIndex}`}
                             label={prog.label}
                             valueStr={prog.value}
                             isOrange={prog.isOrange}
@@ -564,7 +796,7 @@ export default function ConnectedModules({
             })}
           </div>
 
-          {/* 3 Pagination Capsule Bars matching Image 100% */}
+          {/* 3 Pagination Capsule Bars matching Mobile 100% */}
           <div
             className="flex items-center justify-center gap-2 mt-6 sm:mt-8"
             role="tablist"
@@ -574,7 +806,7 @@ export default function ConnectedModules({
               const isActive = activeCardIndex === idx;
               return (
                 <button
-                  key={idx}
+                  key={`mobile-nav-${idx}`}
                   type="button"
                   role="tab"
                   aria-selected={isActive}

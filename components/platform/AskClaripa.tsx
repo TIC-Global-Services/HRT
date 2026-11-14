@@ -130,7 +130,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
   const otherQueries = defaultQueries.filter((_, idx) => idx !== activeIndex);
 
   return (
-    <section className={`w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-[5%] ${className}`}>
+    <section className={`w-full max-w-full overflow-hidden py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-[5%] ${className}`}>
       {/* Outer Card with Rounded Corners & Subtle Border */}
       <article
         onMouseMove={handleMouseMove}
@@ -204,7 +204,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
             <BlurText
               as="h2"
               delay={20}
-              text={"Turn Performance \nInformation into Clearer \nNext Steps."}
+              text={title}
               className="font-sora text-[28px] sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 lg:block hidden"
             />
             <BlurText

@@ -324,7 +324,7 @@ export default function PerformanceCycle({
     <section
       id="performance-cycle"
       aria-label="The Performance Management Process"
-      className={`w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-[5%] ${className}`}
+      className={`w-full max-w-full overflow-hidden py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-[5%] ${className}`}
     >
       {/* Outer Card with Fluted Glass Gradient Blinds Background */}
       <div className="relative w-full rounded-[28px] sm:rounded-[36px] md:rounded-[40px] bg-white border border-[#ECE8E1] shadow-[0_4px_30px_rgba(16,42,51,0.04)] overflow-hidden p-6 sm:p-10 md:p-12 lg:p-14">

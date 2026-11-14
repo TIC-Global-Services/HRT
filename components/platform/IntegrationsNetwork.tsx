@@ -177,12 +177,12 @@ export default function IntegrationsNetwork({
     <section
       id="integrations"
       aria-label="Connect Claripa with the Tools You Already Use"
-      className={`w-full bg-[#F7F6F3] py-10 sm:py-14 md:py-16 overflow-hidden ${className}`.trim()}
+      className={`w-full max-w-full bg-[#F7F6F3] py-10 sm:py-14 md:py-16 overflow-hidden ${className}`.trim()}
     >
-      <div className="px-[5%]">
+      <div className="px-[5%] w-full max-w-full">
         {/* White Card Container */}
         <div
-          className="w-full bg-white rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#EFECE7] shadow-xs relative overflow-hidden aspect-[1024/504] min-h-[440px] sm:min-h-[480px] md:min-h-[504px] select-none flex flex-col justify-between"
+          className="w-full max-w-full bg-white rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#EFECE7] shadow-xs relative overflow-hidden aspect-auto sm:aspect-[1024/504] min-h-[440px] sm:min-h-[480px] md:min-h-[504px] select-none flex flex-col justify-between"
         >
           {/*
             1. Dashed Arcs SVG Overlay (Full Card Scope)
@@ -374,7 +374,9 @@ export default function IntegrationsNetwork({
                   onMouseLeave={() => {
                     isPausedRef.current = false;
                   }}
-                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 cursor-pointer`}
+                  className={`group/tile relative w-9 h-9 sm:w-11 sm:h-11 md:w-[48px] md:h-[48px] lg:w-[52px] lg:h-[52px] rounded-[11px] sm:rounded-[13px] md:rounded-[14px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 cursor-pointer ${
+                    isMatch ? "opacity-100" : "opacity-30"
+                  }`}
                   title={item.name}
                 >
                   <Image

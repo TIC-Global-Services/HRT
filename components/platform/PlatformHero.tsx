@@ -53,8 +53,8 @@ export default function PlatformHero({
   }, []);
 
   return (
-    <section className={`w-full pt-14 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 overflow-hidden ${className}`.trim()}>
-      <div className="px-[5%] flex flex-col items-center">
+    <section className={`w-full max-w-full pt-14 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 overflow-hidden ${className}`.trim()}>
+      <div className="px-[5%] w-full max-w-full flex flex-col items-center">
         {/* Eyebrow */}
         <span className="text-[#E56A1E] font-mono text-xs sm:text-base font-medium tracking-tight uppercase text-center mb-3.5">
           {eyebrow}
@@ -242,7 +242,7 @@ export default function PlatformHero({
                     </div>
 
                     <div
-                      className={`absolute -top-[20%]  md:top-1/2 md:-translate-y-[36%] -right-8 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+                      className={`absolute -top-[20%] md:top-1/2 md:-translate-y-[36%] -right-2 sm:-right-8 lg:-right-34 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                         showFloatingCards
                           ? "opacity-100 scale-100 translate-x-0"
                           : "opacity-0 scale-75 translate-x-6 pointer-events-none"
@@ -290,7 +290,7 @@ export default function PlatformHero({
                     </div>
 
                     <div
-                      className={`absolute top-[calc(100%-1px)] -right-10 sm:right-2 lg:right-0 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
+                      className={`absolute top-[calc(100%-1px)] right-0 sm:right-2 lg:right-0 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
                         showFloatingCards
                           ? "opacity-100 scale-100 translate-y-0"
                           : "opacity-0 scale-75 translate-y-4 pointer-events-none"

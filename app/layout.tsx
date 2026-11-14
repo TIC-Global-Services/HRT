@@ -80,7 +80,7 @@ export default function RootLayout({
       >
         <SmoothScroller>
           <Navabar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full max-w-full min-w-0">{children}</main>
           <Footer />
         </SmoothScroller>
       </body>

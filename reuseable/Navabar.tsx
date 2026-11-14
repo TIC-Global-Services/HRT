@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, ArrowUpRight, Cpu, BarChart3, Users, FileText } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight, Cpu, Users, FileText } from "lucide-react";
 import { AnnouncementBar } from "./breadcrum";
 
 interface NavDropdownItem {
@@ -137,7 +137,7 @@ const Navabar: React.FC = () => {
 
   return (
     <header
-      className={`top-0 z-50 w-full transition-all duration-300 ${
+      className={`top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
         isHome
           ? `sticky bg-white/80 backdrop-blur-md ${
               scrolled

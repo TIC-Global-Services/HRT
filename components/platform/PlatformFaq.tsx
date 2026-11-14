@@ -72,7 +72,7 @@ export default function PlatformFaq({
     <section
       id="faq"
       aria-label="Frequently Asked Questions"
-      className={`w-full bg-[#F7F6F3] py-16 sm:py-20 md:py-24 ${className}`.trim()}
+      className={`w-full max-w-full overflow-hidden bg-[#F7F6F3] py-16 sm:py-20 md:py-24 ${className}`.trim()}
     >
       <div className="w-[min(1200px,calc(100%-32px))] sm:w-[min(1200px,calc(100%-48px))] mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-10 lg:gap-16 justify-center items-center   md:items-start">
         {/* Left Column: Heading & CTA matching image */}

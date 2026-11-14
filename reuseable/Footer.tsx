@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer
-      className={`relative w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
+      className={`relative w-full max-w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
         isHome ? "bg-white" : "bg-[#F7F6F3]"
       }`}
     >
