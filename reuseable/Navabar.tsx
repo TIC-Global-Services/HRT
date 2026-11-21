@@ -137,7 +137,7 @@ const Navabar: React.FC = () => {
 
   return (
     <header
-      className={`top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
+      className={`top-8 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
         isHome
           ? `sticky bg-white/80 backdrop-blur-md ${
               scrolled
@@ -148,7 +148,7 @@ const Navabar: React.FC = () => {
       }`}
     >
       {/* 1. Top Announcement Bar */}
-      <div
+      {/* <div
         className={`w-full transition-colors font-sora duration-200 ${
           isHome
             ? "border-b border-[#EAE6DF] bg-white/40"
@@ -162,7 +162,7 @@ const Navabar: React.FC = () => {
             href="/platform"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* 2. Main Navigation Bar */}
       <nav

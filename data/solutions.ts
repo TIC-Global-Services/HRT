@@ -23,7 +23,7 @@ export interface SolutionDashboardData {
 
 export interface SolutionDetailData {
   id: string;
-  slug: string;
+    slug: string;
   cardTitle: string;
   cardDescription: string;
   cardTags: string;
@@ -578,17 +578,17 @@ export const allSolutions: SolutionDetailData[] = [
             "Helps monitor development and improvement progress.",
           ],
         },
-        {
-          id: "04",
-          tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
-          title: "Aligned with performance\nand role expectations.",
-          description:
-            "Claripa connects skill insights directly with your existing HR and performance systems.",
-          bullets: [
-            "Unifies competency signals with performance context.",
-            "Keeps growth tracking continuous across cycles.",
-          ],
-        },
+          // {
+          //   id: "04",
+          //   tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
+          //   title: "Aligned with performance\nand role expectations.",
+          //   description:
+          //     "Claripa connects skill insights directly with your existing HR and performance systems.",
+          //   bullets: [
+          //     "Unifies competency signals with performance context.",
+          //     "Keeps growth tracking continuous across cycles.",
+          //   ],
+          // },
       ],
     },
     poweredBy: {
@@ -766,17 +766,17 @@ export const allSolutions: SolutionDetailData[] = [
             "Provides AI-assisted coaching and follow-up guidance.",
           ],
         },
-        {
-          id: "04",
-          tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
-          title: "Built into everyday\nleadership rhythms.",
-          description:
-            "Claripa connects performance records, feedback, and check-in workflows so managers spend less time on admin and more time coaching.",
-          bullets: [
-            "Reduces manual prep ahead of 1:1 check-ins.",
-            "Keeps team context unified in one place.",
-          ],
-        },
+        // {
+        //   id: "04",
+        //   tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
+        //   title: "Built into everyday\nleadership rhythms.",
+        //   description:
+        //     "Claripa connects performance records, feedback, and check-in workflows so managers spend less time on admin and more time coaching.",
+        //   bullets: [
+        //     "Reduces manual prep ahead of 1:1 check-ins.",
+        //     "Keeps team context unified in one place.",
+        //   ],
+        // },
       ],
     },
     poweredBy: {
@@ -954,17 +954,17 @@ export const allSolutions: SolutionDetailData[] = [
             "Supports more informed workforce decisions.",
           ],
         },
-        {
-          id: "04",
-          tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
-          title: "Unifies signals across\nyour HR stack.",
-          description:
-            "Claripa sits above your existing Core HR, performance, engagement, and payroll tools without replacing them.",
-          bullets: [
-            "Connects multi-system workforce data seamlessly.",
-            "Delivers one coherent view for leadership.",
-          ],
-        },
+        // {
+        //   id: "04",
+        //   tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
+        //   title: "Unifies signals across\nyour HR stack.",
+        //   description:
+        //     "Claripa sits above your existing Core HR, performance, engagement, and payroll tools without replacing them.",
+        //   bullets: [
+        //     "Connects multi-system workforce data seamlessly.",
+        //     "Delivers one coherent view for leadership.",
+        //   ],
+        // },
       ],
     },
     poweredBy: {
@@ -1024,8 +1024,8 @@ export const allSolutions: SolutionDetailData[] = [
   },
   {
     id: "solution-06",
-    slug: "improve-performance-by-development-interventions",
-    cardTitle: "Improve Performance by Development Interventions",
+    slug: "improve-performance-by-development",
+    cardTitle: "Improve Performance by Development",
     cardDescription:
       "Use performance and skill gap insights to identify development needs and guide appropriate interventions to support employee improvement.",
     cardTags: "Performance Improvement, Skill Gaps, Interventions",
@@ -1144,17 +1144,17 @@ export const allSolutions: SolutionDetailData[] = [
             "Helps monitor improvement progress.",
           ],
         },
-        {
-          id: "04",
-          tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
-          title: "Closes the loop between\nperformance and learning.",
-          description:
-            "Claripa keeps performance evaluations and skill development connected across your existing HR systems.",
-          bullets: [
-            "Connects performance signals with development tracking.",
-            "Gives HR and managers shared visibility into improvement.",
-          ],
-        },
+        // {
+        //   id: "04",
+        //   tag: "04 · INTEGRATE · CONNECTED INTELLIGENCE",
+        //   title: "Closes the loop between\nperformance and learning.",
+        //   description:
+        //     "Claripa keeps performance evaluations and skill development connected across your existing HR systems.",
+        //   bullets: [
+        //     "Connects performance signals with development tracking.",
+        //     "Gives HR and managers shared visibility into improvement.",
+        //   ],
+        // },
       ],
     },
     poweredBy: {

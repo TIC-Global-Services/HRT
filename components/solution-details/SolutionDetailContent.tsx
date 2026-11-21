@@ -48,7 +48,7 @@ export default function SolutionDetailContent({
         eyebrow={solution.poweredBy.eyebrow}
         title={solution.poweredBy.title}
         layers={solution.poweredBy.layers}
-      />
+      />  
 
       {/* 5. Results (350-person Software Services Firm 3x2 Grid) */}
       {/* <SolutionDetailResults /> */}

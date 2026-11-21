@@ -101,13 +101,13 @@ const HeroSection: React.FC = () => {
             >
               BOOK A DEMO
             </Link>
-            <Link
+            {/* <Link
               href="/platform"
               className="inline-flex items-center justify-center gap-1.5 bg-white/90 hover:bg-white border border-slate-300/80 hover:border-slate-400 text-slate-800 text-xs sm:text-sm font-semibold tracking-tight font-geist uppercase px-7 sm:px-8 py-3.5 rounded-full shadow-xs transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>EXPLORE PLATFORM</span>
               <ArrowUpRight className="w-4 h-4 text-slate-600" />
-            </Link>
+            </Link> */}
           </div>
         </div>
 

@@ -90,11 +90,14 @@ export default function TheSolutionSteps({
         </div>
 
         {/* 2x2 Grid */}
-        <div className="grid grid-cols-1 lg::grid-cols-2 gap-6 lg:gap-4">
-          {steps.map((step) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-6 lg:gap-4">
+          {steps.map((step, index) => (
             <div
               key={step.id}
-              className="rounded-[28px] border border-[#ECE9E3] bg-white p-6 sm:p-10 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_30px_rgba(0,46,64,0.05)]"
+              className={`rounded-[28px] border border-[#ECE9E3] bg-white p-6 sm:p-10 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_30px_rgba(0,46,64,0.05)]
+        ${index === steps.length - 1 && steps.length % 2 !== 0
+                  ? "lg:col-span-2 lg:w-[calc(50%-0.5rem)] lg:justify-self-center"
+                  : ""}`}
             >
               <div>
                 <span className="block font-mono text-xs md:text-sm lg:text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">

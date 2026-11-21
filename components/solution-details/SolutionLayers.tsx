@@ -26,8 +26,9 @@ const defaultMobileLayers = [
 export default function SolutionLayers({
   eyebrow = "POWERED BY",
   title = "The layers behind this solution",
-  layers = defaultLayers,
+  layers,
 }: SolutionLayersProps) {
+  console.log("layers", layers)
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F6F3]">
       <div className="px-[5%]">
@@ -69,28 +70,26 @@ export default function SolutionLayers({
 
             {/* Bottom Layer Pills */}
             <div className="flex flex-wrap justify-center gap-2.5 pt-8 lg:block hidden">
-              {defaultLayers.map((layer) => (
+              {layers && layers.map((layer) => (
                 <span
                   key={layer.label}
-                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${
-                    layer.isPrimary
+                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${layer.isPrimary
                       ? "bg-[#FFF4EC] text-[#B84D09] border border-[#FBD9C2]"
                       : "bg-white text-[#254F5F] border border-white/80"
-                  }`}
+                    }`}
                 >
                   {layer.label}
                 </span>
-              ))}
+              ))} 
             </div>
             <div className="flex flex-wrap justify-center gap-2.5 pt-8 lg:hidden">
-              {defaultMobileLayers.map((layer) => (
+              {layers && layers.map((layer) => (
                 <span
                   key={layer.label}
-                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${
-                    layer.isPrimary
+                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${layer.isPrimary
                       ? "bg-[#FFF4EC] text-[#B84D09] border border-[#FBD9C2]"
                       : "bg-white text-[#254F5F] border border-white/80"
-                  }`}
+                    }`}
                 >
                   {layer.label}
                 </span>
