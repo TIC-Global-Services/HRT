@@ -171,18 +171,18 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
             <span className="text-zinc-300 hidden sm:inline">•</span>
 
             {/* Date */}
-            <div className="flex items-center gap-1.5 font-mono text-xs text-zinc-500">
+            {/* <div className="flex items-center gap-1.5 font-mono text-xs text-zinc-500">
               <Calendar className="w-3.5 h-3.5 text-zinc-400" />
               <span>{blog.date}</span>
-            </div>
+            </div> */}
 
-            <span className="text-zinc-300 hidden sm:inline">•</span>
+            {/* <span className="text-zinc-300 hidden sm:inline">•</span> */}
 
             {/* Read Time */}
-            <div className="flex items-center gap-1.5 font-mono text-xs text-zinc-500">
+            {/* <div className="flex items-center gap-1.5 font-mono text-xs text-zinc-500">
               <Clock className="w-3.5 h-3.5 text-zinc-400" />
               <span>{blog.readTime}</span>
-            </div>
+            </div> */}
           </div>
         </header>
 
@@ -368,12 +368,12 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 >
                   REQUEST A DEMO
                 </Link>
-                <Link
+                {/* <Link
                   href="/platform"
                   className="w-full sm:w-auto text-center px-6 py-3 rounded-full border border-white/20 text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-white/10 transition-colors"
                 >
                   EXPLORE PLATFORM
-                </Link>
+                </Link> */}
               </div>
 
               {/* Decorative background glow */}

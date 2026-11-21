@@ -38,7 +38,7 @@ export interface BlogPost {
   };
   image: string;
   coverImageAlt: string;
-  keyTakeaways: string[];
+  keyTakeaways?: string[];
   statsHighlight?: {
     value: string;
     label: string;
