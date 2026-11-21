@@ -25,7 +25,7 @@ export default function PlatformPage() {
       <AskClaripa />
       <EmployeeExperience />
       <PerformanceInsights />
-      <IntegrationsNetwork />
+      {/* <IntegrationsNetwork /> */}
       <GettingStartedAndSecurity />
       <PlatformFaq />
     </div>

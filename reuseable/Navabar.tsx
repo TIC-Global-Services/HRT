@@ -25,12 +25,12 @@ const navItems: NavItem[] = [
     label: "Solutions",
     href: "/solution-hub",
     children: [
-      {
-        title: "Solution Hub",
-        description: "Explore all people intelligence and decision solutions",
-        href: "/solution-hub",
-        icon: <Users className="w-4 h-4 text-[#F06A25]" />,
-      },
+      // {
+      //   title: "aligngoals-and-improve-performance",
+      //   description: "Explore all people intelligence and decision solutions",
+      //   href: "/align-goals-and-improve-performance",
+      //   icon: <Users className="w-4 h-4 text-[#F06A25]" />,
+      // },
       // {
       //   title: "Solution Details",
       //   description: "Deep dive into capabilities, workflows and impact",
@@ -49,12 +49,12 @@ const navItems: NavItem[] = [
     label: "Platform",
     href: "/platform",
     children: [
-      {
-        title: "Platform Overview",
-        description: "Connect workforce data with real-time decision intelligence",
-        href: "/platform",
-        icon: <Cpu className="w-4 h-4 text-[#1C4E5B]" />,
-      },
+      // {
+      //   title: "Platform Overview",
+      //   description: "Connect workforce data with real-time decision intelligence",
+      //   href: "/platform",
+      //   icon: <Cpu className="w-4 h-4 text-[#1C4E5B]" />,
+      // },
       // {
       //   title: "AI Signal Engine",
       //   description: "Machine learning models designed specifically for HR analytics",
@@ -73,12 +73,12 @@ const navItems: NavItem[] = [
     label: "Insights",
     href: "/insight",
     children: [
-      {
-        title: "Insights & Research",
-        description: "Articles, benchmarks and methodologies for people leaders",
-        href: "/insight",
-        icon: <FileText className="w-4 h-4 text-[#1C4E5B]" />,
-      },
+      // {
+      //   title: "Insights & Research",
+      //   description: "Articles, benchmarks and methodologies for people leaders",
+      //   href: "/insight",
+      //   icon: <FileText className="w-4 h-4 text-[#1C4E5B]" />,
+      // },
       // {
       //   title: "Workforce Trends 2026",
       //   description: "Key findings from over 500,000 workforce performance points",
@@ -137,7 +137,7 @@ const Navabar: React.FC = () => {
 
   return (
     <header
-      className={`top-8 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
+      className={`top-6 mt-6 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
         isHome
           ? `sticky bg-white/80 backdrop-blur-md ${
               scrolled
@@ -270,12 +270,12 @@ const Navabar: React.FC = () => {
 
           {/* Right Action Items matching Image 1 */}
           <div className="hidden  font-sans lg:flex items-center gap-5">
-            <Link
+            {/* <Link
               href="/contact-us"
               className="text-xs md:text-sm font-mono font-medium tracking-tight text-slate-700 hover:text-slate-950 uppercase transition-colors px-2 py-1"
             >
               LOGIN
-            </Link>
+            </Link> */}
             <Link
               href="/contact-us"
               className="items-center font-mono bg-[#1C4E5B] hover:bg-[#143B45] text-white text-xs md:text-sm font-medium uppercase px-6 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow active:scale-95 tracking-tight"

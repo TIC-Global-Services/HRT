@@ -504,34 +504,32 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
                 </div>
               </div>
 
-              {/* Consultation / Assessment CTA */}
-              <div className="bg-gradient-to-br from-orange-500 to-[#F06A25] text-white rounded-[24px] p-6 shadow-md relative overflow-hidden">
-                <span className="font-mono text-[10px] font-bold tracking-widest uppercase bg-white/20 px-2.5 py-1 rounded-full inline-block mb-3">
+              {/* Consultation / Assessment CTA (Matching Image 2) */}
+              <div className="bg-[#F06A25] text-white rounded-[28px] sm:rounded-[32px] p-7 sm:p-8 shadow-md relative overflow-hidden">
+                <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase bg-white/20 px-3 py-1 rounded-full inline-block mb-3.5 text-white">
                   {blog.ctaCard?.eyebrow || "WORKFORCE INTELLIGENCE"}
                 </span>
                 <BlurText
                   as="h4"
                   text={blog.ctaCard?.title || "See where your workforce stands today"}
                   delay={20}
-                  className="font-heading text-xl font-medium mb-2 leading-snug"
+                  className="font-sora text-[22px] sm:text-[26px] font-semibold mb-2.5 leading-[1.2] tracking-tight text-white"
                 />
-                {(blog.ctaCard?.description || (!blog.ctaCard && "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.")) && (
-                  <BlurText
-                    as="p"
-                    text={
-                      blog.ctaCard?.description ||
-                      "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line."
-                    }
-                    delay={20}
-                    className="font-sans text-xs text-white/90 leading-relaxed mb-5"
-                  />
-                )}
+                <BlurText
+                  as="p"
+                  text={
+                    blog.ctaCard?.description ||
+                    "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line."
+                  }
+                  delay={20}
+                  className="font-sora text-xs sm:text-[13.5px] text-white/95 leading-[1.55] mb-6"
+                />
                 <Link
                   href={blog.ctaCard?.buttonHref || "/contact-us"}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-[#F06A25] font-mono text-xs font-semibold uppercase tracking-wider shadow-xs hover:bg-orange-50 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-white text-[#F06A25] font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider shadow-xs hover:bg-orange-50 transition-all cursor-pointer"
                 >
                   <span>{blog.ctaCard?.buttonText || "BOOK A DISCOVERY CALL"}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <ArrowUpRight className="w-4 h-4 text-[#F06A25]" />
                 </Link>
               </div>
             </div>

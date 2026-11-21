@@ -5,7 +5,7 @@ import BetterPeople from "./BetterPeople";
 
 export default function SolutionHubContent() {
   return (
-    <div className="w-full bg-[#F7F6F3] text-[#003247] font-sora">
+    <div className="w-full bg-[#F7F6F3] text-[#003247]">
       <SolutionsHero />
       <SolutionFinder />
       <SolutionOutcomes />

@@ -522,12 +522,12 @@ export default function ConnectedModules({
         {/* =========================================================================
             DESKTOP VIEW (>= 768px): Desktop Carousel with Peek Next Card (Matching image 100%)
            ========================================================================= */}
-        <div className="hidden md:block w-full max-w-[920px] mx-auto mt-6 sm:mt-10 overflow-visible px-2 sm:px-0">
+        <div className="hidden md:block w-[780px] lg:w-[840px] xl:w-[880px] max-w-[84vw] mx-auto mt-6 sm:mt-10 overflow-visible">
           {/* Card Carousel Slider Track */}
           <div
             className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] gap-6 items-stretch"
             style={{
-              transform: `translateX(calc(-${activeCardIndex * 100}% - ${activeCardIndex * 24}px))`,
+              transform: `translateX(calc(-${activeCardIndex} * (100% + 24px)))`,
             }}
           >
             {cards.map((card, cardIdx) => {
@@ -536,8 +536,8 @@ export default function ConnectedModules({
                 <div
                   key={`desktop-${card.title}-${cardIdx}`}
                   onClick={() => setActiveCardIndex(cardIdx)}
-                  className={`w-full shrink-0 bg-[#FAF9F7] rounded-[22px] sm:rounded-[26px] border border-[#ECE8E2]/90 px-6 py-7 sm:px-10 sm:py-9 shadow-[0_14px_40px_rgba(0,30,45,0.05)] flex flex-col justify-between transition-opacity duration-500 ${
-                    isCurrent ? "opacity-100" : "opacity-90 cursor-pointer hover:opacity-100"
+                  className={`w-[780px] lg:w-[840px] xl:w-[880px] max-w-[84vw] shrink-0 bg-white rounded-[26px] sm:rounded-[28px] border border-[#ECE8E2] px-7 py-8 sm:px-10 sm:py-9 shadow-[0_10px_35px_rgba(0,30,45,0.04)] flex flex-col justify-between transition-all duration-500 ${
+                    isCurrent ? "opacity-100" : "opacity-85 cursor-pointer hover:opacity-100"
                   }`}
                 >
                   {/* Top Category Tag */}
@@ -645,7 +645,7 @@ export default function ConnectedModules({
 
           {/* 3 Pagination Capsule Bars matching Desktop 100% */}
           <div
-            className="flex items-center justify-center gap-2.5 mt-7 sm:mt-9"
+            className="flex items-center justify-center gap-2.5 mt-8 sm:mt-10"
             role="tablist"
             aria-label="Module cards navigation"
           >
@@ -659,7 +659,7 @@ export default function ConnectedModules({
                   aria-selected={isActive}
                   aria-label={`Go to slide ${idx + 1}`}
                   onClick={() => setActiveCardIndex(idx)}
-                  className={`h-[3.5px] rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`h-[4px] rounded-full transition-all duration-300 cursor-pointer ${
                     isActive ? "w-12 sm:w-14 bg-[#E56A1E]" : "w-12 sm:w-14 bg-[#CFD5D8] hover:bg-[#B4BEC2]"
                   }`}
                 />

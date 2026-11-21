@@ -120,9 +120,9 @@ function CardItem({ card }: { card: OneConnectCard }) {
 }
 
 export default function  OneConnect({
-  eyebrow = "ONE CONNECTED PLATFORM",
-  title = "Connect People, Align\nPerformance, Manage Tasks.",
-  description = "Claripa is an AI-powered workforce intelligence platform that brings people management, performance management, and task management together. It helps organisations manage employee information, align individual and organisational goals, track performance, and connect tasks with objectives.",
+  eyebrow = "One Connected Platform – Your Complete Performance Ecosystem",
+  title = "From Organizational \nGoals to Everyday Impact.",
+  description = "Claripa uses AI to connect organizational strategy with people, performance, and everyday work—translating business goals into clear priorities and actionable tasks, so every employee knows what to do, why it matters, and how their contribution drives organizational success.",
   cards = defaultOneConnectCards,
   speedSeconds,
   className,
@@ -168,9 +168,9 @@ export default function  OneConnect({
       <div className="px-[5%]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-30 items-center">
           {/* Left Column: Heading & Description */}
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-start items-start">
             {/* Eyebrow */}
-            <p className="flex items-center gap-2 font-mono text-xs sm:text-base font-semibold tracking-tight uppercase text-[#E56A1E] mb-3 sm:mb-4">
+            <p className="flex items-center text-left gap-2 font-mono text-xs sm:text-base font-semibold tracking-tight uppercase text-[#E56A1E] mb-3 sm:mb-4">
               <span
                 aria-hidden="true"
                 className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shrink-0"

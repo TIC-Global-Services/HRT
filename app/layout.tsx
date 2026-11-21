@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import SmoothScroller from "@/reuseable/SmoothScroller";
 import Navabar from "@/reuseable/Navabar";
 import Footer from "@/reuseable/Footer";
+import CookieConsentBanner from "@/reuseable/CookieConsentBanner";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -82,6 +83,7 @@ export default function RootLayout({
           <Navabar />
           <main className="flex-1 w-full max-w-full min-w-0">{children}</main>
           <Footer />
+          <CookieConsentBanner />
         </SmoothScroller>
       </body>
     </html>

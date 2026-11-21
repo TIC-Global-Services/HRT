@@ -155,22 +155,22 @@ const Footer: React.FC = () => {
                     EMAIL
                   </span>
                   <a
-                    href="mailto:info@hrtconsulting.co.in"
+                    href="mailto:info@claripa.com"
                     className="text-white hover:text-white transition-colors"
                   >
-                    info@hrtconsulting.co.in
+                    info@claripa.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     PHONE
                   </span>
-                  <a
+                  {/* <a
                     href="tel:+919811208080"
                     className="text-white hover:text-white transition-colors"
                   >
                     +91 9811208080
-                  </a>
+                  </a> */}
                 </div>
               </div>
 
@@ -417,7 +417,7 @@ const Footer: React.FC = () => {
 
             <div className="flex items-center gap-4 md:gap-6">
               <Link
-                href="/contact-us"
+                href="/privacy-policy"
                 className="hover:text-white transition-colors underline underline-offset-4"
               >
                 Privacy Policy
@@ -428,12 +428,17 @@ const Footer: React.FC = () => {
               >
                 Terms of Use
               </Link>
-              <Link
-                href="/contact-us"
-                className="hover:text-white transition-colors underline underline-offset-4"
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new Event("open-cookie-banner"));
+                  }
+                }}
+                className="hover:text-white transition-colors underline underline-offset-4 bg-transparent border-none p-0 text-inherit font-inherit cursor-pointer"
               >
                 Cookie Settings
-              </Link>
+              </button>
             </div>
 
             <p className="text-white/80">

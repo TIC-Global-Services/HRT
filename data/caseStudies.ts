@@ -23,8 +23,10 @@ export const allCaseStudies: BlogPost[] = [
       "Software services leadership and engineering team collaborating in a modern office",
     ctaCard: {
       eyebrow: "WORKFORCE INTELLIGENCE",
-      title: "Ready to see what Nexohra surfaces in your organization?",
-      buttonText: "Speak with Our Team",
+      title: "See where your workforce stands today",
+      description:
+        "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.",
+      buttonText: "BOOK A DISCOVERY CALL",
       buttonHref: "/contact-us",
     },
     sections: [
@@ -133,10 +135,6 @@ export const allCaseStudies: BlogPost[] = [
             type: "paragraph",
             text: "Attrition in experienced talent cohorts is rarely sudden. The signals are present long before a resignation arrives, that goes unaddressed. The difference between losing your best people and keeping them is often not a policy or a pay revision. It is the intelligence to see what's happening early enough to act.",
           },
-          {
-            type: "paragraph",
-            text: "Attrition in experienced talent cohorts is rarely sudden. The signals are present long before a resignation arrives, that goes unaddressed. The difference between losing your best people and keeping them is often not a policy or a pay revision. It is the intelligence to see what's happening early enough to act.",
-          },
         ],
       },
       {
@@ -173,10 +171,10 @@ export const allCaseStudies: BlogPost[] = [
       "Engineer holding a semiconductor processor above an engineering test board",
     ctaCard: {
       eyebrow: "WORKFORCE INTELLIGENCE",
-      title: "Explore Onboarding Intelligence with Nexohra",
+      title: "See where your workforce stands today",
       description:
-        "If your organization is scaling hiring but struggling with ramp-up consistency or early attrition, we'd be glad to show you what this could look like in your context.",
-      buttonText: "Speak With Our Team",
+        "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.",
+      buttonText: "BOOK A DISCOVERY CALL",
       buttonHref: "/contact-us",
     },
     sections: [
@@ -303,8 +301,10 @@ export const allCaseStudies: BlogPost[] = [
       "Engineering leaders aligning global program priorities and performance metrics on a team board",
     ctaCard: {
       eyebrow: "WORKFORCE INTELLIGENCE",
-      title: "Explore Performance Intelligence with Nexohra",
-      buttonText: "Speak with Our Team",
+      title: "See where your workforce stands today",
+      description:
+        "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.",
+      buttonText: "BOOK A DISCOVERY CALL",
       buttonHref: "/contact-us",
     },
     sections: [
@@ -399,16 +399,16 @@ export const allCaseStudies: BlogPost[] = [
           },
         ],
       },
-      // {
-      //   id: "explore-performance-intelligence-with-nexohra",
-      //   title: "Explore Performance Intelligence with Nexohra",
-      //   blocks: [
-      //     {
-      //       type: "paragraph",
-      //       text: "Speak with Our Team",
-      //     },
-      //   ],
-      // },
+      {
+        id: "explore-performance-intelligence-with-nexohra",
+        title: "Explore Performance Intelligence with Nexohra",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Speak with Our Team",
+          },
+        ],
+      },
     ],
   },
 ];

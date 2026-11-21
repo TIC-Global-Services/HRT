@@ -203,7 +203,7 @@ export default function SolutionsHero({
   return (
     <section className="pt-10 sm:pt-12 pb-0">
       <div className="flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-[#F8750C] font-mono text-lg font-medium tracking-tight">
+        <p className="inline-flex items-center gap-2 text-[#F8750C] font-geist-mono text-lg font-medium tracking-tight">
           {eyebrow}
         </p>
         <BlurText
@@ -211,7 +211,7 @@ export default function SolutionsHero({
           text={title}
           trigger="load"
           delay={20}
-          className="my-2.5 text-[#002E40] text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
+          className="my-2.5 text-[#002E40] font-sora text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
         />
         <BlurText
           as="p"
@@ -234,7 +234,7 @@ export default function SolutionsHero({
       <div
         ref={containerRef}
         aria-label="Examples of workforce insights"
-        className="mt-9 mx-4 sm:mx-6 lg:mx-auto max-w-[1330px] min-h-[436px] flex items-center justify-center p-6 sm:p-10 lg:px-14 overflow-hidden rounded-[28px] border border-[#b7cdd2] bg-gradient-to-r from-white via-[#fffaf5] to-[#fff0e4]"
+        className="mt-9 mx-4 sm:mx-6 lg:mx-auto max-w-[1330px] min-h-[436px] flex items-center justify-center p-6 sm:p-10 lg:px-14 overflow-hidden rounded-[28px] border border-[#b7cdd2] bg-gradient-to-r from-white via-[#fffaf5] to-[#fff0e4] font-sora"
         role="group"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4.5 w-full max-w-[1112px] items-center">

@@ -6,6 +6,13 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BlurText from "@/reuseable/BlurText";
+import { allCaseStudies } from "@/data/caseStudies";
+
+export interface CaseStudyStat {
+  value: string;
+  label: string;
+  highlighted?: boolean;
+}
 
 export interface CaseStudyItem {
   id: string;
@@ -13,55 +20,91 @@ export interface CaseStudyItem {
   title: string;
   href: string;
   imageSrc: string;
-  stats: {
-    value: string;
-    label: string;
-    highlighted?: boolean;
-  }[];
+  stats: CaseStudyStat[];
 }
 
-// Exactly 2 case studies as specified
-export const caseStudiesData: CaseStudyItem[] = [
+// Domain categories and dual metrics mapped from each case study in data/caseStudies.ts
+const caseStudyMetricsMap: Record<
+  string,
   {
-    id: "semiconductor-engineering",
-    category: "SEMICONDUCTOR ENGINEERING",
-    title: "How a Semiconductor Design \nCenter Accelerated Engineering Ramp-Up",
-    href: "/case-studies/semiconductor-design-center",
-    imageSrc: "/real-world-impact-1.jpg",
-    stats: [
-      {
-        value: "28%",
-        label: "Reduction in first-six-month attrition",
-        highlighted: false,
-      },
-      {
-        value: "40%",
-        label: "Reduction in time to meaningful contribution",
-        highlighted: true,
-      },
-    ],
-  },
-  {
-    id: "enterprise-technology",
-    category: "ENTERPRISE TECHNOLOGY",
-    title:
-      "How a Global Software Enterprise Retained Critical Engineering Talent Across 14 Hubs",
-    href: "/case-studies/enterprise-technology-retention",
-    imageSrc: "/real-world-impact-2.jpg",
+    category: string;
+    stats: CaseStudyStat[];
+  }
+> = {
+  "software-services-firm-attrition-transformation": {
+    category: "SOFTWARE SERVICES",
     stats: [
       {
         value: "34%",
-        label: "Increase in leadership bench depth",
-        highlighted: false,
+        label: "Reduction in voluntary attrition across 3–5 yr cohort",
+        highlighted: true,
       },
       {
-        value: "55%",
-        label: "Reduction in unprompted key-talent flight risk",
-        highlighted: true,
+        value: "< 3 wks",
+        label: "Average time between meaningful performance check-ins",
+        highlighted: false,
       },
     ],
   },
-];
+  "semiconductor-design-center-engineering-ramp-up": {
+    category: "SEMICONDUCTOR ENGINEERING",
+    stats: [
+      {
+        value: "40%",
+        label: "Faster time to meaningful engineering contribution",
+        highlighted: true,
+      },
+      {
+        value: "28%",
+        label: "Reduction in first-six-month new-hire attrition",
+        highlighted: false,
+      },
+    ],
+  },
+  "automotive-gcc-india-performance-visibility": {
+    category: "AUTOMOTIVE GCC",
+    stats: [
+      {
+        value: "25–30%",
+        label: "Improvement in cross-team goal alignment",
+        highlighted: true,
+      },
+      {
+        value: "2×",
+        label: "Increase in frequency of meaningful performance conversations",
+        highlighted: false,
+      },
+    ],
+  },
+};
+
+// Generated dynamically from allCaseStudies dataset
+export const caseStudiesData: CaseStudyItem[] = allCaseStudies.map((study) => {
+  const metrics = caseStudyMetricsMap[study.slug] || {
+    category: study.topic ? `${study.topic} · CASE STUDY` : study.category,
+    stats: [
+      {
+        value: study.statsHighlight?.value || "—",
+        label: study.statsHighlight?.label || "Measurable business outcome",
+        highlighted: true,
+      },
+      {
+        value: "100%",
+        label: "Visibility into team performance signals",
+        highlighted: false,
+      },
+    ],
+  };
+
+  return {
+    id: study.id,
+    category: metrics.category,
+    title: study.title,
+    href: `/insight/${study.slug}`,
+    imageSrc: study.image,
+    stats: metrics.stats,
+  };
+});
 
 export default function BetterPeople() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -82,11 +125,7 @@ export default function BetterPeople() {
 
       if (firstCardRef.current) {
         const cardWidth = firstCardRef.current.offsetWidth;
-        const gap = desktop
-          ? 28
-          : window.innerWidth >= 640
-          ? 32
-          : 24;
+        const gap = desktop ? 28 : window.innerWidth >= 640 ? 32 : 24;
         const leftPadding = window.innerWidth * 0.05;
         const rightPadding = window.innerWidth * 0.05;
         const totalContentWidth =
@@ -169,7 +208,7 @@ export default function BetterPeople() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Centered Header Section */}
+      {/* Centered Header Section (Untouched original design) */}
       <div className="px-[5%] mb-8 sm:mb-10 lg:mb-12 flex flex-col items-center text-center">
         {/* Eyebrow */}
         <div className="inline-flex items-center justify-center gap-2 text-[11px] sm:text-base font-geist-mono font-medium tracking-tight text-[#F06A25] uppercase mb-3.5">
@@ -188,9 +227,9 @@ export default function BetterPeople() {
           className="font-sora text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.03em] text-[#254F5F] leading-[1.14] mb-0 lg:mb-6"
         />
 
-        {/* Desktop CTA Pill (Hidden on Mobile & Tablet, placed at bottom on mobile/tablet like Casestudycarosal) */}
+        {/* Desktop CTA Pill (Hidden on Mobile & Tablet) */}
         <Link
-          href="/case-studies"
+          href="/insight"
           className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#ECE8E2] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:border-[#F06A25]/40 text-[#142938] text-base font-mono font-medium tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-0.5"
         >
           <span>READ MORE SUCCESS STUDIES</span>
@@ -251,7 +290,7 @@ export default function BetterPeople() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent sm:hidden" />
                 </div>
 
-                {/* Inset White Content Card - Auto height on mobile/tablet to prevent cutting off */}
+                {/* Inset White Content Card */}
                 <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] lg:bg-[#FAF9F7] rounded-[24px] sm:rounded-[28px] lg:rounded-[20px] p-5 sm:p-8 lg:p-9 shadow-xl lg:shadow-sm border border-neutral-100/90 lg:border-[#F0ECE6] w-full sm:w-[480px] lg:w-[460px] h-auto md:h-full lg:h-full flex flex-col justify-between">
                   <div>
                     {/* Category */}
@@ -307,7 +346,7 @@ export default function BetterPeople() {
         </div>
       </div>
 
-      {/* Bottom Pagination Indicators matching Casestudycarosal */}
+      {/* Bottom Pagination Indicators */}
       <div className="flex items-center justify-center gap-3 lg:gap-2.5 mt-6 sm:mt-8 lg:mt-7 px-[5%]">
         {caseStudiesData.map((_, dotIdx) => {
           const isCurrent = currentIndex === dotIdx;
@@ -319,8 +358,6 @@ export default function BetterPeople() {
               onClick={() => setCurrentIndex(dotIdx)}
               className={cn(
                 "relative rounded-full transition-all duration-300 cursor-pointer focus:outline-none overflow-hidden",
-                // Mobile & Tablet: h-1.5 animated pulse pills
-                // Desktop: h-[3.5px] untouched
                 "h-1.5 lg:h-[3.5px]",
                 isCurrent
                   ? "w-14 sm:w-16 lg:w-14 bg-[#E26D35] lg:bg-[#F06A25]"
@@ -335,10 +372,10 @@ export default function BetterPeople() {
         })}
       </div>
 
-      {/* Bottom CTA Button (Mobile & Tablet only, matching Casestudycarosal) */}
+      {/* Bottom CTA Button (Mobile & Tablet only) */}
       <div className="flex items-center justify-center mt-7 sm:mt-8 px-[5%] lg:hidden">
         <Link
-          href="/case-studies"
+          href="/insight"
           className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#F4F4F4] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
         >
           <span>READ MORE SUCCESS STUDIES</span>
