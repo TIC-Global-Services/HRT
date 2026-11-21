@@ -43,6 +43,13 @@ export interface BlogPost {
     value: string;
     label: string;
   };
+  ctaCard?: {
+    eyebrow?: string;
+    title: string;
+    description?: string;
+    buttonText: string;
+    buttonHref?: string;
+  };
   sections: BlogSection[];
 }
 

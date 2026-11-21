@@ -21,6 +21,12 @@ export const allCaseStudies: BlogPost[] = [
     image: "/case-study-1.png",
     coverImageAlt:
       "Software services leadership and engineering team collaborating in a modern office",
+    ctaCard: {
+      eyebrow: "WORKFORCE INTELLIGENCE",
+      title: "Ready to see what Nexohra surfaces in your organization?",
+      buttonText: "Speak with Our Team",
+      buttonHref: "/contact-us",
+    },
     sections: [
       {
         id: "overview",
@@ -116,6 +122,31 @@ export const allCaseStudies: BlogPost[] = [
               "Compensation gaps were addressed proactively for multiple individuals, before any of them had initiated external conversations",
             ],
           },
+          {
+            type: "quote",
+            quote: {
+              text: "We went from finding out at the exit interview to finding out months earlier- when we could still do something about it. That shift alone changed everything.",
+              author: "DIRECTOR, OPERATIONS",
+            },
+          },
+          {
+            type: "paragraph",
+            text: "Attrition in experienced talent cohorts is rarely sudden. The signals are present long before a resignation arrives, that goes unaddressed. The difference between losing your best people and keeping them is often not a policy or a pay revision. It is the intelligence to see what's happening early enough to act.",
+          },
+          {
+            type: "paragraph",
+            text: "Attrition in experienced talent cohorts is rarely sudden. The signals are present long before a resignation arrives, that goes unaddressed. The difference between losing your best people and keeping them is often not a policy or a pay revision. It is the intelligence to see what's happening early enough to act.",
+          },
+        ],
+      },
+      {
+        id: "ready-to-see-what-nexohra-surfaces-in-your-organization",
+        title: "Ready to see what Nexohra surfaces in your organization?",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Speak with Our Team",
+          },
         ],
       },
     ],
@@ -140,6 +171,14 @@ export const allCaseStudies: BlogPost[] = [
     image: "/case-study-2.png",
     coverImageAlt:
       "Engineer holding a semiconductor processor above an engineering test board",
+    ctaCard: {
+      eyebrow: "WORKFORCE INTELLIGENCE",
+      title: "Explore Onboarding Intelligence with Nexohra",
+      description:
+        "If your organization is scaling hiring but struggling with ramp-up consistency or early attrition, we'd be glad to show you what this could look like in your context.",
+      buttonText: "Speak With Our Team",
+      buttonHref: "/contact-us",
+    },
     sections: [
       {
         id: "overview",
@@ -235,7 +274,7 @@ export const allCaseStudies: BlogPost[] = [
           },
           {
             type: "paragraph",
-            text: "Speak With Our Team   | Request a Demo",
+            text: "Speak With Our Team",
           },
         ],
       },
@@ -262,6 +301,12 @@ export const allCaseStudies: BlogPost[] = [
     image: "/case-study-3.png",
     coverImageAlt:
       "Engineering leaders aligning global program priorities and performance metrics on a team board",
+    ctaCard: {
+      eyebrow: "WORKFORCE INTELLIGENCE",
+      title: "Explore Performance Intelligence with Nexohra",
+      buttonText: "Speak with Our Team",
+      buttonHref: "/contact-us",
+    },
     sections: [
       {
         id: "overview",

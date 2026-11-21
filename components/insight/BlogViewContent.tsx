@@ -7,8 +7,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Calendar,
-  Clock,
   Copy,
   Check,
   Share2,
@@ -509,25 +507,30 @@ export default function BlogViewContent({ blog }: BlogViewContentProps) {
               {/* Consultation / Assessment CTA */}
               <div className="bg-gradient-to-br from-orange-500 to-[#F06A25] text-white rounded-[24px] p-6 shadow-md relative overflow-hidden">
                 <span className="font-mono text-[10px] font-bold tracking-widest uppercase bg-white/20 px-2.5 py-1 rounded-full inline-block mb-3">
-                  WORKFORCE INTELLIGENCE
+                  {blog.ctaCard?.eyebrow || "WORKFORCE INTELLIGENCE"}
                 </span>
                 <BlurText
                   as="h4"
-                  text="See where your workforce stands today"
+                  text={blog.ctaCard?.title || "See where your workforce stands today"}
                   delay={20}
                   className="font-heading text-xl font-medium mb-2 leading-snug"
                 />
-                <BlurText
-                  as="p"
-                  text="Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line."
-                  delay={20}
-                  className="font-sans text-xs text-white/90 leading-relaxed mb-5"
-                />
+                {(blog.ctaCard?.description || (!blog.ctaCard && "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line.")) && (
+                  <BlurText
+                    as="p"
+                    text={
+                      blog.ctaCard?.description ||
+                      "Discover how Claripa unifies performance signals and predicts flight risk before it impacts your bottom line."
+                    }
+                    delay={20}
+                    className="font-sans text-xs text-white/90 leading-relaxed mb-5"
+                  />
+                )}
                 <Link
-                  href="/contact-us"
+                  href={blog.ctaCard?.buttonHref || "/contact-us"}
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-white text-[#F06A25] font-mono text-xs font-semibold uppercase tracking-wider shadow-xs hover:bg-orange-50 transition-colors"
                 >
-                  <span>BOOK A DISCOVERY CALL</span>
+                  <span>{blog.ctaCard?.buttonText || "BOOK A DISCOVERY CALL"}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
