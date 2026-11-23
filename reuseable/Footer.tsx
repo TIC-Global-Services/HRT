@@ -25,9 +25,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer
-      className={`relative w-full max-w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${
-        isHome ? "bg-white" : "bg-[#F7F6F3]"
-      }`}
+      className={`relative w-full max-w-full overflow-hidden text-slate-100 mt-auto transition-colors duration-200 ${isHome ? "bg-white" : "bg-[#F7F6F3]"
+        }`}
     >
       {/* 1. "Make Your Next Move" CTA Section */}
       <div className="relative z-30">
@@ -78,7 +77,7 @@ const Footer: React.FC = () => {
           className="absolute -top-28 sm:-top-36 left-1/2 -translate-x-1/2 w-[600px] sm:w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(240,106,37,0.18)_0%,rgba(255,160,80,0.08)_50%,transparent_75%)] pointer-events-none -z-10 blur-xl"
           aria-hidden="true"
         />
-       
+
 
         {/* 3D Carved Wooden Chess Queen Piece (Layer z-10, behind the card) */}
         {/* Crown sticks out above the card, body blurs behind the frosted glass, and base peeks out below */}
@@ -142,29 +141,32 @@ const Footer: React.FC = () => {
 
               {/* Contact Info Meta */}
               <div className="space-y-1.5 text-[11px] sm:text-base font-mono text-white">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-start gap-2">
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     Headquarters
                   </span>
-                  <span className="text-white uppercase">
-                    BENGALURU, KARNATAKA
+                  <span className="text-white uppercase text-sm">
+                    HRT Consulting Private Limited
+                    WeWork Lightbridge, 6th Floor,
+                    Hiranandani Business Park, Powai
+                    Mumbai, MAHARASHTRA-400072
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-start gap-1">
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     EMAIL
                   </span>
                   <a
                     href="mailto:info@claripa.com"
-                    className="text-white hover:text-white transition-colors"
+                    className="text-white hover:text-white transition-colors text-sm"
                   >
                     info@claripa.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
+                  {/* <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     PHONE
-                  </span>
+                  </span> */}
                   {/* <a
                     href="tel:+919811208080"
                     className="text-white hover:text-white transition-colors"
