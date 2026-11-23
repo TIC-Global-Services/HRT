@@ -4,8 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, ArrowUpRight, Cpu, Users, FileText } from "lucide-react";
-import { AnnouncementBar } from "./breadcrum";
+import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 
 interface NavDropdownItem {
   title: string;
@@ -136,17 +135,18 @@ const Navabar: React.FC = () => {
   };
 
   return (
-    <header
-      className={`top-6 mt-6 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 ${
-        isHome
-          ? `sticky bg-white/80 backdrop-blur-md ${
-              scrolled
-                ? "border-b border-[#EAE6DF]"
-                : "border-b border-transparent"
-            }`
-          : "bg-transparent border-b-transparent"
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+          isHome
+            ? scrolled || mobileMenuOpen
+              ? "bg-white/95 backdrop-blur-md border-b border-[#EAE6DF] shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
+              : "bg-white/80 backdrop-blur-md border-b border-transparent"
+            : scrolled || mobileMenuOpen
+              ? "bg-[#F7F6F3]/95 backdrop-blur-md border-b border-[#EAE6DF] shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
+              : "bg-[#F7F6F3]/80 backdrop-blur-md border-b border-transparent"
+        }`}
+      >
       {/* 1. Top Announcement Bar */}
       {/* <div
         className={`w-full transition-colors font-sora duration-200 ${
@@ -306,8 +306,9 @@ const Navabar: React.FC = () => {
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div
-            className={`lg:hidden border-t border-slate-200 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-xl ${isHome ? "bg-white/95 backdrop-blur-xl" : "bg-[#F7F6F3]"
-              }`}
+            className={`lg:hidden border-t border-slate-200 px-5 py-6 space-y-4 max-h-[calc(100vh-68px)] sm:max-h-[calc(100vh-72px)] overflow-y-auto animate-in slide-in-from-top-4 duration-200 shadow-xl ${
+              isHome ? "bg-white/95 backdrop-blur-xl" : "bg-[#F7F6F3]"
+            }`}
           >
             <div className="space-y-2">
               {navItems.map((item) => {
@@ -377,7 +378,10 @@ const Navabar: React.FC = () => {
         )}
       </nav>
     </header>
-  );
+    {/* Spacer to preserve layout flow beneath fixed header */}
+    <div className="h-[68px] sm:h-[72px] w-full shrink-0" aria-hidden="true" />
+  </>
+);
 };
 
 export default Navabar;

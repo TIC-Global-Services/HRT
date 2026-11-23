@@ -75,7 +75,7 @@ export default function IntegrationsTrust() {
           <div className="rounded-[28px] sm:rounded-[34px] bg-[#FAF8F4] border border-[#EAE6DF] p-5 sm:p-8 lg:p-9 flex flex-col  md:justify-between shadow-xs">
             {/* Header Content */}
             <div className="md:max-w-md w-full">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#F8780C] uppercase mb-2.5 text-center md:text-left">
+              <div className="text-[11px] sm:text-xs font-geist-mono font-medium tracking-tight text-[#F8780C] uppercase mb-2.5 text-center md:text-left">
                 INTEGRATIONS
               </div>
               <BlurText
@@ -155,21 +155,21 @@ export default function IntegrationsTrust() {
               ========================================================================= */}
           <div className="rounded-[28px] sm:rounded-[34px] bg-[#254F5F] border border-[#1E4351] text-white p-6 sm:p-8 lg:p-9 flex flex-col gap-20 justify-between shadow-xl">
             {/* Header Content */}
-            <div className="max-w-md">
-              <div className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider text-[#FF7324] uppercase mb-2.5 text-center md:text-left">
+            <div className="max-w-lg">
+              <div className="text-[11px] sm:text-xs font-mono font-medium tracking-wider text-[#FF7324] uppercase mb-2.5 text-center md:text-left">
                 SECURITY & TRUST
               </div>
               <BlurText
                 as="h3"
                 delay={20}
                 text={"Your Workforce Data\nDeserves Careful Protection"}
-                className="font-sora text-xl hidden lg:block sm:text-2xl lg:text-[24px] font-bold tracking-tight text-white leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
+                className="font-sora text-xl hidden lg:block sm:text-2xl lg:text-[24px] font-semibold tracking-tight text-white leading-[1.2] mb-2.5 whitespace-pre-line text-center md:text-left"
               />
               <BlurText
                 as="h3"
                 delay={20}
                 text={"Your Workforce Data Deserves Careful Protection"}
-                className="font-sora text-[28px] lg:hidden sm:text-2xl lg:text-[24px] font-normal tracking-tight text-white leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
+                className="font-sora text-[28px] lg:hidden sm:text-2xl lg:text-[24px] font-normal tracking-tight text-[#ECE9E3] leading-[1.25] mb-2.5 whitespace-pre-line text-center md:text-left"
               />
               <BlurText
                 as="p"
@@ -187,7 +187,7 @@ export default function IntegrationsTrust() {
                   Security claims
                 </span>
               </div>
-              <p className="font-sora text-xs sm:text-sm text-[#9AAEB8] leading-[1.2] m-0 text-center md:text-left">
+              <p className="font-sora text-xs sm:text-sm text-[#ADB5BD] leading-[1.2] m-0 text-center md:text-left">
                 Ask Engineering/Security to confirm encryption, role-based access, data residency, compliance certifications and hosting details. Do not claim a control or certification unless verified.
               </p>
             </div>

@@ -305,8 +305,8 @@ function hexToRgb(hex: string): [number, number, number] {
 }
 
 export default function FlutedGlassBackground({
-    colorA = "#FFA812",
-    colorB = "#FF4D0A",
+    colorA = "#FBD9C2",
+    colorB = "#F8720C",
     background = "#FFFFFF",
     desktopSlits = 1440 / 76.55,
     mobileSlitWidth = 76.5,

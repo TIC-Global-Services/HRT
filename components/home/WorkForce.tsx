@@ -504,7 +504,7 @@ export default function Workforce() {
         <div className="flex flex-col items-center lg:flex-row lg:items-end lg:justify-between gap-6 sm:gap-8 pb-8 sm:pb-12 text-center lg:text-left">
           {/* Left: Eyebrow + Headline */}
           <div className="max-w-2xl flex flex-col items-center lg:items-start">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#F06A25] uppercase mb-3">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold font-geist-mono tracking-tight text-[#F06A25] uppercase mb-3">
               <span className="w-2 h-2 rounded-full bg-[#F06A25] shadow-[0_0_8px_rgba(240,106,37,0.7)] shrink-0" />
               <span>{eyebrow}</span>
             </div>
@@ -556,14 +556,14 @@ export default function Workforce() {
             </div>
             <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
               <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[0].title}
                 </h3>
                 <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </div>
               {cards[0].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4  overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[0].description}
                   </p>
                 </div>
@@ -582,14 +582,14 @@ export default function Workforce() {
             </div>
             <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
               <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[1].title}
                 </h3>
                 <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </div>
               {cards[1].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[1].description}
                   </p>
                 </div>
@@ -608,14 +608,14 @@ export default function Workforce() {
             </div>
             <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
               <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[2].title}
                 </h3>
                 <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </div>
               {cards[2].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[2].description}
                   </p>
                 </div>
@@ -634,14 +634,14 @@ export default function Workforce() {
             </div>
             <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
               <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
+                <h3 className="font-heading text-2xl sm:text-2xl font-sora font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
                   {cards[3].title}
                 </h3>
                 <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </div>
               {cards[3].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-sm text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
+                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+                  <p className="font-sans text-sm sm:text-lg text -zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
                     {cards[3].description}
                   </p>
                 </div>

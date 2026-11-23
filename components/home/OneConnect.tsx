@@ -120,7 +120,7 @@ function CardItem({ card }: { card: OneConnectCard }) {
 }
 
 export default function  OneConnect({
-  eyebrow = "One Connected Platform – Your Complete Performance Ecosystem",
+  eyebrow = "Your Complete Performance Ecosystem",
   title = "From Organizational \nGoals to Everyday Impact.",
   description = "Claripa uses AI to connect organizational strategy with people, performance, and everyday work—translating business goals into clear priorities and actionable tasks, so every employee knows what to do, why it matters, and how their contribution drives organizational success.",
   cards = defaultOneConnectCards,

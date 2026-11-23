@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
           />
           {/* Live interactive WebGL2 Shader Layer */}
           <div className="absolute inset-0">
-            <FlutedGlassBackground/>
+            <FlutedGlassBackground />
           </div>
         </div>
 
@@ -114,28 +114,24 @@ const HeroSection: React.FC = () => {
         {/* 5. Dashboard Preview Container with 3 Floating Indicator Cards matching Image 2 */}
         <div className="relative max-w-5xl lg:max-w-[1100px] mx-auto mt-12 sm:mt-16 md:mt-10">
           {/* Main Mockup Frame */}
-          <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-0 bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-[0_25px_60px_-15px_rgba(240,106,37,0.12),0_15px_35px_-10px_rgba(15,23,42,0.08)]">
-            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-inner h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+          <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-0  h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px]   ">
+            {/* <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl"> */}
               <Image
                 src="/claripa-dashboard-new.png"
                 alt="Claripa AI Dashboard - Welcome back, Aarav"
-                // width={2496}
-                // height={1664}
                 fill
                 priority
-                className="w-full h-auto object-contain block"
-                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+                className="object-contain rounded-2xl"
               />
-            </div>
+            {/* </div> */}
           </div>
 
           {/* Floating Card 1: Left - "New hire on track" */}
           <div
-            className={`absolute -left-2 sm:-left-2 lg:-left-10 top-[20%] sm:top-[32%] z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-              isScrolled
-                ? "opacity-100 scale-100 translate-x-0 translate-y-0"
-                : "opacity-0 scale-50 -translate-x-8 translate-y-6 pointer-events-none"
-            }`}
+            className={`absolute -left-2 sm:-left-2 lg:-left-10 top-[20%] sm:top-[32%] z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${isScrolled
+              ? "opacity-100 scale-100 translate-x-0 translate-y-0"
+              : "opacity-0 scale-50 -translate-x-8 translate-y-6 pointer-events-none"
+              }`}
             style={{ transitionDelay: isScrolled ? "100ms" : "0ms" }}
           >
             <div className="animate-float-1">
@@ -157,11 +153,10 @@ const HeroSection: React.FC = () => {
 
           {/* Floating Card 2: Bottom-Left - "Ask Claripa" peach card */}
           <div
-            className={`absolute -left-1 sm:-left-2 lg:-left-8 -bottom-20 sm:-bottom-10 md:-bottom-12 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-              isScrolled
-                ? "opacity-100 scale-100 translate-x-0 translate-y-0"
-                : "opacity-0 scale-50 -translate-x-6 translate-y-10 pointer-events-none"
-            }`}
+            className={`absolute -left-1 sm:-left-2 lg:-left-8 -bottom-20 sm:-bottom-10 md:-bottom-12 z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${isScrolled
+              ? "opacity-100 scale-100 translate-x-0 translate-y-0"
+              : "opacity-0 scale-50 -translate-x-6 translate-y-10 pointer-events-none"
+              }`}
             style={{ transitionDelay: isScrolled ? "280ms" : "0ms" }}
           >
             <div className="animate-float-2">
@@ -189,11 +184,10 @@ const HeroSection: React.FC = () => {
 
           {/* Floating Card 3: Right - "Manager attention needed" */}
           <div
-            className={`absolute -right-2 sm:-right-6 lg:-right-10 top-[45%] sm:top-[48%] z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${
-              isScrolled
-                ? "opacity-100 scale-100 translate-x-0 translate-y-0"
-                : "opacity-0 scale-50 translate-x-8 translate-y-6 pointer-events-none"
-            }`}
+            className={`absolute -right-2 sm:-right-6 lg:-right-10 top-[45%] sm:top-[48%] z-20 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${isScrolled
+              ? "opacity-100 scale-100 translate-x-0 translate-y-0"
+              : "opacity-0 scale-50 translate-x-8 translate-y-6 pointer-events-none"
+              }`}
             style={{ transitionDelay: isScrolled ? "460ms" : "0ms" }}
           >
             <div className="animate-float-3">

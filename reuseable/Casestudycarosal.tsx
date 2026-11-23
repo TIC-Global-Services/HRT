@@ -153,9 +153,8 @@ export default function CaseStudyCarousel({
           {/* Left Column: Eyebrow, Headline, and CTA Pill */}
           <div className="max-w-xl flex flex-col items-center lg:items-start">
             {/* Eyebrow */}
-            <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
-              <span className="text-base leading-none font-bold">*</span>
-              <span>{eyebrow}</span>
+            <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-base font-medium tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
+              <span> <span className="text-base leading-none font-bold mr-2 mt-2">*</span>{eyebrow}</span>
             </div>
 
             {/* Headline */}
@@ -184,7 +183,7 @@ export default function CaseStudyCarousel({
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-sm sm:text-lg text-slate-500 leading-[1.2] text-center lg:text-left"
+              className="font-sora text-sm sm:text-lg text-slate-500 leading-[1.3] text-center lg:text-left"
             />
           </div>
         </div>
@@ -247,7 +246,8 @@ export default function CaseStudyCarousel({
                     <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2 sm:mb-3">
                       {study.category}
                     </div>
-
+                  </div>
+                  <div>
                     {/* Title */}
                     <BlurText
                       as="h3"
@@ -275,7 +275,7 @@ export default function CaseStudyCarousel({
                       <div key={sIdx} className="flex flex-col">
                         <span
                           className={cn(
-                            "text-[26px] sm:text-[42px] font-geist font-bold tracking-tight leading-none mb-1",
+                            "text-[26px] sm:text-[42px] font-geist font-medium tracking-tight leading-none mb-1",
                             stat.highlighted
                               ? "text-[#F8720C]"
                               : "text-[#62737A]"
@@ -283,7 +283,7 @@ export default function CaseStudyCarousel({
                         >
                           {stat.value}
                         </span>
-                        <span className="text-[10px] md:text-sm text-[#62737A] leading-[1.2]">
+                        <span className="text-[10px] md:text-sm font-sora font-semibold text-[#62737A] leading-[1.2]">
                           {stat.label}
                         </span>
                       </div>
