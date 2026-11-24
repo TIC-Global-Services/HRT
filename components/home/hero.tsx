@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowUp, ArrowRight, Sparkles } from "lucide-react";
 import { BreadcrumbBadge } from "@/reuseable/breadcrum";
 import FlutedGlassBackground from "@/reuseable/HeroBg";
 import BlurText from "@/reuseable/BlurText";
@@ -114,16 +114,14 @@ const HeroSection: React.FC = () => {
         {/* 5. Dashboard Preview Container with 3 Floating Indicator Cards matching Image 2 */}
         <div className="relative max-w-5xl lg:max-w-[1100px] mx-auto mt-12 sm:mt-16 md:mt-10">
           {/* Main Mockup Frame */}
-          <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 md:p-0  h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px]   ">
-            {/* <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl"> */}
-              <Image
-                src="/claripa-dashboard-new.png"
-                alt="Claripa AI Dashboard - Welcome back, Aarav"
-                fill
-                priority
-                className="object-contain rounded-2xl"
-              />
-            {/* </div> */}
+          <div className="relative rounded-2xl sm:rounded-3xl lg:rounded-[38px] overflow-hidden isolate [transform:translateZ(0)] shadow-[0_25px_60px_-15px_rgba(0,46,64,0.12)] border border-[#DCE8EC] h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px]">
+            <Image
+              src="/claripa-dashboard-curved.png"
+              alt="Claripa AI Dashboard - Welcome back, Maya"
+              fill
+              priority
+              className="object-cover object-top rounded-2xl sm:rounded-3xl lg:rounded-[36px]"
+            />
           </div>
 
           {/* Floating Card 1: Left - "New hire on track" */}

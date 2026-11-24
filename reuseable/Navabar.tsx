@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
     href: "/solution-hub",
     children: [
       {
-        title: "aligngoals-and-improve-performance",
+        title: "align goals and improve performance",
         // description: "Explore all people intelligence and decision solutions",
         href: "/align-goals-and-improve-performance",
         // icon: <Users className="w-4 h-4 text-[#F06A25]" />,
@@ -243,22 +243,22 @@ const Navabar: React.FC = () => {
                   {/* Dropdown Menu */}
                   {isDropdownOpen && (
                     <div
-                      className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/80 shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-150"
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/80 shadow-xl p-6 z-50 animate-in fade-in-50 zoom-in-95 duration-150"
                       role="menu"
                     >
-                      <div className="space-y-1">
+                      <div className="space-y-4">
                         {item.children?.map((sub) => (
                           <Link
                             key={sub.title}
                             href={sub.href}
                             role="menuitem"
-                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                            className="flex items-start  p-0 rounded-xl transition-colors group/item"
                           >
                             {/* <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-xs transition-all shrink-0 mt-0.5">
                               {sub.icon}
                             </div> */}
                             <div>
-                              <div className="text-[14px] font-semibold text-black  group-hover/item:text-[#1C4E5B] transition-colors flex items-center gap-1">
+                              <div className="text-[14px] font-semibold text-black capitalize group-hover/item:text-[#F8780C] transition-colors flex items-center gap-1">
                                 {sub.title}
                                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
                               </div>
