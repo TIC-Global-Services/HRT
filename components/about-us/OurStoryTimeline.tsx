@@ -201,16 +201,16 @@ export default function OurStoryTimeline({
           >
             <FlutedGlassBackground
               preset="timeline"
-              colorA="#FFA812"
-              colorB="#FF4D0A"
+              colorA="#fcac81"
+              colorB="#ff5c1c"
               background="#FFFFFF"
               desktopSlits={12.4}
               mobileSlitWidth={74}
               desktopBreakpoint={900}
-              squeeze={1.9}
-              lip={0.045}
+              squeeze={2.9}
+              lip={0.005}
               speed={0.9}
-              mouseStrength={1}
+              mouseStrength={3}
             />
           </div>
 

@@ -147,7 +147,7 @@ export default function Objective({
             {/* CTA Button */}
             <Link
               href={ctaHref}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#102A33] hover:bg-[#183B47] text-white font-mono text-[10px] md:text-xs font-semibold uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#254F5F] hover:bg-[#183B47] text-white font-mono text-[10px] md:text-xs font-normal uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

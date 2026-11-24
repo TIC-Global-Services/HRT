@@ -35,7 +35,7 @@ export default function InsightsHero({
           text={title}
           trigger="load"
           delay={20}
-          className="text-[#002e40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-[-0.035em] leading-[1.14] sm:leading-[1.12] text-center max-w-[760px] mx-auto whitespace-pre-line mb-3.5"
+          className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-[-0.035em] leading-[1.14] sm:leading-[1.12] text-center max-w-[760px] mx-auto whitespace-pre-line mb-3.5"
         />
 
         {/* Description */}

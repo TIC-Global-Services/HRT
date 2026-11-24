@@ -27,28 +27,28 @@ const navItems: NavItem[] = [
       {
         title: "align goals and improve performance",
         // description: "Explore all people intelligence and decision solutions",
-        href: "/align-goals-and-improve-performance",
+        href: "/solution-details/align-goals-and-improve-performance",
         // icon: <Users className="w-4 h-4 text-[#F06A25]" />,
       },
       {
         title: "track tasks and execution",
-        href: "/track-tasks-and-execution",
+        href: "/solution-details/track-tasks-and-execution",
       },
       {
         title: "support employee development",
-        href: "/support-employee-development",
+        href: "/solution-details/support-employee-development",
       },
       {
         title: "empower managers",
-        href: "/empower-managers",
+        href: "/solution-details/empower-managers",
       },
       {
         title: "gain workforce performance insights",
-        href: "/gain-workforce-performance-insights",
+        href: "/solution-details/gain-workforce-performance-insights",
       },
       {
         title: "improve performance by development",
-        href: "/improve-performance-by-development",
+        href: "/solution-details/improve-performance-by-development",
       },
     ],
   },
@@ -220,25 +220,46 @@ const Navabar: React.FC = () => {
               return (
                 <div
                   key={item.label}
-                  className="relative"
+                  className="relative flex items-center"
                   onMouseEnter={() => handleMouseEnter(item.label)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button
-                    type="button"
-                    onClick={() => setActiveDropdown(isDropdownOpen ? null : item.label)}
-                    className={`inline-flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors duration-150 py-1.5 ${isDropdownOpen
-                        ? "text-slate-950 font-semibold"
-                        : "text-slate-700 hover:text-slate-950"
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      onClick={() => setActiveDropdown(null)}
+                      className={`inline-flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors duration-150 py-1.5 ${
+                        pathname === item.href || isDropdownOpen
+                          ? "text-slate-950 font-semibold"
+                          : "text-slate-700 hover:text-slate-950"
                       }`}
-                    aria-expanded={isDropdownOpen}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${isDropdownOpen ? "rotate-180 text-slate-900" : ""
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
+                          isDropdownOpen ? "rotate-180 text-slate-900" : ""
                         }`}
-                    />
-                  </button>
+                      />
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setActiveDropdown(isDropdownOpen ? null : item.label)}
+                      className={`inline-flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors duration-150 py-1.5 ${
+                        isDropdownOpen
+                          ? "text-slate-950 font-semibold"
+                          : "text-slate-700 hover:text-slate-950"
+                      }`}
+                      aria-expanded={isDropdownOpen}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
+                          isDropdownOpen ? "rotate-180 text-slate-900" : ""
+                        }`}
+                      />
+                    </button>
+                  )}
 
                   {/* Dropdown Menu */}
                   {isDropdownOpen && (
@@ -252,7 +273,8 @@ const Navabar: React.FC = () => {
                             key={sub.title}
                             href={sub.href}
                             role="menuitem"
-                            className="flex items-start  p-0 rounded-xl transition-colors group/item"
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-start p-0 rounded-xl transition-colors group/item"
                           >
                             {/* <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-xs transition-all shrink-0 mt-0.5">
                               {sub.icon}
@@ -262,9 +284,11 @@ const Navabar: React.FC = () => {
                                 {sub.title}
                                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
                               </div>
-                              <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
-                                {sub.description}
-                              </p>
+                              {sub.description && (
+                                <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
+                                  {sub.description}
+                                </p>
+                              )}
                             </div>
                           </Link>
                         ))}
@@ -337,26 +361,43 @@ const Navabar: React.FC = () => {
 
                 return (
                   <div key={item.label} className="border-b border-slate-100 pb-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setExpandedMobileSection(isExpanded ? null : item.label)
-                      }
-                      className="flex items-center justify-between w-full py-2 text-base font-medium text-slate-800"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 text-slate-500 transition-transform ${isExpanded ? "rotate-180" : ""
+                    <div className="flex items-center justify-between w-full py-2">
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-base font-medium text-slate-800 hover:text-[#1C4E5B] flex-1"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <span className="text-base font-medium text-slate-800 flex-1">
+                          {item.label}
+                        </span>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedMobileSection(isExpanded ? null : item.label)
+                        }
+                        className="p-2 -mr-2 text-slate-500 hover:text-slate-900 focus:outline-hidden"
+                        aria-label={`Toggle ${item.label} sub-menu`}
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
+                            isExpanded ? "rotate-180" : ""
                           }`}
-                      />
-                    </button>
+                        />
+                      </button>
+                    </div>
                     {isExpanded && (
                       <div className="pl-3 mt-1 space-y-2">
                         {item.children?.map((sub) => (
                           <Link
                             key={sub.title}
                             href={sub.href}
-                            className="block py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 capitalize"
                           >
                             {sub.title}
                           </Link>

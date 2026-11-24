@@ -72,7 +72,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
         <div>
           <Link
             href={buttonHref}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#1C3B47] hover:bg-[#122A33] text-white text-xs sm:text-base font-normal font-gesist tracking-tight uppercase transition-all duration-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#254F5F] hover:bg-[#214350] text-white text-xs sm:text-base font-normal font-geist-mono tracking-tight uppercase transition-all duration-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
           >
             {buttonText}
           </Link>

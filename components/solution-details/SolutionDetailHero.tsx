@@ -119,7 +119,7 @@ export default function SolutionDetailHero({
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href={talkHref}
-              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#1C3B47] text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#122A33] transition-all hover:-translate-y-0.5 shadow-sm"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#254F5F] text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#122A33] transition-all hover:-translate-y-0.5 shadow-sm"
             >
               {talkText}
             </Link>

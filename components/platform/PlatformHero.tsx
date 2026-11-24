@@ -56,7 +56,7 @@ export default function PlatformHero({
     <section className={`w-full max-w-full pt-14 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 overflow-hidden ${className}`.trim()}>
       <div className="px-[5%] w-full max-w-full flex flex-col items-center">
         {/* Eyebrow */}
-        <span className="text-[#E56A1E] font-mono text-xs sm:text-base font-medium tracking-tight uppercase text-center mb-3.5">
+        <span className="text-[#E56A1E] font-geist-mono text-xs sm:text-base font-medium tracking-tight uppercase text-center mb-3.5">
           {eyebrow}
         </span>
 
@@ -81,7 +81,7 @@ export default function PlatformHero({
         {/* CTA Button */}
         <Link
           href={tourHref}
-          className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 px-6 sm:px-7 rounded-full bg-[#1F4A59] hover:bg-[#163B47] text-white font-mono text-[11px] sm:text-base font-medium tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm cursor-pointer"
+          className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 px-6 sm:px-7 rounded-full bg-[#254F5F] hover:bg-[#214350] text-white font-mono text-[11px] sm:text-base font-medium tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm cursor-pointer"
         >
           {tourText}
           <ArrowUpRight size={16} aria-hidden="true" />
