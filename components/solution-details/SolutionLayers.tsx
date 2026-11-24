@@ -69,7 +69,7 @@ export default function SolutionLayers({
             </div>
 
             {/* Bottom Layer Pills */}
-            <div className="flex flex-wrap justify-center gap-2.5 pt-8 lg:block hidden">
+            <div className=" flex-wrap justify-start gap-2.5 pt-8 lg:flex hidden">
               {layers && layers.map((layer) => (
                 <span
                   key={layer.label}
@@ -78,11 +78,11 @@ export default function SolutionLayers({
                       : "bg-white text-[#254F5F] border border-white/80"
                     }`}
                 >
-                  {layer.label}
+                   {layer.label}
                 </span>
               ))} 
             </div>
-            <div className="flex flex-wrap justify-center gap-2.5 pt-8 lg:hidden">
+            <div className="flex flex-wrap justify-center gap-2.5  pt-8 lg:hidden">
               {layers && layers.map((layer) => (
                 <span
                   key={layer.label}
