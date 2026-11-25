@@ -265,15 +265,14 @@ export default function BetterPeople() {
                   }
                 }}
                 className={cn(
-                  "relative shrink-0 rounded-[28px] sm:rounded-[30px] lg:rounded-[24px] overflow-hidden border select-none cursor-pointer",
-                  // Mobile / Tab: w-[85vw] / w-[80vw], height matches Casestudycarosal (h-[560px] sm:h-[580px])
-                  // Desktop: w-[76vw] h-[520px] untouched
+                  "relative shrink-0 rounded-[28px] sm:rounded-[30px] overflow-hidden border select-none cursor-pointer",
+                  // Card width spans 76-85vw so adjacent card peeks nicely
                   "w-[85vw] sm:w-[80vw] lg:w-[76vw]",
-                  "h-[560px] sm:h-[580px] lg:h-[520px] flex flex-col md:flex-row lg:flex-row justify-end items-stretch md:items-end lg:items-stretch p-3 sm:p-4 lg:p-3",
+                  "h-[560px] sm:h-[580px] lg:h-[65dvh] flex flex-col md:flex-row justify-end items-stretch md:items-end p-3 sm:p-4 lg:p-3",
                   "transition-all duration-300 ease-out",
                   isCardActive
-                    ? "border-slate-300/80 lg:border-[#E3DDD5] shadow-2xl lg:shadow-[0_14px_40px_rgba(0,30,45,0.08)] opacity-100"
-                    : "border-slate-200/70 lg:border-[#E8E4DD] opacity-75 lg:opacity-80 hover:opacity-95 lg:hover:opacity-100"
+                    ? "border-slate-300/80 shadow-2xl shadow-slate-900/10 opacity-100"
+                    : "border-slate-200/70 opacity-75 hover:opacity-95"
                 )}
               >
                 {/* Background Image */}
@@ -290,28 +289,29 @@ export default function BetterPeople() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent sm:hidden" />
                 </div>
 
-                {/* Inset White Content Card */}
-                <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] lg:bg-[#FAF9F7] rounded-[24px] sm:rounded-[28px] lg:rounded-[20px] p-5 sm:p-8 lg:p-9 shadow-xl lg:shadow-sm border border-neutral-100/90 lg:border-[#F0ECE6] w-full sm:w-[480px] lg:w-[460px] h-auto md:h-full lg:h-full flex flex-col justify-between">
+                {/* Inset White Content Card - Auto height on mobile to prevent clipping */}
+                <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] rounded-[24px] sm:rounded-[28px] p-5 sm:p-8 lg:p-10 shadow-xl border border-neutral-100/90 w-full sm:w-[480px] lg:w-[530px] h-auto md:h-full flex flex-col justify-between">
                   <div>
                     {/* Category */}
-                    <div className="text-[10px] sm:text-xs lg:text-[10.5px] font-mono font-semibold lg:font-medium tracking-wider lg:tracking-[0.06em] text-slate-400 lg:text-[#78888F] uppercase mb-2 sm:mb-3 lg:mb-0">
+                    <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2 sm:mb-3">
                       {study.category}
                     </div>
-
+                  </div>
+                  <div>
                     {/* Title */}
                     <BlurText
                       as="h3"
                       delay={20}
                       text={study.title}
-                      className="text-base sm:text-2xl lg:text-xl font-bold lg:font-semibold tracking-tight lg:tracking-[-0.02em] text-[#142938] lg:text-[#0F313F] font-sora leading-snug lg:leading-[1.28] mb-2 md:mb-4 lg:mb-4"
+                      className="text-base sm:text-2xl font-bold tracking-tight text-[#142938] font-sora leading-snug mb-2 md:mb-4"
                     />
 
                     {/* CTA Link */}
-                    <div className="mb-3 sm:mb-6 lg:mb-0">
+                    <div className="mb-3 sm:mb-6">
                       <Link
                         href={study.href}
                         onClick={(e) => e.stopPropagation()}
-                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-mono font-semibold lg:font-medium tracking-tight text-[#254F5F] hover:text-[#F06A25] uppercase transition-colors duration-200"
+                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-mono font-semibold tracking-tight text-[#254F5F] hover:text-[#E26D35] uppercase transition-colors duration-200"
                       >
                         <span>READ THE FULL CASE STUDY</span>
                         <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -320,20 +320,20 @@ export default function BetterPeople() {
                   </div>
 
                   {/* Bottom Stats */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 pt-3 sm:pt-6 lg:pt-5 border-t border-slate-200/70 lg:border-t-0">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-6 border-t border-slate-200/70">
                     {study.stats.map((stat, sIdx) => (
                       <div key={sIdx} className="flex flex-col">
                         <span
                           className={cn(
-                            "text-[26px] sm:text-[42px] font-geist font-bold lg:font-sora lg:font-normal tracking-tight leading-none mb-1",
+                            "text-[26px] sm:text-[42px] font-geist font-medium tracking-tight leading-none mb-1",
                             stat.highlighted
-                              ? "text-[#F8720C] lg:text-[#F06A25]"
+                              ? "text-[#F8720C]"
                               : "text-[#62737A]"
                           )}
                         >
                           {stat.value}
                         </span>
-                        <span className="text-[10px] md:text-sm lg:text-[11.5px] font-sora text-[#62737A] leading-[1.2] lg:leading-[1.35]">
+                        <span className="text-[10px] md:text-sm font-sora font-semibold text-[#62737A] leading-[1.2]">
                           {stat.label}
                         </span>
                       </div>
