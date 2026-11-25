@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, ArrowRight, Sparkles } from "lucide-react";
-import { BreadcrumbBadge } from "@/reuseable/breadcrum";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
+import { BreadcrumbBadge } from "@/components/ui/Breadcrumb";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
 
 const HeroSection: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
         <div className="flex justify-center mb-4 md:mb-6">
           <BreadcrumbBadge
             label="THE FUTURE OF PEOPLE DECISIONS"
-            dotColor="#F06A25"
+            dotColor="#F8720C"
             className="shadow-xs hover:border-slate-300"
           />
         </div>
@@ -74,14 +74,7 @@ const HeroSection: React.FC = () => {
             delay={20}
             trigger="load"
             text={"From Performance Data to People\nIntelligence"}
-            className="text-4xl hidden lg:block sm:text-5xl md:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08]"
-          />
-          <BlurText
-            as="h1"
-            delay={20}
-            trigger="load"
-            text={"From Performance Data to People Intelligence"}
-            className="text-3xl lg:hidden block sm:text-5xl md:text-5xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08] lg:whitespace-pre-line"
           />
 
           {/* 3. Subtitle matching Image 2 */}
@@ -90,14 +83,14 @@ const HeroSection: React.FC = () => {
             delay={20}
             trigger="load"
             text="Claripa is an AI-powered workforce intelligence platform that transforms people data into actionable insights, helping organisations improve performance and make better people decisions."
-            className="mt-4 sm:mt-6 text-sm sm:text-base font-sora md:text-lg text-[#62737A] max-w-4xl mx-auto leading-[1.2] tracking-tight font-normal"
+            className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-sora text-[#62737A] max-w-4xl mx-auto leading-[1.3] tracking-tight font-normal"
           />
 
           {/* 4. Action Buttons matching Image 2 */}
           <div className="mt-6 sm:mt-6 flex flex-col flex-col-reverse md:flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center bg-[#254F5F]  hover:bg-[#143B45] text-[#FBF7F3] text-xs sm:text-sm font-medium font-mono tracking-tight uppercase px-7 sm:px-8 py-3.5 rounded-full shadow-md shadow-teal-950/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center bg-[#254F5F] hover:bg-[#143B45] text-[#FBF7F3] text-xs sm:text-sm font-medium font-geist-mono tracking-tight uppercase px-7 sm:px-8 py-3.5 rounded-full shadow-md shadow-teal-950/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               BOOK A DEMO
             </Link>

@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface NewsletterSubscribeProps {
   eyebrow?: string;

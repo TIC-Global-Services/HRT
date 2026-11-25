@@ -1,6 +1,6 @@
 import type { ChallengeItem } from "@/components/solution-details/TheChallenge";
 import type { SolutionStepItem } from "@/components/solution-details/TheSolutionSteps";
-import type { FaqItem } from "@/reuseable/FaqAccordion";
+import type { FaqItem } from "@/components/ui/FaqAccordion";
 
 export interface SolutionDashboardRow {
   initials: string;

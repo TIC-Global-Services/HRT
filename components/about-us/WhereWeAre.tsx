@@ -64,7 +64,7 @@ export default function WhereWeAre({
           <button
             type="button"
             onClick={() => setIsOpeningsModalOpen(true)}
-            className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white font-mono text-[10px] sm:text-xs font-semibold tracking-[0.14em] uppercase transition-all shadow-xs cursor-pointer"
+            className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white font-geist-mono text-[10px] sm:text-xs font-semibold tracking-[0.14em] uppercase transition-all shadow-xs cursor-pointer"
           >
             {badgeText}
           </button>
@@ -79,7 +79,7 @@ export default function WhereWeAre({
           <button
             type="button"
             onClick={() => setIsOpeningsModalOpen(true)}
-            className="inline-flex items-center justify-center gap-2 self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#002E40] backdrop-blur-md border border-white/45 font-mono text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-sm cursor-pointer shrink-0"
+            className="inline-flex items-center justify-center gap-2 self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#002E40] backdrop-blur-md border border-white/45 font-geist-mono text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-sm cursor-pointer shrink-0"
           >
             <span>{ctaText}</span>
             <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -109,7 +109,7 @@ export default function WhereWeAre({
               <X className="w-4 h-4" />
             </button>
 
-            <p className="inline-flex items-center gap-2 text-[#E56A1E] font-mono text-xs font-semibold tracking-wider uppercase mb-2.5">
+            <p className="inline-flex items-center gap-2 text-[#E56A1E] font-geist-mono text-xs font-semibold tracking-wider uppercase mb-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E56A1E]" />
               CAREERS AT CLARIPA
             </p>
@@ -126,14 +126,14 @@ export default function WhereWeAre({
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#1C4E5B] hover:bg-[#143B45] text-white font-mono text-xs font-medium uppercase tracking-wider transition-colors"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#1C4E5B] hover:bg-[#143B45] text-white font-geist-mono text-xs font-medium uppercase tracking-wider transition-colors"
               >
                 Contact Us
               </Link>
               <button
                 type="button"
                 onClick={() => setIsOpeningsModalOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-[#D5DCDD] hover:border-[#254F5F] text-[#254F5F] font-mono text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-[#D5DCDD] hover:border-[#254F5F] text-[#254F5F] font-geist-mono text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Close
               </button>

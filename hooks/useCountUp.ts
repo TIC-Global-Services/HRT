@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * Custom hook that animates a number from 0 to target using an ease-out cubic curve.
@@ -35,32 +35,4 @@ export function useCountUp(
   }, [target, duration, start]);
 
   return start ? count : 0;
-}
-
-export interface AnimatedCounterProps {
-  value: number;
-  start?: boolean;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  className?: string;
-}
-
-export function AnimatedCounter({
-  value,
-  start = true,
-  duration = 1400,
-  prefix = "",
-  suffix = "",
-  className = "",
-}: AnimatedCounterProps) {
-  const count = useCountUp(value, duration, start);
-
-  return (
-    <span className={className}>
-      {prefix}
-      {count}
-      {suffix}
-    </span>
-  );
 }

@@ -155,10 +155,10 @@ export default function PerformanceInsights({
           className="rounded-[26px] border border-[#e9e6e1] bg-white p-5 shadow-[0_24px_70px_rgba(37,79,95,0.12)] sm:p-7 transition-all"
         >
           <div className="mb-5 flex items-center justify-between gap-4">
-            <p className="m-0 font-mono text-[8px] md:text-[11px] uppercase tracking-wide text-[#62737a]">
+            <p className="m-0 font-geist-mono text-[8px] md:text-[11px] uppercase tracking-wide text-[#62737a]">
               Organizational Performance Overview
             </p>
-            <span className="font-mono text-[8px] md:text-[11px] uppercase tracking-wide text-[#8C9DA3]">
+            <span className="font-geist-mono text-[8px] md:text-[11px] uppercase tracking-wide text-[#8C9DA3]">
               Illustrative Data
             </span>
           </div>
@@ -195,7 +195,7 @@ export default function PerformanceInsights({
                   <div className="mb-1.5 flex items-center justify-between gap-4 text-xs md:text-sm">
                     <span className="text-[#27383d] font-medium">{row.name}</span>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-semibold text-[#002e40] tabular-nums">
+                      <span className="font-geist-mono text-xs font-semibold text-[#002e40] tabular-nums">
                         <AnimatedPercent
                           value={numericValue}
                           start={hasAnimated}

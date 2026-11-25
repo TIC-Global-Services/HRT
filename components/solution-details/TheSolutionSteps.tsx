@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionStepItem {
   id: string;
@@ -68,16 +68,16 @@ export default function TheSolutionSteps({
   steps = defaultSteps,
 }: TheSolutionStepsProps) {
   return (
-    <section id="the-solution" className="py-16 lg::py-24 bg-[#F7F6F3]">
+    <section id="the-solution" className="py-16 lg:py-24 bg-[#F7F6F3]">
       <div className="px-[5%]">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <div className="flex items-center justify-center gap-2 mb-3">
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
             />
-            <span className="font-mono text-xs lg::text-base font-medium text-[#F8780C] tracking-tight uppercase">
+            <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -85,7 +85,7 @@ export default function TheSolutionSteps({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.04em] leading-[1.12]"
+            className="font-sora text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function TheSolutionSteps({
                   : ""}`}
             >
               <div>
-                <span className="block font-mono text-xs md:text-sm lg:text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">
+                <span className="block font-geist-mono text-xs md:text-sm lg:text-base font-medium text-[#F8780C] uppercase tracking-tight mb-3">
                   {step.tag}
                 </span>
 

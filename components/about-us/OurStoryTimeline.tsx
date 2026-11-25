@@ -2,9 +2,9 @@
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
-import ScrollTimeline, { type ScrollTimelineItem } from "@/reuseable/ScrollTimeline";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
+import ScrollTimeline, { type ScrollTimelineItem } from "@/components/ui/ScrollTimeline";
 
 export interface TimelineMilestone {
   kicker: React.ReactNode;
@@ -145,15 +145,15 @@ export default function OurStoryTimeline({
     >
       {/* Section Header */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-12 sm:mb-16">
-        <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-wider uppercase mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
           {eyebrow}
         </p>
         <BlurText
           as="h2"
           delay={20}
           text={title}
-          className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] font-normal tracking-tight leading-[1.15]"
+          className="text-[#002E40] font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
         />
       </div>
 

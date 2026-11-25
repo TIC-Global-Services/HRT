@@ -4,8 +4,8 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
-import { AnimatedCounter } from "@/lib/useCountUp";
-import BlurText from "@/reuseable/BlurText";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import BlurText from "@/components/ui/BlurText";
 
 export interface PlatformHeroProps {
   eyebrow?: string;
@@ -56,7 +56,7 @@ export default function PlatformHero({
     <section className={`w-full max-w-full pt-14 pb-12 sm:pt-20 sm:pb-16 md:pt-24 md:pb-20 overflow-hidden ${className}`.trim()}>
       <div className="px-[5%] w-full max-w-full flex flex-col items-center">
         {/* Eyebrow */}
-        <span className="text-[#E56A1E] font-geist-mono text-xs sm:text-base font-medium tracking-tight uppercase text-center mb-3.5">
+        <span className="text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-center mb-3.5">
           {eyebrow}
         </span>
 
@@ -66,7 +66,7 @@ export default function PlatformHero({
           delay={20}
           trigger="load"
           text={title}
-          className="text-[#002E40] font-sora text-[28px] sm:text-5xl md:text-[56px] lg:text-[60px] font-normal tracking-tight leading-[1.1] text-center mb-3.5 sm:mb-4"
+          className="text-[#002E40] font-sora text-3xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.035em] leading-[1.08] text-center mb-3.5 sm:mb-4"
         />
 
         {/* Description */}
@@ -75,13 +75,13 @@ export default function PlatformHero({
           delay={20}
           trigger="load"
           text={description}
-          className="text-[#62737a] font-sora text-sm sm:text-base md:text-lg leading-[1.2] text-center max-w-4xl mx-auto mb-6 sm:mb-8 whitespace-pre-line"
+          className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] text-center max-w-4xl mx-auto mb-6 sm:mb-8 whitespace-pre-line"
         />
 
         {/* CTA Button */}
         <Link
           href={tourHref}
-          className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 px-6 sm:px-7 rounded-full bg-[#254F5F] hover:bg-[#214350] text-white font-mono text-[11px] sm:text-base font-medium tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm cursor-pointer"
+          className="inline-flex min-h-[46px] sm:min-h-[48px] items-center justify-center gap-2 px-6 sm:px-7 rounded-full bg-[#254F5F] hover:bg-[#174453] text-white font-geist-mono text-xs sm:text-sm font-medium tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm cursor-pointer"
         >
           {tourText}
           <ArrowUpRight size={16} aria-hidden="true" />
@@ -139,7 +139,7 @@ export default function PlatformHero({
                     <h2 className="text-[#0F313F] font-sora text-sm sm:text-[17px] font-medium m-0">
                       Workforce signals
                     </h2>
-                    <span className="font-mono text-[9px] tracking-[0.06em] text-[#7D8C92] uppercase font-medium">
+                    <span className="font-geist-mono text-[9px] tracking-[0.06em] text-[#7D8C92] uppercase font-medium">
                       LAST 30 DAYS
                     </span>
                   </div>

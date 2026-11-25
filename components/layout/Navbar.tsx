@@ -174,7 +174,7 @@ const Navabar: React.FC = () => {
 
       {/* 2. Main Navigation Bar */}
       <nav
-        className="w-full transition-all font-mono duration-200 py-3.5 bg-transparent border-none shadow-none"
+        className="w-full transition-all font-geist-mono duration-200 py-3.5 bg-transparent border-none shadow-none"
       >
         <div className="px-4 sm:px-6 lg:px-[5%] flex items-center justify-between">
           {/* Brand Logo */}
@@ -304,13 +304,13 @@ const Navabar: React.FC = () => {
           <div className="hidden  font-sans lg:flex items-center gap-5">
             {/* <Link
               href="/contact-us"
-              className="text-xs md:text-sm font-mono font-medium tracking-tight text-slate-700 hover:text-slate-950 uppercase transition-colors px-2 py-1"
+              className="text-xs md:text-sm font-geist-mono font-medium tracking-tight text-slate-700 hover:text-slate-950 uppercase transition-colors px-2 py-1"
             >
               LOGIN
             </Link> */}
             <Link
               href="/contact-us"
-              className="items-center font-mono bg-[#254F5F] hover:bg-[#143B45] text-white text-xs md:text-sm font-medium uppercase px-6 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow active:scale-95 tracking-tight"
+              className="items-center font-geist-mono bg-[#254F5F] hover:bg-[#143B45] text-white text-xs md:text-sm font-medium uppercase px-6 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow active:scale-95 tracking-tight"
             >
               BOOK A DEMO
             </Link>
@@ -320,7 +320,7 @@ const Navabar: React.FC = () => {
           <div className="flex items-center gap-3 lg:hidden">
             <Link
               href="/contact-us"
-              className="bg-[#1C4E5B] text-white text-[11px] font-mono font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
+              className="bg-[#254F5F] text-white text-[11px] font-geist-mono font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
             >
               BOOK A DEMO
             </Link>

@@ -13,7 +13,7 @@ import {
   PieChart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface OneConnectCard {
   id: string | number;
@@ -170,10 +170,10 @@ export default function  OneConnect({
           {/* Left Column: Heading & Description */}
           <div className="flex flex-col justify-start items-start">
             {/* Eyebrow */}
-            <p className="flex items-center text-left gap-2 font-mono text-xs sm:text-base font-semibold tracking-tight uppercase text-[#E56A1E] mb-3 sm:mb-4">
+            <p className="flex items-center text-left gap-2 font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-brand-orange mb-3 sm:mb-4">
               <span
                 aria-hidden="true"
-                className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shrink-0"
+                className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"
               />
               {eyebrow}
             </p>
@@ -183,7 +183,7 @@ export default function  OneConnect({
               as="h2"
               delay={20}
               text={title}
-              className="font-sora text-[#002E40] text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6 lg:text-left text-center"
+              className="font-sora text-[#002E40] text-[28px] sm:text-4xl lg:text-[46px] font-normal leading-[1.12] tracking-[-0.035em] mb-5 sm:mb-6 lg:text-left text-center"
             />
 
             {/* Description */}
@@ -191,7 +191,7 @@ export default function  OneConnect({
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-[#5A6E78] text-sm sm:text-lg leading-[1.3] font-normal md:max-w-xl lg:text-left text-center tracking-tight "
+              className="font-sora text-[#62737A] text-sm sm:text-base md:text-lg leading-[1.3] font-normal md:max-w-xl lg:text-left text-center tracking-tight"
             />
           </div>
 

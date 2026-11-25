@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist_Mono, Geist, Sora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import SmoothScroller from "@/reuseable/SmoothScroller";
-import Navabar from "@/reuseable/Navabar";
-import Footer from "@/reuseable/Footer";
-import CookieConsentBanner from "@/reuseable/CookieConsentBanner";
+import SmoothScroller from "@/components/layout/SmoothScroller";
+import Navabar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import CookieConsentBanner from "@/components/layout/CookieConsentBanner";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -71,14 +71,7 @@ export default function RootLayout({
         sora.variable
       )}
     >
-      <body
-        className={cn(
-          "min-h-full flex flex-col font-sans text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]",
-          geist.variable,
-          geistMono.variable,
-          sora.variable
-        )}
-      >
+      <body className="min-h-full flex flex-col font-sans text-foreground selection:bg-[#FED7AA] selection:text-[#9A3412]">
         <SmoothScroller>
           <Navabar />
           <main className="flex-1 w-full max-w-full min-w-0">{children}</main>

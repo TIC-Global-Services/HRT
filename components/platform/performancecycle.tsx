@@ -13,8 +13,8 @@ import {
   Play,
   Pause,
 } from "lucide-react";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
 
 export interface CyclePillItem {
   id: string;
@@ -355,8 +355,8 @@ export default function PerformanceCycle({
             <div>
               {/* Eyebrow */}
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.65)]" />
-                <span className="font-mono text-xs sm:text-[13px] font-semibold text-[#E56A1E] tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
+                <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                   {eyebrow}
                 </span>
               </div>
@@ -366,13 +366,13 @@ export default function PerformanceCycle({
                 as="h2"
                 delay={20}
                 text={title}
-                className="font-sora text-[28px] sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.12]"
+                className="font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] text-[#002E40] leading-[1.12]"
               />
             </div>
 
             {/* Header Right Paragraph */}
             <div className="lg:pt-4">
-              <p className="font-sora text-sm sm:text-[14.5px] text-[#62737A] leading-[1.3] max-w-lg">
+              <p className="font-sora text-sm sm:text-base md:text-lg text-[#62737A] leading-[1.3] max-w-lg">
                 {description}
               </p>
             </div>
@@ -386,7 +386,7 @@ export default function PerformanceCycle({
                 type="button"
                 onClick={() => setIsRotating(!isRotating)}
                 aria-label={isRotating ? "Pause orbit rotation" : "Start orbit rotation"}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/85 hover:bg-white border border-[#E2DDD3] text-[#102A33] font-mono text-[11px] font-medium shadow-2xs transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/85 hover:bg-white border border-[#E2DDD3] text-[#102A33] font-geist-mono text-[11px] font-medium shadow-2xs transition-all duration-200 cursor-pointer"
               >
                 {isRotating ? (
                   <>
@@ -651,7 +651,7 @@ export default function PerformanceCycle({
                     }`}
                   />
                   <span
-                    className={`font-mono text-sm font-semibold tracking-tight uppercase ${pillar.tagColor}`}
+                    className={`font-geist-mono text-sm font-semibold tracking-tight uppercase ${pillar.tagColor}`}
                   >
                     {pillar.tag}
                   </span>

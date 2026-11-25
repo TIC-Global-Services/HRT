@@ -2,9 +2,9 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
-import GradientBlinds from "@/components/GradientBlinds";
-import BlurText from "@/reuseable/BlurText";
-import ScrollTimeline, { type ScrollTimelineItem } from "@/reuseable/ScrollTimeline";
+import GradientBlinds from "@/components/ui/GradientBlinds";
+import BlurText from "@/components/ui/BlurText";
+import ScrollTimeline, { type ScrollTimelineItem } from "@/components/ui/ScrollTimeline";
 
 export interface ValueCardItem {
   id: string;
@@ -130,10 +130,10 @@ export default function MissionVision({
     >
       {/* Section Header */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-16">
-        <p className="inline-flex items-center gap-2 text-[#F8780C] font-geist-mono text-xs sm:text-sm font-medium md:font-normal tracking-tight uppercase mb-3">
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase mb-3">
           <span
             aria-hidden="true"
-            className="w-1.5 h-1.5 rounded-full tracking-tight bg-[#F8780C] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
+            className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
           />
           {eyebrow}
         </p>
@@ -141,13 +141,7 @@ export default function MissionVision({
           as="h2"
           delay={20}
           text={title}
-          className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.12] hidden lg:block"
-        />
-        <BlurText
-          as="h2"
-          delay={20}
-          text={"The Next Evolution of HR is intelligence"}
-          className="text-[#002E40] font-sora text-[28px] sm:text-3xl font-normal tracking-tight leading-[1.18] lg:hidden"
+          className="text-[#002E40] font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] lg:whitespace-pre-line"
         />
 
         {/* Mobile Overview Subtitle placed right below heading matching design */}
@@ -172,7 +166,7 @@ export default function MissionVision({
 
         {/* Mission Card (Dark Petrol, Centered) */}
         <article className="rounded-[28px] bg-[#1E4D5B] py-8 px-6 sm:px-8 text-white shadow-xs text-center">
-          <span className="font-mono text-xl sm:text- text-[#96AAB2] tracking-wider uppercase mb-3.5 block font-medium">
+          <span className="font-geist-mono text-xl sm:text- text-[#96AAB2] tracking-wider uppercase mb-3.5 block font-medium">
             {missionKicker}
           </span>
           <p className="font-sora text-sm sm:text-sm text-white/90 leading-relaxed font-normal">
@@ -182,7 +176,7 @@ export default function MissionVision({
 
         {/* Vision Card (Ivory/Cream, Centered) */}
         <article className="rounded-[28px] bg-[#FAF9F5] border border-[#ECE9E3] py-8 px-6 sm:px-8 shadow-xs text-center">
-          <span className="font-mono text-xs sm:text-sm text-[#62737A] tracking-wider uppercase mb-3.5 block font-medium">
+          <span className="font-geist-mono text-xs sm:text-sm text-[#62737A] tracking-wider uppercase mb-3.5 block font-medium">
             {visionKicker}
           </span>
           <p className="font-sora text-xs sm:text-sm text-[#002E40] leading-relaxed font-normal">
@@ -200,7 +194,7 @@ export default function MissionVision({
       <div className="hidden lg:grid grid-cols-[250px_1fr] xl:grid-cols-[350px_1fr] gap-8 lg:gap-12 items-start">
         {/* Left Column: Overview Callout */}
         <div className="lg:sticky lg:top-28">
-          <span className="text-[#E56A1E] font-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase lg:mb-2.5 hidden lg:block">
+          <span className="text-[#E56A1E] font-geist-mono text-xs sm:text-[13px] font-semibold tracking-wider uppercase lg:mb-2.5 hidden lg:block">
             {overviewLabel}
           </span>
           <BlurText
@@ -230,7 +224,7 @@ export default function MissionVision({
             {/* Mission Card */}
             <article className="rounded-[24px] sm:rounded-[28px] bg-[#1E4D5B] p-7 sm:p-10 text-white shadow-xs flex flex-col justify-between">
               <div>
-                <span className="font-mono text-xl text-[#96AAB2] tracking-tight uppercase mb-4 block">
+                <span className="font-geist-mono text-xl text-[#96AAB2] tracking-tight uppercase mb-4 block">
                   {missionKicker}
                 </span>
                 <BlurText
@@ -245,7 +239,7 @@ export default function MissionVision({
             {/* Vision Card */}
             <article className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-7 sm:p-9 relative overflow-hidden shadow-xs flex flex-col justify-center min-h-[220px]">
               <div className="relative z-10 max-w-[85%]">
-                <span className="font-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
+                <span className="font-geist-mono text-xl text-[#62737A] tracking-tight uppercase mb-1 block">
                   {visionKicker}
                 </span>
                 <BlurText
@@ -310,7 +304,7 @@ export default function MissionVision({
                 className="rounded-[24px] sm:rounded-[28px] bg-white border border-[#E9ECEF] p-6 sm:p-8 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
               >
                 <div className="flex items-center gap-2.5 mb-3.5 sm:mb-4">
-                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md border border-[#E5DFD7] bg-[#FAF8F5] text-[#5A6D75] font-mono text-[13px] font-semibold">
+                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md border border-[#E5DFD7] bg-[#FAF8F5] text-[#5A6D75] font-geist-mono text-[13px] font-semibold">
                     {v.id}
                   </span>
                   <h3 className="font-sora text-base sm:text-xl font-bold text-[#002E40] m-0">

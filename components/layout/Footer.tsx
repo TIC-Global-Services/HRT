@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import MakeYourNextMove from "@/components/MakeYourNextMove";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
+import MakeYourNextMove from "@/components/shared/MakeYourNextMove";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
 import { defaultSolution, getSolutionBySlug } from "@/data/solutions";
 
 export { MakeYourNextMove };
@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
               </div>
 
               {/* Contact Info Meta */}
-              <div className="space-y-1.5 text-[11px] sm:text-base font-mono text-white">
+              <div className="space-y-1.5 text-[11px] sm:text-base font-geist-mono text-white">
                 <div className="flex flex-col items-start gap-2">
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     Headquarters
@@ -192,7 +192,7 @@ const Footer: React.FC = () => {
             <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
               {/* SOLUTIONS */}
               <div>
-                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
+                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-geist-mono mb-3.5">
                   SOLUTIONS
                 </h3>
                 <ul className="space-y-2 text-xs sm:text-sm font-geist">
@@ -250,7 +250,7 @@ const Footer: React.FC = () => {
 
               {/* PLATFORM */}
               {/* <div>
-                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
+                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-geist-mono mb-3.5">
                   PLATFORM
                 </h3>
                 <ul className="space-y-2 text-xs sm:text-sm font-geist">
@@ -315,7 +315,7 @@ const Footer: React.FC = () => {
 
               {/* INSIGHTS */}
               <div>
-                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
+                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-geist-mono mb-3.5">
                   INSIGHTS
                 </h3>
                 <ul className="space-y-2 text-xs sm:text-sm">
@@ -364,7 +364,7 @@ const Footer: React.FC = () => {
 
               {/* COMPANY */}
               <div>
-                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-mono mb-3.5">
+                <h3 className="text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-[#B2C6D0] font-geist-mono mb-3.5">
                   COMPANY
                 </h3>
                 <ul className="space-y-2 text-xs sm:text-sm">
@@ -414,7 +414,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Bar inside the Card (No horizontal divider line, flowing with breathing room) */}
-          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] sm:text-sm font-mono text-white/85">
+          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] sm:text-sm font-geist-mono text-white/85">
             <p>© 2026 Claripa by HRT. All rights reserved.</p>
 
             <div className="flex items-center gap-4 md:gap-6">

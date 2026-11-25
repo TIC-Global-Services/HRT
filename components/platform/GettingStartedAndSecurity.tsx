@@ -8,7 +8,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface GettingStartedStep {
   title: string;
@@ -196,18 +196,18 @@ export default function GettingStartedAndSecurity({
       <section className="bg-[#F7F6F3] w-full max-w-full overflow-hidden px-[5%] py-16 sm:px-8 md:py-24" id="getting-started">
         <div className="w-full max-w-full">
           <div className="text-center max-w-5xl mx-auto">
-            <p className="mb-4 flex items-center justify-center gap-2 font-mono text-center text-sm sm:text-base font-medium uppercase tracking-tight text-[#f8780c]">
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-[#f8780c]" />
+            <p className="mb-4 flex items-center justify-center gap-2 font-geist-mono text-center text-xs sm:text-sm font-semibold uppercase tracking-tight text-brand-orange">
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-brand-orange" />
               GETTING STARTED
             </p>
-            <h2 className="m-0 text-3xl font-normal leading-[1.08] tracking-tight text-[#254f5f] sm:text-4xl lg:text-[46px]">
+            <h2 className="m-0 font-sora text-[28px] font-normal leading-[1.12] tracking-[-0.035em] text-[#254f5f] sm:text-4xl lg:text-[46px]">
               <BlurText delay={20} text="A Structured Path from Setup to Adoption." />
             </h2>
             <BlurText
               as="p"
               delay={20}
               text="Claripa implementation follows a structured approach to understanding organizational requirements, configuring the platform, preparing employee data, and supporting users through deployment."
-              className="mb-0 mt-4 sm:mt-5 text-sm sm:text-base md:text-lg leading-[1.4] sm:leading-[1.2] text-[#62737a]"
+              className="mb-0 mt-4 sm:mt-5 font-sora text-sm sm:text-base md:text-lg leading-[1.3] text-[#62737a]"
             />
           </div>
 
@@ -228,7 +228,7 @@ export default function GettingStartedAndSecurity({
                 className="group w-full shrink-0 snap-center sm:w-auto sm:shrink sm:snap-align-none min-h-[220px] sm:min-h-[235px] rounded-[22px] border border-[#ebe8e3] bg-white p-6 transition-all duration-200 hover:border-[#f8780c] hover:bg-[#fff4ec] hover:-translate-y-0.5 hover:shadow-xs flex flex-col justify-between"
               >
                 <div>
-                  <span className="inline-flex size-8 items-center justify-center rounded-lg font-mono text-xs bg-[#F7F6F3] text-[#f8780c] transition-colors duration-200 group-hover:bg-white">
+                  <span className="inline-flex size-8 items-center justify-center rounded-lg font-geist-mono text-xs bg-[#F7F6F3] text-[#f8780c] transition-colors duration-200 group-hover:bg-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mb-0 mt-5 text-base font-semibold text-[#002E40] transition-colors duration-200 group-hover:text-[#d95e0b]">

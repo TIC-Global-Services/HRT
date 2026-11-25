@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionCard {
   id: string;
@@ -449,7 +449,7 @@ export default function BuildFor() {
                   <div className="mt-auto">
                     <Link
                       href={card.href}
-                      className="inline-flex items-center gap-1.5 text-xs mt-1 font-mono font-semibold tracking-wider uppercase text-zinc-800 hover:text-[#E26D35] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs mt-1 font-geist-mono font-semibold tracking-wider uppercase text-zinc-800 hover:text-[#E26D35] transition-colors"
                     >
                       <span>SEE HOW IT WORKS</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-zinc-700" />
@@ -535,7 +535,7 @@ export default function BuildFor() {
                     href={card.href}
                     onClick={(e) => e.stopPropagation()}
                     className={cn(
-                      "inline-flex items-center gap-1.5 text-[10px] md:text-xs font-mono font-semibold tracking-tight uppercase transition-colors duration-200",
+                      "inline-flex items-center gap-1.5 text-[10px] md:text-xs font-geist-mono font-semibold tracking-tight uppercase transition-colors duration-200",
                       isActive
                         ? "text-zinc-900 group-hover:text-[#E26D35]"
                         : "text-zinc-700 group-hover:text-zinc-900"

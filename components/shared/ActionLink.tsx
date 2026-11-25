@@ -16,10 +16,10 @@ export default function ActionLink({
   className = "",
 }: ActionLinkProps) {
   const baseClasses =
-    "inline-flex min-h-[48px] items-center justify-center gap-2.5 px-[22px] rounded-full font-mono text-[11px] font-medium tracking-[0.02em] uppercase transition-all duration-150 hover:-translate-y-0.5 cursor-pointer";
+    "inline-flex min-h-[48px] items-center justify-center gap-2.5 px-[22px] rounded-full font-geist-mono text-xs sm:text-sm font-medium tracking-tight uppercase transition-all duration-150 hover:-translate-y-0.5 cursor-pointer";
   const variantClasses = secondary
-    ? "border border-[#e9edef] bg-[#fbf9f5] text-[#254f5f] hover:border-[#cbd6da] hover:bg-[#f3f1ec] hover:text-[#002e40]"
-    : "border border-[#002e40] bg-[#002e40] text-white hover:bg-[#174453]";
+    ? "border border-[#e9edef] bg-surface-cream text-brand-teal hover:border-[#cbd6da] hover:bg-[#f3f1ec] hover:text-brand-navy"
+    : "border border-brand-teal bg-brand-teal text-white hover:bg-brand-teal-hover";
 
   return (
     <Link

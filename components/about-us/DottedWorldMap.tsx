@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface OfficesAndTeamsProps {
   eyebrow?: string;
@@ -28,10 +28,10 @@ export default function DottedWorldMap({
       <div className="block md:hidden max-w-lg mx-auto">
         {/* Mobile Header outside the card */}
         <div className="mb-5 sm:mb-6">
-          <p className="flex items-center gap-2 font-mono text-xs font-medium tracking-[0.78px] uppercase text-[#F8780D] mb-2.5">
+          <p className="flex items-center gap-2 font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-brand-orange mb-2.5">
             <span
               aria-hidden="true"
-              className="w-1.5 h-1.5 rounded-full bg-[#F8780D] shrink-0"
+              className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"
             />
             {eyebrow}
           </p>
@@ -40,7 +40,7 @@ export default function DottedWorldMap({
             as="h2"
             delay={20}
             text={title}
-            className="font-sora text-[#254F5F] text-[28px] sm:text-3xl font-normal tracking-tight leading-[1.15]"
+            className="font-sora text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
           />
         </div>
 
@@ -77,7 +77,7 @@ export default function DottedWorldMap({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open Mumbai office in Google Maps"
-                className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] px-2.5 h-[22px] rounded-full font-mono text-[9px] font-semibold tracking-wider flex items-center justify-center gap-1 shadow-md whitespace-nowrap"
+                className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] px-2.5 h-[22px] rounded-full font-geist-mono text-[9px] font-semibold tracking-wider flex items-center justify-center gap-1 shadow-md whitespace-nowrap"
               >
                 <span>HQ</span>
                 <span className="text-[#F8780C]/80 text-[8px]">-</span>
@@ -106,7 +106,7 @@ export default function DottedWorldMap({
             <div className="flex-1 min-w-0">
               {/* Badge: HQ · Mumbai */}
               <div className="mb-1.5">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#FDF2EC] text-[#E56A1E] font-mono text-[10px] font-semibold tracking-wider uppercase border border-[#FADCCB]">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#FDF2EC] text-[#E56A1E] font-geist-mono text-[10px] font-semibold tracking-wider uppercase border border-[#FADCCB]">
                   HQ · Mumbai
                 </span>
               </div>
@@ -132,10 +132,10 @@ export default function DottedWorldMap({
           <div className="flex flex-col justify-between h-full min-h-[280px] sm:min-h-[320px] lg:min-h-full py-1 sm:py-2 pl-1 sm:pl-2">
             <div>
               {/* Eyebrow */}
-              <p className="flex items-center gap-2 font-mono text-xs sm:text-base font-medium tracking-[0.78px] uppercase text-[#F8780D] mb-3 sm:mb-4">
+              <p className="flex items-center gap-2 font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-brand-orange mb-3 sm:mb-4">
                 <span
                   aria-hidden="true"
-                  className="w-1.5 h-1.5 rounded-full bg-[#F8780D] shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"
                 />
                 {eyebrow}
               </p>
@@ -145,7 +145,7 @@ export default function DottedWorldMap({
                 as="h2"
                 delay={20}
                 text={title}
-                className="font-sora text-[#254F5F] text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+                className="font-sora text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
               />
             </div>
 
@@ -173,7 +173,7 @@ export default function DottedWorldMap({
                   />
                 </div>
 
-                <span className="font-mono text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#254F5F] group-hover:text-[#E56A1E] transition-colors shrink-0 flex items-start gap-1 self-start sm:self-start pt-1 sm:pt-0">
+                <span className="font-geist-mono text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#254F5F] group-hover:text-[#E56A1E] transition-colors shrink-0 flex items-start gap-1 self-start sm:self-start pt-1 sm:pt-0">
                   <span>{locationLabel}</span>
                   <span aria-hidden="true">↗</span>
                 </span>
@@ -212,7 +212,7 @@ export default function DottedWorldMap({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open Mumbai office in Google Maps"
-                  className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] hover:text-[#ff933b] px-3 sm:px-3.5 h-[26px] sm:h-[30px] rounded-full font-mono cursor-pointer text-[10px] sm:text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.2)] whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95"
+                  className="bg-[#254F5F] hover:bg-[#1a3844] text-[#F8780C] hover:text-[#ff933b] px-3 sm:px-3.5 h-[26px] sm:h-[30px] rounded-full font-geist-mono cursor-pointer text-[10px] sm:text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.2)] whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95"
                 >
                   <span>HQ</span>
                   <span className="text-[#F8780C]/80 text-[9px]">-</span>

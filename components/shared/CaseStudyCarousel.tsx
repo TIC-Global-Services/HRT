@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 /* ----------------------------- Types ----------------------------- */
 
@@ -153,8 +153,9 @@ export default function CaseStudyCarousel({
           {/* Left Column: Eyebrow, Headline, and CTA Pill */}
           <div className="max-w-xl flex flex-col items-center lg:items-start">
             {/* Eyebrow */}
-            <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-base font-medium tracking-tight text-[#E26D35] uppercase mb-4 font-mono">
-              <span> <span className="text-base leading-none font-bold mr-2 mt-2">*</span>{eyebrow}</span>
+            <div className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-brand-orange uppercase mb-4 font-geist-mono">
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+              <span>{eyebrow}</span>
             </div>
 
             {/* Headline */}
@@ -162,14 +163,14 @@ export default function CaseStudyCarousel({
               as="h2"
               delay={20}
               text={headingLines.join("\n")}
-              className="font-heading text-[28px] sm:text-4xl md:text-5xl font-sora font-medium tracking-tight text-[#254F5F] leading-[1.14]  md:mb-6 text-center lg:text-left"
+              className="text-[28px] sm:text-4xl lg:text-[46px] font-sora font-normal tracking-[-0.035em] text-brand-teal leading-[1.12] md:mb-6 text-center lg:text-left"
             />
 
             {/* Header CTA Pill (Desktop Only) */}
             <div className="hidden lg:flex justify-start w-full">
               <Link
                 href={ctaHref || "/insight"}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#254F5F] text-xs md:text-base font-mono font-semibold tracking-wider uppercase transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F1F3F5] hover:bg-[#E5E9ED] text-[#254F5F] text-xs md:text-base font-geist-mono font-semibold tracking-wider uppercase transition-colors duration-200"
               >
                 <span>{ctaLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -183,7 +184,7 @@ export default function CaseStudyCarousel({
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-sm sm:text-lg text-slate-500 leading-[1.3] text-center lg:text-left"
+              className="font-sora text-sm sm:text-base md:text-lg text-text-muted leading-[1.3] text-center lg:text-left"
             />
           </div>
         </div>
@@ -243,7 +244,7 @@ export default function CaseStudyCarousel({
                 <div className="relative z-10 bg-[#FAFAFA]/95 backdrop-blur-sm sm:bg-[#F9F9F7] rounded-[24px] sm:rounded-[28px] p-5 sm:p-8 lg:p-10 shadow-xl border border-neutral-100/90 w-full sm:w-[480px] lg:w-[530px] h-auto md:h-full flex flex-col justify-between">
                   <div>
                     {/* Category */}
-                    <div className="text-[10px] sm:text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2 sm:mb-3">
+                    <div className="text-[10px] sm:text-xs font-geist-mono font-semibold tracking-wider text-slate-400 uppercase mb-2 sm:mb-3">
                       {study.category}
                     </div>
                   </div>
@@ -261,7 +262,7 @@ export default function CaseStudyCarousel({
                       <Link
                         href={study.href}
                         onClick={(e) => e.stopPropagation()}
-                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-mono font-semibold tracking-tight text-[#254F5F] hover:text-[#E26D35] uppercase transition-colors duration-200"
+                        className="group inline-flex items-center gap-1.5 text-[10px] md:text-base font-geist-mono font-semibold tracking-tight text-[#254F5F] hover:text-[#E26D35] uppercase transition-colors duration-200"
                       >
                         <span>{cardLinkLabel}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -325,7 +326,7 @@ export default function CaseStudyCarousel({
       <div className="flex items-center justify-center mt-7 sm:mt-8 px-[5%] lg:hidden">
         <Link
           href={ctaHref || "/insight"}
-          className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#F4F4F4] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
+          className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#F4F4F4] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-geist-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
         >
           <span>{ctaLabel}</span>
           <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

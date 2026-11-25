@@ -1,4 +1,4 @@
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface ChallengeItem {
   number: string;
@@ -50,9 +50,9 @@ export default function TheChallenge({
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
               <span
                 aria-hidden="true"
-                className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+                className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
               />
-              <span className="font-mono text-xs md:text-base font-medium text-[#F8780C] tracking-wider uppercase ">
+              <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                 {eyebrow}
               </span>
             </div>
@@ -60,7 +60,7 @@ export default function TheChallenge({
               as="h2"
               text={title}
               delay={20}
-              className="text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal font-sora tracking-tight leading-[1.12] lg:text-left text-center"
+              className="text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal font-sora tracking-[-0.035em] leading-[1.12] lg:text-left text-center"
             />
           </div>
 
@@ -69,7 +69,7 @@ export default function TheChallenge({
               as="p"
               text={quote}
               delay={20}
-              className="text-[#62737A] max-w-md text-sm sm:text-lg font-normal leading-[1.1] lg:text-left font-sora text-center"
+              className="text-[#62737A] max-w-md text-sm sm:text-base md:text-lg font-normal leading-[1.3] lg:text-left font-sora text-center"
             />
           </div>
         </div>

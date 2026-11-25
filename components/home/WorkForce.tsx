@@ -9,8 +9,8 @@ import {
   Zap,
   BellOff,
 } from "lucide-react";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
 
 export interface FeatureCardItem {
   id: string;
@@ -250,7 +250,7 @@ function ReactiveDecisionsMiniUI() {
       {/* Main Focus Session Card */}
       <div className="bg-white rounded-lg border border-zinc-200/90 p-5 sm:p-6 shadow-xs w-full max-w-[270px] h-[45dvh] relative overflow-hidden flex flex-col justify-center">
         {/* Header */}
-        <div className="text-[10px] font-mono tracking-wider font-semibold text-zinc-400 uppercase">
+        <div className="text-[10px] font-geist-mono tracking-wider font-semibold text-zinc-400 uppercase">
           FOCUS SESSION
         </div>
 
@@ -419,11 +419,11 @@ function ProactiveActionMiniUI() {
       {/* Resting AI Signal & Action Preview Card */}
       <div className="w-full max-w-[260px] bg-white rounded-2xl border border-zinc-200/90 p-4 shadow-xs flex flex-col gap-3 group-hover:border-orange-200/80 group-hover:bg-white/95 group-hover:shadow-sm transition-all duration-300">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[10px] font-semibold text-[#F06A25] uppercase tracking-wider flex items-center gap-1.5">
+          <span className="font-geist-mono text-[10px] font-semibold text-[#F06A25] uppercase tracking-wider flex items-center gap-1.5">
             <Zap className="w-3.5 h-3.5 text-[#F06A25] fill-[#F06A25] shrink-0" />
             PROACTIVE SIGNAL
           </span>
-          <span className="text-[10px] font-mono text-zinc-400 bg-zinc-100 group-hover:bg-orange-100/60 group-hover:text-orange-600 px-2 py-0.5 rounded-full transition-colors duration-300">
+          <span className="text-[10px] font-geist-mono text-zinc-400 bg-zinc-100 group-hover:bg-orange-100/60 group-hover:text-orange-600 px-2 py-0.5 rounded-full transition-colors duration-300">
             LIVE
           </span>
         </div>
@@ -504,12 +504,12 @@ export default function Workforce() {
         <div className="flex flex-col items-center lg:flex-row lg:items-end lg:justify-between gap-6 sm:gap-8 pb-8 sm:pb-12 text-center lg:text-left">
           {/* Left: Eyebrow + Headline */}
           <div className="max-w-2xl flex flex-col items-center lg:items-start">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold font-geist-mono tracking-tight text-[#F06A25] uppercase mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#F06A25] shadow-[0_0_8px_rgba(240,106,37,0.7)] shrink-0" />
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold font-geist-mono tracking-tight text-brand-orange uppercase mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)] shrink-0" />
               <span>{eyebrow}</span>
             </div>
 
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#254F5F] leading-[1.14]">
+            <h2 className="font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] text-[#254F5F] leading-[1.12]">
               <BlurText
                 as="span"
                 delay={20}
@@ -524,13 +524,13 @@ export default function Workforce() {
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-sm sm:text-base text-[#254F5F] leading-[1.2] lg:leading-[1.3] text-center lg:text-left"
+              className="font-sora text-sm sm:text-base md:text-lg text-[#62737A] leading-[1.3] text-center lg:text-left"
             />
 
             <div className="flex items-center justify-center lg:justify-end w-full lg:w-auto">
               <Link
                 href={ctaButton.href}
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-[#F4F4F4]/70 md:bg-white px-5 py-2.5 font-mono text-[10px] md:text-xs font-semibold tracking-wider uppercase text-[#142938] shadow-2xs hover:bg-zinc-50 hover:border-zinc-300 transition-all active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-[#F4F4F4]/70 md:bg-white px-5 py-2.5 font-geist-mono text-[10px] md:text-xs font-semibold tracking-wider uppercase text-[#142938] shadow-2xs hover:bg-zinc-50 hover:border-zinc-300 transition-all active:scale-95"
               >
                 <span>{ctaButton.label}</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />

@@ -412,3 +412,99 @@ export const allCaseStudies: BlogPost[] = [
     ],
   },
 ];
+
+export interface CaseStudyStat {
+  value: string;
+  label: string;
+  highlighted?: boolean;
+}
+
+export interface CaseStudyItem {
+  id: string;
+  category: string;
+  title: string;
+  href: string;
+  imageSrc: string;
+  stats: CaseStudyStat[];
+}
+
+const caseStudyMetricsMap: Record<
+  string,
+  {
+    category: string;
+    stats: CaseStudyStat[];
+  }
+> = {
+  "software-services-firm-attrition-transformation": {
+    category: "SOFTWARE SERVICES",
+    stats: [
+      {
+        value: "34%",
+        label: "Reduction in voluntary attrition across 3–5 yr cohort",
+        highlighted: true,
+      },
+      {
+        value: "< 3 wks",
+        label: "Average time between meaningful performance check-ins",
+        highlighted: false,
+      },
+    ],
+  },
+  "semiconductor-design-center-engineering-ramp-up": {
+    category: "SEMICONDUCTOR ENGINEERING",
+    stats: [
+      {
+        value: "40%",
+        label: "Faster time to meaningful engineering contribution",
+        highlighted: true,
+      },
+      {
+        value: "28%",
+        label: "Reduction in first-six-month new-hire attrition",
+        highlighted: false,
+      },
+    ],
+  },
+  "automotive-gcc-india-performance-visibility": {
+    category: "AUTOMOTIVE GCC",
+    stats: [
+      {
+        value: "25–30%",
+        label: "Improvement in cross-team goal alignment",
+        highlighted: true,
+      },
+      {
+        value: "2×",
+        label: "Increase in frequency of meaningful performance conversations",
+        highlighted: false,
+      },
+    ],
+  },
+};
+
+export const caseStudiesData: CaseStudyItem[] = allCaseStudies.map((study) => {
+  const metrics = caseStudyMetricsMap[study.slug] || {
+    category: study.topic ? `${study.topic} · CASE STUDY` : study.category,
+    stats: [
+      {
+        value: study.statsHighlight?.value || "—",
+        label: study.statsHighlight?.label || "Measurable business outcome",
+        highlighted: true,
+      },
+      {
+        value: "100%",
+        label: "Visibility into team performance signals",
+        highlighted: false,
+      },
+    ],
+  };
+
+  return {
+    id: study.id,
+    category: metrics.category,
+    title: study.title,
+    href: `/insight/${study.slug}`,
+    imageSrc: study.image,
+    stats: metrics.stats,
+  };
+});

@@ -3,7 +3,6 @@ import AskClaripa from "@/components/platform/AskClaripa";
 import ConnectedModules from "@/components/platform/ConnectedModules";
 import EmployeeExperience from "@/components/platform/EmployeeExperience";
 import GettingStartedAndSecurity from "@/components/platform/GettingStartedAndSecurity";
-import IntegrationsNetwork from "@/components/platform/IntegrationsNetwork";
 import PerformanceInsights from "@/components/platform/PerformanceInsights";
 import PlatformFaq from "@/components/platform/PlatformFaq";
 import PlatformHero from "@/components/platform/PlatformHero";

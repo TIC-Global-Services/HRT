@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface MetricCardData {
   type: "metric";
@@ -83,7 +83,7 @@ function ResultCard({ card }: { card: ResultCardItem }) {
     return (
       <div className="rounded-[24px] border border-[#ECE9E3] bg-white p-7 sm:p-8 flex flex-col justify-between min-h-[280px] sm:min-h-[299px] shadow-[0_2px_12px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#F8780C]/40 hover:shadow-[0_8px_24px_rgba(0,46,64,0.04)]">
         <div>
-          <span className="block font-mono text-5xl sm:text-[56px] font-medium text-[#F8780C] tracking-tight leading-none mb-4">
+          <span className="block font-geist-mono text-5xl sm:text-[56px] font-medium text-[#F8780C] tracking-tight leading-none mb-4">
             {card.value}
           </span>
           <BlurText
@@ -100,7 +100,7 @@ function ResultCard({ card }: { card: ResultCardItem }) {
           />
         </div>
 
-        <span className="block font-mono text-[10px] font-medium text-[#62737A] tracking-wider uppercase mt-6 pt-4 border-t border-[#ECE9E3]/70">
+        <span className="block font-geist-mono text-[10px] font-medium text-[#62737A] tracking-wider uppercase mt-6 pt-4 border-t border-[#ECE9E3]/70">
           {card.industry}
         </span>
       </div>
@@ -160,7 +160,7 @@ export default function SolutionDetailResults({
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-xs font-semibold text-[#F8780C] tracking-wider uppercase">
+            <span className="font-geist-mono text-xs font-semibold text-[#F8780C] tracking-wider uppercase">
               {eyebrow}
             </span>
           </div>

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Play, Sparkles } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 import type { SolutionDashboardData } from "@/data/solutions";
 
 export interface SolutionDetailHeroProps {
@@ -53,7 +53,6 @@ const defaultDashboard: SolutionDashboardData = {
 };
 
 export default function SolutionDetailHero({
-  breadcrumb = "HOME / SOLUTIONS / ALIGN GOALS AND IMPROVE PERFORMANCE",
   title = "Align every goal with the\nbigger picture.",
   description = "Connect organizational objectives with team priorities and individual contributions. Claripa helps you create aligned goals, track performance and identify gaps before they impact business outcomes.",
   talkText = "BOOK A DEMO",
@@ -92,7 +91,7 @@ export default function SolutionDetailHero({
       <div className="px-[5%]">
         {/* Top Breadcrumb */}
         {/* <div className="mb-8 sm:mb-12">
-          <p className="font-mono text-xs uppercase tracking-wider text-[#62737A] m-0">
+          <p className="font-geist-mono text-xs uppercase tracking-wider text-[#62737A] m-0">
             {breadcrumb}
           </p>
         </div> */}
@@ -104,7 +103,7 @@ export default function SolutionDetailHero({
             text={title}
             trigger="load"
             delay={20}
-            className="font-sora text-[#002E40] text-[28px] sm:text-5xl lg:text-[58px] font-normal tracking-tight leading-[1.08] mb-5 whitespace-pre-line"
+            className="font-sora text-[#002E40] text-3xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.035em] leading-[1.08] mb-5 whitespace-pre-line"
           />
 
           <BlurText
@@ -112,23 +111,23 @@ export default function SolutionDetailHero({
             text={description}
             trigger="load"
             delay={20}
-            className="font-sora text-[#62737A] text-sm sm:text-base lg:text-lg leading-[1.3] max-w-4xl whitespace-pre-line mx-auto mb-8"
+            className="font-sora text-[#62737A] text-sm sm:text-base md:text-lg leading-[1.3] max-w-4xl whitespace-pre-line mx-auto mb-8"
           />
 
           {/* Centered Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href={talkHref}
-              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#254F5F] text-white font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#122A33] transition-all hover:-translate-y-0.5 shadow-sm"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#254F5F] text-white font-geist-mono text-xs sm:text-sm font-medium uppercase tracking-tight hover:bg-[#174453] transition-all hover:-translate-y-0.5 shadow-sm"
             >
               {talkText}
             </Link>
 
             <a
               href={overviewHref}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-[#ECE9E3] text-[#002E40] font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#F7F6F3] transition-all hover:-translate-y-0.5 shadow-sm group"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-[#ECE9E3] text-[#002E40] font-geist-mono text-xs sm:text-sm font-medium uppercase tracking-tight hover:bg-[#F7F6F3] transition-all hover:-translate-y-0.5 shadow-sm group"
             >
-              <span className="w-5 h-5 rounded-full border border-[#002E40] flex items-center justify-center text-[#002E40] group-hover:border-[#F8780C] group-hover:text-[#F8780C] transition-colors">
+              <span className="w-5 h-5 rounded-full border border-[#002E40] flex items-center justify-center text-[#002E40] group-hover:border-brand-orange group-hover:text-brand-orange transition-colors">
                 <Play size={9} className="fill-current ml-0.5" />
               </span>
               {overviewText}
@@ -191,11 +190,11 @@ export default function SolutionDetailHero({
             <div className="w-full rounded-t-[24px] sm:rounded-t-[28px]  border border-[#ECE7E0] bg-white shadow-[0_12px_44px_rgba(0,46,64,0.06)] p-4 sm:p-6 lg:p-7">
               {/* Header: Eyebrow + Badge */}
               <div className="flex items-center justify-between gap-3 mb-1.5">
-                <p className="font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-[#71828A] m-0 font-medium">
+                <p className="font-geist-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-[#71828A] m-0 font-medium">
                   {dashboard.eyebrow}
                 </p>
 
-                <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-[#D45218] bg-[#FCEEE6] border border-[#FADCCB] px-3 py-1 rounded-full whitespace-nowrap">
+                <span className="font-geist-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-[#D45218] bg-[#FCEEE6] border border-[#FADCCB] px-3 py-1 rounded-full whitespace-nowrap">
                   {dashboard.attentionBadge}
                 </span>
               </div>
@@ -262,7 +261,7 @@ export default function SolutionDetailHero({
                       className="rounded-2xl p-3 sm:p-3.5 bg-white border border-[#ECE7E0] flex items-center justify-between gap-3 sm:gap-4 transition-all hover:border-[#DDD7CF]"
                     >
                       <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
-                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF1F5] text-[#254F5F] font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EBF1F5] text-[#254F5F] font-geist-mono text-xs font-bold flex items-center justify-center shrink-0">
                           {row.initials}
                         </div>
                         <div className="min-w-0">
@@ -300,7 +299,7 @@ export default function SolutionDetailHero({
                   <Sparkles size={18} className="text-[#0088A3]" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] sm:text-[11px] font-semibold text-[#52636A] uppercase tracking-wider mb-0.5">
+                  <p className="font-geist-mono text-[9px] sm:text-[11px] font-semibold text-[#52636A] uppercase tracking-wider mb-0.5">
                     SUGGESTED NEXT STEP
                   </p>
                   <p className="font-sora text-xs sm:text-sm text-[#002E40] leading-relaxed m-0">

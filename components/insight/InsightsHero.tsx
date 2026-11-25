@@ -4,7 +4,7 @@ import FeaturedInsights, {
   ArticleItem,
   defaultArticles as defaultFeaturedArticles,
 } from "./FeaturedInsights";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface InsightsHeroProps {
   eyebrow?: string;

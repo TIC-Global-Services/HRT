@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface IntegrationPartner {
   id: string;
@@ -250,7 +250,7 @@ export default function IntegrationsNetwork({
 
           {/* 2. Header Section (Eyebrow, Title, Subtitle, Search Pill) */}
           <div className="absolute top-[5%] sm:top-[6.3%] left-1/2 -translate-x-1/2 z-20 whitespace-nowrap">
-            <p className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11.5px] font-semibold uppercase tracking-wider text-[#E56A1E] m-0">
+            <p className="inline-flex items-center gap-2 font-geist-mono text-[10px] sm:text-[11.5px] font-semibold uppercase tracking-wider text-[#E56A1E] m-0">
               <span
                 aria-hidden="true"
                 className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.6)]"
@@ -287,7 +287,7 @@ export default function IntegrationsNetwork({
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search integrations"
               aria-label="Search integrations"
-              className="w-full h-full rounded-full border border-[#DFDDD7] bg-[#F6F5F2] px-4 font-mono text-[10.5px] sm:text-[11.5px] md:text-[12px] text-[#1D4452] placeholder:text-[#8C989C] text-center outline-none focus:border-[#E56A1E]/60 transition-colors shadow-2xs"
+              className="w-full h-full rounded-full border border-[#DFDDD7] bg-[#F6F5F2] px-4 font-geist-mono text-[10.5px] sm:text-[11.5px] md:text-[12px] text-[#1D4452] placeholder:text-[#8C989C] text-center outline-none focus:border-[#E56A1E]/60 transition-colors shadow-2xs"
             />
           </div>
 
@@ -316,7 +316,7 @@ export default function IntegrationsNetwork({
               </div>
 
               {/* Core Tooltip */}
-              <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/core:block z-50 whitespace-nowrap rounded-md bg-[#002e40] px-2.5 py-1 text-[11px] font-mono font-medium text-white shadow-lg">
+              <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/core:block z-50 whitespace-nowrap rounded-md bg-[#002e40] px-2.5 py-1 text-[11px] font-geist-mono font-medium text-white shadow-lg">
                 Claripa Core
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function IntegrationsNetwork({
 
                   {/* Hover Tooltip - counter-rotated so text is always perfectly horizontal */}
                   <div
-                    className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden group-hover/tile:block z-50 whitespace-nowrap rounded-md bg-[#002e40] px-2.5 py-1 text-[11px] font-mono font-medium text-white shadow-lg"
+                    className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden group-hover/tile:block z-50 whitespace-nowrap rounded-md bg-[#002e40] px-2.5 py-1 text-[11px] font-geist-mono font-medium text-white shadow-lg"
                     style={{
                       transform:
                         "translate(-50%, 0) rotate(calc(-1 * var(--tile-rot, 0deg)))",

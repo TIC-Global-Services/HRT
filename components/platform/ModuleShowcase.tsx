@@ -94,7 +94,7 @@ export default function ModuleShowcase({
           className="grid overflow-hidden rounded-[28px] border border-[#e8e4de] bg-white shadow-[0_18px_60px_rgba(37,79,95,0.08)] lg:grid-cols-[1.05fr_0.95fr]"
         >
           <div className="flex flex-col p-6 sm:p-10 lg:p-12">
-            <p className="m-0 font-mono text-xs uppercase tracking-wide text-[#f8780c]">
+            <p className="m-0 font-geist-mono text-xs uppercase tracking-wide text-[#f8780c]">
               {activeModule.category}
             </p>
             <div className="mt-12 max-w-xl">
@@ -150,7 +150,7 @@ export default function ModuleShowcase({
             role="tabpanel"
           >
             <div className="w-full rounded-[22px] border border-[#ebe6e0] bg-white p-5 shadow-sm sm:p-6">
-              <p className="mb-4 mt-0 font-mono text-[10px] uppercase tracking-wide text-[#62737a]">
+              <p className="mb-4 mt-0 font-geist-mono text-[10px] uppercase tracking-wide text-[#62737a]">
                 {activeModule.label} flow
               </p>
               <div className="mb-6 flex flex-wrap items-center gap-2">

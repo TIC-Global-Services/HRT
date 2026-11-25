@@ -115,7 +115,7 @@ export default function ScrollTimeline({
               <div className="relative shrink-0 flex items-center justify-center">
                 <div
                   className={cn(
-                    "w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-mono font-bold tracking-tight select-none z-10 transition-all duration-500",
+                    "w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-geist-mono font-bold tracking-tight select-none z-10 transition-all duration-500",
                     isActive
                       ? "shadow-[0_0_16px_rgba(240,106,37,0.5)] scale-105"
                       : "opacity-100 hover:opacity-100"

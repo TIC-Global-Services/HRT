@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface MakeYourNextMoveProps {
   eyebrow?: string;
@@ -44,10 +44,10 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
             aria-hidden="true"
             className="relative inline-flex items-center justify-center w-2 h-2 shrink-0"
           >
-            <span className="absolute -inset-2 rounded-full bg-[#F8750C]/5 blur-[6px] pointer-events-none" />
-            <span className="relative w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F8750C] shadow-[0_0_10px_2px_rgba(248,117,12,0.55)]" />
+            <span className="absolute -inset-2 rounded-full bg-brand-orange/5 blur-[6px] pointer-events-none" />
+            <span className="relative w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_10px_2px_rgba(248,114,12,0.55)]" />
           </span>
-          <span className="text-[#F8750C] text-xs sm:text-base font-medium tracking-tight uppercase font-mono">
+          <span className="text-brand-orange text-xs sm:text-sm font-semibold tracking-tight uppercase font-geist-mono">
             {eyebrow}
           </span>
         </div>
@@ -57,7 +57,7 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="h2"
           delay={20}
           text={title}
-          className="text-[28px] sm:text-5xl md:text-5xl lg:text-6xl font-normal text-[#254F5F] tracking-tight leading-[1.12] mb-4 sm:mb-3 font-sans"
+          className="text-[28px] sm:text-4xl lg:text-[46px] font-normal text-brand-teal tracking-[-0.035em] leading-[1.12] mb-4 sm:mb-3 font-sora"
         />
 
         {/* Subtitle */}
@@ -65,14 +65,14 @@ export const MakeYourNextMove: React.FC<MakeYourNextMoveProps> = ({
           as="p"
           delay={20}
           text={subtitle}
-          className="text-[#3E4A4F] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.3] mb-4 sm:mb-8 font-normal"
+          className="text-text-muted font-sora text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.3] mb-4 sm:mb-8 font-normal"
         />
 
         {/* Action Button */}
         <div>
           <Link
             href={buttonHref}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#254F5F] hover:bg-[#214350] text-white text-xs sm:text-base font-normal font-geist-mono tracking-tight uppercase transition-all duration-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-brand-teal hover:bg-brand-teal-hover text-white text-xs sm:text-sm font-medium font-geist-mono tracking-tight uppercase transition-all duration-200 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
           >
             {buttonText}
           </Link>

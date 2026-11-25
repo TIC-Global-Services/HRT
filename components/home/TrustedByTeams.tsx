@@ -229,7 +229,7 @@ export default function TrustedByTeams() {
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-base font-semibold tracking-tight text-[#F8780C] uppercase mb-4 font-mono">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-base font-semibold tracking-tight text-[#F8780C] uppercase mb-4 font-geist-mono">
             <span className="w-2 h-2 rounded-full bg-[#E26D35]" />
             <span>TESTIMONIALS</span>
           </div>

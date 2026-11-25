@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 import { allSolutions } from "@/data/solutions";
 
 export const solutionFilters = [
@@ -63,22 +63,22 @@ export default function   SolutionFinder({
       id="solution-finder"
     >
       <div className="flex flex-col items-center text-center px-4 max-w-2xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#ff6b0a] font-mono text-xs  md:text-base font-medium tracking-tight uppercase">
-          <span className="w-1.5 h-1.5 rounded-full  font-geist-mono bg-[#ff6b0a] shadow-[0_0_8px_rgba(255,107,10,0.45)]" />
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
           {eyebrow}
         </p>
         <BlurText
           as="h2"
           text={title}
           delay={20}
-          className="mt-3 text-[#254F5F] text-[28px] sm:text-4xl md:text-[42px] font-normal tracking-[-0.05em] leading-[1.05] font-sora"
+          className="mt-3 text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] font-sora"
         />
         {description && (
           <BlurText
             as="p"
             text={description}
             delay={20}
-            className="mt-3 text-[#71838a] text-sm leading-relaxed"
+            className="mt-3 text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3]"
           />
         )}
       </div>
@@ -102,7 +102,7 @@ export default function   SolutionFinder({
                 aria-pressed={isActive}
                 onClick={() => setActiveFilter(filter)}
                 type="button"
-                className={`inline-flex min-h-[38px] items-center justify-center gap-2 px-4 rounded-full border font-mono text-[10px] font-medium tracking-wide uppercase transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] ${
+                className={`inline-flex min-h-[38px] items-center justify-center gap-2 px-4 rounded-full border font-geist-mono text-[10px] font-medium tracking-wide uppercase transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] ${
                   isActive
                     ? "border-[#285768] bg-[#285768] text-white"
                     : "border-[#dfe4e5] bg-transparent text-[#526972] hover:border-[#a6bac0]"

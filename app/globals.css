@@ -8,6 +8,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-navy: #002e40;
+  --color-brand-teal: #254f5f;
+  --color-brand-teal-hover: #174453;
+  --color-brand-orange: #f8720c;
+  --color-brand-orange-deep: #f8720c;
+  --color-surface-warm: #f7f6f3;
+  --color-surface-cream: #fbf9f5;
+  --color-border-warm: #ece9e3;
+  --color-text-muted: #62737a;
   --font-sans: var(--font-sora), var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-geist-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -111,7 +120,7 @@ body {
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   scroll-padding-top: 5rem;
 }
@@ -150,10 +159,6 @@ body {
   to {
     stroke-dashoffset: -16;
   }
-}
-
-.animate-flow-dash {
-  animation: flow-dash 1s linear infinite;
 }
 
 .animate-dotted-flow {

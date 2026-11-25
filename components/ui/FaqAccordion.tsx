@@ -44,10 +44,10 @@ export default function FaqAccordion({
         return (
           <div
             key={item.question}
-            className={`transition-all duration-300 border border-[#ECE9E3] ${
+            className={`transition-all duration-300 border border-border-warm ${
               isOpen
                 ? "rounded-[22px] sm:rounded-[24px] bg-white p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
-                : "rounded-[20px] sm:rounded-[24px] bg-[#F7F6F3] px-6 py-4 sm:px-7 sm:py-4.5 hover:bg-[#F2F0EC]"
+                : "rounded-[20px] sm:rounded-[24px] bg-surface-warm px-6 py-4 sm:px-7 sm:py-4.5 hover:bg-[#F2F0EC]"
             } group`}
           >
             <button
@@ -55,15 +55,13 @@ export default function FaqAccordion({
               onClick={() => toggleIndex(index)}
               aria-expanded={isOpen}
               aria-controls={`faq-answer-${itemId}`}
-              className={`w-full flex items-center justify-between gap-4 text-left cursor-pointer transition-colors ${
+              className={`w-full flex justify-between gap-4 text-left cursor-pointer transition-colors ${
                 isOpen ? "items-start" : "items-center"
               }`}
             >
               <span
-                className={`font-sora text-[#002E40] font-medium leading-snug transition-colors ${
-                  isOpen
-                    ? "text-[14px] sm:text-[16px] pt-0.5"
-                    : "text-[14px] sm:text-[16px] group-hover:text-[#F8780C]"
+                className={`font-sora text-brand-navy font-medium leading-snug transition-colors text-[14px] sm:text-[16px] ${
+                  isOpen ? "pt-0.5" : "group-hover:text-brand-orange"
                 }`}
               >
                 {item.question}
@@ -72,14 +70,14 @@ export default function FaqAccordion({
               {isOpen ? (
                 <span
                   aria-hidden="true"
-                  className="w-6 h-6 sm:w-6 sm:h-6 rounded-lg bg-[#002E40] text-white flex items-center justify-center shrink-0 text-lg leading-none shadow-sm transition-transform"
+                  className="w-6 h-6 rounded-lg bg-brand-navy text-white flex items-center justify-center shrink-0 text-lg leading-none shadow-sm transition-transform"
                 >
                   −
                 </span>
               ) : (
                 <span
                   aria-hidden="true"
-                  className="w-6 h-6 sm:w-6 sm:h-6 rounded-full bg-white border border-[#ECE9E3] text-[#62737A] flex items-center justify-center shrink-0 text-base leading-none shadow-sm group-hover:border-[#002E40] transition-colors"
+                  className="w-6 h-6 rounded-full bg-white border border-border-warm text-text-muted flex items-center justify-center shrink-0 text-base leading-none shadow-sm group-hover:border-brand-navy transition-colors"
                 >
                   +
                 </span>
@@ -93,7 +91,7 @@ export default function FaqAccordion({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="text-[#62737A] font-sora text-[14px] sm:text-base leading-[1.2] max-w-[580px] m-0">
+                <p className="text-text-muted font-sora text-[14px] sm:text-base leading-[1.2] max-w-[580px] m-0">
                   {item.answer}
                 </p>
               </div>

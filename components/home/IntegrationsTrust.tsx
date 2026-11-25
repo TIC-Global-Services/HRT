@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FolderLock } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 // Orbit nodes with exact 72-degree equal spacing (360° / 5 = 72°) around the circle
 const orbitNodes = [
@@ -127,7 +127,7 @@ export default function IntegrationsTrust() {
                     >
                       {/* Counter-rotating container keeps text permanently upright and legible */}
                       <div className="animate-orbit-ccw">
-                        <span className="inline-flex items-center justify-center px-2.5 py-1 sm:px-3 sm:py-1 rounded-full bg-[#FFF4ED] text-[#2D3E47] text-[10px] sm:text-[11px] font-mono font-medium tracking-wide shadow-2xs border border-[#FBE3D4]/80 whitespace-nowrap">
+                        <span className="inline-flex items-center justify-center px-2.5 py-1 sm:px-3 sm:py-1 rounded-full bg-[#FFF4ED] text-[#2D3E47] text-[10px] sm:text-[11px] font-geist-mono font-medium tracking-wide shadow-2xs border border-[#FBE3D4]/80 whitespace-nowrap">
                           {node.label}
                         </span>
                       </div>
@@ -156,7 +156,7 @@ export default function IntegrationsTrust() {
           <div className="rounded-[28px] sm:rounded-[34px] bg-[#254F5F] border border-[#1E4351] text-white p-6 sm:p-8 lg:p-9 flex flex-col gap-20 justify-between shadow-xl">
             {/* Header Content */}
             <div className="max-w-lg">
-              <div className="text-[11px] sm:text-xs font-mono font-medium tracking-wider text-[#FF7324] uppercase mb-2.5 text-center md:text-left">
+              <div className="text-[11px] sm:text-xs font-geist-mono font-medium tracking-wider text-[#FF7324] uppercase mb-2.5 text-center md:text-left">
                 SECURITY & TRUST
               </div>
               <BlurText

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface EmployeeBenefitItem {
   id?: string;
@@ -185,10 +185,10 @@ export default function EmployeeExperience({
               }
             >
               {/* Eyebrow */}
-              <p className="mb-3.5 sm:mb-4 flex items-center gap-2 font-mono text-xs sm:text-base font-medium uppercase tracking-tight text-[#E56A1E]">
+              <p className="mb-3.5 sm:mb-4 flex items-center gap-2 font-geist-mono text-xs sm:text-sm font-semibold uppercase tracking-tight text-brand-orange">
                 <span
                   aria-hidden="true"
-                  className="w-1.5 h-1.5 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.7)]"
+                  className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
                 />
                 {card.eyebrow}
               </p>
@@ -198,7 +198,7 @@ export default function EmployeeExperience({
                 as="h2"
                 delay={20}
                 text={card.title}
-                className="m-0 text-[28px] sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
+                className="m-0 font-sora text-[28px] sm:text-[32px] font-normal leading-tight tracking-tight whitespace-pre-line text-[#254F5F]"
               />
 
               {/* Description */}
@@ -207,7 +207,7 @@ export default function EmployeeExperience({
                   as="p"
                   delay={20}
                   text={card.description}
-                  className="mb-0 mt-4 text-sm sm:text-[15px] leading-[1.3] text-[#5A6D75] font-sora"
+                  className="mb-0 mt-4 text-sm sm:text-base md:text-lg leading-[1.3] text-[#62737A] font-sora"
                 />
               )}
 

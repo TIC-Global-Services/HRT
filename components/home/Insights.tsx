@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 import { allBlogs, allCaseStudies } from "@/data/blogs";
 
 export interface InsightCardItem {
@@ -212,8 +212,8 @@ export default function Insights() {
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-8 sm:mb-16">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-[#E26D35] uppercase mb-4 font-mono">
-            <span className="w-2 h-2 rounded-full bg-[#E26D35]" />
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-tight text-brand-orange uppercase mb-4 font-geist-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
             <span>INSIGHTS</span>
           </div>
 
@@ -222,14 +222,14 @@ export default function Insights() {
             as="h2"
             delay={20}
             text={"Insights That\nMove Work Forward"}
-            className="font-heading text-[28px] sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-[#254F5F] leading-[1.14] mb-2 md:mb-6"
+            className="font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] text-[#254F5F] leading-[1.12] mb-2 md:mb-6"
           />
 
           {/* Explore Blogs & Guides Pill Button (Desktop / Tablet only) */}
           <div className="hidden md:block">
             <Link
               href="/insight"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-xs md:text-base font-mono font-semibold tracking-tight uppercase transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-xs md:text-base font-geist-mono font-semibold tracking-tight uppercase transition-colors duration-200"
             >
               <span>EXPLORE BLOGS & GUIDES</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -270,13 +270,13 @@ export default function Insights() {
                 {/* Top Bar: Date Pill & Category Badge */}
                 <div className="relative z-10 flex items-center justify-between">
                   {/* Date Tag */}
-                  <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-white tracking-wider">
+                  <div className="inline-flex items-center gap-2 text-xs font-geist-mono font-medium text-white tracking-wider">
                     <span className="w-1.5 h-1.5 rounded-full bg-white" />
                     <span>{card.date}</span>
                   </div>
 
                   {/* Category Tag */}
-                  <div className="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white uppercase tracking-widest shadow-xs">
+                  <div className="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[10px] font-geist-mono font-semibold text-white uppercase tracking-widest shadow-xs">
                     {card.category}
                   </div>
                 </div>
@@ -287,7 +287,7 @@ export default function Insights() {
                     {card.title}
                   </h3>
 
-                  <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-tight text-white uppercase">
+                  <div className="inline-flex items-center gap-2 text-xs font-geist-mono font-semibold tracking-tight text-white uppercase">
                     <span>{card.ctaText}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                   </div>
@@ -318,7 +318,7 @@ export default function Insights() {
           <div className="flex items-center justify-center mt-7">
             <Link
               href="/insight"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F7F6F3] hover:bg-[#E5E9ED] text-[#254F5F] text-xs font-geist-mono font-semibold tracking-wider uppercase transition-colors duration-200 shadow-2xs border border-zinc-200/60"
             >
               <span>EXPLORE BLOGS & GUIDES</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -363,13 +363,13 @@ export default function Insights() {
                       {/* Top Bar: Date Pill & Category Badge */}
                       <div className="relative z-10 flex items-center justify-between">
                         {/* Date Tag */}
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 text-[12px] sm:text-[16px] font-mono font-medium text-white tracking-wider">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 text-[12px] sm:text-[16px] font-geist-mono font-medium text-white tracking-wider">
                           <span className="w-1.5 h-1.5 rounded-full bg-white" />
                           <span>{item.date}</span>
                         </div>
 
                         {/* Category Tag */}
-                        <div className="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white uppercase tracking-widest shadow-xs">
+                        <div className="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[10px] font-geist-mono font-semibold text-white uppercase tracking-widest shadow-xs">
                           {item.category}
                         </div>
                       </div>
@@ -383,7 +383,7 @@ export default function Insights() {
                           className="font-heading text-xl sm:text-[28px] lg:text-[30px] font-medium text-white tracking-tight leading-[1.25] mb-4 group-hover:text-orange-200 transition-colors"
                         />
 
-                        <div className="inline-flex items-center gap-2 text-xs sm:text-base font-mono font-semibold tracking-tight text-white/90 group-hover:text-white uppercase transition-colors">
+                        <div className="inline-flex items-center gap-2 text-xs sm:text-base font-geist-mono font-semibold tracking-tight text-white/90 group-hover:text-white uppercase transition-colors">
                           <span>{item.ctaText}</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#E26D35]" />
                         </div>

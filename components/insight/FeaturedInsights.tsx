@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { allBlogs, allCaseStudies } from "@/data/blogs";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface ArticleItem {
   title: string;

@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { AlertTriangle, RotateCcw, Home } from "lucide-react";
-import { BreadcrumbBadge } from "@/reuseable/breadcrum";
+import { BreadcrumbBadge } from "@/components/ui/Breadcrumb";
 
 export default function ErrorBoundary({
   error,
@@ -44,7 +44,7 @@ export default function ErrorBoundary({
             try again or return to the homepage.
           </p>
           {error?.digest && (
-            <p className="mt-2 text-xs font-mono text-slate-400 bg-slate-50 py-1 px-2 rounded-md inline-block">
+            <p className="mt-2 text-xs font-geist-mono text-slate-400 bg-slate-50 py-1 px-2 rounded-md inline-block">
               Digest: {error.digest}
             </p>
           )}

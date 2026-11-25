@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Play, Search, Sparkles } from "lucide-react";
 import { allBlogs, allCaseStudies, type BlogPost } from "@/data/blogs";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface LibraryArticleItem {
   id: string;

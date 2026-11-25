@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SuccessorItem {
   role: string;
@@ -192,10 +192,11 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
             {/* Eyebrow Pill Tag */}
             <div className="inline-flex items-center gap-2">
-              <span className="text-[#F06A25] text-xs font-bold leading-none select-none">
-                ●
-              </span>
-              <span className="font-mono text-xs sm:text-base font-semibold text-[#F06A25] tracking-wider uppercase">
+              <span
+                aria-hidden="true"
+                className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)] shrink-0"
+              />
+              <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                 {eyebrow}
               </span>
             </div>
@@ -205,13 +206,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
               as="h2"
               delay={20}
               text={title}
-              className="font-sora text-[28px] sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 lg:block hidden"
-            />
-            <BlurText
-              as="h2"
-              delay={20}
-              text={"Turn Performance Information into Clearer Next Steps."}
-              className="font-sora text-[28px] sm:text-4xl lg:text-[42px] font-normal text-[#254F5F] leading-[1.1] tracking-tight mb-4 lg:hidden"
+              className="font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal text-[#254F5F] leading-[1.12] tracking-[-0.035em] mb-4 lg:whitespace-pre-line"
             />
 
             {/* Detailed Body Paragraph */}
@@ -219,7 +214,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
               as="p"
               delay={20}
               text={description}
-              className="font-sora text-sm sm:text-lg text-[#5F7373] font-normal leading-[1.3] max-w-3xl mb-6"
+              className="font-sora text-sm sm:text-base md:text-lg text-[#62737A] font-normal leading-[1.3] max-w-3xl mb-6"
             />
 
             {/* Three Sub-Features Grid at Bottom of Left Column */}
@@ -295,7 +290,7 @@ export const AskClaripa: React.FC<AskClaripaProps> = ({
                     Ask Claripa
                   </span>
                 </div>
-                <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#8C9DA3]">
+                <span className="font-geist-mono text-[9.5px] uppercase tracking-wider text-[#8C9DA3]">
                   Illustrative Demo
                 </span>
               </div>

@@ -3,8 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { AlertCircle, Crown } from "lucide-react";
-import { AnimatedCounter } from "@/lib/useCountUp";
-import BlurText from "@/reuseable/BlurText";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionsHeroProps {
   eyebrow?: string;
@@ -19,7 +19,7 @@ function RetentionPreview({ isTriggered }: { isTriggered: boolean }) {
 
   return (
     <article className="relative min-w-0 p-5 rounded-[23px] border border-[#eee6df] bg-white/85 shadow-[0_22px_42px_rgba(28,43,48,0.09)] min-h-[220px] lg:mt-9.5 pt-6 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_28px_50px_rgba(28,43,48,0.14)]">
-      <div className="font-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-7 leading-normal">
+      <div className="font-geist-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-7 leading-normal">
         RETAIN KEY TALENT
       </div>
       <AlertCircle
@@ -57,7 +57,7 @@ function RetentionPreview({ isTriggered }: { isTriggered: boolean }) {
 function RampUpPreview({ isTriggered }: { isTriggered: boolean }) {
   return (
     <article className="min-w-0 p-5 rounded-[23px] border border-[#eee6df] bg-[#fffcf9] shadow-[0_22px_42px_rgba(28,43,48,0.09)] min-h-[224px] lg:-mt-9 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_28px_50px_rgba(28,43,48,0.14)]">
-      <div className="font-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-3.5 leading-normal">
+      <div className="font-geist-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-3.5 leading-normal">
         ONBOARD &amp; RAMP UP
       </div>
       <h3 className="text-base font-semibold text-[#292b2c] tracking-[-0.03em] leading-tight">
@@ -106,7 +106,7 @@ function RampUpPreview({ isTriggered }: { isTriggered: boolean }) {
 function PerformancePreview({ isTriggered }: { isTriggered: boolean }) {
   return (
     <article className="min-w-0 p-5 rounded-[23px] border border-[#eee6df] bg-[#fffaf5] shadow-[0_22px_42px_rgba(28,43,48,0.09)] min-h-[217px] lg:mt-14 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_28px_50px_rgba(28,43,48,0.14)]">
-      <div className="font-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-4 leading-normal">
+      <div className="font-geist-mono text-[9px] text-[#7d8587] tracking-wider uppercase mb-4 leading-normal">
         CONTINUOUS PERFORMANCE
       </div>
       <h3 className="text-base font-semibold text-[#292b2c] tracking-[-0.03em] leading-tight">
@@ -145,7 +145,7 @@ function PerformancePreview({ isTriggered }: { isTriggered: boolean }) {
 function SuccessionPreview() {
   return (
     <article className="min-w-0 p-5 rounded-[23px] border border-[#345b60] bg-[#355a5d] text-white shadow-[0_22px_42px_rgba(28,43,48,0.09)] min-h-[198px] lg:-mt-2.5 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_28px_50px_rgba(28,43,48,0.14)]">
-      <div className="font-mono text-[9px] text-[#f39963] tracking-wider uppercase mb-4 leading-normal">
+      <div className="font-geist-mono text-[9px] text-[#f39963] tracking-wider uppercase mb-4 leading-normal">
         GROW &amp; PLAN SUCCESSION
       </div>
       <div className="flex items-center gap-3 mt-4">
@@ -203,7 +203,7 @@ export default function SolutionsHero({
   return (
     <section className="pt-10 sm:pt-12 pb-0">
       <div className="flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-[#F8750C] font-geist-mono text-lg font-medium tracking-tight">
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold uppercase tracking-tight">
           {eyebrow}
         </p>
         <BlurText
@@ -211,17 +211,17 @@ export default function SolutionsHero({
           text={title}
           trigger="load"
           delay={20}
-          className="my-2.5 text-[#002E40] font-sora text-3xl sm:text-5xl md:text-[58px] lg:text-[62px] font-normal tracking-[-0.05em] leading-[1.02]"
+          className="my-2.5 text-[#002E40] font-sora text-3xl sm:text-5xl lg:text-6xl font-normal tracking-[-0.035em] leading-[1.08]"
         />
         <BlurText
           as="p"
           text={description}
           trigger="load"
           delay={20}
-          className="max-w-4xl text-[#71838a] text-sm sm:text-base font-normal font-sora leading-[1.2]"
+          className="max-w-4xl text-[#62737A] text-sm sm:text-base md:text-lg font-normal font-sora leading-[1.3]"
         />
         <Link
-          className="inline-flex font-geist-mono text-base  items-center justify-center gap-2 mt-6 py-3 px-7 rounded-full bg-[#254F5F] hover:bg-[#1d4655] text-white tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b0a] focus-visible:ring-offset-2"
+          className="inline-flex font-geist-mono text-xs sm:text-sm font-medium items-center justify-center gap-2 mt-6 py-3.5 px-7 rounded-full bg-[#254F5F] hover:bg-[#174453] text-white tracking-tight uppercase transition-all duration-200 hover:-translate-y-0.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
           href={ctaHref}
         >
           {ctaText}

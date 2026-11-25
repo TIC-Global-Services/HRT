@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check, Target, BarChart3, ListChecks } from "lucide-react";
-import FlutedGlassBackground from "@/reuseable/HeroBg";
-import BlurText from "@/reuseable/BlurText";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import BlurText from "@/components/ui/BlurText";
 
 export interface ObjectiveFrameworkItem {
   id: string;
@@ -111,8 +111,8 @@ export default function Objective({
           <div className="flex flex-col items-start max-w-xl">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 mb-3.5 sm:mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#E56A1E] shadow-[0_0_8px_rgba(229,106,30,0.65)]" />
-              <span className="font-mono text-xs sm:text-[13px] font-semibold text-[#E56A1E] tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
+              <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                 {eyebrow}
               </span>
             </div>
@@ -122,11 +122,11 @@ export default function Objective({
               as="h2"
               delay={20}
               text={title}
-              className="font-sora text-[28px] sm:text-4xl md:text-[42px] lg:text-[46px] font-normal tracking-tight text-[#102A33] leading-[1.2] mb-4 sm:mb-5"
+              className="font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] text-[#002E40] leading-[1.12] mb-4 sm:mb-5"
             />
 
             {/* Description */}
-            <p className="font-sora text-sm sm:text-base text-black leading-[1.2] max-w-lg mb-6 sm:mb-8 font-normal">
+            <p className="font-sora text-sm sm:text-base md:text-lg text-[#62737A] leading-[1.3] max-w-lg mb-6 sm:mb-8 font-normal">
               {description}
             </p>
 
@@ -147,7 +147,7 @@ export default function Objective({
             {/* CTA Button */}
             <Link
               href={ctaHref}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#254F5F] hover:bg-[#183B47] text-white font-mono text-[10px] md:text-xs font-normal uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#254F5F] hover:bg-[#183B47] text-white font-geist-mono text-[10px] md:text-xs font-normal uppercase tracking-wider transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 group"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -166,7 +166,7 @@ export default function Objective({
             </svg>
 
             {/* Framework Header Tag */}
-            <span className="block font-mono text-[10px] sm:text-[11px] font-semibold text-[#8FA2A8] tracking-widest uppercase mb-6 sm:mb-7 text-center md:text-left">
+            <span className="block font-geist-mono text-[10px] sm:text-[11px] font-semibold text-[#8FA2A8] tracking-widest uppercase mb-6 sm:mb-7 text-center md:text-left">
               OKR FRAMEWORK
             </span>
 

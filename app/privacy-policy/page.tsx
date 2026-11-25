@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Claripa AI",
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
         {/* Header */}
         <div className="mb-12 text-left">
-          <p className="font-mono text-xs uppercase tracking-widest text-[#F06A25] font-semibold mb-3">
+          <p className="font-geist-mono text-xs uppercase tracking-widest text-[#F06A25] font-semibold mb-3">
             LEGAL & COMPLIANCE
           </p>
           <BlurText
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
             delay={20}
             className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#002E40] mb-4"
           />
-          <p className="text-sm text-zinc-500 font-mono">
+          <p className="text-sm text-zinc-500 font-geist-mono">
             Last updated: March 2026
           </p>
         </div>

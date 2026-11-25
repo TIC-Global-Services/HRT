@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, X } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface TeamMember {
   name: string;
@@ -128,21 +128,15 @@ export default function MeetTheTeam({
     >
       {/* Header */}
       <div className="flex flex-col items-center text-center lg:px-4 lg:max-w-3xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#E26D35] font-mono text-xs font-semibold tracking-tight uppercase mb-3">
-          <span className="w-1.5 h-1.5 rounded-full  bg-[#E26D35] shadow-[0_0_8px_rgba(226,109,53,0.55)]" />
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
           {eyebrow}
         </p>
         <BlurText
           as="h2"
           delay={20}
           text={title}
-          className="text-[#254F5F] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1] hidden lg:block"
-        />
-        <BlurText
-          as="h2"
-          delay={20}
-          text={"Technology should make \nwork more human."}
-          className="text-[#254F5F] font-sora text-[28px] sm:text-4xl md:text-[46px] font-normal tracking-tight leading-[1.1]  lg:hidden"
+          className="text-[#254F5F] font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] lg:whitespace-pre-line"
         />
         {/* {subtitle && (
           <p className="font-sora text-sm sm:text-base text-[#62737A] leading-relaxed mt-3.5 max-w-xl">
@@ -198,7 +192,7 @@ export default function MeetTheTeam({
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
                 />
                 {member.bio && (
-                  <span className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#002E40]/85 backdrop-blur-xs text-white font-mono text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1 shadow-xs border border-white/15 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  <span className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#002E40]/85 backdrop-blur-xs text-white font-geist-mono text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1 shadow-xs border border-white/15 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
                     <span>Read More</span>
                     <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F8780C]" />
                   </span>
@@ -282,7 +276,7 @@ export default function MeetTheTeam({
                   >
                     {selectedMember.name}
                   </h3>
-                  <p className="font-mono text-xs sm:text-sm text-[#FFB076] mt-1 tracking-tight">
+                  <p className="font-geist-mono text-xs sm:text-sm text-[#FFB076] mt-1 tracking-tight">
                     {selectedMember.role}
                   </p>
 
@@ -300,7 +294,7 @@ export default function MeetTheTeam({
                       href={selectedMember.linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/25 text-white font-mono text-xs uppercase tracking-wider transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/25 text-white font-geist-mono text-xs uppercase tracking-wider transition-colors"
                     >
                       <span>LinkedIn Profile</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />

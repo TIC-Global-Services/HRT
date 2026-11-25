@@ -1,4 +1,4 @@
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionOutcome {
   metricNumber: string;
@@ -52,15 +52,15 @@ export default function SolutionOutcomes({
     >
       {/* Section Header */}
       <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto mb-10 sm:mb-12">
-        <p className="inline-flex items-center gap-2 text-[#F8780D] font-mono text-xs md:text-base font-medium tracking-tight uppercase">
-          <span className="w-1.5 h-1.5 font-geist-mono rounded-full bg-[#F8780D] shadow-[0_0_8px_rgba(255,107,10,0.55)]" />
+        <p className="inline-flex items-center gap-2 text-brand-orange font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]" />
           {eyebrow}
         </p>
         <BlurText
           as="h2"
           text={title}
           delay={20}
-          className="mt-3 text-[#254F5F] text-[28px] sm:text-4xl md:text-[46px] lg:text-[48px] font-normal font-sora tracking-tight leading-[1.1]"
+          className="mt-3 text-[#254F5F] text-[28px] sm:text-4xl lg:text-[46px] font-normal font-sora tracking-[-0.035em] leading-[1.12]"
         />
       </div>
 

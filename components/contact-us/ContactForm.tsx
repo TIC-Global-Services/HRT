@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface ContactFormProps {
   inquiries?: string[];
@@ -27,7 +27,7 @@ export default function ContactForm({
       <input name="Inquiry" type="hidden" value={activeInquiry} />
       <div className="flex items-start justify-between gap-4 mb-[26px]">
         <div>
-          <span className="flex items-center gap-2 m-0 text-[#f8780c] font-mono text-[11px] font-medium tracking-[0.02em] uppercase">
+          <span className="flex items-center gap-2 m-0 text-brand-orange font-geist-mono text-[11px] font-medium tracking-[0.02em] uppercase">
             BOOK A DEMO
           </span>
           <BlurText
@@ -38,7 +38,7 @@ export default function ContactForm({
             className="mt-2 text-[#254f5f] font-sora text-xl sm:text-2xl lg:text-[25px] font-medium tracking-[-0.04em]"
           />
         </div>
-        {/* <span className="text-[#62737a] font-mono text-[11px]">01 / 01</span> */}
+        {/* <span className="text-[#62737a] font-geist-mono text-[11px]">01 / 01</span> */}
       </div>
 
       <fieldset className="flex flex-wrap gap-1.5 mb-5 p-0 border-0">
@@ -178,12 +178,12 @@ export default function ContactForm({
       </label>
 
       <button
-        className="w-full min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 rounded-full border border-[#002e40] bg-[#002e40] text-white font-mono text-[11px] font-medium tracking-[0.02em] uppercase hover:bg-[#174453] transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
+        className="w-full min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 rounded-full border border-[#254F5F] bg-[#254F5F] text-white font-geist-mono text-xs sm:text-sm font-medium tracking-tight uppercase hover:bg-[#174453] transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
         type="submit"
       >
         Request demo <ArrowUpRight aria-hidden="true" size={17} />
       </button>
-      <p className="mt-3 text-[#62737a] font-mono text-[10px] text-center uppercase">
+      <p className="mt-3 text-[#62737a] font-geist-mono text-[10px] text-center uppercase">
         We reply within one business day · No spam
       </p>
     </form>

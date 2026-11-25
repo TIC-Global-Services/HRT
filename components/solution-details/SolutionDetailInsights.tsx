@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { allCaseStudies } from "@/data/blogs";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionInsightItem {
   id: string;
@@ -50,7 +50,7 @@ export default function SolutionDetailInsights({
               aria-hidden="true"
               className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
             />
-            <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
+            <span className="font-geist-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -109,7 +109,7 @@ export default function SolutionDetailInsights({
                       {/* Top Date Tag with dot */}
                       <div className="relative z-10 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                        <span className="font-mono text-xs font-medium text-white/95 uppercase tracking-wider">
+                        <span className="font-geist-mono text-xs font-medium text-white/95 uppercase tracking-wider">
                           {item.date}
                         </span>
                       </div>
@@ -122,7 +122,7 @@ export default function SolutionDetailInsights({
                           delay={20}
                           className="font-sora text-white text-2xl sm:text-[28px] font-normal leading-snug tracking-tight mb-4 group-hover:text-[#F8780C] transition-colors"
                         />
-                        <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-white/95 group-hover:text-white transition-colors font-medium">
+                        <span className="inline-flex items-center gap-1.5 font-geist-mono text-xs uppercase tracking-wider text-white/95 group-hover:text-white transition-colors font-medium">
                           READ THE FULL CASE STUDY <ArrowUpRight size={15} />
                         </span>
                       </div>

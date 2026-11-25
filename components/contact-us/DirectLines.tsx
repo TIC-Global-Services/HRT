@@ -7,7 +7,7 @@ import {
   ArrowUpRight,
   LucideIcon,
 } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface DirectLineItem {
   icon: LucideIcon;
@@ -73,9 +73,9 @@ export default function DirectLines({
           <div className="flex items-center justify-center lg:justify-start gap-2 mb-2.5 sm:mb-3">
             <span
               aria-hidden="true"
-              className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780D] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
             />
-            <span className="font-mono text-xs sm:text-sm font-semibold text-[#F8780D] tracking-tight uppercase">
+            <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
               {eyebrow}
             </span>
           </div>
@@ -83,7 +83,7 @@ export default function DirectLines({
             as="h2"
             text={title}
             delay={20}
-            className="font-sora text-[#002E40] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+            className="font-sora text-[#002E40] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
           />
         </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 /**
  * FlutedGlassBackground
@@ -726,16 +727,15 @@ export default function FlutedGlassBackground({
                 }}
             >
                 {effectiveFallback && (
-                    <img
+                    <Image
                         src={effectiveFallback}
                         alt=""
                         aria-hidden="true"
+                        fill
+                        unoptimized
                         style={{
-                            width: "100%",
-                            height: "100%",
                             objectFit: preset === "hero" ? "contain" : "cover",
                             objectPosition: "top",
-                            display: "block",
                         }}
                     />
                 )}

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import SectionEyebrow from "./SectionEyebrow";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SectionHeadingProps {
   eyebrow: string;
@@ -28,14 +28,14 @@ export default function SectionHeading({
         as="h2"
         delay={20}
         text={title}
-        className="m-0 text-[#254f5f] font-sora text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-[-0.055em] leading-[1.08]"
+        className="m-0 text-brand-teal font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
       />
       {description && (
         <BlurText
           as="p"
           delay={20}
           text={description}
-          className="m-0 text-[#62737a] font-sora text-base leading-[1.65] max-w-[640px]"
+          className="m-0 text-text-muted font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-[640px]"
         />
       )}
       {children}

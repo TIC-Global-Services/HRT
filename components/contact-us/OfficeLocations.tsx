@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface OfficeLocationItem {
   id: string;
@@ -63,9 +63,9 @@ export default function OfficeLocations({
               <div className="flex items-center gap-2 mb-3">
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+                  className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
                 />
-                <span className="font-mono text-base font-medium text-[#F8780C] tracking-tight uppercase">
+                <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                   {eyebrow}
                 </span>
               </div>
@@ -74,7 +74,7 @@ export default function OfficeLocations({
                 as="h2"
                 text={title}
                 delay={20}
-                className="font-sora text-[#002E40] text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.12]"
+                className="font-sora text-[#002E40] text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12]"
               />
             </div>
 
@@ -126,7 +126,7 @@ export default function OfficeLocations({
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="font-mono text-xs uppercase text-[#62737A] tracking-wider font-medium flex items-center gap-1 hover:text-[#F8780C] transition-colors shrink-0 ml-3 py-1 px-1"
+                      className="font-geist-mono text-xs uppercase text-[#62737A] tracking-wider font-medium flex items-center gap-1 hover:text-[#F8780C] transition-colors shrink-0 ml-3 py-1 px-1"
                     >
                       MAP <span aria-hidden="true">↗</span>
                     </Link>
@@ -171,7 +171,7 @@ export default function OfficeLocations({
                     top: activeOffice.coords.pillTop,
                   }}
                 >
-                  <div className="bg-[#254F5F] text-[#F8780C] px-3.5 h-[30px] rounded-full font-mono text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.15)] whitespace-nowrap">
+                  <div className="bg-[#254F5F] text-[#F8780C] px-3.5 h-[30px] rounded-full font-geist-mono text-[11px] font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.15)] whitespace-nowrap">
                     <span>HQ</span>
                     <span className="text-[#F8780C] text-[9px]">-</span>
                     <span>{activeOffice.name}</span>

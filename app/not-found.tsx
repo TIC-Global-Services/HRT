@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Home, Compass } from "lucide-react";
-import { BreadcrumbBadge } from "@/reuseable/breadcrum";
+import { BreadcrumbBadge } from "@/components/ui/Breadcrumb";
 
 export const metadata = {
   title: "404 - Page Not Found | Claripa AI",

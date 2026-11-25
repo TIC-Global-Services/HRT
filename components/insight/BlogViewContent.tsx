@@ -16,7 +16,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { BlogPost, getRelatedBlogs } from "@/data/blogs";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 interface BlogViewContentProps {
   blog: BlogPost;

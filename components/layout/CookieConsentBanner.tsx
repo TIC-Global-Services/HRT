@@ -86,14 +86,14 @@ export default function CookieConsentBanner() {
           <button
             type="button"
             onClick={handleAccept}
-            className="flex-1 sm:flex-initial px-5 sm:px-6 py-2.5 rounded-xl bg-[#F06A25] hover:bg-[#D95B1A] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-sm active:scale-95 cursor-pointer text-center"
+            className="flex-1 sm:flex-initial px-5 sm:px-6 py-2.5 rounded-xl bg-[#F06A25] hover:bg-[#D95B1A] text-white font-geist-mono text-xs font-bold tracking-wider uppercase transition-all shadow-sm active:scale-95 cursor-pointer text-center"
           >
             ACCEPT
           </button>
           <button
             type="button"
             onClick={handleDecline}
-            className="flex-1 sm:flex-initial px-5 sm:px-6 py-2.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-white/90 hover:text-white font-mono text-xs font-bold tracking-wider uppercase transition-all active:scale-95 cursor-pointer text-center"
+            className="flex-1 sm:flex-initial px-5 sm:px-6 py-2.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-white/90 hover:text-white font-geist-mono text-xs font-bold tracking-wider uppercase transition-all active:scale-95 cursor-pointer text-center"
           >
             DECLINE
           </button>

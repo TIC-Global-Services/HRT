@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface ExtensionCardData {
   category: string;
@@ -170,7 +170,7 @@ function DesktopAnimatedProgressItem({
       <div className="flex items-center justify-between text-[11px] mb-1.5">
         <span className="font-sora text-[#35464E] font-normal">{label}</span>
         <span
-          className={`font-mono font-normal tabular-nums ${
+          className={`font-geist-mono font-normal tabular-nums ${
             isOrange ? "text-[#E56A1E]" : "text-[#62737A]"
           }`}
         >
@@ -327,40 +327,28 @@ export default function ConnectedModules({
         {/* Top Header */}
         <div className="text-center mb-10 sm:mb-14">
           {/* Eyebrow Pill Tag */}
-          <p className="inline-flex items-center justify-center gap-2 font-mono text-xs sm:text-base font-medium uppercase tracking-tight text-[#F06A25] mb-4">
+          <p className="inline-flex items-center justify-center gap-2 font-geist-mono text-xs sm:text-sm font-semibold uppercase tracking-tight text-brand-orange mb-4">
             <span
               aria-hidden="true"
-              className="inline-block w-2 h-2 rounded-full bg-[#F06A25] shadow-[0_0_8px_2px_rgba(240,106,37,0.55)]"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
             />
             {eyebrow}
           </p>
 
-          {/* Main Title (Desktop original / Mobile tailored) */}
+          {/* Main Title */}
           <BlurText
             as="h2"
             delay={20}
             text={title}
-            className="text-[#002E40] font-sora text-3xl sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 hidden md:block"
-          />
-          <BlurText
-            as="h2"
-            delay={20}
-            text={"Three Connected\nModules,One Clearer\nView of Performance"}
-            className="text-[#002E40] font-sora text-[28px] sm:text-4xl md:text-[44px] lg:text-[46px] font-normal tracking-[-0.03em] leading-[1.14] m-0 mb-4 whitespace-pre-line md:hidden"
+            className="text-[#002E40] font-sora text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] m-0 mb-4 lg:whitespace-pre-line"
           />
 
-          {/* Subtitle / Description (Desktop original / Mobile tailored) */}
+          {/* Subtitle / Description */}
           <BlurText
             as="p"
             delay={20}
             text={description}
-            className="text-[#62737A] font-sora text-sm sm:text-lg leading-[1.3] max-w-5xl whitespace-pre-line mx-auto m-0 md:block hidden"
-          />
-          <BlurText
-            as="p"
-            delay={20}
-            text={"Claripa brings people information, performance management, and task execution together in one platform. By connecting organizational goals with individual contributions and performance insights, Claripa helps leaders, HR teams, and managers work towards shared priorities."}
-            className="text-[#62737A] font-sora text-xs sm:text-base leading-[1.45] max-w-[360px] mx-auto m-0 md:hidden"
+            className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-5xl lg:whitespace-pre-line mx-auto m-0"
           />
         </div>
 
@@ -461,7 +449,7 @@ export default function ConnectedModules({
                     onMouseEnter={() => setIsOrbitPaused(true)}
                     onMouseLeave={() => setIsOrbitPaused(false)}
                     onClick={() => setActiveCardIndex(1)}
-                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
+                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-geist-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
                       1
                     )}`}
                   >
@@ -484,7 +472,7 @@ export default function ConnectedModules({
                     onMouseEnter={() => setIsOrbitPaused(true)}
                     onMouseLeave={() => setIsOrbitPaused(false)}
                     onClick={() => setActiveCardIndex(0)}
-                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
+                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-geist-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
                       0
                     )}`}
                   >
@@ -507,7 +495,7 @@ export default function ConnectedModules({
                     onMouseEnter={() => setIsOrbitPaused(true)}
                     onMouseLeave={() => setIsOrbitPaused(false)}
                     onClick={() => setActiveCardIndex(2)}
-                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
+                    className={`inline-block border rounded-full px-4 sm:px-5 py-1.5 sm:py-2 font-geist-mono text-[11px] sm:text-[13px] font-medium tracking-normal transition-all duration-300 cursor-pointer whitespace-nowrap ${getPillClass(
                       2
                     )}`}
                   >
@@ -541,7 +529,7 @@ export default function ConnectedModules({
                   }`}
                 >
                   {/* Top Category Tag */}
-                  <span className="font-mono text-xs sm:text-[13px] text-[#F06A25] font-normal mb-7 sm:mb-9 block">
+                  <span className="font-geist-mono text-xs sm:text-[13px] text-[#F06A25] font-normal mb-7 sm:mb-9 block">
                     {card.category}
                   </span>
 
@@ -581,7 +569,7 @@ export default function ConnectedModules({
 
                     {/* Right Column: Performance Flow Preview Box */}
                     <div className="bg-white rounded-[18px] border border-[#EDEAE4] p-5 sm:p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-                      <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.06em] text-[#6D7C82] uppercase font-medium mb-3.5 block">
+                      <span className="font-geist-mono text-[9.5px] sm:text-[10px] tracking-[0.06em] text-[#6D7C82] uppercase font-medium mb-3.5 block">
                         {card.flowHeader || "PERFORMANCE FLOW"}
                       </span>
 
@@ -694,7 +682,7 @@ export default function ConnectedModules({
                   }`}
                 >
                   {/* Top Category Tag */}
-                  <span className="font-mono text-xs sm:text-[13px] text-[#F06A25] font-semibold uppercase tracking-wider mb-2.5 sm:mb-3.5 block">
+                  <span className="font-geist-mono text-xs sm:text-[13px] text-[#F06A25] font-semibold uppercase tracking-wider mb-2.5 sm:mb-3.5 block">
                     {card.category}
                   </span>
 
@@ -734,7 +722,7 @@ export default function ConnectedModules({
 
                     {/* Right Column: Performance Flow Preview Box */}
                     <div className="bg-white rounded-[20px] sm:rounded-[24px] border border-[#ECEAE5] p-5 sm:p-6 md:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
-                      <span className="font-mono text-[11px] sm:text-xs tracking-[0.16em] text-[#6D7C82] uppercase font-semibold mb-4 sm:mb-5 block">
+                      <span className="font-geist-mono text-[11px] sm:text-xs tracking-[0.16em] text-[#6D7C82] uppercase font-semibold mb-4 sm:mb-5 block">
                         {card.flowHeader || "PERFORMANCE FLOW"}
                       </span>
 

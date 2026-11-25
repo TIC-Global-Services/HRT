@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 export interface SolutionLayersProps {
   eyebrow?: string;
@@ -16,19 +16,12 @@ const defaultLayers = [
   { label: "Analytics", isPrimary: false },
   { label: "Engagement", isPrimary: false },
 ];
-const defaultMobileLayers = [
-  { label: "Core HR", isPrimary: false },
-  { label: "Analytics", isPrimary: false },
-  { label: "Performance Management", isPrimary: false },
-  { label: "Engagement", isPrimary: false },
-];
 
 export default function SolutionLayers({
   eyebrow = "POWERED BY",
   title = "The layers behind this solution",
-  layers,
+  layers = defaultLayers,
 }: SolutionLayersProps) {
-  console.log("layers", layers)
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F6F3]">
       <div className="px-[5%]">
@@ -53,9 +46,9 @@ export default function SolutionLayers({
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[#F8780C] shadow-[0_0_8px_rgba(248,120,12,0.55)]"
+                  className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(248,114,12,0.55)]"
                 />
-                <span className="font-mono text-xs lg:text-base font-medium text-[#F8780C] tracking-wider uppercase">
+                <span className="font-geist-mono text-xs sm:text-sm font-semibold text-brand-orange tracking-tight uppercase">
                   {eyebrow}
                 </span>
               </div>
@@ -64,29 +57,16 @@ export default function SolutionLayers({
                 as="h2"
                 text={title}
                 delay={20}
-                className="font-sora text-white text-xl sm:text-4xl lg:text-[46px] font-normal tracking-tight leading-[1.14] mt-4 lg:text-left text-center"
+                className="font-sora text-white text-[28px] sm:text-4xl lg:text-[46px] font-normal tracking-[-0.035em] leading-[1.12] mt-4 lg:text-left text-center"
               />
             </div>
 
             {/* Bottom Layer Pills */}
-            <div className=" flex-wrap justify-start gap-2.5 pt-8 lg:flex hidden">
-              {layers && layers.map((layer) => (
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-8">
+              {layers.map((layer) => (
                 <span
                   key={layer.label}
-                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${layer.isPrimary
-                      ? "bg-[#FFF4EC] text-[#B84D09] border border-[#FBD9C2]"
-                      : "bg-white text-[#254F5F] border border-white/80"
-                    }`}
-                >
-                   {layer.label}
-                </span>
-              ))} 
-            </div>
-            <div className="flex flex-wrap justify-center gap-2.5  pt-8 lg:hidden">
-              {layers && layers.map((layer) => (
-                <span
-                  key={layer.label}
-                  className={`inline-flex  items-center px-4 py-2 rounded-full font-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${layer.isPrimary
+                  className={`inline-flex items-center px-4 py-2 rounded-full font-geist-mono text-xs lg:text-base font-medium tracking-tight shadow-sm transition-transform hover:scale-105 ${layer.isPrimary
                       ? "bg-[#FFF4EC] text-[#B84D09] border border-[#FBD9C2]"
                       : "bg-white text-[#254F5F] border border-white/80"
                     }`}

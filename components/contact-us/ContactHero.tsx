@@ -1,7 +1,7 @@
 import PageIntro from "@/components/shared/PageIntro";
 import Image from "next/image";
 import { MessageSquare, Tag, ThumbsUp } from "lucide-react";
-import BlurText from "@/reuseable/BlurText";
+import BlurText from "@/components/ui/BlurText";
 
 const companyLogos = [
   { src: "/company_logo/ani.png", name: "ani" },
