@@ -158,6 +158,9 @@ export default function  OneConnect({
         .animate-oneconnect-up {
           animation: oneconnect-marquee-up linear infinite;
         }
+        .oneconnect-marquee:hover .animate-oneconnect-up {
+          animation-play-state: paused;
+        }
         @media (prefers-reduced-motion: reduce) {
           .animate-oneconnect-up {
             animation: none;
@@ -196,7 +199,7 @@ export default function  OneConnect({
           </div>
 
           {/* Right Column: Upward Vertical Marquee of Cards */}
-          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 h-[480px] sm:h-[540px] md:h-[580px] lg:h-[620px] overflow-hidden select-none">
+          <div className="oneconnect-marquee relative w-full max-w-[560px] mx-auto lg:mx-0 h-[480px] sm:h-[540px] md:h-[580px] lg:h-[620px] overflow-hidden select-none">
             {/* Top Fade Gradient */}
             <div
               className="pointer-events-none absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-white via-white/80 to-transparent z-10"
@@ -211,7 +214,7 @@ export default function  OneConnect({
 
             {/* Scrolling Track (Bottom to Top) */}
             <div
-              className="flex flex-col gap-4 will-change-transform animate-oneconnect-up hover:[animation-play-state:paused]"
+              className="flex flex-col gap-4 will-change-transform animate-oneconnect-up"
               style={{
                 animationDuration: `${calculatedSpeed}s`,
               }}
