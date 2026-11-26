@@ -66,7 +66,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
           <path
             d="M18 30 C50 28 70 34 92 40 C114 46 126 60 150 78 C174 96 196 110 238 128 V140 H18Z"
             fill={`url(#${gradientId})`}
-            className="sig-fade"
+            className="animate-sig-fade"
             style={cssVars({ "--d": "0.5s", "--t": "2.2s" })}
           />
 
@@ -76,7 +76,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
           {/* Point by Point: Curve Segment 1 (Week 1 to Week 6) */}
           <path
             d="M18 30 C50 28 70 34 92 40"
-            className="sig-draw"
+            className="animate-sig-draw"
             style={cssVars({
               "--d": "0.2s",
               "--t": "0.9s",
@@ -91,7 +91,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
           {/* Point by Point: Curve Segment 2 (Week 6 to Week 12) */}
           <path
             d="M92 40 C114 46 126 60 150 78 C174 96 196 110 238 128"
-            className="sig-draw"
+            className="animate-sig-draw"
             style={cssVars({
               "--d": "1.7s",
               "--t": "1.0s",
@@ -109,7 +109,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
             stroke="#254F5F"
             strokeOpacity=".4"
             strokeDasharray="3 4"
-            className="sig-fade"
+            className="animate-sig-fade"
             style={cssVars({ "--d": "1.15s" })}
           />
 
@@ -119,13 +119,13 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
             stroke="#254F5F"
             strokeOpacity=".4"
             strokeDasharray="3 4"
-            className="sig-fade"
+            className="animate-sig-fade"
             style={cssVars({ "--d": "2.75s" })}
           />
 
           {/* Week 6 Point Marker (Drops and Pings) */}
           <g
-            className="sig-drop"
+            className="animate-sig-drop"
             style={cssVars({ "--d": "1.1s" }, { transformOrigin: "92px 40px" })}
           >
             <circle
@@ -143,7 +143,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
               fill="none"
               stroke="#F8720C"
               strokeWidth="2"
-              className="sig-ping"
+              className="animate-sig-ping"
               style={cssVars({ "--d": "1.25s" })}
             />
           </g>
@@ -156,7 +156,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
             fill="#254F5F"
             stroke="#fff"
             strokeWidth="3"
-            className="sig-pop"
+            className="animate-sig-pop"
             style={cssVars(
               { "--d": "2.7s" },
               { transformOrigin: "238px 128px" }
@@ -164,10 +164,10 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
           />
 
           {/* Bracket line: 6 weeks earlier */}
-          <g className="sig-fade" style={cssVars({ "--d": "3.0s" })}>
+          <g className="animate-sig-fade" style={cssVars({ "--d": "3.0s" })}>
             <path
               d="M96 118H234"
-              className="sig-draw"
+              className="animate-sig-draw"
               style={cssVars({ "--d": "3.0s", "--t": "0.5s", "--len": 138 })}
               stroke="#254F5F"
               strokeWidth="1.4"
@@ -179,7 +179,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
         {/* Chip at Week 6: "Claripa flags · wk 6" */}
         <SignalChip
           variant="orange"
-          className="sig-pop absolute left-[58px] top-9 shadow-[0_0_0_3px_#fff]"
+          className="animate-sig-pop absolute left-[58px] top-9 shadow-[0_0_0_3px_#fff]"
           style={cssVars({ "--d": "1.2s" })}
         >
           Claripa flags · wk 6
@@ -188,7 +188,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
         {/* Chip at Week 12: "Exit · wk 12" */}
         <SignalChip
           variant="slate"
-          className="sig-pop absolute right-2.5 top-[98px] shadow-[0_0_0_3px_#fff]"
+          className="animate-sig-pop absolute right-2.5 top-[98px] shadow-[0_0_0_3px_#fff]"
           style={cssVars({ "--d": "2.8s" })}
         >
           Exit · wk 12
@@ -196,7 +196,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
 
         {/* Measurement Label: 6 weeks earlier */}
         <span
-          className="sig-fade absolute left-[112px] top-[132px] bg-white px-1.5 text-[10.5px] font-semibold text-brand-teal"
+          className="animate-sig-fade absolute left-[112px] top-[132px] bg-white px-1.5 text-[10.5px] font-semibold text-brand-teal"
           style={cssVars({ "--d": "3.2s" })}
         >
           6 weeks earlier
@@ -215,14 +215,14 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
 
       {/* Bottom Box: Nudge Schedule 1-on-1 */}
       <SignalCardBox
-        className="sig-up top-[262px] flex h-[50px] items-center justify-between border-[#F6D9C2] bg-[#FFF9F4] px-3.5"
+        className="animate-sig-up top-[262px] flex h-[50px] items-center justify-between border-[#F6D9C2] bg-[#FFF9F4] px-3.5"
         style={cssVars({ "--d": "3.3s" })}
       >
         <span className="text-[11.5px] font-semibold text-[#B4560A]">
           Nudge: Schedule 1-on-1
         </span>
         <i
-          className="sig-pop grid size-6 place-items-center rounded-full bg-brand-orange text-white shadow-xs"
+          className="animate-sig-pop grid size-6 place-items-center rounded-full bg-brand-orange text-white shadow-xs"
           style={cssVars({ "--d": "3.6s" })}
         >
           <svg
@@ -237,7 +237,7 @@ export default function LateSignalVisual({ go }: { go: boolean }) {
           >
             <path
               d="m5 12 5 5 9-10"
-              className="sig-draw"
+              className="animate-sig-draw"
               style={cssVars({
                 "--d": "3.8s",
                 "--t": "0.35s",

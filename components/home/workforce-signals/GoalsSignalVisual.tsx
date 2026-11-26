@@ -51,7 +51,7 @@ export default function GoalsSignalVisual({
             <path
               key={d}
               d={d}
-              className="sig-draw"
+              className="animate-sig-draw"
               style={cssVars({ "--d": delay, "--t": "0.45s", "--len": len })}
               stroke="#254F5F"
               strokeOpacity=".35"
@@ -69,7 +69,7 @@ export default function GoalsSignalVisual({
             strokeWidth="2"
             strokeDasharray="4 8"
             strokeLinecap="round"
-            className="sig-moving-flow"
+            className="animate-sig-moving-flow"
           />
 
           {/* Broken link to right goal: Animated moving dashed orange line */}
@@ -79,7 +79,7 @@ export default function GoalsSignalVisual({
             strokeWidth="2"
             strokeDasharray="4 4"
             strokeLinecap="round"
-            className={broken ? "sig-moving-line" : undefined}
+            className={broken ? "animate-sig-moving-line" : undefined}
             style={{
               opacity: broken ? 1 : 0,
               transition: `opacity 0.4s ${transitionDelay}`,
@@ -99,7 +99,7 @@ export default function GoalsSignalVisual({
 
         {/* Step 1: Company OKR */}
         <div
-          className="sig-pop absolute left-[76px] top-3.5 grid h-8 w-[110px] place-items-center rounded-2xl bg-brand-teal text-center text-[11px] font-semibold text-white shadow-xs"
+          className="animate-sig-pop absolute left-[76px] top-3.5 grid h-8 w-[110px] place-items-center rounded-2xl bg-brand-teal text-center text-[11px] font-semibold text-white shadow-xs"
           style={cssVars({ "--d": "0.1s" })}
         >
           Company OKR
@@ -107,7 +107,7 @@ export default function GoalsSignalVisual({
 
         {/* Step 2: Team OKR A */}
         <div
-          className="sig-pop absolute left-[18px] top-[84px] grid h-7 w-24 place-items-center rounded-[14px] bg-[#E4ECEE] text-center text-[10.5px] font-semibold text-brand-teal"
+          className="animate-sig-pop absolute left-[18px] top-[84px] grid h-7 w-24 place-items-center rounded-[14px] bg-[#E4ECEE] text-center text-[10.5px] font-semibold text-brand-teal"
           style={cssVars({ "--d": "0.95s" })}
         >
           Team OKR A
@@ -115,7 +115,7 @@ export default function GoalsSignalVisual({
 
         {/* Step 3: Team OKR B */}
         <div
-          className="sig-pop absolute left-[148px] top-[84px] grid h-7 w-24 place-items-center rounded-[14px] bg-[#E4ECEE] text-center text-[10.5px] font-semibold text-brand-teal"
+          className="animate-sig-pop absolute left-[148px] top-[84px] grid h-7 w-24 place-items-center rounded-[14px] bg-[#E4ECEE] text-center text-[10.5px] font-semibold text-brand-teal"
           style={cssVars({ "--d": "1.05s" })}
         >
           Team OKR B
@@ -123,7 +123,7 @@ export default function GoalsSignalVisual({
 
         {/* Step 4: Left Individual Goal (Aligned) */}
         <div
-          className="sig-pop absolute left-[18px] top-[130px] grid h-[34px] w-24 place-items-center rounded-xl border border-border-warm bg-surface-warm text-center text-[10px] leading-3 text-brand-teal"
+          className="animate-sig-pop absolute left-[18px] top-[130px] grid h-[34px] w-24 place-items-center rounded-xl border border-border-warm bg-surface-warm text-center text-[10px] leading-3 text-brand-teal"
           style={cssVars({ "--d": "1.55s" })}
         >
           Individual
@@ -133,7 +133,7 @@ export default function GoalsSignalVisual({
 
         {/* Step 5: Right Individual Goal (Drifting / Broken Link) */}
         <div
-          className="sig-pop absolute left-[148px] top-[130px]"
+          className="animate-sig-pop absolute left-[148px] top-[130px]"
           style={cssVars({ "--d": "1.85s" })}
         >
           <div
@@ -168,14 +168,14 @@ export default function GoalsSignalVisual({
 
         {/* Status text */}
         <span
-          className="sig-fade absolute left-[18px] top-[172px] text-[10px] leading-[13px] text-text-muted"
+          className="animate-sig-fade absolute left-[18px] top-[172px] text-[10px] leading-[13px] text-text-muted"
           style={cssVars({ "--d": "1.7s" })}
         >
           Aligned
         </span>
 
         <span
-          className="sig-fade absolute left-[148px] top-[172px] text-[10px] leading-[13px] transition-colors duration-400"
+          className="animate-sig-fade absolute left-[148px] top-[172px] text-[10px] leading-[13px] transition-colors duration-400"
           style={cssVars(
             { "--d": "1.9s" },
             { color: fixed ? "#62737A" : "#C2410C" }
@@ -187,7 +187,7 @@ export default function GoalsSignalVisual({
 
       {/* Bottom Box: Goal Alignment Transition */}
       <SignalCardBox
-        className="sig-up top-[234px] h-[78px] p-3.5"
+        className="animate-sig-up top-[234px] h-[78px] p-3.5"
         style={cssVars({ "--d": "2.2s" })}
       >
         <div className="flex items-baseline justify-between">
