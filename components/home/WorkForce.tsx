@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
-import FlutedGlassBackground from "@/components/home/HeroBackground";
 import {
   SignalVisualStage,
   type SignalVisualKind,
@@ -41,55 +40,33 @@ export const workforceContent: {
       id: "review",
       title: "Performance surprises at review time",
       description:
-        "Workforce information is often spread across different systems and activities, making it difficult to connect performance, engagement, and capability signals into a meaningful picture.",
+        "Gain year-round visibility into employee performance through continuous tracking, feedback and actionable insights.",
       href: "/solution-hub#signals",
     },
     {
       id: "goals",
       title: "Goals that lose direction",
       description:
-        "When meaningful workforce signals go unnoticed, organisations may recognise emerging issues only after they begin affecting employee performance, engagement, or team outcomes.",
+        "Align organisational objectives with team and individual goals through structured OKR cascading and progress tracking.",
       href: "/solution-hub#decisions",
     },
     {
       id: "potential",
       title: "Potential that goes unnoticed",
       description:
-        "Managers need a clearer understanding of employee goals, task progress, performance patterns, and development needs to identify where support or attention may be required.",
+        "Identify employee strengths, competency gaps and development opportunities to support informed talent decisions.",
       href: "/solution-hub#context",
     },
     {
       id: "late",
       title: "Problems spotted too late",
       description:
-        "Claripa aims to bring relevant workforce intelligence to decision-makers, helping them recognise emerging patterns, understand potential concerns, and take timely action.",
+        "Identify performance gaps early through regular check-ins, progress monitoring and timely management interventions.",
       href: "/solution-hub#action",
       highlighted: true,
     },
   ],
 };
-
-/* =========================================================================
-   REUSABLE CARD HOVER GRADIENT BLINDS SHADER
-   ========================================================================= */
-function CardHoverGradientBlinds() {
-  return (
-    <div className="hidden md:block absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none z-0">
-      <FlutedGlassBackground
-        colorA="#FFA812"
-        colorB="#FF4D0A"
-        background="#FFF5ED"
-        mobileSlitWidth={60}
-        squeeze={1.9}
-        lip={0.045}
-        speed={0.9}
-        mouseStrength={1}
-      />
-      {/* Soft bottom fade to ensure typography legibility */}
-      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#FFF5ED] via-[#FFF5ED]/85 to-transparent pointer-events-none" />
-    </div>
-  );
-}
 
 function WorkforceSignalCard({
   card,
@@ -105,13 +82,10 @@ function WorkforceSignalCard({
       href={card.href}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[500px] md:h-[500px] snap-center"
+      className="group relative flex flex-col justify-between rounded-[28px] sm:rounded-[32px] border border-zinc-200/90 hover:border-[#F8720C] focus-visible:border-[#F8720C] bg-[#FAF9F6] p-6 sm:p-7 shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[490px] md:min-h-[520px] snap-center cursor-pointer"
     >
-      {/* Interactive WebGL Fluted Glass Background on Hover */}
-      <CardHoverGradientBlinds />
-
-      {/* Top Animated Signal Stage (fades out gracefully on desktop hover to reveal description) */}
-      <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
+      {/* Top Animated Signal Stage */}
+      <div className="relative z-10 flex-1 min-h-[240px] flex items-center justify-center pb-2">
         <SignalVisualStage
           kind={card.id}
           index={index}
@@ -119,24 +93,15 @@ function WorkforceSignalCard({
         />
       </div>
 
-      {/* Bottom Content: Title, Arrow & Expandable Description on Hover */}
-      <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
-        <div className="order-1 md:order-2 flex items-center justify-between gap-3">
-          <h3 className="font-heading font-sora text-[22px] sm:text-2xl font-normal tracking-[-0.03em] leading-[1.15] text-[#142938] md:group-hover:text-brand-orange transition-colors duration-300">
-            {card.title}
-          </h3>
-          <ArrowUpRight
-            className="h-6 w-6 shrink-0 text-[#6F8791] group-hover:text-brand-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-            strokeWidth={1.4}
-          />
-        </div>
-
+      {/* Bottom Content: Title & Permanent Description placed like reference image */}
+      <div className="relative z-10 flex flex-col pt-3 shrink-0">
+        <h3 className="font-heading font-sora text-[20px] sm:text-[22px] font-normal tracking-tight leading-[1.2] text-[#002E40]">
+          {card.title}
+        </h3>
         {card.description && (
-          <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-            <p className="font-sans text-sm sm:text-base text-[#62737A] md:group-hover:text-[#142938] leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
-              {card.description}
-            </p>
-          </div>
+          <p className="font-sans text-sm sm:text-base text-[#62737A] leading-[1.3] mt-2.5 sm:mt-3">
+            {card.description}
+          </p>
         )}
       </div>
     </Link>
