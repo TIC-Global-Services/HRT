@@ -1,26 +1,30 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Check,
-  Clock,
-  Zap,
-  BellOff,
-} from "lucide-react";
-import FlutedGlassBackground from "@/components/home/HeroBackground";
+import { ArrowUpRight } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
+import FlutedGlassBackground from "@/components/home/HeroBackground";
+import {
+  SignalVisualStage,
+  type SignalVisualKind,
+} from "@/components/home/workforce-signals";
 
 export interface FeatureCardItem {
-  id: string;
+  id: SignalVisualKind;
   title: string;
   description?: string;
   href: string;
   highlighted?: boolean;
 }
 
-export const workforceContent = {
+export const workforceContent: {
+  eyebrow: string;
+  headline: { line1: string; line2: string };
+  description: string;
+  ctaButton: { label: string; href: string };
+  cards: FeatureCardItem[];
+} = {
   eyebrow: "The Future of People Decisions",
   headline: {
     line1: "Spot the Signals.",
@@ -34,29 +38,29 @@ export const workforceContent = {
   },
   cards: [
     {
-      id: "disconnected-signals",
-      title: "Disconnected Signals",
+      id: "review",
+      title: "Performance surprises at review time",
       description:
         "Workforce information is often spread across different systems and activities, making it difficult to connect performance, engagement, and capability signals into a meaningful picture.",
       href: "/solution-hub#signals",
     },
     {
-      id: "reactive-decisions",
-      title: "Reactive Decisions",
+      id: "goals",
+      title: "Goals that lose direction",
       description:
         "When meaningful workforce signals go unnoticed, organisations may recognise emerging issues only after they begin affecting employee performance, engagement, or team outcomes.",
       href: "/solution-hub#decisions",
     },
     {
-      id: "managers-without-context",
-      title: "Managers Without Context",
+      id: "potential",
+      title: "Potential that goes unnoticed",
       description:
         "Managers need a clearer understanding of employee goals, task progress, performance patterns, and development needs to identify where support or attention may be required.",
       href: "/solution-hub#context",
     },
     {
-      id: "proactive-action",
-      title: "Proactive Action",
+      id: "late",
+      title: "Problems spotted too late",
       description:
         "Claripa aims to bring relevant workforce intelligence to decision-makers, helping them recognise emerging patterns, understand potential concerns, and take timely action.",
       href: "/solution-hub#action",
@@ -64,391 +68,6 @@ export const workforceContent = {
     },
   ],
 };
-
-/* =========================================================================
-   CARD 1 MINI UI: DISCONNECTED SIGNALS (Automation Flow Diagram with Moving Dotted Lines)
-   ========================================================================= */
-function DisconnectedSignalsMiniUI() {
-  return (
-    <div className="w-full h-[260px] flex flex-col items-center justify-center relative select-none">
-      {/* Trigger: When a task is due */}
-      <div className="bg-white rounded-md border border-zinc-200/90 px-3.5 py-3 shadow-xs flex items-center gap-2 text-[1.5dvh] font-medium text-zinc-700 transition-transform group-hover:scale-[1.02]">
-        <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-        <span>When a task is due</span>
-      </div>
-
-      {/* Vertical connection line with continuous looping animated dotted flow & arrow */}
-      <div className="relative w-6 h-6 flex items-center justify-center my-0.5">
-        <svg
-          className="w-full h-full overflow-visible"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          {/* Base light track */}
-          <line
-            x1="12"
-            y1="0"
-            x2="12"
-            y2="19"
-            stroke="#FDE0C8"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          {/* Animated flowing dotted line */}
-          <line
-            x1="12"
-            y1="0"
-            x2="12"
-            y2="19"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeDasharray="3 5"
-            strokeLinecap="round"
-            className="animate-dotted-flow"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="0"
-              to="-16"
-              dur="0.8s"
-              repeatCount="indefinite"
-            />
-          </line>
-          {/* Arrowhead pointing down into Run automation */}
-          <path
-            d="M8.5 14.5L12 19L15.5 14.5"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* Action button: Run automation */}
-      <div className="bg-[#F06A25] text-white rounded-md px-4 py-3 text-xs font-semibold flex items-center gap-2 shadow-sm shadow-orange-500/25 transition-transform group-hover:scale-[1.02]">
-        <Zap className="w-3.5 h-3.5 text-white shrink-0 animate-pulse" />
-        <span>Run automation</span>
-      </div>
-
-      {/* Branching stem & SVG with continuous looping animated dotted flow and arrow heads */}
-      <div className="relative w-52 sm:w-56 h-8 my-0.5 flex justify-center">
-        <svg
-          className="w-full h-full overflow-visible"
-          viewBox="0 0 220 32"
-          fill="none"
-          aria-hidden="true"
-        >
-          {/* Left Branch Base Track */}
-          <path
-            d="M 110 0 L 110 10 L 32 10 L 32 24"
-            stroke="#FDE0C8"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* Left Branch Animated Dotted Line */}
-          <path
-            d="M 110 0 L 110 10 L 32 10 L 32 24"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeDasharray="3 5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="animate-dotted-flow"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="0"
-              to="-16"
-              dur="0.8s"
-              repeatCount="indefinite"
-            />
-          </path>
-          {/* Left Arrowhead */}
-          <path
-            d="M 28 19 L 32 25 L 36 19"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Right Branch Base Track */}
-          <path
-            d="M 110 0 L 110 10 L 188 10 L 188 24"
-            stroke="#FDE0C8"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* Right Branch Animated Dotted Line */}
-          <path
-            d="M 110 0 L 110 10 L 188 10 L 188 24"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeDasharray="3 5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="animate-dotted-flow"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="0"
-              to="-16"
-              dur="0.8s"
-              repeatCount="indefinite"
-            />
-          </path>
-          {/* Right Arrowhead */}
-          <path
-            d="M 184 19 L 188 25 L 192 19"
-            stroke="#F06A25"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* Two outcomes */}
-      <div className="flex items-center justify-between w-full max-w-[240px] px-1 gap-2 mt-0.5">
-        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-[#F8780C] shadow-2xs transition-transform hover:scale-105">
-          <Check className="w-3 h-3 text-[#F8780C] stroke-[2.5] shrink-0" />
-          <span>Update status</span>
-        </div>
-        <div className="bg-[#FFF0E4] border border-orange-200/80 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[11px] font-medium text-[#F8780C] shadow-2xs transition-transform hover:scale-105">
-          <ArrowUpRight className="w-3.5 h-3.5 text-[#F8780C] stroke-[2.5] shrink-0 animate-arrow-nudge" />
-          <span>Notify team</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* =========================================================================
-   CARD 2 MINI UI: REACTIVE DECISIONS (Focus Session with Count & Progress Animation)
-   ========================================================================= */
-function ReactiveDecisionsMiniUI() {
-  const [seconds, setSeconds] = useState(14);
-  const [progress, setProgress] = useState(48);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prev) => (prev + 1) % 60);
-      setProgress((prev) => (prev >= 85 ? 42 : prev + 1));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const formattedSeconds = String(seconds).padStart(2, "0");
-
-  return (
-    <div className="w-full h-[280px] flex flex-col items-center justify-center select-none">
-      {/* Main Focus Session Card */}
-      <div className="bg-white rounded-lg border border-zinc-200/90 p-5 sm:p-6 shadow-xs w-full max-w-[270px] h-[45dvh] relative overflow-hidden flex flex-col justify-center">
-        {/* Header */}
-        <div className="text-[10px] font-geist-mono tracking-wider font-semibold text-zinc-400 uppercase">
-          FOCUS SESSION
-        </div>
-
-        {/* Large bold timer with live counting */}
-        <div className="text-3xl sm:text-[40px] font-sora font-normal text-[#687083] tracking-tight my-2.5 tabular-nums leading-none">
-          01:16:{formattedSeconds}
-        </div>
-
-        {/* Subtitle tag row */}
-        <div className="flex items-center justify-between gap-1.5 mt-1">
-          <div className="flex items-center gap-1.5 text-xs text-[#F06A25] font-medium">
-            <Clock className="w-4 h-4 text-[#F06A25] shrink-0" />
-            <span>Website design</span>
-          </div>
-
-          <div className="bg-[#FAF5ED] px-2.5 py-1 rounded-full flex items-center gap-1.5 text-[11px] font-medium text-[#F06A25] shrink-0">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span>Focus on</span>
-          </div>
-        </div>
-
-        {/* Bottom progress bar on the card matching the reference image */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-zinc-100">
-          <div
-            className="h-full bg-[#F06A25] rounded-r-full transition-all duration-1000 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
-
-      {/* Floating notification bar below the card matching reference image */}
-      <div className="mt-2.5 bg-white rounded-xl border border-zinc-200/90 px-3.5 py-2.5 shadow-2xs flex items-center gap-2 text-xs text-zinc-800 font-medium w-full max-w-[270px]">
-        <BellOff className="w-4 h-4 text-zinc-800 shrink-0" />
-        <span className="truncate">Notifications paused until 12:00</span>
-      </div>
-    </div>
-  );
-}
-
-/* =========================================================================
-   CARD 3 MINI UI: MANAGERS WITHOUT CONTEXT (No Cards Visible Initially -> Pop One by One -> Continue)
-   ========================================================================= */
-function ManagersWithoutContextMiniUI() {
-  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
-
-  useEffect(() => {
-    let t1: NodeJS.Timeout;
-    let t2: NodeJS.Timeout;
-    let t3: NodeJS.Timeout;
-
-    const runCycle = () => {
-      // 0.0s: Initially NO cards visible, 0% progress
-      setStep(0);
-
-      // 0.8s: Card 1 pops in -> 35% progress
-      t1 = setTimeout(() => {
-        setStep(1);
-      }, 800);
-
-      // 1.9s: Card 2 pops in -> 68% progress
-      t2 = setTimeout(() => {
-        setStep(2);
-      }, 1900);
-
-      // 3.0s: Card 3 pops in -> all 3 cards visible
-      t3 = setTimeout(() => {
-        setStep(3);
-      }, 3000);
-    };
-
-    runCycle();
-    const cycleInterval = setInterval(runCycle, 7600);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearInterval(cycleInterval);
-    };
-  }, []);
-
-  return (
-    <div className="w-full h-[260px] flex flex-col justify-center gap-2 select-none px-1">
-      {/* Task 1: Website refresh (Pops in at step 1) */}
-      <div
-        className={`bg-white  border border-zinc-200/80 px-3.5 py-3.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          step >= 1
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4  bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
-            <Check className="w-3 h-3 stroke-[3]" />
-          </div>
-          <span className="line-through text-slate-500 font-medium">Website refresh</span>
-        </div>
-        <span className="bg-[#E6F5EC] text-[#1A824E] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
-          Done
-        </span>
-      </div>
-
-      {/* Task 2: Product launch (Pops in at step 2 with active purple border) */}
-      <div
-        className={`bg-white  border-2 border-[#A8A4F8] shadow-sm px-3.5 py-3.5 flex items-center justify-between text-xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          step >= 2
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-[4px] bg-[#F06A25] flex items-center justify-center text-white shrink-0 shadow-2xs">
-            <Check className="w-3 h-3 stroke-[3]" />
-          </div>
-          <span className="line-through text-slate-500 font-medium">Product launch</span>
-        </div>
-        <span className="bg-[#E6F5EC] text-[#1A824E] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
-          Done
-        </span>
-      </div>
-
-      {/* Task 3: Q4 roadmap (Pops in at step 3) */}
-      <div
-        className={`bg-white border border-zinc-200/80 px-3.5 py-3.5 flex items-center justify-between text-xs font-medium text-zinc-800 shadow-2xs transition-all duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          step >= 3
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-6 scale-90 pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-[4px] border-2 border-indigo-200 bg-white shrink-0" />
-          <span className="text-zinc-800 font-medium">Q4 roadmap</span>
-        </div>
-        <span className="bg-[#FDF2E9] text-[#D96B27] px-2.5 py-0.5 rounded-md text-[11px] font-medium">
-          Planning
-        </span>
-      </div>
-
-      {/* Progress footer */}
-      <div className="mt-2 pt-2 px-1 flex items-center gap-3">
-        <span className="text-xs text-slate-500 font-normal shrink-0">
-          This week
-        </span>
-        <div className="flex-1 bg-[#F0EDF6] rounded-full h-2 overflow-hidden">
-          <div
-            className="bg-[#F06A25] h-full rounded-full transition-all duration-1000 ease-out"
-            style={{
-              width: step === 0 ? "0%" : step === 1 ? "35%" : "68%",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* =========================================================================
-   CARD 4 MINI UI: PROACTIVE ACTION (Signal to Proactive Action Preview)
-   ========================================================================= */
-function ProactiveActionMiniUI() {
-  return (
-    <div className="w-full h-[260px] flex flex-col items-center justify-center relative select-none">
-      {/* Resting AI Signal & Action Preview Card */}
-      <div className="w-full max-w-[260px] bg-white rounded-2xl border border-zinc-200/90 p-4 shadow-xs flex flex-col gap-3 group-hover:border-orange-200/80 group-hover:bg-white/95 group-hover:shadow-sm transition-all duration-300">
-        <div className="flex items-center justify-between">
-          <span className="font-geist-mono text-[10px] font-semibold text-[#F06A25] uppercase tracking-wider flex items-center gap-1.5">
-            <Zap className="w-3.5 h-3.5 text-[#F06A25] fill-[#F06A25] shrink-0" />
-            PROACTIVE SIGNAL
-          </span>
-          <span className="text-[10px] font-geist-mono text-zinc-400 bg-zinc-100 group-hover:bg-orange-100/60 group-hover:text-orange-600 px-2 py-0.5 rounded-full transition-colors duration-300">
-            LIVE
-          </span>
-        </div>
-
-        <div className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#ECE8DF] group-hover:bg-[#FFF8F3] group-hover:border-orange-200/60 transition-colors duration-300">
-          <p className="text-xs font-medium text-[#142938] leading-tight">
-            Workload variance detected
-          </p>
-          <p className="text-[11px] text-zinc-500 group-hover:text-zinc-600 mt-0.5">
-            Engineering · 3 signals flagged
-          </p>
-        </div>
-
-        <div className="bg-[#FFF5ED] border border-orange-200/80 rounded-xl px-3 py-2 flex items-center justify-between shadow-2xs">
-          <span className="text-[11px] font-semibold text-[#F06A25]">
-            Nudge: Schedule 1-on-1
-          </span>
-          <span className="w-5 h-5 rounded-full bg-[#F06A25] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-            ✓
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* =========================================================================
    REUSABLE CARD HOVER GRADIENT BLINDS SHADER
@@ -472,6 +91,57 @@ function CardHoverGradientBlinds() {
   );
 }
 
+function WorkforceSignalCard({
+  card,
+  index,
+}: {
+  card: FeatureCardItem;
+  index: number;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link
+      href={card.href}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[500px] md:h-[500px] snap-center"
+    >
+      {/* Interactive WebGL Fluted Glass Background on Hover */}
+      <CardHoverGradientBlinds />
+
+      {/* Top Animated Signal Stage (fades out gracefully on desktop hover to reveal description) */}
+      <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
+        <SignalVisualStage
+          kind={card.id}
+          index={index}
+          isHovered={isHovered}
+        />
+      </div>
+
+      {/* Bottom Content: Title, Arrow & Expandable Description on Hover */}
+      <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
+        <div className="order-1 md:order-2 flex items-center justify-between gap-3">
+          <h3 className="font-heading font-sora text-[22px] sm:text-2xl font-normal tracking-[-0.03em] leading-[1.15] text-[#142938] md:group-hover:text-brand-orange transition-colors duration-300">
+            {card.title}
+          </h3>
+          <ArrowUpRight
+            className="h-6 w-6 shrink-0 text-[#6F8791] group-hover:text-brand-orange group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+            strokeWidth={1.4}
+          />
+        </div>
+
+        {card.description && (
+          <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
+            <p className="font-sans text-sm sm:text-base text-[#62737A] md:group-hover:text-[#142938] leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
+              {card.description}
+            </p>
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+}
 
 export default function Workforce() {
   const { eyebrow, headline, description, ctaButton, cards } = workforceContent;
@@ -545,120 +215,25 @@ export default function Workforce() {
           onScroll={updateScrollState}
           className="flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none pb-4 md:pt-2 -mx-[5%] px-[5%] md:mx-0 md:px-0"
         >
-          {/* Card 1: Disconnected Signals */}
-          <Link
-            href={cards[0].href}
-            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
-          >
-            <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
-              <DisconnectedSignalsMiniUI />
-            </div>
-            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
-              <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[0].title}
-                </h3>
-                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
-              {cards[0].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4  overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
-                    {cards[0].description}
-                  </p>
-                </div>
-              )}
-            </div>
-          </Link>
-
-          {/* Card 2: Reactive Decisions */}
-          <Link
-            href={cards[1].href}
-            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
-          >
-            <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
-              <ReactiveDecisionsMiniUI />
-            </div>
-            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
-              <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[1].title}
-                </h3>
-                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
-              {cards[1].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
-                    {cards[1].description}
-                  </p>
-                </div>
-              )}
-            </div>
-          </Link>
-
-          {/* Card 3: Managers Without Context */}
-          <Link
-            href={cards[2].href}
-            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
-          >
-            <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
-              <ManagersWithoutContextMiniUI />
-            </div>
-            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
-              <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading font-sora text-2xl sm:text-2xl font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[2].title}
-                </h3>
-                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
-              {cards[2].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-lg text-zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
-                    {cards[2].description}
-                  </p>
-                </div>
-              )}
-            </div>
-          </Link>
-
-          {/* Card 4: Proactive Action (Hover State with GradientBlinds WebGL) */}
-          <Link
-            href={cards[3].href}
-            className="group relative flex flex-col justify-between rounded-[32px] border border-zinc-200/80 md:border-zinc-200/70 md:hover:border-orange-300/80 bg-[#FAF9F6] md:bg-[#F7F6F3] md:hover:bg-[#FFF5ED] p-6 sm:p-7 shadow-2xs md:hover:shadow-md md:hover:-translate-y-1 transition-all duration-500 overflow-hidden shrink-0 md:shrink w-[88vw] max-w-[360px] md:max-w-none md:w-auto h-auto min-h-[520px] md:h-[500px] snap-center"
-          >
-            <CardHoverGradientBlinds />
-            <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center transition-all duration-300 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:pointer-events-none md:group-focus-visible:opacity-0 md:group-focus-visible:scale-95 md:group-focus-visible:pointer-events-none">
-              <ProactiveActionMiniUI />
-            </div>
-            <div className="relative z-10 flex flex-col pt-4 mt-auto shrink-0">
-              <div className="order-1 md:order-2 flex items-center justify-between">
-                <h3 className="font-heading text-2xl sm:text-2xl font-sora font-medium text-[#142938] md:group-hover:text-[#F06A25] transition-colors duration-300">
-                  {cards[3].title}
-                </h3>
-                <ArrowUpRight className="hidden md:block h-5 w-5 text-zinc-400 group-hover:text-[#F06A25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
-              {cards[3].description && (
-                <div className="order-2 md:order-1 mt-3 md:mt-0 mb-0 md:mb-4 overflow-hidden md:max-h-0 md:group-hover:max-h-36 md:group-focus-visible:max-h-36 transition-all duration-300 ease-out">
-                  <p className="font-sans text-sm sm:text-lg text -zinc-600 md:group-hover:text-[#142938] leading-[1.2] md:leading-[1.3] md:mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100 transition-opacity duration-300">
-                    {cards[3].description}
-                  </p>
-                </div>
-              )}
-            </div>
-          </Link>
+          {cards.map((card, index) => (
+            <WorkforceSignalCard key={card.id} card={card} index={index} />
+          ))}
         </div>
 
         {/* Pagination Indicator Dots (Mobile Only) */}
-        <div className="flex items-center justify-center gap-2.5 mt-2 md:mt-7 md:hidden" aria-hidden="true">
+        <div
+          className="flex items-center justify-center gap-2.5 mt-2 md:mt-7 md:hidden"
+          aria-hidden="true"
+        >
           {cards.map((card, idx) => (
             <button
               key={card.id}
               type="button"
               onClick={() => {
                 if (!sliderRef.current) return;
-                const slide = sliderRef.current.children[idx] as HTMLElement | undefined;
+                const slide = sliderRef.current.children[idx] as
+                  | HTMLElement
+                  | undefined;
                 if (slide) {
                   slide.scrollIntoView({
                     behavior: "smooth",
@@ -670,7 +245,7 @@ export default function Workforce() {
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                 activeSlide === idx
-                  ? "w-8 bg-[#F06A25]"
+                  ? "w-8 bg-brand-orange"
                   : "w-6 bg-[#CBD3D7] hover:bg-zinc-400"
               }`}
             />
