@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
                   <span className="text-slate-600 font-semibold tracking-wider uppercase text-[10px] sm:text-[11px]">
                     Headquarters
                   </span>
-                  <span className="text-white uppercase text-sm">
+                  <span className="text-white lowercase text-sm">
                     HRT Consulting Private Limited
                     WeWork Lightbridge, 6th Floor,
                     Hiranandani Business Park, Powai

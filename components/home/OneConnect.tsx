@@ -171,9 +171,9 @@ export default function  OneConnect({
       <div className="px-[5%]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 xl:gap-30 items-center">
           {/* Left Column: Heading & Description */}
-          <div className="flex flex-col justify-start items-start">
+          <div className="flex flex-col justify-center items-center lg:justify-start lg:items-start">
             {/* Eyebrow */}
-            <p className="flex items-center text-left gap-2 font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-brand-orange mb-3 sm:mb-4">
+            <p className="flex items-center text-center lg:text-left gap-2 font-geist-mono text-xs sm:text-sm font-semibold tracking-tight uppercase text-brand-orange mb-3 sm:mb-4">
               <span
                 aria-hidden="true"
                 className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"

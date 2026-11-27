@@ -66,7 +66,7 @@ export default function SolutionOutcomes({
 
       {/* Outer White Container */}
       <div className="rounded-[28px] sm:rounded-[36px] bg-white border border-[#E9ECEF] p-4 sm:p-5 lg:p-4 shadow-xs">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {outcomes.map((outcome) => (
             <article
               key={outcome.metricLabel}

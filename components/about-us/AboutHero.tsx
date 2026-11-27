@@ -31,7 +31,14 @@ export default function AboutHero({
           delay={20}
           trigger="load"
           text={title}
-          className="font-sora text-[#002E40] text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.08] lg:whitespace-pre-line"
+          className="font-sora text-[#002E40] text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.08] lg:whitespace-pre-line hidden lg:block"
+        />
+        <BlurText
+          as="h1"
+          delay={20}
+          trigger="load"
+          text={"Co-pilot shaping the future of people intelligence"}
+          className="font-sora text-[#002E40] text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.08] lg:whitespace-pre-line lg:hidden"
         />
       </div>
 

@@ -404,7 +404,7 @@ export default function PerformanceCycle({
 
             {/* ----------------- MOBILE VIEW (< 768px): Stationary Centered Hub + Bottom Orbit Marquee ----------------- */}
             <div
-              className="md:hidden relative w-full overflow-hidden flex flex-col items-center justify-center pt-8 pb-5 min-h-[340px] select-none"
+              className="lg:hidden relative w-full overflow-hidden flex flex-col items-center justify-center pt-8 pb-5 min-h-[340px] select-none"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -501,7 +501,7 @@ export default function PerformanceCycle({
             {/* ----------------- DESKTOP & TABLET VIEW (>= 768px): Full-width Interactive Orbit Loop ----------------- */}
             <div
               ref={containerRef}
-              className="hidden md:flex relative w-full overflow-hidden items-center justify-center min-h-[420px] md:min-h-[460px] lg:min-h-[500px] xl:min-h-[530px] aspect-[2/1] lg:aspect-[2.15/1] max-h-[580px]"
+              className="hidden lg:flex relative w-full overflow-hidden items-center justify-center min-h-[420px] md:min-h-[460px] lg:min-h-[500px] xl:min-h-[530px] aspect-[2/1] lg:aspect-[2.15/1] max-h-[580px]"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >

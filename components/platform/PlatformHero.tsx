@@ -75,7 +75,14 @@ export default function PlatformHero({
           delay={20}
           trigger="load"
           text={description}
-          className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] text-center max-w-4xl mx-auto mb-6 sm:mb-8 whitespace-pre-line"
+          className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] text-center max-w-4xl mx-auto mb-6 sm:mb-8 whitespace-pre-line hidden lg:block"
+        />
+        <BlurText
+          as="p"
+          delay={20}
+          trigger="load"
+          text={"Claripa sits above your existing HR systems, connects the signals they already capture, and turns them into clear, timely intelligence for leaders, HR and managers."}
+          className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] text-center max-w-4xl mx-auto mb-6 sm:mb-8 whitespace-pre-line  lg:hidden"
         />
 
         {/* CTA Button */}

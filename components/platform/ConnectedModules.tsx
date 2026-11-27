@@ -348,7 +348,13 @@ export default function ConnectedModules({
             as="p"
             delay={20}
             text={description}
-            className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-5xl lg:whitespace-pre-line mx-auto m-0"
+            className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-5xl lg:whitespace-pre-line mx-auto m-0 hidden lg:block"
+          />
+          <BlurText
+            as="p"
+            delay={20}
+            text={"Claripa brings people information, performance management, and task execution together in one platform. By connecting organizational goals with individual contributions and performance insights, \nClaripa helps leaders, HR teams, and managers work towards shared priorities."}
+            className="text-[#62737A] font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-5xl lg:whitespace-pre-line mx-auto m-0  lg:hidden"
           />
         </div>
 

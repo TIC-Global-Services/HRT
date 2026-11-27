@@ -74,7 +74,14 @@ const HeroSection: React.FC = () => {
             delay={20}
             trigger="load"
             text={"From Performance Data to People\nIntelligence"}
-            className="text-3xl sm:text-5xl lg:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08] lg:whitespace-pre-line"
+            className="text-3xl sm:text-5xl lg:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08] lg:whitespace-pre-line hidden lg:block"
+          />
+          <BlurText
+            as="h1"
+            delay={20}
+            trigger="load"
+            text={"From Performance Data to People Intelligence"}
+            className="text-3xl sm:text-5xl lg:text-6xl font-sora font-normal text-[#002E40] tracking-[-0.035em] leading-[1.08] lg:whitespace-pre-line  lg:hidden"
           />
 
           {/* 3. Subtitle matching Image 2 */}
