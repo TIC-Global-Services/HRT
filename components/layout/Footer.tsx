@@ -414,7 +414,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Bar inside the Card (No horizontal divider line, flowing with breathing room) */}
-          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] sm:text-sm font-geist-mono text-white/85">
+          <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-center justify-between gap-4 text-[10px] sm:text-sm font-geist-mono text-white/85">
             <p>© 2026 Claripa by HRT. All rights reserved.</p>
 
             <div className="flex items-center gap-4 md:gap-6">

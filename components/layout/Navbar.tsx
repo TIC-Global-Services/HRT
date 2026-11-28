@@ -410,12 +410,12 @@ const Navabar: React.FC = () => {
             </div>
 
             <div className="pt-4 border-t border-slate-200 flex flex-col gap-3">
-              <Link
+              {/* <Link
                 href="/contact-us"
                 className="w-full text-center py-2.5 text-sm font-semibold uppercase tracking-wider text-slate-700 hover:text-slate-950 border border-slate-200 rounded-full"
               >
                 LOGIN
-              </Link>
+              </Link> */}
               <Link
                 href="/contact-us"
                 className="w-full text-center py-3 bg-[#254F5F] text-white text-sm font-semibold uppercase tracking-wider rounded-full shadow-sm"

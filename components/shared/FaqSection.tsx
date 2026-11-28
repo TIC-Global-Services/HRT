@@ -50,7 +50,7 @@ export default function FaqSection({
             as="p"
             delay={20}
             text={lead}
-            className="text-text-muted font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-[360px] mb-8 text-center lg:text-left"
+            className="text-text-muted font-sora text-sm sm:text-base md:text-lg leading-[1.3] max-w-xl lg:max-w-[360px] mb-8 text-center lg:text-left"
           />
 
           {contactText && contactHref ? (
